@@ -1,0 +1,9 @@
+{
+  "name": "PayWise UK — UK Salary & Take-Home Pay Calculator",
+  "description": "Calculate UK take-home pay, income tax, National Insurance, pension contributions, and student loans with accurate UK payroll calculation tools.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
+
