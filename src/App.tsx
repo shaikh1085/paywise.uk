@@ -73,7 +73,7 @@ const TaxRateChecklistPage = React.lazy(() => import('./pages/admin/TaxRateCheck
 export function App() {
   return (
     <ThemeProvider>
-          <BrowserRouter basename="/paywise.uk">
+          <BrowserRouter>
         <ToastProvider>
           <Layout>
             <Suspense fallback={<div className="min-h-screen bg-[#FAFAFA] dark:bg-[#080808]" />}>
