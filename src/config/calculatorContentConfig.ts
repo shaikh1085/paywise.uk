@@ -51,7 +51,7 @@ export const CALCULATOR_CONTENT_CONFIG: Record<string, CalculatorPageContent> = 
   // A. INCOME TAX CALCULATOR
   income_tax: {
     slug: 'income-tax-calculator',
-    canonicalUrl: 'https://www.paywiseuk.co.uk/income-tax-calculator',
+    canonicalUrl: 'https://paywiseuk.vercel.app/income-tax-calculator',
     seoTitle: 'Income Tax Calculator UK | Estimate Your Tax',
     metaDescription: 'Estimate UK Income Tax from your annual salary, tax region, tax code, pension and other taxable income. Results are estimates only.',
     h1: 'Income Tax Calculator UK',
@@ -172,7 +172,7 @@ export const CALCULATOR_CONTENT_CONFIG: Record<string, CalculatorPageContent> = 
   // B. NATIONAL INSURANCE CALCULATOR
   national_insurance: {
     slug: 'national-insurance-calculator',
-    canonicalUrl: 'https://www.paywiseuk.co.uk/national-insurance-calculator',
+    canonicalUrl: 'https://paywiseuk.vercel.app/national-insurance-calculator',
     seoTitle: 'National Insurance Calculator UK | Estimate Contributions',
     metaDescription: 'Estimate employee National Insurance contributions from your salary and pay frequency in the UK. Results are for general guidance only.',
     h1: 'National Insurance Calculator UK',
@@ -260,7 +260,7 @@ export const CALCULATOR_CONTENT_CONFIG: Record<string, CalculatorPageContent> = 
   // C. TAX CODE CALCULATOR
   tax_code: {
     slug: 'tax-code-calculator',
-    canonicalUrl: 'https://www.paywiseuk.co.uk/tax-code-calculator',
+    canonicalUrl: 'https://paywiseuk.vercel.app/tax-code-calculator',
     seoTitle: 'Tax Code Calculator UK | Understand Your Tax Code',
     metaDescription: 'Use this UK tax code calculator to understand what common tax-code letters and numbers may mean for your estimated tax-free allowance.',
     h1: 'Tax Code Calculator UK',
@@ -355,7 +355,7 @@ export const CALCULATOR_CONTENT_CONFIG: Record<string, CalculatorPageContent> = 
   // D. EMPLOYER NATIONAL INSURANCE CALCULATOR
   employer_ni: {
     slug: 'employer-national-insurance-calculator',
-    canonicalUrl: 'https://www.paywiseuk.co.uk/employer-national-insurance-calculator',
+    canonicalUrl: 'https://paywiseuk.vercel.app/employer-national-insurance-calculator',
     seoTitle: 'Employer National Insurance Calculator UK | Estimate Cost',
     metaDescription: 'Estimate employer National Insurance contributions and total employment cost from a UK employee salary. Results are estimates only.',
     h1: 'Employer National Insurance Calculator UK',
@@ -443,7 +443,7 @@ export const CALCULATOR_CONTENT_CONFIG: Record<string, CalculatorPageContent> = 
   // E. DIVIDEND TAX CALCULATOR
   dividend_tax: {
     slug: 'dividend-tax-calculator',
-    canonicalUrl: 'https://www.paywiseuk.co.uk/dividend-tax-calculator',
+    canonicalUrl: 'https://paywiseuk.vercel.app/dividend-tax-calculator',
     seoTitle: 'Dividend Tax Calculator UK | Estimate Dividend Tax',
     metaDescription: 'Estimate UK dividend tax using dividend income, other taxable income and tax region. Results are estimates, not tax advice.',
     h1: 'Dividend Tax Calculator UK',
@@ -531,7 +531,7 @@ export const CALCULATOR_CONTENT_CONFIG: Record<string, CalculatorPageContent> = 
   // F. MORTGAGE CALCULATOR
   mortgage: {
     slug: 'mortgage-calculator',
-    canonicalUrl: 'https://www.paywiseuk.co.uk/mortgage-calculator',
+    canonicalUrl: 'https://paywiseuk.vercel.app/mortgage-calculator',
     seoTitle: 'Mortgage Calculator UK | Monthly Repayment Estimate',
     metaDescription: 'Calculate estimated UK mortgage repayments from property price, deposit, interest rate and mortgage term. See monthly repayment estimates.',
     h1: 'Mortgage Calculator UK',
@@ -624,7 +624,7 @@ export const CALCULATOR_CONTENT_CONFIG: Record<string, CalculatorPageContent> = 
   // G. MORTGAGE AFFORDABILITY CALCULATOR
   mortgage_affordability: {
     slug: 'mortgage-affordability-calculator',
-    canonicalUrl: 'https://www.paywiseuk.co.uk/mortgage-affordability-calculator',
+    canonicalUrl: 'https://paywiseuk.vercel.app/mortgage-affordability-calculator',
     seoTitle: 'Mortgage Affordability Calculator UK | Borrowing Estimate',
     metaDescription: 'Estimate a possible UK mortgage borrowing range using income, deposit, debts and regular commitments. This is not a lending decision.',
     h1: 'Mortgage Affordability Calculator UK',
@@ -711,7 +711,7 @@ export const CALCULATOR_CONTENT_CONFIG: Record<string, CalculatorPageContent> = 
   // H. ISA CALCULATOR
   isa: {
     slug: 'isa-calculator',
-    canonicalUrl: 'https://www.paywiseuk.co.uk/isa-calculator',
+    canonicalUrl: 'https://paywiseuk.vercel.app/isa-calculator',
     seoTitle: 'ISA Calculator UK | Estimate Tax-Efficient Savings Growth',
     metaDescription: 'Estimate how regular ISA contributions and assumed growth could affect your future savings. Results are illustrative and not investment advice.',
     h1: 'ISA Calculator UK',
@@ -804,7 +804,7 @@ export const CALCULATOR_CONTENT_CONFIG: Record<string, CalculatorPageContent> = 
   // I. SAVINGS CALCULATOR
   savings: {
     slug: 'savings-calculator',
-    canonicalUrl: 'https://www.paywiseuk.co.uk/savings-calculator',
+    canonicalUrl: 'https://paywiseuk.vercel.app/savings-calculator',
     seoTitle: 'Savings Calculator UK | Estimate Interest and Growth',
     metaDescription: 'Calculate estimated savings growth from an opening balance, regular deposits, interest rate and saving period. Free UK savings calculator.',
     h1: 'Savings Calculator UK',
@@ -891,7 +891,7 @@ export const CALCULATOR_CONTENT_CONFIG: Record<string, CalculatorPageContent> = 
   // J. CAPITAL GAINS TAX CALCULATOR
   capital_gains: {
     slug: 'capital-gains-tax-calculator',
-    canonicalUrl: 'https://www.paywiseuk.co.uk/capital-gains-tax-calculator',
+    canonicalUrl: 'https://paywiseuk.vercel.app/capital-gains-tax-calculator',
     seoTitle: 'Capital Gains Tax Calculator UK | Estimate CGT',
     metaDescription: 'Estimate UK Capital Gains Tax using sale proceeds, purchase cost, allowable costs and other taxable income. For general guidance only.',
     h1: 'Capital Gains Tax Calculator UK',
@@ -988,31 +988,37 @@ export const CALCULATOR_CONTENT_CONFIG: Record<string, CalculatorPageContent> = 
   // 1. STAMP DUTY CALCULATOR (SDLT)
   stamp_duty: {
     slug: 'stamp-duty-calculator',
-    canonicalUrl: 'https://www.paywiseuk.co.uk/stamp-duty-calculator',
-    seoTitle: 'Stamp Duty Calculator UK | Estimate SDLT',
-    metaDescription: 'Estimate Stamp Duty Land Tax when buying property in England or Northern Ireland. Check standard, first-time buyer and additional-property estimates.',
-    h1: 'Stamp Duty Calculator UK',
-    primaryKeyword: 'stamp duty calculator UK',
+    canonicalUrl: 'https://paywiseuk.vercel.app/stamp-duty-calculator',
+    seoTitle: 'Stamp Duty Calculator UK 2025/26 | Free SDLT Stamp Calculator',
+    metaDescription: 'Free UK Stamp Duty Calculator (SDLT) for 2025/2026. Calculate Stamp Duty Land Tax for first-time buyers, home movers, and second homes (5% surcharge).',
+    h1: 'Stamp Duty Calculator UK (SDLT 2025/2026)',
+    primaryKeyword: 'stamp duty calculator',
     secondaryKeywords: [
-      'SDLT calculator UK',
-      'first time buyer stamp duty calculator',
+      'stamp calculator uk',
+      'stamp duty calculator UK',
+      'first time buyer stamp duty calculator uk',
+      'sdlt calculator uk 2025 26',
+      'stamp duty rates 2025/26',
+      'how much stamp duty will i pay uk',
+      'stamp duty on second home uk calculator',
       'buy to let stamp duty calculator',
-      'stamp duty rates UK',
+      'stamp duty land tax calculator',
+      'sdlt rates england northern ireland',
     ],
     directAnswerParagraph:
-      'Estimate your Stamp Duty Land Tax (SDLT) when purchasing residential property in England or Northern Ireland. Calculate taxes across standard home moves, first-time buyer relief thresholds, and additional property surcharges (buy-to-let and second homes).',
+      'Calculate your exact Stamp Duty Land Tax (SDLT) payable when purchasing a residential property in England or Northern Ireland. Instant breakdown for home movers (£250k 0% threshold), first-time buyers (£425k relief), and second homes/buy-to-let (5% Autumn Budget surcharge).',
     howItWorks: {
-      title: 'How Stamp Duty Land Tax (SDLT) is Calculated',
+      title: 'How Stamp Duty Land Tax (SDLT) is Calculated in England & NI',
       paragraphs: [
         'Stamp Duty Land Tax (SDLT) is a progressive tiered tax paid when purchasing residential property or land in England and Northern Ireland. The tax is charged only on the portion of the property price falling within each specific rate band.',
-        'First-time buyers benefit from relief on properties up to £625,000 (£500,000 under baseline statutory rules), paying 0% on the first £425,000 (£300,000 baseline). If the property price exceeds the maximum limit, standard rates apply to the entire purchase price.',
-        'Purchasers of additional residential properties (including second homes and buy-to-let investments) pay a 5% surcharge across every price band on top of standard residential SDLT rates following the Autumn Budget 2024.',
+        'First-time buyers benefit from relief on properties up to £625,000, paying 0% on the first £425,000 and 5% on the portion between £425,001 and £625,000. If the purchase price exceeds £625,000, standard residential rates apply to the entire price.',
+        'Purchasers of additional residential properties (including second homes, holiday cottages, and buy-to-let investments) pay a 5% surcharge across every single price band on top of standard residential SDLT rates following the Autumn Budget.',
       ],
       steps: [
         {
           stepNumber: 1,
           title: 'Select Buyer Category',
-          description: 'Choose whether you are moving home (standard), buying your first home (first-time buyer), or purchasing an additional property / buy-to-let.',
+          description: 'Choose whether you are moving home (standard main residence), buying your first home (first-time buyer), or purchasing an additional property / buy-to-let.',
         },
         {
           stepNumber: 2,
@@ -1030,7 +1036,7 @@ export const CALCULATOR_CONTENT_CONFIG: Record<string, CalculatorPageContent> = 
       'Calculations apply strictly to residential freehold or leasehold properties in England and Northern Ireland.',
       'Scotland applies Land and Buildings Transaction Tax (LBTT) and Wales applies Land Transaction Tax (LTT), which have separate devolved schedules.',
       'First-time buyer relief assumes neither buyer has previously owned residential property anywhere in the world.',
-      'Additional property surcharge reflects the 5% surcharge rate introduced in the Autumn Budget 2024.',
+      'Additional property surcharge reflects the 5% surcharge rate introduced in the Autumn Budget.',
       'Does not calculate mixed-use, commercial, or complex non-residential land transactions.',
     ],
     practicalExample: {
@@ -1047,6 +1053,14 @@ export const CALCULATOR_CONTENT_CONFIG: Record<string, CalculatorPageContent> = 
     },
     faqs: [
       {
+        question: 'How much stamp duty will I pay on a £300,000 house in the UK?',
+        answer: 'For a home mover replacing their main residence, stamp duty on a £300,000 house is £2,500 (0% on the first £250,000 and 5% on the remaining £50,000). For a first-time buyer, stamp duty is £0 because first-time buyers pay 0% up to £425,000. For an additional property or buy-to-let, stamp duty is £17,500 due to the 5% surcharge.',
+      },
+      {
+        question: 'How much stamp duty will I pay on a £400,000 or £500,000 house?',
+        answer: 'For a home mover: a £400,000 house incurs £7,500 in SDLT; a £500,000 house incurs £12,500. For a first-time buyer: a £400,000 house incurs £0 SDLT; a £500,000 house incurs £3,750 (5% on £75,000 above £425k). For second homes/buy-to-let: a £400,000 house incurs £27,500 and a £500,000 house incurs £37,500.',
+      },
+      {
         question: 'What is Stamp Duty Land Tax (SDLT)?',
         answer: 'Stamp Duty Land Tax (SDLT) is a statutory tax payable to HMRC when you purchase property or land over a certain price threshold in England and Northern Ireland.',
       },
@@ -1056,15 +1070,15 @@ export const CALCULATOR_CONTENT_CONFIG: Record<string, CalculatorPageContent> = 
       },
       {
         question: 'What is the Stamp Duty surcharge on second homes and buy-to-let properties?',
-        answer: 'Following the Autumn Budget 2024, buyers of second homes, holiday lets, or buy-to-let properties pay an additional 5% surcharge across all SDLT rate bands on top of standard residential rates.',
+        answer: 'Following the Autumn Budget, buyers of second homes, holiday lets, or buy-to-let properties pay an additional 5% surcharge across all SDLT rate bands on top of standard residential rates.',
       },
       {
         question: 'When do I have to pay Stamp Duty to HMRC?',
         answer: 'You have 14 days from the date of completion to submit a Stamp Duty Land Tax return to HMRC and pay any tax due. Usually, your conveyancing solicitor handles this as part of the legal completion process.',
       },
       {
-        question: 'Does this calculator apply to properties in Scotland or Wales?',
-        answer: 'No. Stamp Duty applies to England and Northern Ireland only. Property purchases in Scotland are subject to Land and Buildings Transaction Tax (LBTT), while Wales operates Land Transaction Tax (LTT).',
+        question: 'Does this stamp calculator apply to properties in Scotland or Wales?',
+        answer: 'No. Stamp Duty (SDLT) applies to England and Northern Ireland only. Property purchases in Scotland are subject to Land and Buildings Transaction Tax (LBTT), while Wales operates Land Transaction Tax (LTT).',
       },
       {
         question: 'Can I add Stamp Duty to my mortgage loan?',
@@ -1093,7 +1107,7 @@ export const CALCULATOR_CONTENT_CONFIG: Record<string, CalculatorPageContent> = 
   // 2. MORTGAGE OVERPAYMENT CALCULATOR
   mortgage_overpayment: {
     slug: 'mortgage-overpayment-calculator',
-    canonicalUrl: 'https://www.paywiseuk.co.uk/mortgage-overpayment-calculator',
+    canonicalUrl: 'https://paywiseuk.vercel.app/mortgage-overpayment-calculator',
     seoTitle: 'Mortgage Overpayment Calculator UK | Save Interest Estimate',
     metaDescription: 'Estimate how mortgage overpayments could reduce your mortgage term and total interest. Results are illustrative and depend on your lender.',
     h1: 'Mortgage Overpayment Calculator UK',
@@ -1198,7 +1212,7 @@ export const CALCULATOR_CONTENT_CONFIG: Record<string, CalculatorPageContent> = 
   // 3. PAY RISE CALCULATOR
   pay_rise: {
     slug: 'pay-rise-calculator',
-    canonicalUrl: 'https://www.paywiseuk.co.uk/pay-rise-calculator',
+    canonicalUrl: 'https://paywiseuk.vercel.app/pay-rise-calculator',
     seoTitle: 'Pay Rise Calculator UK | Salary Increase Estimate',
     metaDescription: 'Calculate a UK pay rise by percentage or amount. Compare your current and new salary, including estimated monthly take-home change.',
     h1: 'Pay Rise Calculator UK',
@@ -1305,7 +1319,7 @@ export const CALCULATOR_CONTENT_CONFIG: Record<string, CalculatorPageContent> = 
   // 4. BONUS TAX CALCULATOR
   bonus_tax: {
     slug: 'bonus-tax-calculator',
-    canonicalUrl: 'https://www.paywiseuk.co.uk/bonus-tax-calculator',
+    canonicalUrl: 'https://paywiseuk.vercel.app/bonus-tax-calculator',
     seoTitle: 'Bonus Tax Calculator UK | Estimate Bonus Take-Home Pay',
     metaDescription: 'Estimate UK bonus take-home pay after Income Tax, National Insurance, pension and student loan deductions.',
     h1: 'Bonus Tax Calculator UK',
@@ -1411,7 +1425,7 @@ export const CALCULATOR_CONTENT_CONFIG: Record<string, CalculatorPageContent> = 
   // 5. NET TO GROSS SALARY CALCULATOR
   net_to_gross: {
     slug: 'net-to-gross-salary-calculator',
-    canonicalUrl: 'https://www.paywiseuk.co.uk/net-to-gross-salary-calculator',
+    canonicalUrl: 'https://paywiseuk.vercel.app/net-to-gross-salary-calculator',
     seoTitle: 'Net to Gross Salary Calculator UK | Estimate Gross Pay',
     metaDescription: 'Estimate the gross salary needed for a target UK take-home pay. Include pension, student loans and tax region assumptions.',
     h1: 'Net to Gross Salary Calculator UK',
@@ -1517,7 +1531,7 @@ export const CALCULATOR_CONTENT_CONFIG: Record<string, CalculatorPageContent> = 
   // 6. REDUNDANCY PAY CALCULATOR
   redundancy_pay: {
     slug: 'redundancy-pay-calculator',
-    canonicalUrl: 'https://www.paywiseuk.co.uk/redundancy-pay-calculator',
+    canonicalUrl: 'https://paywiseuk.vercel.app/redundancy-pay-calculator',
     seoTitle: 'Redundancy Pay Calculator UK | Statutory Estimate',
     metaDescription: 'Estimate statutory redundancy pay based on age, weekly pay and years of service. Results are general guidance only.',
     h1: 'Redundancy Pay Calculator UK',
@@ -1622,7 +1636,7 @@ export const CALCULATOR_CONTENT_CONFIG: Record<string, CalculatorPageContent> = 
   // 7. SELF-EMPLOYED TAX CALCULATOR
   self_employed: {
     slug: 'self-employed-tax-calculator',
-    canonicalUrl: 'https://www.paywiseuk.co.uk/self-employed-tax-calculator',
+    canonicalUrl: 'https://paywiseuk.vercel.app/self-employed-tax-calculator',
     seoTitle: 'Self-Employed Tax Calculator UK | Tax Estimate',
     metaDescription: 'Estimate Income Tax and National Insurance for UK self-employed profits. Results are for general guidance only.',
     h1: 'Self-Employed Tax Calculator UK',
@@ -1729,7 +1743,7 @@ export const CALCULATOR_CONTENT_CONFIG: Record<string, CalculatorPageContent> = 
   // 8. VAT CALCULATOR
   vat: {
     slug: 'vat-calculator',
-    canonicalUrl: 'https://www.paywiseuk.co.uk/vat-calculator',
+    canonicalUrl: 'https://paywiseuk.vercel.app/vat-calculator',
     seoTitle: 'VAT Calculator UK | Add or Remove VAT',
     metaDescription: 'Add or remove UK VAT from a price. Calculate net amount, VAT amount and gross total for standard VAT rate estimates.',
     h1: 'VAT Calculator UK',
@@ -1831,41 +1845,49 @@ export const CALCULATOR_CONTENT_CONFIG: Record<string, CalculatorPageContent> = 
   // 9. CREDIT CARD REPAYMENT CALCULATOR
   credit_card_repayment: {
     slug: 'credit-card-repayment-calculator',
-    canonicalUrl: 'https://www.paywiseuk.co.uk/credit-card-repayment-calculator',
-    seoTitle: 'Credit Card Repayment Calculator UK | Payoff Estimate',
-    metaDescription: 'Estimate how long it may take to repay a credit-card balance based on interest rate and monthly repayments.',
-    h1: 'Credit Card Repayment Calculator UK',
-    primaryKeyword: 'credit card repayment calculator UK',
+    canonicalUrl: 'https://paywiseuk.vercel.app/credit-card-repayment-calculator',
+    seoTitle: 'Credit Card Repayment & Minimum Payment Calculator UK (2025/2026)',
+    metaDescription: 'Calculate how much the minimum payment is on your UK credit card, what your monthly repayment will be, payoff timeline, and how much interest you will save.',
+    h1: 'Credit Card Repayment & Minimum Payment Calculator UK',
+    primaryKeyword: 'how much is the minimum payment on a credit card',
     secondaryKeywords: [
+      'credit card repayment calculator UK',
+      'what is the minimum repayment on a credit card',
+      'what will my minimum credit card payment be',
+      'how much is minimum payment on credit card',
+      'how much is the minimum repayment on a credit card',
+      'how much will my minimum credit card payment be',
+      'what would be my minimum payment on a credit card',
+      'what will my credit card minimum payment be',
       'credit card payoff calculator UK',
       'credit card interest calculator UK',
       'how long to pay off credit card UK',
-      'credit card minimum payment calculator',
+      'credit card minimum repayment calculator UK',
     ],
     directAnswerParagraph:
-      'Estimate how long it will take to pay off your UK credit card balance and see how much total interest you will pay. Compare standard minimum payments against fixed monthly payment strategies to save thousands.',
+      'Find out exactly how much the minimum payment on your credit card will be and calculate how long it will take to clear your balance. Compare standard UK minimum repayments against fixed monthly contributions to become debt-free years sooner and save thousands in interest.',
     howItWorks: {
-      title: 'How Credit Card Interest & Repayments Work in the UK',
+      title: 'How Credit Card Minimum Payments & Interest Work in the UK',
       paragraphs: [
         'UK credit card interest is calculated daily and compounded monthly based on your Annual Percentage Rate (APR). If you carry a balance from month to month, interest is added to your account.',
-        'Standard minimum repayments in the UK are typically set to the greater of £5, 2.5% of the outstanding balance, or 1% of the principal plus monthly interest. Paying only the minimum results in long repayment timelines and excessive interest costs.',
+        'Standard minimum repayments in the UK are typically set to the highest of £5 (or £25 depending on provider), 2.5% to 3% of the outstanding balance, or 1% of the principal plus that month\'s interest and any charges. Paying only the minimum results in long repayment timelines and excessive interest costs.',
         'Switching to a fixed monthly repayment or paying off your balance within a target timeframe rapidly decreases principal debt and drastically reduces the total interest paid.',
       ],
       steps: [
         {
           stepNumber: 1,
           title: 'Enter Card Balance & APR',
-          description: 'Input your current credit card balance and annual interest rate (e.g. 24.9% APR).',
+          description: 'Input your current credit card balance (e.g. £1,000, £3,000 or £5,000) and annual interest rate (e.g. 24.9% APR).',
         },
         {
           stepNumber: 2,
           title: 'Choose Repayment Strategy',
-          description: 'Select minimum payment only, fixed monthly payment amount, or target payoff timeline.',
+          description: 'Select minimum payment only, fixed monthly payment amount (e.g. £100/mo), or target payoff timeline.',
         },
         {
           stepNumber: 3,
           title: 'View Payoff Timeline & Savings',
-          description: 'Review total interest paid, months to debt-free status, and comparison against minimum payments.',
+          description: 'Review exact monthly payments, total interest paid, months to debt-free status, and comparison against minimum payments.',
         },
       ],
     },
@@ -1890,6 +1912,22 @@ export const CALCULATOR_CONTENT_CONFIG: Record<string, CalculatorPageContent> = 
       conclusion: 'By fixing repayments at £150/month instead of minimum payments, the cardholder becomes debt-free 16 years earlier and saves over £2,400 in interest.',
     },
     faqs: [
+      {
+        question: 'How much is the minimum payment on a credit card in the UK?',
+        answer: 'In the UK, your minimum monthly credit card payment is usually calculated as the highest of: (1) A fixed minimum sum of £5 or £25; (2) 2% to 3% of your total outstanding balance; or (3) 1% of your principal balance PLUS that month\'s interest and any default charges. For example, on a £2,000 balance at 24.9% APR, your initial minimum payment would be approximately £60 to £65.',
+      },
+      {
+        question: 'What is the minimum repayment on a credit card if I have a £1,000, £3,000, or £5,000 balance?',
+        answer: 'On a standard 24.9% APR UK credit card: for a £1,000 balance, the initial minimum payment is around £30 to £35/month; for a £3,000 balance, it is around £90 to £100/month; and for a £5,000 balance, it is around £150 to £165/month. As you pay down the balance, the required minimum drops each month, which slows down your debt reduction.',
+      },
+      {
+        question: 'What will my minimum credit card payment be if I only pay the minimum each month?',
+        answer: 'If you only pay the minimum, your payment will decrease every month as your principal balance falls. However, because smaller payments cover less and less principal, clearing even a modest £2,500 balance at 24.9% APR could take over 15 to 18 years and cost more in interest than the original borrowed amount.',
+      },
+      {
+        question: 'How much will my minimum credit card payment be on a 0% interest balance transfer card?',
+        answer: 'On a 0% interest promotional card, there is no monthly interest added, so your minimum payment is typically just 1% to 2.5% of the balance (or a minimum £5 to £25). On a £3,000 balance at 0%, the minimum payment is usually £30 to £75 per month. To clear the balance before the 0% deal expires (e.g. 24 months), you should divide £3,000 by 24 = £125 fixed per month.',
+      },
       {
         question: 'Why do minimum credit card payments take so long to clear debt?',
         answer: 'As your balance decreases, the required minimum payment decreases alongside it. This means you repay progressively less principal each month, dragging out the repayment term across decades and racking up substantial interest charges.',
@@ -1937,7 +1975,7 @@ export const CALCULATOR_CONTENT_CONFIG: Record<string, CalculatorPageContent> = 
   // 10. CHILD BENEFIT CALCULATOR
   child_benefit: {
     slug: 'child-benefit-calculator',
-    canonicalUrl: 'https://www.paywiseuk.co.uk/child-benefit-calculator',
+    canonicalUrl: 'https://paywiseuk.vercel.app/child-benefit-calculator',
     seoTitle: 'Child Benefit Calculator UK | Estimate Payments',
     metaDescription: 'Estimate UK Child Benefit payments and a possible High Income Child Benefit Charge. Results are for general guidance only.',
     h1: 'Child Benefit Calculator UK',
