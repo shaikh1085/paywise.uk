@@ -50,6 +50,94 @@ export const CreditCardRepaymentPage: React.FC = () => {
       {/* Calculator Core */}
       <CreditCardRepaymentCalculator />
 
+      {/* High-Intent SEO Guide & Answers Section */}
+      <div className="border border-[#E5E5E5] dark:border-[#2A2A2A] bg-white dark:bg-[#171717] rounded-3xl p-6 sm:p-8 shadow-[0_8px_30px_rgba(0,0,0,0.06)] dark:shadow-[0_10px_35px_rgba(0,0,0,0.35)] space-y-6">
+        <h2 className="text-xl sm:text-2xl font-bold text-[#111111] dark:text-[#F5F5F5] tracking-tight">
+          How Much is the Minimum Payment on a Credit Card in the UK?
+        </h2>
+        <p className="text-xs sm:text-sm text-[#525252] dark:text-[#A3A3A3] leading-relaxed">
+          In the UK, your minimum credit card repayment is the lowest amount you can pay each month to keep your account in good standing and avoid default charges. Most major UK lenders (such as Barclays, HSBC, Lloyds, NatWest, and Santander) use a standard three-part regulatory formula set under FCA lending guidelines.
+        </p>
+
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 pt-2">
+          <div className="p-4 rounded-2xl bg-[#FAFAFA] dark:bg-[#121212] border border-[#E5E5E5] dark:border-[#2A2A2A] space-y-2">
+            <h3 className="text-sm font-bold text-[#111111] dark:text-[#F5F5F5]">1. Percentage Rule</h3>
+            <p className="text-xs text-[#525252] dark:text-[#A3A3A3] leading-relaxed">
+              Between <strong>2% and 3%</strong> of your total outstanding statement balance.
+            </p>
+          </div>
+
+          <div className="p-4 rounded-2xl bg-[#FAFAFA] dark:bg-[#121212] border border-[#E5E5E5] dark:border-[#2A2A2A] space-y-2">
+            <h3 className="text-sm font-bold text-[#111111] dark:text-[#F5F5F5]">2. Interest + 1% Rule</h3>
+            <p className="text-xs text-[#525252] dark:text-[#A3A3A3] leading-relaxed">
+              <strong>1% of principal</strong> balance plus that month&apos;s accrued interest, default fees, and annual fees.
+            </p>
+          </div>
+
+          <div className="p-4 rounded-2xl bg-[#FAFAFA] dark:bg-[#121212] border border-[#E5E5E5] dark:border-[#2A2A2A] space-y-2">
+            <h3 className="text-sm font-bold text-[#111111] dark:text-[#F5F5F5]">3. Flat Floor Minimum</h3>
+            <p className="text-xs text-[#525252] dark:text-[#A3A3A3] leading-relaxed">
+              A flat minimum floor of <strong>£5 to £25</strong> (or the full balance if less than £5).
+            </p>
+          </div>
+        </div>
+
+        <div className="space-y-4 pt-4 border-t border-[#E5E5E5] dark:border-[#2A2A2A]">
+          <h3 className="text-base sm:text-lg font-bold text-[#111111] dark:text-[#F5F5F5]">
+            What Will My Minimum Credit Card Payment Be? (Representative UK Balances at 24.9% APR)
+          </h3>
+          <p className="text-xs sm:text-sm text-[#525252] dark:text-[#A3A3A3]">
+            Here is what your initial minimum monthly repayment looks like across common UK credit card balances compared against paying a fixed amount:
+          </p>
+
+          <div className="overflow-x-auto rounded-2xl border border-[#E5E5E5] dark:border-[#2A2A2A]">
+            <table className="w-full text-left text-xs sm:text-sm">
+              <thead className="bg-[#FAFAFA] dark:bg-[#121212] border-b border-[#E5E5E5] dark:border-[#2A2A2A]">
+                <tr>
+                  <th className="py-3 px-4 font-bold text-[#111111] dark:text-[#F5F5F5]">Card Balance</th>
+                  <th className="py-3 px-4 font-bold text-[#111111] dark:text-[#F5F5F5]">Initial Minimum Payment</th>
+                  <th className="py-3 px-4 font-bold text-[#111111] dark:text-[#F5F5F5]">Time to Repay (Minimum)</th>
+                  <th className="py-3 px-4 font-bold text-[#111111] dark:text-[#F5F5F5]">Total Interest (Minimum)</th>
+                  <th className="py-3 px-4 font-bold text-[#059669] dark:text-[#10B981]">Fixed £100/mo Payoff</th>
+                </tr>
+              </thead>
+              <tbody className="divide-y divide-[#E5E5E5] dark:divide-[#2A2A2A]">
+                <tr>
+                  <td className="py-3 px-4 font-bold text-[#111111] dark:text-[#F5F5F5]">£1,000</td>
+                  <td className="py-3 px-4 text-[#525252] dark:text-[#A3A3A3]">£31 / month</td>
+                  <td className="py-3 px-4 text-[#525252] dark:text-[#A3A3A3]">12 years 4 months</td>
+                  <td className="py-3 px-4 text-[#DC2626] dark:text-[#F87171]">£890</td>
+                  <td className="py-3 px-4 font-bold text-[#059669] dark:text-[#10B981]">11 months (£122 interest)</td>
+                </tr>
+                <tr>
+                  <td className="py-3 px-4 font-bold text-[#111111] dark:text-[#F5F5F5]">£2,500</td>
+                  <td className="py-3 px-4 text-[#525252] dark:text-[#A3A3A3]">£77 / month</td>
+                  <td className="py-3 px-4 text-[#525252] dark:text-[#A3A3A3]">17 years 2 months</td>
+                  <td className="py-3 px-4 text-[#DC2626] dark:text-[#F87171]">£2,650</td>
+                  <td className="py-3 px-4 font-bold text-[#059669] dark:text-[#10B981]">31 months (£785 interest)</td>
+                </tr>
+                <tr>
+                  <td className="py-3 px-4 font-bold text-[#111111] dark:text-[#F5F5F5]">£5,000</td>
+                  <td className="py-3 px-4 text-[#525252] dark:text-[#A3A3A3]">£154 / month</td>
+                  <td className="py-3 px-4 text-[#525252] dark:text-[#A3A3A3]">21 years 8 months</td>
+                  <td className="py-3 px-4 text-[#DC2626] dark:text-[#F87171]">£5,840</td>
+                  <td className="py-3 px-4 font-bold text-[#059669] dark:text-[#10B981]">7 years 2 months (£3,580 interest)</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div className="space-y-3 pt-4 border-t border-[#E5E5E5] dark:border-[#2A2A2A]">
+          <h3 className="text-base font-bold text-[#111111] dark:text-[#F5F5F5]">
+            Why You Should Avoid Paying Only the Minimum Repayment
+          </h3>
+          <p className="text-xs sm:text-sm text-[#525252] dark:text-[#A3A3A3] leading-relaxed">
+            As your outstanding balance gradually reduces, your credit card issuer recalculates and lowers your required minimum monthly payment. Because your monthly payments shrink along with your debt, the amount going toward paying off the actual principal slows down to a crawl. Setting a standing order for a <strong>fixed monthly amount</strong> (or moving debt to a 0% balance transfer card) keeps your repayment constant, cutting years off your debt timeline and saving thousands of pounds in interest charges.
+          </p>
+        </div>
+      </div>
+
       {/* Structured Content & Methodology */}
       <div className="border border-[#E5E5E5] dark:border-[#2A2A2A] bg-white dark:bg-[#171717] rounded-3xl p-6 sm:p-8 shadow-[0_8px_30px_rgba(0,0,0,0.06)] dark:shadow-[0_10px_35px_rgba(0,0,0,0.35)] space-y-8">
         {/* How it works */}
