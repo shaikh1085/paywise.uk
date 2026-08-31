@@ -50,6 +50,93 @@ export const StampDutyPage: React.FC = () => {
       {/* Calculator Core */}
       <StampDutyCalculator />
 
+      {/* High-Intent SEO Guide & Rates Breakdown Section */}
+      <div className="border border-[#E5E5E5] dark:border-[#2A2A2A] bg-white dark:bg-[#171717] rounded-3xl p-6 sm:p-8 shadow-[0_8px_30px_rgba(0,0,0,0.06)] dark:shadow-[0_10px_35px_rgba(0,0,0,0.35)] space-y-6">
+        <h2 className="text-xl sm:text-2xl font-bold text-[#111111] dark:text-[#F5F5F5] tracking-tight">
+          How Much Stamp Duty Will I Pay in the UK? (SDLT 2025/2026)
+        </h2>
+        <p className="text-xs sm:text-sm text-[#525252] dark:text-[#A3A3A3] leading-relaxed">
+          Stamp Duty Land Tax (SDLT) is a tiered property purchase tax payable to HMRC on homes bought in England and Northern Ireland. The rate you pay depends directly on the property purchase price and whether you are a first-time buyer, moving home, or purchasing an additional property.
+        </p>
+
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 pt-2">
+          <div className="p-4 rounded-2xl bg-[#FAFAFA] dark:bg-[#121212] border border-[#E5E5E5] dark:border-[#2A2A2A] space-y-2">
+            <h3 className="text-sm font-bold text-[#111111] dark:text-[#F5F5F5]">First-Time Buyers</h3>
+            <p className="text-xs text-[#525252] dark:text-[#A3A3A3] leading-relaxed">
+              <strong>0% on the first £425,000</strong>, then 5% between £425,001 and £625,000 on homes up to £625,000.
+            </p>
+          </div>
+
+          <div className="p-4 rounded-2xl bg-[#FAFAFA] dark:bg-[#121212] border border-[#E5E5E5] dark:border-[#2A2A2A] space-y-2">
+            <h3 className="text-sm font-bold text-[#111111] dark:text-[#F5F5F5]">Home Movers</h3>
+            <p className="text-xs text-[#525252] dark:text-[#A3A3A3] leading-relaxed">
+              <strong>0% on the first £250,000</strong>, 5% up to £925,000, 10% up to £1.5m, and 12% above £1.5m.
+            </p>
+          </div>
+
+          <div className="p-4 rounded-2xl bg-[#FAFAFA] dark:bg-[#121212] border border-[#E5E5E5] dark:border-[#2A2A2A] space-y-2">
+            <h3 className="text-sm font-bold text-[#111111] dark:text-[#F5F5F5]">Second Homes & Buy-to-Let</h3>
+            <p className="text-xs text-[#525252] dark:text-[#A3A3A3] leading-relaxed">
+              <strong>+5% surcharge</strong> across every price band (5% up to £250k, 10% up to £925k, 15% up to £1.5m, 17% above).
+            </p>
+          </div>
+        </div>
+
+        <div className="space-y-4 pt-4 border-t border-[#E5E5E5] dark:border-[#2A2A2A]">
+          <h3 className="text-base sm:text-lg font-bold text-[#111111] dark:text-[#F5F5F5]">
+            Stamp Duty Comparison Table by House Price (£250k to £750k)
+          </h3>
+          <p className="text-xs sm:text-sm text-[#525252] dark:text-[#A3A3A3]">
+            Compare how much stamp duty you will pay across representative UK property price tiers:
+          </p>
+
+          <div className="overflow-x-auto rounded-2xl border border-[#E5E5E5] dark:border-[#2A2A2A]">
+            <table className="w-full text-left text-xs sm:text-sm">
+              <thead className="bg-[#FAFAFA] dark:bg-[#121212] border-b border-[#E5E5E5] dark:border-[#2A2A2A]">
+                <tr>
+                  <th className="py-3 px-4 font-bold text-[#111111] dark:text-[#F5F5F5]">Property Price</th>
+                  <th className="py-3 px-4 font-bold text-[#059669] dark:text-[#10B981]">First-Time Buyer</th>
+                  <th className="py-3 px-4 font-bold text-[#111111] dark:text-[#F5F5F5]">Home Mover</th>
+                  <th className="py-3 px-4 font-bold text-[#DC2626] dark:text-[#F87171]">Second Home / Buy-to-Let</th>
+                </tr>
+              </thead>
+              <tbody className="divide-y divide-[#E5E5E5] dark:divide-[#2A2A2A]">
+                <tr>
+                  <td className="py-3 px-4 font-bold text-[#111111] dark:text-[#F5F5F5]">£250,000</td>
+                  <td className="py-3 px-4 font-bold text-[#059669] dark:text-[#10B981]">£0 (0%)</td>
+                  <td className="py-3 px-4 text-[#525252] dark:text-[#A3A3A3]">£0 (0%)</td>
+                  <td className="py-3 px-4 text-[#DC2626] dark:text-[#F87171]">£12,500 (5.0%)</td>
+                </tr>
+                <tr>
+                  <td className="py-3 px-4 font-bold text-[#111111] dark:text-[#F5F5F5]">£300,000</td>
+                  <td className="py-3 px-4 font-bold text-[#059669] dark:text-[#10B981]">£0 (0%)</td>
+                  <td className="py-3 px-4 text-[#525252] dark:text-[#A3A3A3]">£2,500 (0.8%)</td>
+                  <td className="py-3 px-4 text-[#DC2626] dark:text-[#F87171]">£17,500 (5.8%)</td>
+                </tr>
+                <tr>
+                  <td className="py-3 px-4 font-bold text-[#111111] dark:text-[#F5F5F5]">£425,000</td>
+                  <td className="py-3 px-4 font-bold text-[#059669] dark:text-[#10B981]">£0 (0%)</td>
+                  <td className="py-3 px-4 text-[#525252] dark:text-[#A3A3A3]">£8,750 (2.1%)</td>
+                  <td className="py-3 px-4 text-[#DC2626] dark:text-[#F87171]">£30,000 (7.1%)</td>
+                </tr>
+                <tr>
+                  <td className="py-3 px-4 font-bold text-[#111111] dark:text-[#F5F5F5]">£500,000</td>
+                  <td className="py-3 px-4 text-[#525252] dark:text-[#A3A3A3]">£3,750 (0.75%)</td>
+                  <td className="py-3 px-4 text-[#525252] dark:text-[#A3A3A3]">£12,500 (2.5%)</td>
+                  <td className="py-3 px-4 text-[#DC2626] dark:text-[#F87171]">£37,500 (7.5%)</td>
+                </tr>
+                <tr>
+                  <td className="py-3 px-4 font-bold text-[#111111] dark:text-[#F5F5F5]">£750,000</td>
+                  <td className="py-3 px-4 text-[#525252] dark:text-[#A3A3A3]">£25,000 (3.3%)</td>
+                  <td className="py-3 px-4 text-[#525252] dark:text-[#A3A3A3]">£25,000 (3.3%)</td>
+                  <td className="py-3 px-4 text-[#DC2626] dark:text-[#F87171]">£62,500 (8.3%)</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
       {/* Structured Content & Methodology */}
       <div className="border border-[#E5E5E5] dark:border-[#2A2A2A] bg-white dark:bg-[#171717] rounded-3xl p-6 sm:p-8 shadow-[0_8px_30px_rgba(0,0,0,0.06)] dark:shadow-[0_10px_35px_rgba(0,0,0,0.35)] space-y-8">
         {/* How it works */}
