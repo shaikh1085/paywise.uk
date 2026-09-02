@@ -1,0 +1,10 @@
+import React from 'react';
+
+export const GradientBackground: React.FC = () => {
+  return (
+    <div className="absolute inset-0 overflow-hidden pointer-events-none -z-10 select-none opacity-40 dark:opacity-20">
+      {/* Super subtle ambient wash */}
+      <div className="absolute -top-40 left-1/2 -translate-x-1/2 w-[900px] h-[400px] bg-gradient-to-b from-[#059669]/5 to-transparent rounded-full blur-3xl" />
+    </div>
+  );
+};
