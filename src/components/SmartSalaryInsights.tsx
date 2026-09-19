@@ -1,3 +1,4 @@
+import NativeBanner from "./NativeBanner";
 import React, { useState, useMemo, useEffect } from 'react';
 import { TakeHomeInput, TakeHomeResult } from '../types';
 import { generateSalaryInsights, DISCLAIMER_TEXT, SalaryInsightsData } from '../lib/generateSalaryInsights';
@@ -288,6 +289,7 @@ export const SmartSalaryInsights: React.FC<SmartSalaryInsightsProps> = ({ input,
           {DISCLAIMER_TEXT}
         </div>
       </div>
+      <NativeBanner />
     </div>
   );
 };
