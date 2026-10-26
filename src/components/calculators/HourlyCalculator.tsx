@@ -1,3 +1,4 @@
+import { formatGBP } from '../../utils/format';
 import React, { useState, useMemo } from 'react';
 import { HourlyRateInput } from '../../types';
 import { calculateHourlyRate } from '../../utils/calculations';
@@ -21,12 +22,12 @@ export const HourlyCalculator: React.FC = () => {
   const retention = result.totalGrossAnnual > 0 ? (result.netAnnual / result.totalGrossAnnual) * 100 : 0;
 
   const copyText = `PayWise UK Hourly to Salary Calculation:
-Hourly Wage: £${input.hourlyWage.toFixed(2)}/hr
+Hourly Wage: ${formatGBP(input.hourlyWage)}/hr
 Hours per week: ${input.hoursPerWeek} hrs (+${input.overtimeHoursPerWeek} overtime hrs @ ${input.overtimeMultiplier}x)
 Total Annual Gross: £${result.totalGrossAnnual.toLocaleString('en-GB', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
 Estimated Monthly Take-Home: £${result.netMonthly.toLocaleString('en-GB', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
 Estimated Annual Take-Home: £${result.netAnnual.toLocaleString('en-GB', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
-Effective Net Hourly Rate: £${result.effectiveHourlyNet.toFixed(2)}/hr
+Effective Net Hourly Rate: ${formatGBP(result.effectiveHourlyNet)}/hr
 Calculated via PayWise UK (https://paywiseuk.vercel.app/hourly-to-salary-calculator)`;
 
   return (
@@ -45,7 +46,7 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/hourly-to-salary-calcula
                 Hourly Wage (£/hour)
               </label>
               <span className="text-xs font-extrabold text-emerald-600 dark:text-emerald-400">
-                £{input.hourlyWage.toFixed(2)}/hr
+                {formatGBP(input.hourlyWage)}/hr
               </span>
             </div>
             <div className="relative">
@@ -164,7 +165,7 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/hourly-to-salary-calcula
               Estimated Net Take-Home
             </span>
             <span className="text-xs text-[#525252] dark:text-[#A3A3A3] tabular-nums">
-              Gross: £{result.totalGrossAnnual.toLocaleString('en-GB')}/yr
+              Gross: {formatGBP(result.totalGrossAnnual)}/yr
             </span>
           </div>
 
@@ -212,7 +213,7 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/hourly-to-salary-calcula
             <div className="bg-white dark:bg-[#111111] p-3 rounded-xl border border-[#E5E5E5] dark:border-[#2A2A2A] shadow-2xs col-span-2 sm:col-span-1">
               <span className="text-2xs uppercase text-[#525252] dark:text-[#A3A3A3] font-bold block">Effective Net / Hour</span>
               <p className="text-base sm:text-lg font-black text-[#111111] dark:text-[#F5F5F5] mt-0.5 tabular-nums">
-                £{result.effectiveHourlyNet.toFixed(2)}/hr
+                {formatGBP(result.effectiveHourlyNet)}/hr
               </p>
             </div>
           </div>
@@ -226,7 +227,7 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/hourly-to-salary-calcula
 
           <div className="space-y-3 text-xs sm:text-sm">
             <div className="flex justify-between py-2 border-b border-slate-100 dark:border-slate-800 text-slate-700 dark:text-slate-300">
-              <span>Standard Contract Hours ({input.hoursPerWeek} hrs/wk @ £{input.hourlyWage.toFixed(2)})</span>
+              <span>Standard Contract Hours ({input.hoursPerWeek} hrs/wk @ {formatGBP(input.hourlyWage)})</span>
               <span className="font-bold text-slate-900 dark:text-white">
                 £{result.basicGrossAnnual.toLocaleString('en-GB', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
               </span>

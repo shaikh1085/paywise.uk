@@ -116,7 +116,7 @@ export const FaqPage: React.FC = () => {
               <h2 className="text-lg sm:text-xl font-bold text-[#111111] dark:text-[#F5F5F5] tracking-tight">
                 {group.title}
               </h2>
-              <FaqAccordion items={group.items} />
+              <FaqAccordion items={group.items} title={`Frequently Asked Questions about ${group.title}`} badge={`${group.title} Knowledge Base`} subtitle={`Clear answers to common questions about ${group.title.toLowerCase()}.`} />
             </div>
           ))
         )}

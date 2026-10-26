@@ -1,3 +1,4 @@
+import { formatGBP } from '../utils/format';
 import React, { useMemo } from 'react';
 import { Link } from 'react-router-dom';
 import { SEO } from '../components/seo/SEO';
@@ -163,27 +164,27 @@ export const Guide60kPage: React.FC = () => {
               </tr>
               <tr>
                 <td className="p-3 text-[#DC2626] dark:text-[#F87171]">Income Tax (20% & 40%)</td>
-                <td className="p-3 text-[#DC2626] dark:text-[#F87171] tabular-nums">-£{calculation.incomeTaxAnnual.toFixed(2)}</td>
-                <td className="p-3 text-[#DC2626] dark:text-[#F87171] tabular-nums">-£{calculation.incomeTaxMonthly.toFixed(2)}</td>
-                <td className="p-3 text-[#DC2626] dark:text-[#F87171] tabular-nums">-£{calculation.incomeTaxWeekly.toFixed(2)}</td>
+                <td className="p-3 text-[#DC2626] dark:text-[#F87171] tabular-nums">-{formatGBP(calculation.incomeTaxAnnual)}</td>
+                <td className="p-3 text-[#DC2626] dark:text-[#F87171] tabular-nums">-{formatGBP(calculation.incomeTaxMonthly)}</td>
+                <td className="p-3 text-[#DC2626] dark:text-[#F87171] tabular-nums">-{formatGBP(calculation.incomeTaxWeekly)}</td>
               </tr>
               <tr>
                 <td className="p-3 text-[#DC2626] dark:text-[#F87171]">National Insurance (8% & 2%)</td>
-                <td className="p-3 text-[#DC2626] dark:text-[#F87171] tabular-nums">-£{calculation.employeeNiAnnual.toFixed(2)}</td>
-                <td className="p-3 text-[#DC2626] dark:text-[#F87171] tabular-nums">-£{calculation.employeeNiMonthly.toFixed(2)}</td>
-                <td className="p-3 text-[#DC2626] dark:text-[#F87171] tabular-nums">-£{calculation.employeeNiWeekly.toFixed(2)}</td>
+                <td className="p-3 text-[#DC2626] dark:text-[#F87171] tabular-nums">-{formatGBP(calculation.employeeNiAnnual)}</td>
+                <td className="p-3 text-[#DC2626] dark:text-[#F87171] tabular-nums">-{formatGBP(calculation.employeeNiMonthly)}</td>
+                <td className="p-3 text-[#DC2626] dark:text-[#F87171] tabular-nums">-{formatGBP(calculation.employeeNiWeekly)}</td>
               </tr>
               <tr>
                 <td className="p-3 text-[#D97706] dark:text-[#FBBF24]">Pension (5% Employee)</td>
-                <td className="p-3 text-[#D97706] dark:text-[#FBBF24] tabular-nums">-£{calculation.pensionAnnual.toFixed(2)}</td>
-                <td className="p-3 text-[#D97706] dark:text-[#FBBF24] tabular-nums">-£{calculation.pensionMonthly.toFixed(2)}</td>
-                <td className="p-3 text-[#D97706] dark:text-[#FBBF24] tabular-nums">-£{(calculation.pensionAnnual / 52).toFixed(2)}</td>
+                <td className="p-3 text-[#D97706] dark:text-[#FBBF24] tabular-nums">-{formatGBP(calculation.pensionAnnual)}</td>
+                <td className="p-3 text-[#D97706] dark:text-[#FBBF24] tabular-nums">-{formatGBP(calculation.pensionMonthly)}</td>
+                <td className="p-3 text-[#D97706] dark:text-[#FBBF24] tabular-nums">-{formatGBP((calculation.pensionAnnual / 52))}</td>
               </tr>
               <tr className="bg-[#F5F5F5] dark:bg-[#222222] font-bold">
                 <td className="p-3 text-[#059669] dark:text-[#10B981]">Net Take-Home Pay</td>
-                <td className="p-3 text-[#059669] dark:text-[#10B981] tabular-nums">£{calculation.netAnnual.toFixed(2)}</td>
-                <td className="p-3 text-[#059669] dark:text-[#10B981] tabular-nums">£{calculation.netMonthly.toFixed(2)}</td>
-                <td className="p-3 text-[#059669] dark:text-[#10B981] tabular-nums">£{calculation.netWeekly.toFixed(2)}</td>
+                <td className="p-3 text-[#059669] dark:text-[#10B981] tabular-nums">{formatGBP(calculation.netAnnual)}</td>
+                <td className="p-3 text-[#059669] dark:text-[#10B981] tabular-nums">{formatGBP(calculation.netMonthly)}</td>
+                <td className="p-3 text-[#059669] dark:text-[#10B981] tabular-nums">{formatGBP(calculation.netWeekly)}</td>
               </tr>
             </tbody>
           </table>
@@ -209,7 +210,7 @@ export const Guide60kPage: React.FC = () => {
         </Link>
       </div>
 
-      <FaqAccordion items={faqs60k} />
+      <FaqAccordion items={faqs60k} badge="Salary Guide Knowledge Base" subtitle="Clear answers to common questions about a £60,000 UK salary after tax." />
       <DisclaimerNotice />
     </article>
   );

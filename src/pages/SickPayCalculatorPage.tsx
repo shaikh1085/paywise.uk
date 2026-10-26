@@ -141,7 +141,7 @@ export const SickPayCalculatorPage: React.FC = () => {
         </div>
       </div>
 
-      <FaqAccordion items={SICK_PAY_FAQS} />
+      <FaqAccordion items={SICK_PAY_FAQS} badge="Sick Pay Knowledge Base" subtitle="Clear answers to common questions about UK statutory sick pay." />
       <DisclaimerNotice />
     </div>
   );

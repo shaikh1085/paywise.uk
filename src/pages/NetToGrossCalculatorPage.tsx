@@ -152,7 +152,7 @@ export const NetToGrossCalculatorPage: React.FC = () => {
         </section>
       </div>
 
-      <FaqAccordion items={NET_TO_GROSS_FAQS} />
+      <FaqAccordion items={NET_TO_GROSS_FAQS} badge="Net to Gross Knowledge Base" subtitle="Clear answers to common questions about UK net to gross salary calculations." />
       <DisclaimerNotice />
     </div>
   );

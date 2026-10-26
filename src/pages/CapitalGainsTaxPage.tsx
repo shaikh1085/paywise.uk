@@ -139,7 +139,7 @@ export const CapitalGainsTaxPage: React.FC = () => {
         )}
       </div>
 
-      <FaqAccordion items={content.faqs} title="Frequently Asked Questions about Capital Gains Tax" />
+      <FaqAccordion items={content.faqs} title="Frequently Asked Questions about Capital Gains Tax" badge="Capital Gains Tax Knowledge Base" subtitle="Clear answers to common questions about UK capital gains tax." />
       <DisclaimerNotice />
     </div>
   );

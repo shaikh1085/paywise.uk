@@ -1,3 +1,4 @@
+import { formatGBP } from '../../utils/format';
 import React, { useState, useMemo } from 'react';
 import { PensionCompoundInput } from '../../types';
 import { calculatePensionCompound } from '../../utils/calculations';
@@ -25,12 +26,12 @@ export const PensionCalculator: React.FC = () => {
 
   const copyText = `PayWise UK Pension Projection:
 Current Age: ${input.currentAge} | Target Retirement Age: ${input.retirementAge} (${result.yearsToRetirement} years)
-Estimated Pot at Retirement (Nominal): £${result.finalPotNominal.toLocaleString('en-GB')}
-Estimated Pot at Retirement (Inflation-Adjusted Real): £${result.finalPotReal.toLocaleString('en-GB')}
-Estimated Annual Drawdown (4% Rule): £${result.estimatedAnnualDrawdownSafe4Percent.toLocaleString('en-GB')}/year (£${result.estimatedMonthlyDrawdown.toLocaleString('en-GB')}/month)
-Total Personal Contributions: £${result.totalPersonalContributions.toLocaleString('en-GB')}
-Total Employer Contributions: £${result.totalEmployerContributions.toLocaleString('en-GB')}
-Estimated Investment Growth: £${result.totalInvestmentGrowth.toLocaleString('en-GB')}
+Estimated Pot at Retirement (Nominal): ${formatGBP(result.finalPotNominal)}
+Estimated Pot at Retirement (Inflation-Adjusted Real): ${formatGBP(result.finalPotReal)}
+Estimated Annual Drawdown (4% Rule): ${formatGBP(result.estimatedAnnualDrawdownSafe4Percent)}/year (${formatGBP(result.estimatedMonthlyDrawdown)}/month)
+Total Personal Contributions: ${formatGBP(result.totalPersonalContributions)}
+Total Employer Contributions: ${formatGBP(result.totalEmployerContributions)}
+Estimated Investment Growth: ${formatGBP(result.totalInvestmentGrowth)}
 Calculated via PayWise UK (https://paywiseuk.vercel.app/pension-calculator)`;
 
   return (
@@ -82,7 +83,7 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/pension-calculator)`;
                   Current Pension Pot (£)
                 </label>
                 <span className="text-xs font-extrabold text-emerald-600 dark:text-emerald-400">
-                  £{(input.currentPot || 0).toLocaleString('en-GB')}
+                  {formatGBP((input.currentPot || 0))}
                 </span>
               </div>
               <div className="relative">
@@ -104,7 +105,7 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/pension-calculator)`;
                   Annual Gross Salary (£)
                 </label>
                 <span className="text-xs font-extrabold text-emerald-600 dark:text-emerald-400">
-                  £{(input.grossSalary || 0).toLocaleString('en-GB')}
+                  {formatGBP((input.grossSalary || 0))}
                 </span>
               </div>
               <div className="relative">

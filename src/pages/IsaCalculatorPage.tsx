@@ -139,7 +139,7 @@ export const IsaCalculatorPage: React.FC = () => {
         )}
       </div>
 
-      <FaqAccordion items={content.faqs} title="Frequently Asked Questions about UK ISAs" />
+      <FaqAccordion items={content.faqs} title="Frequently Asked Questions about UK ISAs" badge="ISA & Savings Knowledge Base" subtitle="Clear answers to common questions about UK ISAs and savings." />
       <DisclaimerNotice />
     </div>
   );

@@ -115,7 +115,7 @@ export const InsideIr35Page: React.FC = () => {
         </div>
       </div>
 
-      <FaqAccordion items={IR35_FAQS} />
+      <FaqAccordion items={IR35_FAQS} badge="IR35 Knowledge Base" subtitle="Clear answers to common questions about UK IR35 rules." />
       <DisclaimerNotice />
     </div>
   );

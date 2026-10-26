@@ -1,3 +1,4 @@
+import { formatGBP } from '../../utils/format';
 import React, { useState, useMemo } from 'react';
 import { DividendTaxInput, TaxRegion, TaxYear } from '../../types';
 import { calculateDividendTax } from '../../utils/calculations';
@@ -18,12 +19,12 @@ export const DividendTaxCalculator: React.FC = () => {
 
   const copyText = `PayWise UK Dividend Tax Calculation:
 Tax Year: ${result.taxYearLabel}
-Dividend Income: £${result.dividendIncome.toLocaleString('en-GB', { minimumFractionDigits: 2 })}
-Non-Dividend Income (Salary/Pension): £${result.otherIncome.toLocaleString('en-GB', { minimumFractionDigits: 2 })}
-Tax-Free Dividend Allowance Used: £${result.dividendAllowanceUsed.toLocaleString('en-GB', { minimumFractionDigits: 2 })}
-Taxable Dividends: £${result.taxableDividends.toLocaleString('en-GB', { minimumFractionDigits: 2 })}
-Estimated Dividend Tax: £${result.totalDividendTax.toLocaleString('en-GB', { minimumFractionDigits: 2 })}
-Net Dividend Retained: £${(result.dividendIncome - result.totalDividendTax).toLocaleString('en-GB', { minimumFractionDigits: 2 })}
+Dividend Income: ${formatGBP(result.dividendIncome)}
+Non-Dividend Income (Salary/Pension): ${formatGBP(result.otherIncome)}
+Tax-Free Dividend Allowance Used: ${formatGBP(result.dividendAllowanceUsed)}
+Taxable Dividends: ${formatGBP(result.taxableDividends)}
+Estimated Dividend Tax: ${formatGBP(result.totalDividendTax)}
+Net Dividend Retained: ${formatGBP((result.dividendIncome - result.totalDividendTax))}
 Effective Dividend Tax Rate: ${result.effectiveDividendTaxRate.toFixed(2)}%
 Calculated via PayWise UK (https://paywiseuk.vercel.app/dividend-tax-calculator)`;
 
@@ -66,7 +67,7 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/dividend-tax-calculator)
                 Annual Dividend Income (£)
               </label>
               <span className="text-xs font-extrabold text-[#059669] dark:text-[#10B981]">
-                £{(input.dividendIncome || 0).toLocaleString('en-GB')}
+                {formatGBP((input.dividendIncome || 0))}
               </span>
             </div>
             <div className="relative">
@@ -90,7 +91,7 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/dividend-tax-calculator)
                 Salary / Other Non-Dividend Income (£)
               </label>
               <span className="text-xs font-extrabold text-[#059669] dark:text-[#10B981]">
-                £{(input.otherTaxableIncome || 0).toLocaleString('en-GB')}
+                {formatGBP((input.otherTaxableIncome || 0))}
               </span>
             </div>
             <div className="relative">
@@ -129,7 +130,7 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/dividend-tax-calculator)
               <p className="text-xs sm:text-sm text-[#525252] dark:text-[#A3A3A3] flex items-center gap-1.5 pt-1">
                 <TrendingUp className="w-4 h-4 text-[#059669] dark:text-[#10B981] shrink-0" />
                 <span>
-                  Net dividend retained: <strong className="text-[#059669] dark:text-[#10B981]">£{(result.dividendIncome - result.totalDividendTax).toLocaleString('en-GB', { minimumFractionDigits: 2 })}</strong>
+                  Net dividend retained: <strong className="text-[#059669] dark:text-[#10B981]">{formatGBP((result.dividendIncome - result.totalDividendTax))}</strong>
                 </span>
               </p>
             </div>
@@ -149,21 +150,21 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/dividend-tax-calculator)
             <div className="bg-white dark:bg-[#111111] p-3 rounded-xl border border-[#E5E5E5] dark:border-[#2A2A2A] shadow-2xs">
               <span className="text-2xs uppercase text-[#525252] dark:text-[#A3A3A3] font-bold block truncate">Tax-Free Allowance</span>
               <p className="text-base sm:text-lg font-black text-[#111111] dark:text-[#F5F5F5] mt-0.5 tabular-nums">
-                £{result.dividendAllowanceUsed.toLocaleString('en-GB', { minimumFractionDigits: 0 })}
+                {formatGBP(result.dividendAllowanceUsed)}
               </p>
             </div>
 
             <div className="bg-white dark:bg-[#111111] p-3 rounded-xl border border-[#E5E5E5] dark:border-[#2A2A2A] shadow-2xs">
               <span className="text-2xs uppercase text-[#525252] dark:text-[#A3A3A3] font-bold block truncate">Taxable Dividends</span>
               <p className="text-base sm:text-lg font-black text-[#111111] dark:text-[#F5F5F5] mt-0.5 tabular-nums">
-                £{result.taxableDividends.toLocaleString('en-GB', { minimumFractionDigits: 0 })}
+                {formatGBP(result.taxableDividends)}
               </p>
             </div>
 
             <div className="bg-white dark:bg-[#111111] p-3 rounded-xl border border-[#E5E5E5] dark:border-[#2A2A2A] shadow-2xs col-span-2 sm:col-span-1">
               <span className="text-2xs uppercase text-[#525252] dark:text-[#A3A3A3] font-bold block truncate">Overall Take-Home</span>
               <p className="text-base sm:text-lg font-black text-[#059669] dark:text-[#10B981] mt-0.5 tabular-nums">
-                £{result.overallTakeHome.toLocaleString('en-GB', { minimumFractionDigits: 2 })}
+                {formatGBP(result.overallTakeHome)}
               </p>
             </div>
           </div>
@@ -180,21 +181,21 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/dividend-tax-calculator)
             <div className="flex justify-between items-center p-3 rounded-2xl bg-[#FAFAFA] dark:bg-[#202020] border border-[#E5E5E5] dark:border-[#333333]">
               <span className="text-xs font-semibold text-[#525252] dark:text-[#A3A3A3]">Basic Rate (8.75%)</span>
               <span className="text-sm font-bold text-[#111111] dark:text-[#F5F5F5]">
-                £{result.dividendTaxBasic.toLocaleString('en-GB', { minimumFractionDigits: 2 })} (on £{result.basicBandDividends.toLocaleString('en-GB')})
+                {formatGBP(result.dividendTaxBasic)} (on {formatGBP(result.basicBandDividends)})
               </span>
             </div>
 
             <div className="flex justify-between items-center p-3 rounded-2xl bg-[#FAFAFA] dark:bg-[#202020] border border-[#E5E5E5] dark:border-[#333333]">
               <span className="text-xs font-semibold text-[#525252] dark:text-[#A3A3A3]">Higher Rate (33.75%)</span>
               <span className="text-sm font-bold text-[#111111] dark:text-[#F5F5F5]">
-                £{result.dividendTaxHigher.toLocaleString('en-GB', { minimumFractionDigits: 2 })} (on £{result.higherBandDividends.toLocaleString('en-GB')})
+                {formatGBP(result.dividendTaxHigher)} (on {formatGBP(result.higherBandDividends)})
               </span>
             </div>
 
             <div className="flex justify-between items-center p-3 rounded-2xl bg-[#FAFAFA] dark:bg-[#202020] border border-[#E5E5E5] dark:border-[#333333]">
               <span className="text-xs font-semibold text-[#525252] dark:text-[#A3A3A3]">Additional Rate (39.35%)</span>
               <span className="text-sm font-bold text-[#111111] dark:text-[#F5F5F5]">
-                £{result.dividendTaxAdditional.toLocaleString('en-GB', { minimumFractionDigits: 2 })} (on £{result.additionalBandDividends.toLocaleString('en-GB')})
+                {formatGBP(result.dividendTaxAdditional)} (on {formatGBP(result.additionalBandDividends)})
               </span>
             </div>
           </div>

@@ -1,3 +1,4 @@
+import { formatGBP } from '../../utils/format';
 import React, { useState, useMemo } from 'react';
 import {
   MinimumWageInput,
@@ -65,7 +66,7 @@ export const MinimumWageChecker: React.FC = () => {
     });
 
   const fmtWhole = (n: number | undefined | null) =>
-    '£' + Math.round(typeof n === 'number' && !isNaN(n) ? n : 0).toLocaleString('en-GB');
+    formatGBP(typeof n === 'number' && !isNaN(n) ? Math.round(n) : 0, 0);
 
   const copyText = `PayWise UK National Minimum Wage Compliance Check:
 Worker Status: ${result.ageBandLabel} (Tax Year ${input.taxYear.replace('_', '/')})
@@ -632,10 +633,10 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/national-minimum-wage-ch
                         {band.ageDescription}
                       </td>
                       <td className="py-2.5 px-3 text-right tabular-nums whitespace-nowrap font-extrabold">
-                        £{band.rate2025_26.toFixed(2)}/hr
+                        {formatGBP(band.rate2025_26)}/hr
                       </td>
                       <td className="py-2.5 pl-3 text-right tabular-nums whitespace-nowrap text-[#737373]">
-                        £{band.rate2024_25.toFixed(2)}/hr
+                        {formatGBP(band.rate2024_25)}/hr
                       </td>
                     </tr>
                   );

@@ -1,3 +1,4 @@
+import { formatGBP } from '../../utils/format';
 import React, { useState, useMemo, useEffect } from 'react';
 import { SalarySacrificeInput } from '../../types';
 import { calculateSalarySacrifice } from '../../utils/calculations';
@@ -25,8 +26,8 @@ export const SalarySacrificeCalculator: React.FC = () => {
   }, [input.currentSalary, notifySalaryChange]);
 
   const copyText = `PayWise UK Salary Sacrifice Calculation:
-Original Gross Salary: £${(input.currentSalary || 0).toLocaleString('en-GB')}
-Monthly Sacrifice: £${(input.monthlySacrifice || 0).toLocaleString('en-GB')} (£${(result.annualSacrifice || 0).toLocaleString('en-GB')}/yr)
+Original Gross Salary: ${formatGBP((input.currentSalary || 0))}
+Monthly Sacrifice: ${formatGBP((input.monthlySacrifice || 0))} (${formatGBP((result.annualSacrifice || 0))}/yr)
 Estimated Annual Tax & NI Saved: £${(result.totalAnnualTaxSavings || 0).toLocaleString('en-GB', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
 True Net Cost to Employee: £${(result.monthlyTakeHomeDrop || 0).toLocaleString('en-GB', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}/month (Saves ${(result.effectiveMonthlySavingsRate || 0).toFixed(1)}% in tax relief)
 Calculated via PayWise UK (https://paywiseuk.vercel.app/salary-sacrifice-calculator)`;
@@ -47,7 +48,7 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/salary-sacrifice-calcula
                 Current Gross Annual Salary (£)
               </label>
               <span className="text-xs font-extrabold text-emerald-600 dark:text-emerald-400">
-                £{(input.currentSalary || 0).toLocaleString('en-GB')}
+                {formatGBP((input.currentSalary || 0))}
               </span>
             </div>
             <div className="relative">
@@ -88,7 +89,7 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/salary-sacrifice-calcula
                 Monthly Sacrifice Amount (£/month)
               </label>
               <span className="text-xs font-extrabold text-emerald-600 dark:text-emerald-400">
-                £{(input.monthlySacrifice || 0).toLocaleString('en-GB')}/mo
+                {formatGBP((input.monthlySacrifice || 0))}/mo
               </span>
             </div>
             <div className="relative">
@@ -130,7 +131,7 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/salary-sacrifice-calcula
               <p className="text-xs sm:text-sm font-medium text-[#525252] dark:text-[#A3A3A3] flex items-center gap-1.5">
                 <ArrowUpRight className="w-4 h-4 text-[#059669] dark:text-[#10B981] shrink-0" />
                 <span>
-                  For a £{input.monthlySacrifice}/mo package, your net pay only drops by £{result.monthlyTakeHomeDrop.toFixed(2)}
+                  For a £{input.monthlySacrifice}/mo package, your net pay only drops by {formatGBP(result.monthlyTakeHomeDrop)}
                 </span>
               </p>
             </div>
@@ -156,7 +157,7 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/salary-sacrifice-calcula
             <div className="bg-white dark:bg-[#111111] p-3 rounded-xl border border-[#E5E5E5] dark:border-[#2A2A2A] shadow-2xs">
               <span className="text-2xs uppercase text-[#525252] dark:text-[#A3A3A3] font-bold block truncate">Monthly Net Saving</span>
               <p className="text-base sm:text-lg font-black text-[#111111] dark:text-[#F5F5F5] mt-0.5 tabular-nums">
-                £{(input.monthlySacrifice - result.monthlyTakeHomeDrop).toFixed(2)}/mo
+                {formatGBP((input.monthlySacrifice - result.monthlyTakeHomeDrop))}/mo
               </p>
             </div>
 

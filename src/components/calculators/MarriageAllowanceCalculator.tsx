@@ -1,3 +1,4 @@
+import { formatGBP } from '../../utils/format';
 import React, { useState, useMemo } from 'react';
 import { MarriageAllowanceInput, TaxYear, TaxRegion } from '../../types';
 import { calculateMarriageAllowance } from '../../utils/calculations';
@@ -41,7 +42,7 @@ export const MarriageAllowanceCalculator: React.FC = () => {
   };
 
   const fmt = (n: number) =>
-    '£' + n.toLocaleString('en-GB', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+    formatGBP(n);
 
   const taxYears: { value: TaxYear; label: string }[] = [
     { value: '2025_26', label: '2025/26 (Current)' },
@@ -60,7 +61,7 @@ export const MarriageAllowanceCalculator: React.FC = () => {
 Tax Year: ${result.taxYearLabel}
 Eligibility: ${result.isEligible ? 'Eligible for Marriage Allowance' : 'Not Eligible'}
 ${!result.isEligible ? `Reason: ${result.ineligibilityReason}\n` : ''}---
-Net Annual Household Saving: ${fmt(result.netHouseholdSaving)}/year (£${(result.netHouseholdSaving / 12).toFixed(2)}/month)
+Net Annual Household Saving: ${fmt(result.netHouseholdSaving)}/year (${formatGBP((result.netHouseholdSaving / 12))}/month)
 Maximum Standard Annual Saving: ${fmt(result.maxPotentialSaving)}
 Personal Allowance Transfer: £1,260 from lower earner to higher earner
 
@@ -335,7 +336,7 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/marriage-allowance-calcu
               </p>
               <p className="font-normal opacity-90 leading-relaxed">
                 {result.isEligible
-                  ? `Your household qualifies to transfer £${result.transferAmount.toLocaleString('en-GB')} of Personal Allowance, reducing your combined income tax.`
+                  ? `Your household qualifies to transfer ${formatGBP(result.transferAmount)} of Personal Allowance, reducing your combined income tax.`
                   : result.ineligibilityReason}
               </p>
             </div>

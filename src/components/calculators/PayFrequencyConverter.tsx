@@ -1,3 +1,4 @@
+import { formatGBP } from '../../utils/format';
 import React, { useState, useMemo } from 'react';
 import {
   TaxYear,
@@ -76,10 +77,10 @@ export const PayFrequencyConverter: React.FC = () => {
   }, [grossAnnual, state.region, state.taxYear, state.pensionPercentage, state.studentLoanPlan]);
 
   const fmt = (n: number) =>
-    '£' + n.toLocaleString('en-GB', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+    formatGBP(n);
 
   const fmtWhole = (n: number) =>
-    '£' + Math.round(n).toLocaleString('en-GB');
+    formatGBP(Math.round(n), 0);
 
   const copyText = `PayWise UK — Pay Frequency Conversion:
 Input: ${fmt(state.amount)} (${state.inputFrequency}) -> Annual Gross: ${fmt(grossAnnual)}

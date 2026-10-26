@@ -119,7 +119,7 @@ export const StudentLoanPage: React.FC = () => {
         </div>
       </div>
 
-      <FaqAccordion items={STUDENT_LOAN_FAQS} />
+      <FaqAccordion items={STUDENT_LOAN_FAQS} badge="Student Loan Knowledge Base" subtitle="Clear answers to common questions about UK student loan repayments." />
       <DisclaimerNotice />
     </div>
   );

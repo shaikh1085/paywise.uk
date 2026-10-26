@@ -41,6 +41,12 @@ export const UK_CREDIT_CARD_APR_PROFILES: CreditCardAprProfile[] = [
   },
 ];
 
+// Minimum-payment rule used by this site's calculator, page text and FAQs.
+// This is the typical lender pattern (greatest of £5, 2.5% of balance, or
+// 1% of balance + monthly interest). It is NOT a single formula prescribed
+// by the FCA or HMRC: the FCA requires lenders to set a minimum payment in
+// general terms, and individual lenders choose their own formula, so a real
+// card statement may differ slightly. Do not cite this as an official rate.
 export const UK_CREDIT_CARD_RULES = {
   // Standard UK Minimum Payment Formula (typically greatest of £5, 2.5% of balance, or 1% balance + monthly interest)
   minPaymentFlatFloor: 5.0, // £5 absolute minimum floor // VERIFY AGAINST OFFICIAL UK SOURCES BEFORE PRODUCTION

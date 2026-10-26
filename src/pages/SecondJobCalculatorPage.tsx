@@ -178,7 +178,7 @@ export const SecondJobCalculatorPage: React.FC = () => {
         </div>
       </div>
 
-      <FaqAccordion items={SECOND_JOB_FAQS} />
+      <FaqAccordion items={SECOND_JOB_FAQS} badge="Second Job Tax Knowledge Base" subtitle="Clear answers to common questions about UK second job tax." />
       <DisclaimerNotice />
     </div>
   );

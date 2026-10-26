@@ -1,3 +1,4 @@
+import { formatGBP } from '../../utils/format';
 import React, { useState, useMemo } from 'react';
 import { CgtInput, CgtAssetType, TaxYear } from '../../types';
 import { calculateCapitalGainsTax } from '../../utils/calculations';
@@ -25,13 +26,13 @@ export const CapitalGainsTaxCalculator: React.FC = () => {
   const copyText = `PayWise UK Capital Gains Tax Calculation:
 Tax Year: ${result.taxYearLabel}
 Asset Category: ${result.assetType === 'shares' ? 'Shares & Investments' : result.assetType === 'residential_property' ? 'Residential Property' : result.assetType === 'commercial_property' ? 'Commercial Property' : 'Other Chargeable Asset'}
-Sale Proceeds: £${(input.saleProceeds || 0).toLocaleString('en-GB')}
-Total Cost & Expenses: £${result.totalCost.toLocaleString('en-GB')}
-Gross Capital Gain: £${result.grossGain.toLocaleString('en-GB', { minimumFractionDigits: 2 })}
-Annual Exempt Amount (AEA) Applied: £${result.annualExemptAmountApplied.toLocaleString('en-GB', { minimumFractionDigits: 2 })}
-Taxable Gain: £${result.taxableGain.toLocaleString('en-GB', { minimumFractionDigits: 2 })}
-Estimated Capital Gains Tax Due: £${result.totalCgtPayable.toLocaleString('en-GB', { minimumFractionDigits: 2 })}
-Net Gain Retained: £${(result.grossGain - result.totalCgtPayable).toLocaleString('en-GB', { minimumFractionDigits: 2 })}
+Sale Proceeds: ${formatGBP((input.saleProceeds || 0))}
+Total Cost & Expenses: ${formatGBP(result.totalCost)}
+Gross Capital Gain: ${formatGBP(result.grossGain)}
+Annual Exempt Amount (AEA) Applied: ${formatGBP(result.annualExemptAmountApplied)}
+Taxable Gain: ${formatGBP(result.taxableGain)}
+Estimated Capital Gains Tax Due: ${formatGBP(result.totalCgtPayable)}
+Net Gain Retained: ${formatGBP((result.grossGain - result.totalCgtPayable))}
 Effective CGT Rate: ${result.effectiveCgtRate.toFixed(2)}%
 Calculated via PayWise UK (https://paywiseuk.vercel.app/capital-gains-tax-calculator)`;
 
@@ -75,7 +76,7 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/capital-gains-tax-calcul
                 Sale / Disposal Proceeds (£)
               </label>
               <span className="text-xs font-extrabold text-[#059669] dark:text-[#10B981]">
-                £{(input.saleProceeds || 0).toLocaleString('en-GB')}
+                {formatGBP((input.saleProceeds || 0))}
               </span>
             </div>
             <div className="relative">
@@ -99,7 +100,7 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/capital-gains-tax-calcul
                 Purchase / Acquisition Cost (£)
               </label>
               <span className="text-xs font-bold text-[#525252] dark:text-[#A3A3A3]">
-                £{(input.purchasePrice || 0).toLocaleString('en-GB')}
+                {formatGBP((input.purchasePrice || 0))}
               </span>
             </div>
             <div className="relative">
@@ -123,7 +124,7 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/capital-gains-tax-calcul
                 Other Taxable Income in Tax Year (£)
               </label>
               <span className="text-xs font-bold text-[#525252] dark:text-[#A3A3A3]">
-                £{(input.otherTaxableIncome || 0).toLocaleString('en-GB')}
+                {formatGBP((input.otherTaxableIncome || 0))}
               </span>
             </div>
             <div className="relative">
@@ -162,7 +163,7 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/capital-gains-tax-calcul
               <p className="text-xs sm:text-sm text-[#525252] dark:text-[#A3A3A3] flex items-center gap-1.5 pt-1">
                 <TrendingUp className="w-4 h-4 text-[#059669] dark:text-[#10B981] shrink-0" />
                 <span>
-                  Net gain retained: <strong className="text-[#059669] dark:text-[#10B981]">£{(result.grossGain - result.totalCgtPayable).toLocaleString('en-GB', { minimumFractionDigits: 2 })}</strong>
+                  Net gain retained: <strong className="text-[#059669] dark:text-[#10B981]">{formatGBP((result.grossGain - result.totalCgtPayable))}</strong>
                 </span>
               </p>
             </div>
@@ -182,21 +183,21 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/capital-gains-tax-calcul
             <div className="bg-white dark:bg-[#111111] p-3 rounded-xl border border-[#E5E5E5] dark:border-[#2A2A2A] shadow-2xs">
               <span className="text-2xs uppercase text-[#525252] dark:text-[#A3A3A3] font-bold block truncate">Gross Capital Gain</span>
               <p className="text-base sm:text-lg font-black text-[#111111] dark:text-[#F5F5F5] mt-0.5 tabular-nums">
-                £{result.grossGain.toLocaleString('en-GB', { minimumFractionDigits: 2 })}
+                {formatGBP(result.grossGain)}
               </p>
             </div>
 
             <div className="bg-white dark:bg-[#111111] p-3 rounded-xl border border-[#E5E5E5] dark:border-[#2A2A2A] shadow-2xs">
               <span className="text-2xs uppercase text-[#525252] dark:text-[#A3A3A3] font-bold block truncate">Annual Exemption</span>
               <p className="text-base sm:text-lg font-black text-[#059669] dark:text-[#10B981] mt-0.5 tabular-nums">
-                £{result.annualExemptAmountApplied.toLocaleString('en-GB', { minimumFractionDigits: 0 })}
+                {formatGBP(result.annualExemptAmountApplied)}
               </p>
             </div>
 
             <div className="bg-white dark:bg-[#111111] p-3 rounded-xl border border-[#E5E5E5] dark:border-[#2A2A2A] shadow-2xs col-span-2 sm:col-span-1">
               <span className="text-2xs uppercase text-[#525252] dark:text-[#A3A3A3] font-bold block truncate">Taxable Gain</span>
               <p className="text-base sm:text-lg font-black text-[#059669] dark:text-[#10B981] mt-0.5 tabular-nums">
-                £{result.taxableGain.toLocaleString('en-GB', { minimumFractionDigits: 2 })}
+                {formatGBP(result.taxableGain)}
               </p>
             </div>
           </div>
@@ -213,14 +214,14 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/capital-gains-tax-calcul
             <div className="flex justify-between items-center p-3 rounded-2xl bg-[#FAFAFA] dark:bg-[#202020] border border-[#E5E5E5] dark:border-[#333333]">
               <span className="text-xs font-semibold text-[#525252] dark:text-[#A3A3A3]">Basic Rate Band ({(result.basicBandRate * 100).toFixed(0)}%)</span>
               <span className="text-sm font-bold text-[#111111] dark:text-[#F5F5F5]">
-                £{result.cgtBasicBand.toLocaleString('en-GB', { minimumFractionDigits: 2 })} (on £{result.gainInBasicBand.toLocaleString('en-GB')})
+                {formatGBP(result.cgtBasicBand)} (on {formatGBP(result.gainInBasicBand)})
               </span>
             </div>
 
             <div className="flex justify-between items-center p-3 rounded-2xl bg-[#FAFAFA] dark:bg-[#202020] border border-[#E5E5E5] dark:border-[#333333]">
               <span className="text-xs font-semibold text-[#525252] dark:text-[#A3A3A3]">Higher Rate Band ({(result.higherBandRate * 100).toFixed(0)}%)</span>
               <span className="text-sm font-bold text-[#111111] dark:text-[#F5F5F5]">
-                £{result.cgtHigherBand.toLocaleString('en-GB', { minimumFractionDigits: 2 })} (on £{result.gainInHigherBand.toLocaleString('en-GB')})
+                {formatGBP(result.cgtHigherBand)} (on {formatGBP(result.gainInHigherBand)})
               </span>
             </div>
           </div>

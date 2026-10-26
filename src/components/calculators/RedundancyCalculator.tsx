@@ -1,3 +1,4 @@
+import { formatGBP } from '../../utils/format';
 import React, { useState, useMemo } from 'react';
 import { RedundancyPayInput, TaxRegion } from '../../types';
 import { calculateRedundancyPay } from '../../utils/calculations';
@@ -183,7 +184,7 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/redundancy-pay-calculato
             </div>
             {input.useStatutoryWeeklyCap && input.weeklyPay > input.statutoryWeeklyCap && (
               <p className="text-2xs text-[#525252] dark:text-[#A3A3A3] pl-6">
-                Your actual weekly pay of £{input.weeklyPay.toFixed(2)} will be capped at <strong>£{input.statutoryWeeklyCap}.00</strong> for the statutory entitlement.
+                Your actual weekly pay of {formatGBP(input.weeklyPay)} will be capped at <strong>£{input.statutoryWeeklyCap}.00</strong> for the statutory entitlement.
               </p>
             )}
           </div>
@@ -201,7 +202,7 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/redundancy-pay-calculato
                 />
               </div>
               <span className="text-xs font-semibold text-[#059669] dark:text-[#10B981] tabular-nums">
-                £{(input.enhancedRedundancyPay || 0).toLocaleString('en-GB')}
+                {formatGBP((input.enhancedRedundancyPay || 0))}
               </span>
             </div>
             <div className="relative">
@@ -339,7 +340,7 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/redundancy-pay-calculato
               £30,000 HMRC Tax-Free Exemption Allowance
             </span>
             <span className="text-xs font-semibold text-[#525252] dark:text-[#A3A3A3]">
-              £{result.taxFreeAmount.toLocaleString('en-GB')} used of £30,000
+              {formatGBP(result.taxFreeAmount)} used of £30,000
             </span>
           </div>
 
@@ -359,16 +360,16 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/redundancy-pay-calculato
           <div className="flex items-center justify-between text-2xs text-[#525252] dark:text-[#A3A3A3]">
             <span className="flex items-center gap-1">
               <span className="w-2 h-2 rounded-full bg-[#059669] dark:bg-[#10B981]" />
-              Tax-Free: £{result.taxFreeAmount.toLocaleString('en-GB')}
+              Tax-Free: {formatGBP(result.taxFreeAmount)}
             </span>
             {result.taxableExcess > 0 ? (
               <span className="flex items-center gap-1 text-[#EF4444] font-semibold">
                 <span className="w-2 h-2 rounded-full bg-[#EF4444]" />
-                Taxable Excess: £{result.taxableExcess.toLocaleString('en-GB')} (Tax: £{result.incomeTaxOnExcess.toFixed(2)})
+                Taxable Excess: {formatGBP(result.taxableExcess)} (Tax: {formatGBP(result.incomeTaxOnExcess)})
               </span>
             ) : (
               <span className="text-[#059669] dark:text-[#10B981] font-semibold">
-                100% Tax-Free (£{(30000 - result.taxFreeAmount).toLocaleString('en-GB')} exemption remaining)
+                100% Tax-Free ({formatGBP((30000 - result.taxFreeAmount))} exemption remaining)
               </span>
             )}
           </div>
@@ -474,7 +475,7 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/redundancy-pay-calculato
             • <strong>Employee National Insurance:</strong> Genuine statutory and enhanced redundancy payments are <strong>100% exempt from Employee National Insurance</strong>, even on amounts above £30,000.
           </p>
           <p className="text-xs text-[#525252] dark:text-[#A3A3A3] leading-relaxed">
-            • <strong>Employer Class 1A NI:</strong> From April 2020, employers must pay Class 1A National Insurance ({input.taxYear === '2024_25' ? '13.8%' : '15.0%'}) on termination payments that exceed the £30,000 threshold{result.employerClass1aNiOnExcess > 0 ? ` (estimated £${result.employerClass1aNiOnExcess.toFixed(2)} paid by employer)` : ''}. This does not reduce your net pay.
+            • <strong>Employer Class 1A NI:</strong> From April 2020, employers must pay Class 1A National Insurance ({input.taxYear === '2024_25' ? '13.8%' : '15.0%'}) on termination payments that exceed the £30,000 threshold{result.employerClass1aNiOnExcess > 0 ? ` (estimated ${formatGBP(result.employerClass1aNiOnExcess)} paid by employer)` : ''}. This does not reduce your net pay.
           </p>
         </div>
 
@@ -484,16 +485,16 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/redundancy-pay-calculato
           csvData={[
             { Metric: 'Employee Age', Value: `${result.age}` },
             { Metric: 'Years of Continuous Service', Value: `${result.yearsOfService}` },
-            { Metric: 'Gross Weekly Pay', Value: `£${result.actualWeeklyPay.toFixed(2)}` },
-            { Metric: 'Effective Weekly Pay Applied', Value: `£${result.effectiveWeeklyPay.toFixed(2)}` },
+            { Metric: 'Gross Weekly Pay', Value: `${formatGBP(result.actualWeeklyPay)}` },
+            { Metric: 'Effective Weekly Pay Applied', Value: `${formatGBP(result.effectiveWeeklyPay)}` },
             { Metric: 'Statutory Redundancy Weeks', Value: `${result.serviceBreakdown.totalStatutoryWeeks}` },
-            { Metric: 'Statutory Redundancy Pay', Value: `£${result.statutoryRedundancyPay.toFixed(2)}` },
-            { Metric: 'Enhanced Redundancy Pay', Value: `£${result.enhancedRedundancyPay.toFixed(2)}` },
-            { Metric: 'Total Gross Redundancy Pay', Value: `£${result.totalGrossRedundancyPay.toFixed(2)}` },
-            { Metric: 'Tax-Free Exemption Amount', Value: `£${result.taxFreeAmount.toFixed(2)}` },
-            { Metric: 'Taxable Excess Over £30k', Value: `£${result.taxableExcess.toFixed(2)}` },
-            { Metric: 'Income Tax Deducted', Value: `£${result.incomeTaxOnExcess.toFixed(2)}` },
-            { Metric: 'Net Redundancy Payout', Value: `£${result.netRedundancyPay.toFixed(2)}` },
+            { Metric: 'Statutory Redundancy Pay', Value: `${formatGBP(result.statutoryRedundancyPay)}` },
+            { Metric: 'Enhanced Redundancy Pay', Value: `${formatGBP(result.enhancedRedundancyPay)}` },
+            { Metric: 'Total Gross Redundancy Pay', Value: `${formatGBP(result.totalGrossRedundancyPay)}` },
+            { Metric: 'Tax-Free Exemption Amount', Value: `${formatGBP(result.taxFreeAmount)}` },
+            { Metric: 'Taxable Excess Over £30k', Value: `${formatGBP(result.taxableExcess)}` },
+            { Metric: 'Income Tax Deducted', Value: `${formatGBP(result.incomeTaxOnExcess)}` },
+            { Metric: 'Net Redundancy Payout', Value: `${formatGBP(result.netRedundancyPay)}` },
             { Metric: 'Retention Percentage', Value: `${result.retentionPercentage.toFixed(2)}%` },
           ]}
           fileName={`paywise-redundancy-calculation-${result.yearsOfService}yrs`}

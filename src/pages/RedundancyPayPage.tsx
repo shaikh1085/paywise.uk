@@ -167,7 +167,7 @@ export const RedundancyPayPage: React.FC = () => {
         </div>
       </div>
 
-      <FaqAccordion items={REDUNDANCY_FAQS} />
+      <FaqAccordion items={REDUNDANCY_FAQS} badge="Redundancy Pay Knowledge Base" subtitle="Clear answers to common questions about UK redundancy pay." />
       <DisclaimerNotice />
     </div>
   );

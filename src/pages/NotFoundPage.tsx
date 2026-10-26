@@ -34,7 +34,7 @@ export const NotFoundPage: React.FC = () => {
           <span>Go to Homepage</span>
         </Link>
         <Link
-          to="/calculators"
+          to="/salary-calculators"
           className="inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl bg-[#F5F5F5] dark:bg-[#222222] hover:bg-[#E5E5E5] dark:hover:bg-[#2A2A2A] text-[#111111] dark:text-[#F5F5F5] border border-[#E5E5E5] dark:border-[#2A2A2A] font-bold text-xs sm:text-sm transition-colors btn-press w-full sm:w-auto"
         >
           <Calculator className="w-4 h-4" />

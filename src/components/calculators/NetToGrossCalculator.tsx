@@ -1,3 +1,4 @@
+import { formatGBP } from '../../utils/format';
 import React, { useState, useMemo } from 'react';
 import {
   NetToGrossInput,
@@ -63,7 +64,7 @@ export const NetToGrossCalculator: React.FC = () => {
     });
 
   const fmtWhole = (n: number | undefined | null) =>
-    '£' + Math.round(typeof n === 'number' && !isNaN(n) ? n : 0).toLocaleString('en-GB');
+    formatGBP(typeof n === 'number' && !isNaN(n) ? Math.round(n) : 0, 0);
 
   const copyText = result
     ? `PayWise UK Net to Gross Salary Calculator:
@@ -571,7 +572,7 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/net-to-gross-calculator)
                           }
                         >
                           <td className="py-2 pr-3 whitespace-nowrap">
-                            £{row.targetMonthly.toLocaleString('en-GB')}/mo (£{row.targetAnnual.toLocaleString('en-GB')}/yr)
+                            {formatGBP(row.targetMonthly)}/mo ({formatGBP(row.targetAnnual)}/yr)
                           </td>
                           <td className="py-2 px-3 text-right tabular-nums whitespace-nowrap font-bold">
                             {fmtWhole(row.grossAnnual)}

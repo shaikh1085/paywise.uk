@@ -1,3 +1,4 @@
+import { formatGBP } from '../../utils/format';
 import React, { useState, useMemo } from 'react';
 import { MaternityInput, MaternityLeaveType, TaxYear } from '../../types';
 import { calculateMaternityPay } from '../../utils/calculations';
@@ -36,7 +37,7 @@ export const MaternityCalculator: React.FC = () => {
   };
 
   const fmt = (n: number) =>
-    '£' + n.toLocaleString('en-GB', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+    formatGBP(n);
 
   const leaveTypes: { value: MaternityLeaveType; label: string; sub: string; icon: string }[] = [
     { value: 'maternity', label: 'Maternity', sub: 'Up to 52 weeks', icon: '🤱' },
@@ -292,7 +293,7 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/maternity-pay-calculator
                   <div>
                     <p className="text-xs font-black text-amber-700 dark:text-amber-300">May not qualify for statutory pay</p>
                     <p className="text-xs text-amber-700 dark:text-amber-400 mt-0.5">
-                      Your average weekly earnings (£{result.grossWeeklySalary.toFixed(2)}) are below the Lower Earnings Limit of £{result.lowerEarningsLimit}/week for {result.taxYearLabel}. You may still qualify for Maternity Allowance from the DWP.
+                      Your average weekly earnings ({formatGBP(result.grossWeeklySalary)}) are below the Lower Earnings Limit of £{result.lowerEarningsLimit}/week for {result.taxYearLabel}. You may still qualify for Maternity Allowance from the DWP.
                     </p>
                   </div>
                 </div>

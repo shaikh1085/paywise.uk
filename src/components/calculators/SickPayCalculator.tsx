@@ -1,3 +1,4 @@
+import { formatGBP } from '../../utils/format';
 import React, { useState, useMemo } from 'react';
 import { SickPayInput, TaxYear } from '../../types';
 import { calculateSickPay } from '../../utils/calculations';
@@ -43,7 +44,7 @@ export const SickPayCalculator: React.FC = () => {
   };
 
   const fmt = (n: number) =>
-    '£' + n.toLocaleString('en-GB', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+    formatGBP(n);
 
   const taxYears: { value: TaxYear; label: string }[] = [
     { value: '2025_26', label: '2025/26 (Current)' },

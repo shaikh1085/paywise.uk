@@ -1,3 +1,4 @@
+import { formatGBP } from '../../utils/format';
 import React, { useState, useMemo } from 'react';
 import { TeacherInput, StudentLoanPlan } from '../../types';
 import { calculateTeacherSalary } from '../../utils/calculations';
@@ -23,7 +24,7 @@ export const TeacherCalculator: React.FC = () => {
 
   const copyText = `PayWise UK Teacher Pay Calculation:
 Scale: ${result.scaleTitle}
-Gross Annual Salary: £${result.grossSalary.toLocaleString('en-GB')}
+Gross Annual Salary: ${formatGBP(result.grossSalary)}
 Teachers’ Pension (${result.pensionTierRate.toFixed(1)}%): -£${result.pensionAnnual.toLocaleString('en-GB', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
 Income Tax: -£${result.incomeTaxAnnual.toLocaleString('en-GB', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
 National Insurance: -£${result.niAnnual.toLocaleString('en-GB', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
@@ -140,7 +141,7 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/teacher-salary-calculato
               Teacher Net Monthly Pay
             </span>
             <span className="text-xs text-[#525252] dark:text-[#A3A3A3] tabular-nums">
-              Gross: £{result.grossSalary.toLocaleString('en-GB')}/yr
+              Gross: {formatGBP(result.grossSalary)}/yr
             </span>
           </div>
 

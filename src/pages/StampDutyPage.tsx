@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import { Link } from 'react-router-dom';
 import { SEO } from '../components/seo/SEO';
 import { Breadcrumbs } from '../components/layout/Breadcrumbs';
@@ -7,10 +7,24 @@ import { FaqAccordion } from '../components/common/FaqAccordion';
 import { DisclaimerNotice } from '../components/common/DisclaimerNotice';
 import { CALCULATOR_CONTENT_CONFIG } from '../config/calculatorContentConfig';
 import { TAX_CONFIG_METADATA } from '../config/taxConfig';
+import { calculateStampDuty } from '../utils/calculations';
+import { formatGBP } from '../utils/format';
 import { ArrowRight, CheckCircle2, Info, BookOpen, Layers } from 'lucide-react';
 
 export const StampDutyPage: React.FC = () => {
   const content = CALCULATOR_CONTENT_CONFIG['stamp_duty'];
+
+  // Comparison table rows are computed by the SAME function the calculator
+  // uses, so they can never drift from the calculator again.
+  const sdTableRows = useMemo(() => {
+    const prices = [250000, 300000, 425000, 500000, 750000];
+    return prices.map((price) => ({
+      price,
+      firstTime: calculateStampDuty({ propertyPrice: price, buyerType: 'first_time_buyer' }),
+      standard: calculateStampDuty({ propertyPrice: price, buyerType: 'standard' }),
+      additional: calculateStampDuty({ propertyPrice: price, buyerType: 'additional_property' }),
+    }));
+  }, []);
 
   const breadcrumbs = [
     { label: 'Calculators', path: '/salary-calculators' },
@@ -53,7 +67,7 @@ export const StampDutyPage: React.FC = () => {
       {/* High-Intent SEO Guide & Rates Breakdown Section */}
       <div className="border border-[#E5E5E5] dark:border-[#2A2A2A] bg-white dark:bg-[#171717] rounded-3xl p-6 sm:p-8 shadow-[0_8px_30px_rgba(0,0,0,0.06)] dark:shadow-[0_10px_35px_rgba(0,0,0,0.35)] space-y-6">
         <h2 className="text-xl sm:text-2xl font-bold text-[#111111] dark:text-[#F5F5F5] tracking-tight">
-          How Much Stamp Duty Will I Pay in the UK? (SDLT 2025/2026)
+          How Much Stamp Duty Will I Pay in the UK? (SDLT 2026/2027)
         </h2>
         <p className="text-xs sm:text-sm text-[#525252] dark:text-[#A3A3A3] leading-relaxed">
           Stamp Duty Land Tax (SDLT) is a tiered property purchase tax payable to HMRC on homes bought in England and Northern Ireland. The rate you pay depends directly on the property purchase price and whether you are a first-time buyer, moving home, or purchasing an additional property.
@@ -63,21 +77,21 @@ export const StampDutyPage: React.FC = () => {
           <div className="p-4 rounded-2xl bg-[#FAFAFA] dark:bg-[#121212] border border-[#E5E5E5] dark:border-[#2A2A2A] space-y-2">
             <h3 className="text-sm font-bold text-[#111111] dark:text-[#F5F5F5]">First-Time Buyers</h3>
             <p className="text-xs text-[#525252] dark:text-[#A3A3A3] leading-relaxed">
-              <strong>0% on the first £425,000</strong>, then 5% between £425,001 and £625,000 on homes up to £625,000.
+              <strong>0% on the first £300,000</strong>, then 5% between £300,001 and £500,000 on homes up to £500,000.
             </p>
           </div>
 
           <div className="p-4 rounded-2xl bg-[#FAFAFA] dark:bg-[#121212] border border-[#E5E5E5] dark:border-[#2A2A2A] space-y-2">
             <h3 className="text-sm font-bold text-[#111111] dark:text-[#F5F5F5]">Home Movers</h3>
             <p className="text-xs text-[#525252] dark:text-[#A3A3A3] leading-relaxed">
-              <strong>0% on the first £250,000</strong>, 5% up to £925,000, 10% up to £1.5m, and 12% above £1.5m.
+              <strong>0% on the first £125,000</strong>, 2% up to £250,000, 5% up to £925,000, 10% up to £1.5m, and 12% above £1.5m.
             </p>
           </div>
 
           <div className="p-4 rounded-2xl bg-[#FAFAFA] dark:bg-[#121212] border border-[#E5E5E5] dark:border-[#2A2A2A] space-y-2">
             <h3 className="text-sm font-bold text-[#111111] dark:text-[#F5F5F5]">Second Homes & Buy-to-Let</h3>
             <p className="text-xs text-[#525252] dark:text-[#A3A3A3] leading-relaxed">
-              <strong>+5% surcharge</strong> across every price band (5% up to £250k, 10% up to £925k, 15% up to £1.5m, 17% above).
+              <strong>+5% surcharge</strong> on the full price, on top of standard rates (so 5% up to £125k, 7% up to £250k, 10% up to £925k, 15% up to £1.5m, 17% above).
             </p>
           </div>
         </div>
@@ -101,36 +115,14 @@ export const StampDutyPage: React.FC = () => {
                 </tr>
               </thead>
               <tbody className="divide-y divide-[#E5E5E5] dark:divide-[#2A2A2A]">
-                <tr>
-                  <td className="py-3 px-4 font-bold text-[#111111] dark:text-[#F5F5F5]">£250,000</td>
-                  <td className="py-3 px-4 font-bold text-[#059669] dark:text-[#10B981]">£0 (0%)</td>
-                  <td className="py-3 px-4 text-[#525252] dark:text-[#A3A3A3]">£0 (0%)</td>
-                  <td className="py-3 px-4 text-[#DC2626] dark:text-[#F87171]">£12,500 (5.0%)</td>
-                </tr>
-                <tr>
-                  <td className="py-3 px-4 font-bold text-[#111111] dark:text-[#F5F5F5]">£300,000</td>
-                  <td className="py-3 px-4 font-bold text-[#059669] dark:text-[#10B981]">£0 (0%)</td>
-                  <td className="py-3 px-4 text-[#525252] dark:text-[#A3A3A3]">£2,500 (0.8%)</td>
-                  <td className="py-3 px-4 text-[#DC2626] dark:text-[#F87171]">£17,500 (5.8%)</td>
-                </tr>
-                <tr>
-                  <td className="py-3 px-4 font-bold text-[#111111] dark:text-[#F5F5F5]">£425,000</td>
-                  <td className="py-3 px-4 font-bold text-[#059669] dark:text-[#10B981]">£0 (0%)</td>
-                  <td className="py-3 px-4 text-[#525252] dark:text-[#A3A3A3]">£8,750 (2.1%)</td>
-                  <td className="py-3 px-4 text-[#DC2626] dark:text-[#F87171]">£30,000 (7.1%)</td>
-                </tr>
-                <tr>
-                  <td className="py-3 px-4 font-bold text-[#111111] dark:text-[#F5F5F5]">£500,000</td>
-                  <td className="py-3 px-4 text-[#525252] dark:text-[#A3A3A3]">£3,750 (0.75%)</td>
-                  <td className="py-3 px-4 text-[#525252] dark:text-[#A3A3A3]">£12,500 (2.5%)</td>
-                  <td className="py-3 px-4 text-[#DC2626] dark:text-[#F87171]">£37,500 (7.5%)</td>
-                </tr>
-                <tr>
-                  <td className="py-3 px-4 font-bold text-[#111111] dark:text-[#F5F5F5]">£750,000</td>
-                  <td className="py-3 px-4 text-[#525252] dark:text-[#A3A3A3]">£25,000 (3.3%)</td>
-                  <td className="py-3 px-4 text-[#525252] dark:text-[#A3A3A3]">£25,000 (3.3%)</td>
-                  <td className="py-3 px-4 text-[#DC2626] dark:text-[#F87171]">£62,500 (8.3%)</td>
-                </tr>
+                {sdTableRows.map((row) => (
+                  <tr key={row.price}>
+                    <td className="py-3 px-4 font-bold text-[#111111] dark:text-[#F5F5F5]">{formatGBP(row.price, 0)}</td>
+                    <td className="py-3 px-4 font-bold text-[#059669] dark:text-[#10B981]">{formatGBP(row.firstTime.totalStampDuty)} ({row.firstTime.effectiveRate.toFixed(1)}%)</td>
+                    <td className="py-3 px-4 text-[#525252] dark:text-[#A3A3A3]">{formatGBP(row.standard.totalStampDuty)} ({row.standard.effectiveRate.toFixed(1)}%)</td>
+                    <td className="py-3 px-4 text-[#DC2626] dark:text-[#F87171]">{formatGBP(row.additional.totalStampDuty)} ({row.additional.effectiveRate.toFixed(1)}%)</td>
+                  </tr>
+                ))}
               </tbody>
             </table>
           </div>
@@ -252,7 +244,7 @@ export const StampDutyPage: React.FC = () => {
       </div>
 
       {/* FAQs Section */}
-      <FaqAccordion items={content.faqs} title="Frequently Asked Questions about Stamp Duty Land Tax" />
+      <FaqAccordion items={content.faqs} title="Frequently Asked Questions about Stamp Duty Land Tax" badge="Stamp Duty Knowledge Base" subtitle="Clear answers to common questions about UK Stamp Duty Land Tax." />
 
       {/* Standard Disclaimer Notice */}
       <DisclaimerNotice />

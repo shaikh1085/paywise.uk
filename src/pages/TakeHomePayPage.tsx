@@ -217,7 +217,7 @@ export const TakeHomePayPage: React.FC = () => {
       </div>
 
       {/* Section: Frequently asked questions */}
-      <FaqAccordion items={TAKE_HOME_FAQS} title="Frequently asked questions" />
+      <FaqAccordion items={TAKE_HOME_FAQS} title="Frequently asked questions" badge="Take-Home Pay Knowledge Base" subtitle="Clear answers to common questions about UK take-home pay." />
 
       {/* Disclaimer */}
       <DisclaimerNotice />

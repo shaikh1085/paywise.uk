@@ -1,3 +1,4 @@
+import { formatGBP } from '../../utils/format';
 import React, { useState, useMemo } from 'react';
 import { NationalInsuranceInput, PayFrequency, TaxYear } from '../../types';
 import { calculateNationalInsuranceContributions } from '../../utils/calculations';
@@ -20,10 +21,10 @@ export const NationalInsuranceCalculator: React.FC = () => {
   const copyText = `PayWise UK National Insurance Calculation:
 Tax Year: ${result.taxYearLabel}
 Category: ${result.categoryLabel}
-Gross Annual Pay: £${result.grossPayAnnual.toLocaleString('en-GB', { minimumFractionDigits: 2 })}
-Estimated Annual Employee NI: £${result.employeeNiAnnual.toLocaleString('en-GB', { minimumFractionDigits: 2 })}
-Estimated Monthly Employee NI: £${result.employeeNiMonthly.toLocaleString('en-GB', { minimumFractionDigits: 2 })}
-Estimated Weekly Employee NI: £${result.employeeNiWeekly.toLocaleString('en-GB', { minimumFractionDigits: 2 })}
+Gross Annual Pay: ${formatGBP(result.grossPayAnnual)}
+Estimated Annual Employee NI: ${formatGBP(result.employeeNiAnnual)}
+Estimated Monthly Employee NI: ${formatGBP(result.employeeNiMonthly)}
+Estimated Weekly Employee NI: ${formatGBP(result.employeeNiWeekly)}
 Effective Employee NI Rate: ${result.effectiveNiRate.toFixed(2)}%
 Calculated via PayWise UK (https://paywiseuk.vercel.app/national-insurance-calculator)`;
 
@@ -89,7 +90,7 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/national-insurance-calcu
                 Gross Pay ({input.payFrequency})
               </label>
               <span className="text-xs font-extrabold text-[#059669] dark:text-[#10B981]">
-                £{(input.grossPay || 0).toLocaleString('en-GB')}
+                {formatGBP((input.grossPay || 0))}
               </span>
             </div>
             <div className="relative">
@@ -133,7 +134,7 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/national-insurance-calcu
                 Annual Salary Sacrifice (£)
               </label>
               <span className="text-xs font-bold text-[#525252] dark:text-[#A3A3A3]">
-                £{(input.salarySacrifice || 0).toLocaleString('en-GB')}
+                {formatGBP((input.salarySacrifice || 0))}
               </span>
             </div>
             <div className="relative">
@@ -176,7 +177,7 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/national-insurance-calcu
               <p className="text-xs sm:text-sm text-[#525252] dark:text-[#A3A3A3] flex items-center gap-1.5 pt-1">
                 <TrendingDown className="w-4 h-4 text-[#059669] dark:text-[#10B981] shrink-0" />
                 <span>
-                  Deducted as <strong className="text-[#111111] dark:text-[#F5F5F5]">£{result.employeeNiMonthly.toFixed(2)}/month</strong> or £{result.employeeNiWeekly.toFixed(2)}/week
+                  Deducted as <strong className="text-[#111111] dark:text-[#F5F5F5]">{formatGBP(result.employeeNiMonthly)}/month</strong> or {formatGBP(result.employeeNiWeekly)}/week
                 </span>
               </p>
             </div>
@@ -243,9 +244,9 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/national-insurance-calcu
                   <tr key={idx} className="text-[#111111] dark:text-[#F5F5F5]">
                     <td className="py-2.5 font-medium">{band.name}</td>
                     <td className="py-2.5 text-[#525252] dark:text-[#A3A3A3]">{(band.rate * 100).toFixed(1)}%</td>
-                    <td className="py-2.5 text-right font-medium">£{band.earningsInBand.toLocaleString('en-GB', { minimumFractionDigits: 2 })}</td>
+                    <td className="py-2.5 text-right font-medium">{formatGBP(band.earningsInBand)}</td>
                     <td className="py-2.5 text-right font-bold text-[#111111] dark:text-[#F5F5F5]">
-                      £{band.niPaid.toLocaleString('en-GB', { minimumFractionDigits: 2 })}
+                      {formatGBP(band.niPaid)}
                     </td>
                   </tr>
                 ))}
@@ -254,7 +255,7 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/national-insurance-calcu
                 <tr className="border-t-2 border-[#E5E5E5] dark:border-[#2A2A2A] font-bold text-[#111111] dark:text-[#F5F5F5]">
                   <td colSpan={3} className="py-3 text-right">Total Employee National Insurance:</td>
                   <td className="py-3 text-right text-base text-[#059669] dark:text-[#10B981]">
-                    £{result.employeeNiAnnual.toLocaleString('en-GB', { minimumFractionDigits: 2 })}
+                    {formatGBP(result.employeeNiAnnual)}
                   </td>
                 </tr>
               </tfoot>

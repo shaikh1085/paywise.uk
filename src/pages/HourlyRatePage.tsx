@@ -115,7 +115,7 @@ export const HourlyRatePage: React.FC = () => {
         </div>
       </div>
 
-      <FaqAccordion items={HOURLY_FAQS} />
+      <FaqAccordion items={HOURLY_FAQS} badge="Hourly Rate Knowledge Base" subtitle="Clear answers to common questions about UK hourly rates and take-home pay." />
       <DisclaimerNotice />
     </div>
   );

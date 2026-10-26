@@ -1,3 +1,4 @@
+import { formatGBP } from '../../utils/format';
 import React, { useState, useMemo } from 'react';
 import { IncomeTaxInput, TaxRegion, PensionType, TaxYear } from '../../types';
 import { calculateIncomeTax } from '../../utils/calculations';
@@ -25,11 +26,11 @@ export const IncomeTaxCalculator: React.FC = () => {
 
   const copyText = `PayWise UK Income Tax Calculation:
 Tax Year: ${result.taxYearLabel} (${result.regionLabel})
-Gross Annual Income: £${result.grossTotal.toLocaleString('en-GB', { minimumFractionDigits: 2 })}
-Tax-Free Personal Allowance: £${result.personalAllowance.toLocaleString('en-GB', { minimumFractionDigits: 2 })}
-Taxable Income: £${result.taxableIncome.toLocaleString('en-GB', { minimumFractionDigits: 2 })}
-Estimated Annual Income Tax: £${result.incomeTaxAnnual.toLocaleString('en-GB', { minimumFractionDigits: 2 })}
-Estimated Monthly Income Tax: £${result.incomeTaxMonthly.toLocaleString('en-GB', { minimumFractionDigits: 2 })}
+Gross Annual Income: ${formatGBP(result.grossTotal)}
+Tax-Free Personal Allowance: ${formatGBP(result.personalAllowance)}
+Taxable Income: ${formatGBP(result.taxableIncome)}
+Estimated Annual Income Tax: ${formatGBP(result.incomeTaxAnnual)}
+Estimated Monthly Income Tax: ${formatGBP(result.incomeTaxMonthly)}
 Effective Income Tax Rate: ${result.effectiveRate.toFixed(2)}%
 Marginal Rate: ${result.marginalRate}%
 Calculated via PayWise UK (https://paywiseuk.vercel.app/income-tax-calculator)`;
@@ -73,7 +74,7 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/income-tax-calculator)`;
                 Annual Salary / Earnings (£)
               </label>
               <span className="text-xs font-extrabold text-[#059669] dark:text-[#10B981]">
-                £{(input.annualEmploymentIncome || 0).toLocaleString('en-GB')}
+                {formatGBP((input.annualEmploymentIncome || 0))}
               </span>
             </div>
             <div className="relative">
@@ -167,7 +168,7 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/income-tax-calculator)`;
                 Annual Pension Contribution (£)
               </label>
               <span className="text-xs font-bold text-[#525252] dark:text-[#A3A3A3]">
-                £{(input.pensionContribution || 0).toLocaleString('en-GB')}
+                {formatGBP((input.pensionContribution || 0))}
               </span>
             </div>
             <div className="relative">
@@ -250,7 +251,7 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/income-tax-calculator)`;
               <p className="text-xs sm:text-sm text-[#525252] dark:text-[#A3A3A3] flex items-center gap-1.5 pt-1">
                 <TrendingDown className="w-4 h-4 text-[#059669] dark:text-[#10B981] shrink-0" />
                 <span>
-                  Equivalent to <strong className="text-[#111111] dark:text-[#F5F5F5]">£{result.incomeTaxMonthly.toFixed(2)}/month</strong> or £{result.incomeTaxWeekly.toFixed(2)}/week
+                  Equivalent to <strong className="text-[#111111] dark:text-[#F5F5F5]">{formatGBP(result.incomeTaxMonthly)}/month</strong> or {formatGBP(result.incomeTaxWeekly)}/week
                 </span>
               </p>
             </div>
@@ -270,14 +271,14 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/income-tax-calculator)`;
             <div className="bg-white dark:bg-[#111111] p-3 rounded-xl border border-[#E5E5E5] dark:border-[#2A2A2A] shadow-2xs">
               <span className="text-2xs uppercase text-[#525252] dark:text-[#A3A3A3] font-bold block truncate">Personal Allowance</span>
               <p className="text-base sm:text-lg font-black text-[#111111] dark:text-[#F5F5F5] mt-0.5 tabular-nums">
-                £{result.personalAllowance.toLocaleString('en-GB', { minimumFractionDigits: 2 })}
+                {formatGBP(result.personalAllowance)}
               </p>
             </div>
 
             <div className="bg-white dark:bg-[#111111] p-3 rounded-xl border border-[#E5E5E5] dark:border-[#2A2A2A] shadow-2xs">
               <span className="text-2xs uppercase text-[#525252] dark:text-[#A3A3A3] font-bold block truncate">Taxable Income</span>
               <p className="text-base sm:text-lg font-black text-[#059669] dark:text-[#10B981] mt-0.5 tabular-nums">
-                £{result.taxableIncome.toLocaleString('en-GB', { minimumFractionDigits: 2 })}
+                {formatGBP(result.taxableIncome)}
               </p>
             </div>
 
@@ -297,7 +298,7 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/income-tax-calculator)`;
             <div>
               <strong className="block font-bold">Personal Allowance Taper Warning (£100k–£125,140)</strong>
               <span>
-                Because your adjusted income exceeds £100,000, you have lost £{result.personalAllowanceTaperLoss.toLocaleString('en-GB')} of your tax-free allowance, creating an effective 60% marginal tax rate. Salary sacrifice into a pension can help restore your allowance.
+                Because your adjusted income exceeds £100,000, you have lost {formatGBP(result.personalAllowanceTaperLoss)} of your tax-free allowance, creating an effective 60% marginal tax rate. Salary sacrifice into a pension can help restore your allowance.
               </span>
             </div>
           </div>
@@ -330,7 +331,7 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/income-tax-calculator)`;
                   <tr className="text-[#525252] dark:text-[#A3A3A3]">
                     <td className="py-2.5 font-medium">Personal Allowance (Tax-Free)</td>
                     <td className="py-2.5">0.0%</td>
-                    <td className="py-2.5 text-right font-medium">£{result.personalAllowance.toLocaleString('en-GB', { minimumFractionDigits: 2 })}</td>
+                    <td className="py-2.5 text-right font-medium">{formatGBP(result.personalAllowance)}</td>
                     <td className="py-2.5 text-right font-bold text-[#059669] dark:text-[#10B981]">£0.00</td>
                   </tr>
                 )}
@@ -338,9 +339,9 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/income-tax-calculator)`;
                   <tr key={idx} className="text-[#111111] dark:text-[#F5F5F5]">
                     <td className="py-2.5 font-medium">{band.name}</td>
                     <td className="py-2.5 text-[#525252] dark:text-[#A3A3A3]">{(band.rate * 100).toFixed(1)}%</td>
-                    <td className="py-2.5 text-right font-medium">£{band.taxableAmount.toLocaleString('en-GB', { minimumFractionDigits: 2 })}</td>
+                    <td className="py-2.5 text-right font-medium">{formatGBP(band.taxableAmount)}</td>
                     <td className="py-2.5 text-right font-bold text-[#111111] dark:text-[#F5F5F5]">
-                      £{band.taxPaid.toLocaleString('en-GB', { minimumFractionDigits: 2 })}
+                      {formatGBP(band.taxPaid)}
                     </td>
                   </tr>
                 ))}
@@ -349,7 +350,7 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/income-tax-calculator)`;
                 <tr className="border-t-2 border-[#E5E5E5] dark:border-[#2A2A2A] font-bold text-[#111111] dark:text-[#F5F5F5]">
                   <td colSpan={3} className="py-3 text-right">Total Estimated Income Tax:</td>
                   <td className="py-3 text-right text-base text-[#059669] dark:text-[#10B981]">
-                    £{result.incomeTaxAnnual.toLocaleString('en-GB', { minimumFractionDigits: 2 })}
+                    {formatGBP(result.incomeTaxAnnual)}
                   </td>
                 </tr>
               </tfoot>

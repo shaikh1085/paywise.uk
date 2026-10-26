@@ -1,3 +1,4 @@
+import { formatGBP } from '../../utils/format';
 import React, { useState, useMemo } from 'react';
 import { UmbrellaInput } from '../../types';
 import { calculateUmbrella } from '../../utils/calculations';
@@ -18,12 +19,12 @@ export const UmbrellaCalculator: React.FC = () => {
   const result = useMemo(() => calculateUmbrella(input), [input]);
 
   const copyText = `PayWise UK Umbrella Pay Calculation:
-Monthly Invoiced Amount: £${result.invoiceGrossMonthly.toLocaleString('en-GB')}
-Umbrella Margin: -£${result.umbrellaMarginMonthly.toFixed(2)}
-Employer NI & Apprenticeship Levy: -£${(result.employerNiMonthly + result.apprenticeshipLevyMonthly).toFixed(2)}
-Gross Salary: £${result.grossSalaryMonthly.toFixed(2)}
-Income Tax & Employee NI: -£${(result.incomeTaxMonthly + result.employeeNiMonthly).toFixed(2)}
-Estimated Net Monthly Pay: £${result.netPayMonthly.toFixed(2)}
+Monthly Invoiced Amount: ${formatGBP(result.invoiceGrossMonthly)}
+Umbrella Margin: -${formatGBP(result.umbrellaMarginMonthly)}
+Employer NI & Apprenticeship Levy: -${formatGBP((result.employerNiMonthly + result.apprenticeshipLevyMonthly))}
+Gross Salary: ${formatGBP(result.grossSalaryMonthly)}
+Income Tax & Employee NI: -${formatGBP((result.incomeTaxMonthly + result.employeeNiMonthly))}
+Estimated Net Monthly Pay: ${formatGBP(result.netPayMonthly)}
 Retention Rate: ${result.retentionPercent.toFixed(1)}%
 Calculated via PayWise UK (https://paywiseuk.vercel.app/umbrella-company-calculator)`;
 
@@ -115,7 +116,7 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/umbrella-company-calcula
               Net Umbrella Monthly Take-Home
             </span>
             <span className="text-xs text-[#525252] dark:text-[#A3A3A3] tabular-nums">
-              Invoice: £{result.invoiceGrossMonthly.toLocaleString('en-GB')}/mo
+              Invoice: {formatGBP(result.invoiceGrossMonthly)}/mo
             </span>
           </div>
 
@@ -188,14 +189,14 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/umbrella-company-calcula
             <div className="flex justify-between py-2 border-b border-slate-100 dark:border-slate-800 text-slate-700 dark:text-slate-300">
               <span>Umbrella Company Margin</span>
               <span className="font-semibold text-rose-600 dark:text-rose-400">
-                -£{result.umbrellaMarginMonthly.toFixed(2)}
+                -{formatGBP(result.umbrellaMarginMonthly)}
               </span>
             </div>
 
             <div className="flex justify-between py-2 border-b border-slate-100 dark:border-slate-800 text-slate-700 dark:text-slate-300">
               <span>Employer Costs (NI & Apprenticeship Levy)</span>
               <span className="font-semibold text-rose-600 dark:text-rose-400">
-                -£{(result.employerNiMonthly + result.apprenticeshipLevyMonthly).toFixed(2)}
+                -{formatGBP((result.employerNiMonthly + result.apprenticeshipLevyMonthly))}
               </span>
             </div>
 

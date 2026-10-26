@@ -1,3 +1,4 @@
+import { formatGBP } from '../../utils/format';
 import React, { useMemo } from 'react';
 import {
   SalaryComparisonInput,
@@ -79,10 +80,10 @@ export const SalaryComparisonCalculator: React.FC = () => {
   const result = useMemo(() => calculateSalaryComparison(input), [input]);
 
   const fmt = (n: number) =>
-    '£' + n.toLocaleString('en-GB', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+    formatGBP(n);
 
   const fmtWhole = (n: number) =>
-    '£' + Math.round(n).toLocaleString('en-GB');
+    formatGBP(Math.round(n), 0);
 
   const handleScenarioChange = (
     index: number,

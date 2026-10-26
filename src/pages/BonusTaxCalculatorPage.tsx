@@ -167,7 +167,7 @@ export const BonusTaxCalculatorPage: React.FC = () => {
         </div>
       </div>
 
-      <FaqAccordion items={BONUS_TAX_FAQS} />
+      <FaqAccordion items={BONUS_TAX_FAQS} badge="Bonus Tax Knowledge Base" subtitle="Clear answers to common questions about UK bonus tax." />
       <DisclaimerNotice />
     </div>
   );

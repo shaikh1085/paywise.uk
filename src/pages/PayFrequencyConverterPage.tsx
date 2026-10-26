@@ -136,7 +136,7 @@ export const PayFrequencyConverterPage: React.FC = () => {
         </div>
       </div>
 
-      <FaqAccordion items={PAY_FREQUENCY_FAQS} />
+      <FaqAccordion items={PAY_FREQUENCY_FAQS} badge="Pay Frequency Knowledge Base" subtitle="Clear answers to common questions about UK pay frequency conversions." />
       <DisclaimerNotice />
     </div>
   );

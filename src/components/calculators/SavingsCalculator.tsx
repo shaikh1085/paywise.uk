@@ -1,3 +1,4 @@
+import { formatGBP } from '../../utils/format';
 import React, { useState, useMemo } from 'react';
 import { SavingsInput } from '../../types';
 import { calculateSavingsGrowth } from '../../utils/calculations';
@@ -19,12 +20,12 @@ export const SavingsCalculator: React.FC = () => {
   const result = useMemo(() => calculateSavingsGrowth(input), [input]);
 
   const copyText = `PayWise UK Savings Growth Calculation:
-Initial Balance: £${(input.startingBalance || 0).toLocaleString('en-GB')}
-Monthly Deposit: £${(input.monthlyDeposit || 0).toLocaleString('en-GB')}/month
+Initial Balance: ${formatGBP((input.startingBalance || 0))}
+Monthly Deposit: ${formatGBP((input.monthlyDeposit || 0))}/month
 Interest Rate (AER): ${input.annualInterestRate}% over ${input.periodYears} Years
-Total Principal Deposited: £${result.totalDeposits.toLocaleString('en-GB', { minimumFractionDigits: 2 })}
-Total Gross Interest: £${result.totalInterestEarned.toLocaleString('en-GB', { minimumFractionDigits: 2 })}
-Final Balance: £${result.finalBalance.toLocaleString('en-GB', { minimumFractionDigits: 2 })}
+Total Principal Deposited: ${formatGBP(result.totalDeposits)}
+Total Gross Interest: ${formatGBP(result.totalInterestEarned)}
+Final Balance: ${formatGBP(result.finalBalance)}
 Effective APY: ${result.effectiveApy.toFixed(2)}%
 Personal Savings Allowance Guidance: Basic Rate (£1,000 allowance), Higher Rate (£500 allowance), Additional Rate (£0 allowance)
 Calculated via PayWise UK (https://paywiseuk.vercel.app/savings-calculator)`;
@@ -51,7 +52,7 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/savings-calculator)`;
                 Starting Balance (£)
               </label>
               <span className="text-xs font-extrabold text-[#059669] dark:text-[#10B981]">
-                £{(input.startingBalance || 0).toLocaleString('en-GB')}
+                {formatGBP((input.startingBalance || 0))}
               </span>
             </div>
             <div className="relative">
@@ -75,7 +76,7 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/savings-calculator)`;
                 Monthly Deposit (£/month)
               </label>
               <span className="text-xs font-bold text-[#525252] dark:text-[#A3A3A3]">
-                £{(input.monthlyDeposit || 0).toLocaleString('en-GB')}/mo
+                {formatGBP((input.monthlyDeposit || 0))}/mo
               </span>
             </div>
             <div className="relative">
@@ -181,7 +182,7 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/savings-calculator)`;
               <p className="text-xs sm:text-sm text-[#525252] dark:text-[#A3A3A3] flex items-center gap-1.5 pt-1">
                 <TrendingUp className="w-4 h-4 text-[#059669] dark:text-[#10B981] shrink-0" />
                 <span>
-                  Total Interest Earned: <strong className="text-[#059669] dark:text-[#10B981]">£{result.totalInterestEarned.toLocaleString('en-GB', { minimumFractionDigits: 2 })}</strong>
+                  Total Interest Earned: <strong className="text-[#059669] dark:text-[#10B981]">{formatGBP(result.totalInterestEarned)}</strong>
                 </span>
               </p>
             </div>
@@ -201,21 +202,21 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/savings-calculator)`;
             <div className="bg-white dark:bg-[#111111] p-3 rounded-xl border border-[#E5E5E5] dark:border-[#2A2A2A] shadow-2xs">
               <span className="text-2xs uppercase text-[#525252] dark:text-[#A3A3A3] font-bold block truncate">Principal Saved</span>
               <p className="text-base sm:text-lg font-black text-[#111111] dark:text-[#F5F5F5] mt-0.5 tabular-nums">
-                £{result.totalDeposits.toLocaleString('en-GB', { minimumFractionDigits: 2 })}
+                {formatGBP(result.totalDeposits)}
               </p>
             </div>
 
             <div className="bg-white dark:bg-[#111111] p-3 rounded-xl border border-[#E5E5E5] dark:border-[#2A2A2A] shadow-2xs">
               <span className="text-2xs uppercase text-[#525252] dark:text-[#A3A3A3] font-bold block truncate">Gross Interest</span>
               <p className="text-base sm:text-lg font-black text-[#059669] dark:text-[#10B981] mt-0.5 tabular-nums">
-                £{result.totalInterestEarned.toLocaleString('en-GB', { minimumFractionDigits: 2 })}
+                {formatGBP(result.totalInterestEarned)}
               </p>
             </div>
 
             <div className="bg-white dark:bg-[#111111] p-3 rounded-xl border border-[#E5E5E5] dark:border-[#2A2A2A] shadow-2xs col-span-2 sm:col-span-1">
               <span className="text-2xs uppercase text-[#525252] dark:text-[#A3A3A3] font-bold block truncate">Inflation Adjusted</span>
               <p className="text-base sm:text-lg font-black text-[#059669] dark:text-[#10B981] mt-0.5 tabular-nums">
-                £{(result.inflationAdjustedBalance || result.finalBalance).toLocaleString('en-GB', { minimumFractionDigits: 2 })}
+                {formatGBP((result.inflationAdjustedBalance || result.finalBalance))}
               </p>
             </div>
           </div>
@@ -244,13 +245,13 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/savings-calculator)`;
                     <tr key={row.year} className="text-[#111111] dark:text-[#F5F5F5]">
                       <td className="py-2.5 font-bold">Year {row.year}</td>
                       <td className="py-2.5 text-right font-medium text-[#525252] dark:text-[#A3A3A3]">
-                        £{row.totalDepositsToDate.toLocaleString('en-GB', { minimumFractionDigits: 2 })}
+                        {formatGBP(row.totalDepositsToDate)}
                       </td>
                       <td className="py-2.5 text-right font-medium text-[#059669] dark:text-[#10B981]">
-                        £{row.interestEarnedYear.toLocaleString('en-GB', { minimumFractionDigits: 2 })}
+                        {formatGBP(row.interestEarnedYear)}
                       </td>
                       <td className="py-2.5 text-right font-bold text-[#111111] dark:text-[#F5F5F5]">
-                        £{row.endingBalance.toLocaleString('en-GB', { minimumFractionDigits: 2 })}
+                        {formatGBP(row.endingBalance)}
                       </td>
                     </tr>
                   ))}

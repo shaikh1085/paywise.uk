@@ -116,7 +116,7 @@ export const GuideIncomeTaxPage: React.FC = () => {
         </Link>
       </div>
 
-      <FaqAccordion items={TAKE_HOME_FAQS} />
+      <FaqAccordion items={TAKE_HOME_FAQS} badge="Income Tax Knowledge Base" subtitle="Clear answers to common questions about UK income tax." />
       <DisclaimerNotice />
     </article>
   );

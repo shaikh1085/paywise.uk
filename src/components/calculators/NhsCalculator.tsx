@@ -1,3 +1,4 @@
+import { formatGBP } from '../../utils/format';
 import React, { useState, useMemo } from 'react';
 import { NhsInput, StudentLoanPlan } from '../../types';
 import { calculateNhsSalary } from '../../utils/calculations';
@@ -23,9 +24,9 @@ export const NhsCalculator: React.FC = () => {
 
   const copyText = `PayWise UK NHS Agenda for Change Calculation:
 ${result.bandName}
-Basic Gross Salary: £${result.basicSalary.toLocaleString('en-GB')}
-London HCAS Supplement: £${result.hcasSupplement.toLocaleString('en-GB')}
-Total Gross Salary: £${result.grossSalary.toLocaleString('en-GB')}
+Basic Gross Salary: ${formatGBP(result.basicSalary)}
+London HCAS Supplement: ${formatGBP(result.hcasSupplement)}
+Total Gross Salary: ${formatGBP(result.grossSalary)}
 NHS Pension Contribution (${result.pensionTierRate.toFixed(1)}% Tier): -£${result.pensionDeductionAnnual.toLocaleString('en-GB', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
 Income Tax: -£${result.incomeTaxAnnual.toLocaleString('en-GB', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
 National Insurance: -£${result.niAnnual.toLocaleString('en-GB', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
@@ -72,7 +73,7 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/nhs-salary-calculator)`;
             >
               {selectedBandObj.points.map((pt, idx) => (
                 <option key={pt.point} value={idx}>
-                  {pt.step} — £{pt.salary.toLocaleString('en-GB')}
+                  {pt.step} — {formatGBP(pt.salary)}
                 </option>
               ))}
             </select>
@@ -140,7 +141,7 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/nhs-salary-calculator)`;
               NHS Net Monthly Pay
             </span>
             <span className="text-xs text-[#525252] dark:text-[#A3A3A3] tabular-nums">
-              Gross: £{result.grossSalary.toLocaleString('en-GB')}/yr
+              Gross: {formatGBP(result.grossSalary)}/yr
             </span>
           </div>
 

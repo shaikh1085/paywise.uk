@@ -137,7 +137,7 @@ export const SalaryComparisonPage: React.FC = () => {
         </div>
       </div>
 
-      <FaqAccordion items={SALARY_COMPARISON_FAQS} />
+      <FaqAccordion items={SALARY_COMPARISON_FAQS} badge="Salary Comparison Knowledge Base" subtitle="Clear answers to common questions about UK salary comparisons." />
       <DisclaimerNotice />
     </div>
   );

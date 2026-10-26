@@ -1,3 +1,4 @@
+import { formatGBP } from '../../utils/format';
 import React, { useState, useMemo } from 'react';
 import { SelfEmployedInput, TaxYear, TaxRegion, StudentLoanPlan } from '../../types';
 import { calculateSelfEmployedTax } from '../../utils/calculations';
@@ -43,7 +44,7 @@ Net Take-Home Pay (Annual): £${result.netTakeHomeAnnual.toLocaleString('en-GB',
 Net Take-Home Pay (Monthly): £${result.netTakeHomeMonthly.toLocaleString('en-GB', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
 Net Take-Home Pay (Weekly): £${result.netTakeHomeWeekly.toLocaleString('en-GB', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
 Effective Tax & NI Rate: ${result.effectiveTaxRate.toFixed(1)}%
-${result.requiresPaymentOnAccount ? `\nPayments on Account Notice:\n- 1st Payment on Account (due 31 Jan): £${result.firstPaymentOnAccount.toFixed(2)}\n- 2nd Payment on Account (due 31 Jul): £${result.secondPaymentOnAccount.toFixed(2)}\n- First Year Total Due 31 Jan (Balancing + 1st Advance): £${result.totalFirstYearPaymentDueJanuary.toFixed(2)}` : ''}
+${result.requiresPaymentOnAccount ? `\nPayments on Account Notice:\n- 1st Payment on Account (due 31 Jan): ${formatGBP(result.firstPaymentOnAccount)}\n- 2nd Payment on Account (due 31 Jul): ${formatGBP(result.secondPaymentOnAccount)}\n- First Year Total Due 31 Jan (Balancing + 1st Advance): ${formatGBP(result.totalFirstYearPaymentDueJanuary)}` : ''}
 Calculated via PayWise UK (https://paywiseuk.vercel.app/self-employed-tax-calculator)`;
 
   const retentionPercent = input.grossProfit > 0
@@ -67,7 +68,7 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/self-employed-tax-calcul
                 Annual Gross Profit / Turnover (£)
               </label>
               <span className="text-xs font-semibold text-[#059669] dark:text-[#10B981] tabular-nums">
-                £{(input.grossProfit || 0).toLocaleString('en-GB')}
+                {formatGBP((input.grossProfit || 0))}
               </span>
             </div>
             <div className="relative">
@@ -98,7 +99,7 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/self-employed-tax-calcul
                 />
               </div>
               <span className="text-xs font-semibold text-[#525252] dark:text-[#A3A3A3] tabular-nums">
-                £{(input.allowableExpenses || 0).toLocaleString('en-GB')}
+                {formatGBP((input.allowableExpenses || 0))}
               </span>
             </div>
             <div className="relative">
@@ -283,19 +284,19 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/self-employed-tax-calcul
             <div className="bg-white dark:bg-[#111111] p-3 rounded-xl border border-[#E5E5E5] dark:border-[#2A2A2A] shadow-2xs">
               <span className="text-[#525252] dark:text-[#A3A3A3] block text-2xs uppercase font-bold">Gross Turnover</span>
               <span className="font-bold text-[#111111] dark:text-[#F5F5F5] tabular-nums mt-0.5 block">
-                £{result.grossProfit.toLocaleString('en-GB')}
+                {formatGBP(result.grossProfit)}
               </span>
             </div>
             <div className="bg-white dark:bg-[#111111] p-3 rounded-xl border border-[#E5E5E5] dark:border-[#2A2A2A] shadow-2xs">
               <span className="text-[#525252] dark:text-[#A3A3A3] block text-2xs uppercase font-bold">Allowable Expenses</span>
               <span className="font-bold text-[#111111] dark:text-[#F5F5F5] tabular-nums mt-0.5 block">
-                £{result.allowableExpenses.toLocaleString('en-GB')}
+                {formatGBP(result.allowableExpenses)}
               </span>
             </div>
             <div className="bg-white dark:bg-[#111111] p-3 rounded-xl border border-[#E5E5E5] dark:border-[#2A2A2A] shadow-2xs">
               <span className="text-[#525252] dark:text-[#A3A3A3] block text-2xs uppercase font-bold">Taxable Profit</span>
               <span className="font-bold text-[#059669] dark:text-[#10B981] tabular-nums mt-0.5 block">
-                £{result.taxableProfit.toLocaleString('en-GB')}
+                {formatGBP(result.taxableProfit)}
               </span>
             </div>
             <div className="bg-white dark:bg-[#111111] p-3 rounded-xl border border-[#E5E5E5] dark:border-[#2A2A2A] shadow-2xs">
@@ -315,7 +316,7 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/self-employed-tax-calcul
               Self-Employed Tax & National Insurance Breakdown
             </h3>
             <span className="text-xs font-semibold text-[#525252] dark:text-[#A3A3A3]">
-              Personal Allowance: £{result.personalAllowanceApplied.toLocaleString('en-GB')}
+              Personal Allowance: {formatGBP(result.personalAllowanceApplied)}
             </span>
           </div>
 
@@ -465,18 +466,18 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/self-employed-tax-calcul
         <ExportActions
           textToCopy={copyText}
           csvData={[
-            { Metric: 'Gross Turnover / Profit', Value: `£${result.grossProfit.toFixed(2)}` },
-            { Metric: 'Allowable Business Expenses', Value: `£${result.allowableExpenses.toFixed(2)}` },
-            { Metric: 'Taxable Net Profit', Value: `£${result.taxableProfit.toFixed(2)}` },
-            { Metric: 'Personal Allowance Applied', Value: `£${result.personalAllowanceApplied.toFixed(2)}` },
-            { Metric: 'Income Tax Annual', Value: `£${result.incomeTaxAnnual.toFixed(2)}` },
-            { Metric: 'Class 4 NI Annual', Value: `£${result.class4NiAnnual.toFixed(2)}` },
-            { Metric: 'Class 2 NI Annual', Value: `£${result.class2NiAnnual.toFixed(2)}` },
-            { Metric: 'Student Loan Annual', Value: `£${result.studentLoanAnnual.toFixed(2)}` },
-            { Metric: 'Total Annual Deductions', Value: `£${result.totalDeductionsAnnual.toFixed(2)}` },
-            { Metric: 'Net Take-Home Annual', Value: `£${result.netTakeHomeAnnual.toFixed(2)}` },
-            { Metric: 'Net Take-Home Monthly', Value: `£${result.netTakeHomeMonthly.toFixed(2)}` },
-            { Metric: 'Net Take-Home Weekly', Value: `£${result.netTakeHomeWeekly.toFixed(2)}` },
+            { Metric: 'Gross Turnover / Profit', Value: `${formatGBP(result.grossProfit)}` },
+            { Metric: 'Allowable Business Expenses', Value: `${formatGBP(result.allowableExpenses)}` },
+            { Metric: 'Taxable Net Profit', Value: `${formatGBP(result.taxableProfit)}` },
+            { Metric: 'Personal Allowance Applied', Value: `${formatGBP(result.personalAllowanceApplied)}` },
+            { Metric: 'Income Tax Annual', Value: `${formatGBP(result.incomeTaxAnnual)}` },
+            { Metric: 'Class 4 NI Annual', Value: `${formatGBP(result.class4NiAnnual)}` },
+            { Metric: 'Class 2 NI Annual', Value: `${formatGBP(result.class2NiAnnual)}` },
+            { Metric: 'Student Loan Annual', Value: `${formatGBP(result.studentLoanAnnual)}` },
+            { Metric: 'Total Annual Deductions', Value: `${formatGBP(result.totalDeductionsAnnual)}` },
+            { Metric: 'Net Take-Home Annual', Value: `${formatGBP(result.netTakeHomeAnnual)}` },
+            { Metric: 'Net Take-Home Monthly', Value: `${formatGBP(result.netTakeHomeMonthly)}` },
+            { Metric: 'Net Take-Home Weekly', Value: `${formatGBP(result.netTakeHomeWeekly)}` },
             { Metric: 'Effective Tax Rate', Value: `${result.effectiveTaxRate.toFixed(2)}%` },
           ]}
           fileName={`paywise-self-employed-tax-${input.grossProfit}`}

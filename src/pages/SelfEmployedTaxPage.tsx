@@ -167,7 +167,7 @@ export const SelfEmployedTaxPage: React.FC = () => {
         </div>
       </div>
 
-      <FaqAccordion items={SELF_EMPLOYED_FAQS} />
+      <FaqAccordion items={SELF_EMPLOYED_FAQS} badge="Self-Employed Tax Knowledge Base" subtitle="Clear answers to common questions about UK self-employed tax." />
       <DisclaimerNotice />
     </div>
   );

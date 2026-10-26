@@ -1,3 +1,4 @@
+import { formatGBP } from '../../utils/format';
 import React, { useState, useMemo } from 'react';
 import { TaxCodeInput, TaxYear } from '../../types';
 import { calculateTaxCodeInterpretation } from '../../utils/calculations';
@@ -28,10 +29,10 @@ export const TaxCodeCalculator: React.FC = () => {
 
   const copyText = `PayWise UK Tax Code Interpretation:
 Tax Code: ${result.rawCode}
-Estimated Personal Allowance: £${result.estimatedPersonalAllowance.toLocaleString('en-GB')}
+Estimated Personal Allowance: ${formatGBP(result.estimatedPersonalAllowance)}
 Meaning: ${result.codeMeaning}
 Allowance Detail: ${result.allowanceExplanation}
-${result.taxImpactEstimated ? `Estimated Income Tax on £${(input.annualSalary || 0).toLocaleString('en-GB')}: £${result.taxImpactEstimated.incomeTaxAnnual.toLocaleString('en-GB', { minimumFractionDigits: 2 })}` : ''}
+${result.taxImpactEstimated ? `Estimated Income Tax on ${formatGBP((input.annualSalary || 0))}: ${formatGBP(result.taxImpactEstimated.incomeTaxAnnual)}` : ''}
 Calculated via PayWise UK (https://paywiseuk.vercel.app/tax-code-calculator)`;
 
   return (
@@ -94,7 +95,7 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/tax-code-calculator)`;
                 Annual Salary for Tax Simulation (£)
               </label>
               <span className="text-xs font-extrabold text-[#059669] dark:text-[#10B981]">
-                £{(input.annualSalary || 0).toLocaleString('en-GB')}
+                {formatGBP((input.annualSalary || 0))}
               </span>
             </div>
             <div className="relative">
@@ -136,9 +137,9 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/tax-code-calculator)`;
             </span>
             <div className="text-3xl sm:text-5xl font-black text-[#111111] dark:text-[#F5F5F5] flex items-baseline gap-2 tracking-tight mt-1">
               {result.estimatedPersonalAllowance >= 0 ? (
-                <span>£{result.estimatedPersonalAllowance.toLocaleString('en-GB')}</span>
+                <span>{formatGBP(result.estimatedPersonalAllowance)}</span>
               ) : (
-                <span className="text-amber-600 dark:text-amber-400">-£{Math.abs(result.estimatedPersonalAllowance).toLocaleString('en-GB')} (Negative)</span>
+                <span className="text-amber-600 dark:text-amber-400">-{formatGBP(Math.abs(result.estimatedPersonalAllowance))} (Negative)</span>
               )}
               <span className="text-sm font-normal text-[#525252] dark:text-[#A3A3A3]">/ tax year</span>
             </div>
@@ -173,21 +174,21 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/tax-code-calculator)`;
         {result.taxImpactEstimated && (
           <div className="bg-white dark:bg-[#171717] border border-[#E5E5E5] dark:border-[#2A2A2A] rounded-3xl p-6 sm:p-8 shadow-sm space-y-4">
             <h3 className="text-base font-bold text-[#111111] dark:text-[#F5F5F5]">
-              Estimated Tax on £{(input.annualSalary || 0).toLocaleString('en-GB')} Salary
+              Estimated Tax on {formatGBP((input.annualSalary || 0))} Salary
             </h3>
 
             <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
               <div className="p-3.5 rounded-2xl bg-[#FAFAFA] dark:bg-[#121212] border border-[#E5E5E5] dark:border-[#2A2A2A]">
                 <span className="text-2xs uppercase text-[#525252] dark:text-[#A3A3A3] font-bold block">Annual Income Tax</span>
                 <p className="text-base sm:text-lg font-black text-[#111111] dark:text-[#F5F5F5] mt-0.5">
-                  £{result.taxImpactEstimated.incomeTaxAnnual.toLocaleString('en-GB', { minimumFractionDigits: 2 })}
+                  {formatGBP(result.taxImpactEstimated.incomeTaxAnnual)}
                 </p>
               </div>
 
               <div className="p-3.5 rounded-2xl bg-[#FAFAFA] dark:bg-[#121212] border border-[#E5E5E5] dark:border-[#2A2A2A]">
                 <span className="text-2xs uppercase text-[#525252] dark:text-[#A3A3A3] font-bold block">Monthly Income Tax</span>
                 <p className="text-base sm:text-lg font-black text-[#059669] dark:text-[#10B981] mt-0.5">
-                  £{(result.taxImpactEstimated.incomeTaxAnnual / 12).toLocaleString('en-GB', { minimumFractionDigits: 2 })}/mo
+                  {formatGBP((result.taxImpactEstimated.incomeTaxAnnual / 12))}/mo
                 </p>
               </div>
 

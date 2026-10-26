@@ -115,7 +115,7 @@ export const NhsSalaryPage: React.FC = () => {
         </div>
       </div>
 
-      <FaqAccordion items={NHS_FAQS} />
+      <FaqAccordion items={NHS_FAQS} badge="NHS Pay Knowledge Base" subtitle="Clear answers to common questions about NHS pay in the UK." />
       <DisclaimerNotice />
     </div>
   );

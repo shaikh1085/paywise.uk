@@ -111,7 +111,7 @@ export const GuideSalarySacrificePage: React.FC = () => {
         </Link>
       </div>
 
-      <FaqAccordion items={SALARY_SACRIFICE_FAQS} />
+      <FaqAccordion items={SALARY_SACRIFICE_FAQS} badge="Salary Sacrifice Knowledge Base" subtitle="Clear answers to common questions about UK salary sacrifice." />
       <DisclaimerNotice />
     </article>
   );

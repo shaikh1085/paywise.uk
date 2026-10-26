@@ -139,7 +139,7 @@ export const DividendTaxPage: React.FC = () => {
         )}
       </div>
 
-      <FaqAccordion items={content.faqs} title="Frequently Asked Questions about UK Dividend Tax" />
+      <FaqAccordion items={content.faqs} title="Frequently Asked Questions about UK Dividend Tax" badge="Dividend Tax Knowledge Base" subtitle="Clear answers to common questions about UK dividend tax." />
       <DisclaimerNotice />
     </div>
   );

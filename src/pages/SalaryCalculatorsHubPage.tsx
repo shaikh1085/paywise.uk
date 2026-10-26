@@ -760,7 +760,7 @@ export const SalaryCalculatorsHubPage: React.FC = () => {
 
       {/* Hub FAQs */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <FaqAccordion items={hubFaqs} />
+        <FaqAccordion items={hubFaqs} badge="Calculator Hub Knowledge Base" subtitle="Clear answers to common questions about UK salary and take-home pay calculators." />
       </div>
 
       {/* Disclaimer */}

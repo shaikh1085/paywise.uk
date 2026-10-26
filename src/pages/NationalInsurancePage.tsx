@@ -139,7 +139,7 @@ export const NationalInsurancePage: React.FC = () => {
         )}
       </div>
 
-      <FaqAccordion items={content.faqs} title="Frequently Asked Questions about National Insurance" />
+      <FaqAccordion items={content.faqs} title="Frequently Asked Questions about National Insurance" badge="National Insurance Knowledge Base" subtitle="Clear answers to common questions about UK National Insurance." />
       <DisclaimerNotice />
     </div>
   );

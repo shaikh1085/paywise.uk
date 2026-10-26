@@ -115,7 +115,7 @@ export const UmbrellaCompanyPage: React.FC = () => {
         </div>
       </div>
 
-      <FaqAccordion items={UMBRELLA_FAQS} />
+      <FaqAccordion items={UMBRELLA_FAQS} badge="Umbrella Company Knowledge Base" subtitle="Clear answers to common questions about UK umbrella companies." />
       <DisclaimerNotice />
     </div>
   );

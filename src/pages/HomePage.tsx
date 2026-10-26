@@ -1,3 +1,4 @@
+import { formatGBP } from '../utils/format';
 import React, { useMemo } from 'react';
 import { Link } from 'react-router-dom';
 import { SEO } from '../components/seo/SEO';
@@ -589,7 +590,7 @@ export const HomePage: React.FC = () => {
                 <div className="mt-2.5 pt-2 border-t border-[#E5E5E5] dark:border-[#2A2A2A]">
                   <span className="text-2xs text-[#737373] dark:text-[#888888] block font-medium">Est. Net Monthly</span>
                   <span className="text-xs sm:text-sm font-black text-[#059669] dark:text-[#10B981] tabular-nums">
-                    £{s.monthlyNet.toLocaleString('en-GB')}<span className="text-2xs font-bold">/mo</span>
+                    {formatGBP(s.monthlyNet)}<span className="text-2xs font-bold">/mo</span>
                   </span>
                 </div>
               </Link>
@@ -741,7 +742,7 @@ export const HomePage: React.FC = () => {
 
       {/* 11. H2: Frequently Asked Questions */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <FaqAccordion items={HOME_FAQS} title="Frequently Asked Questions" />
+        <FaqAccordion items={HOME_FAQS} title="Frequently Asked Questions" badge="PayWise Knowledge Base" subtitle="Clear answers to common questions about UK take-home pay and salary calculators." />
       </div>
 
       {/* Site-wide Disclaimer */}

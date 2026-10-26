@@ -177,7 +177,7 @@ export const CouncilTaxCalculatorPage: React.FC = () => {
         </div>
       </div>
 
-      <FaqAccordion items={COUNCIL_TAX_FAQS} />
+      <FaqAccordion items={COUNCIL_TAX_FAQS} badge="Council Tax Knowledge Base" subtitle="Clear answers to common questions about UK council tax." />
       <DisclaimerNotice />
     </div>
   );

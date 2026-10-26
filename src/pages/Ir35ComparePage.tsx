@@ -149,7 +149,7 @@ export const Ir35ComparePage: React.FC = () => {
         </div>
       </div>
 
-      <FaqAccordion items={IR35_COMPARE_FAQS} />
+      <FaqAccordion items={IR35_COMPARE_FAQS} badge="IR35 Knowledge Base" subtitle="Clear answers to common questions about inside vs outside IR35." />
       <DisclaimerNotice />
     </div>
   );

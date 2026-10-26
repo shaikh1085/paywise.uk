@@ -1,3 +1,4 @@
+import { formatGBP } from '../../utils/format';
 import React, { useState, useMemo, useEffect, Suspense } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { useTaxToast } from '../../context/ToastContext';
@@ -182,7 +183,7 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app)`;
                   Gross Pay ({input.payFrequency === 'annual' ? 'Annual' : input.payFrequency === 'monthly' ? 'Monthly' : 'Weekly'})
                 </label>
                 <span className="text-xs font-semibold text-[#059669] dark:text-[#10B981] tabular-nums">
-                  £{(input.grossSalary || 0).toLocaleString('en-GB')}
+                  {formatGBP((input.grossSalary || 0))}
                 </span>
               </div>
               <div className="relative">
@@ -521,7 +522,7 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app)`;
                   Estimated Take-Home
                 </span>
                 <span className="text-xs text-[#525252] dark:text-[#A3A3A3] hidden sm:inline tabular-nums">
-                  Gross: £{results.grossAnnual.toLocaleString('en-GB')}/yr
+                  Gross: {formatGBP(results.grossAnnual)}/yr
                 </span>
               </div>
 

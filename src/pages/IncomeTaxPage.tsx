@@ -147,7 +147,7 @@ export const IncomeTaxPage: React.FC = () => {
       </div>
 
       {/* FAQs Section */}
-      <FaqAccordion items={content.faqs} title="Frequently Asked Questions about UK Income Tax" />
+      <FaqAccordion items={content.faqs} title="Frequently Asked Questions about UK Income Tax" badge="Income Tax Knowledge Base" subtitle="Clear answers to common questions about UK income tax." />
 
       {/* Standard Disclaimer Notice */}
       <DisclaimerNotice />

@@ -990,15 +990,15 @@ export const CALCULATOR_CONTENT_CONFIG: Record<string, CalculatorPageContent> = 
     slug: 'stamp-duty-calculator',
     canonicalUrl: 'https://paywiseuk.vercel.app/stamp-duty-calculator',
     seoTitle: 'Stamp Duty Calculator UK 2025/26 | Free SDLT Stamp Calculator',
-    metaDescription: 'Free UK Stamp Duty Calculator (SDLT) for 2025/2026. Calculate Stamp Duty Land Tax for first-time buyers, home movers, and second homes (5% surcharge).',
-    h1: 'Stamp Duty Calculator UK (SDLT 2025/2026)',
+    metaDescription: 'Free UK Stamp Duty Calculator (SDLT) for 2026/2027. Calculate Stamp Duty Land Tax for first-time buyers, home movers, and second homes (5% surcharge).',
+    h1: 'Stamp Duty Calculator UK (SDLT 2026/2027)',
     primaryKeyword: 'stamp duty calculator',
     secondaryKeywords: [
       'stamp calculator uk',
       'stamp duty calculator UK',
       'first time buyer stamp duty calculator uk',
-      'sdlt calculator uk 2025 26',
-      'stamp duty rates 2025/26',
+      'sdlt calculator uk 2026 27',
+      'stamp duty rates 2026/27',
       'how much stamp duty will i pay uk',
       'stamp duty on second home uk calculator',
       'buy to let stamp duty calculator',
@@ -1006,12 +1006,12 @@ export const CALCULATOR_CONTENT_CONFIG: Record<string, CalculatorPageContent> = 
       'sdlt rates england northern ireland',
     ],
     directAnswerParagraph:
-      'Calculate your exact Stamp Duty Land Tax (SDLT) payable when purchasing a residential property in England or Northern Ireland. Instant breakdown for home movers (£250k 0% threshold), first-time buyers (£425k relief), and second homes/buy-to-let (5% Autumn Budget surcharge).',
+      'Calculate your exact Stamp Duty Land Tax (SDLT) payable when purchasing a residential property in England or Northern Ireland. Instant breakdown for home movers (0% to £125,000, 2% to £250,000, 5% to £925,000), first-time buyers (0% to £300,000, 5% to £500,000), and second homes/buy-to-let (5% surcharge on top of standard rates).',
     howItWorks: {
       title: 'How Stamp Duty Land Tax (SDLT) is Calculated in England & NI',
       paragraphs: [
         'Stamp Duty Land Tax (SDLT) is a progressive tiered tax paid when purchasing residential property or land in England and Northern Ireland. The tax is charged only on the portion of the property price falling within each specific rate band.',
-        'First-time buyers benefit from relief on properties up to £625,000, paying 0% on the first £425,000 and 5% on the portion between £425,001 and £625,000. If the purchase price exceeds £625,000, standard residential rates apply to the entire price.',
+        'First-time buyers benefit from relief on properties up to £500,000, paying 0% on the first £300,000 and 5% on the portion between £300,001 and £500,000. If the purchase price exceeds £500,000, no first-time buyer relief is available and standard residential rates apply to the entire price.',
         'Purchasers of additional residential properties (including second homes, holiday cottages, and buy-to-let investments) pay a 5% surcharge across every single price band on top of standard residential SDLT rates following the Autumn Budget.',
       ],
       steps: [
@@ -1044,21 +1044,22 @@ export const CALCULATOR_CONTENT_CONFIG: Record<string, CalculatorPageContent> = 
       scenario: 'A homeowner in England sells their existing main residence and purchases a new home for £350,000 under standard residential rates.',
       breakdown: [
         { label: 'Property Purchase Price', value: '£350,000.00' },
-        { label: '0% Band (First £250,000)', value: '£0.00' },
-        { label: '5% Band (Remaining £100,000)', value: '£5,000.00' },
-        { label: 'Total Stamp Duty Payable', value: '£5,000.00' },
-        { label: 'Effective SDLT Rate', value: '1.43% of purchase price' },
+        { label: '0% Band (First £125,000)', value: '£0.00' },
+        { label: '2% Band (£125,001 to £250,000)', value: '£2,500.00' },
+        { label: '5% Band (£250,001 to £350,000)', value: '£5,000.00' },
+        { label: 'Total Stamp Duty Payable', value: '£7,500.00' },
+        { label: 'Effective SDLT Rate', value: '2.14% of purchase price' },
       ],
-      conclusion: 'The buyer owes an estimated £5,000 in SDLT upon completion. An investor purchasing the same property as a buy-to-let would pay £22,500 due to the 5% surcharge.',
+      conclusion: 'The buyer owes an estimated £7,500 in SDLT upon completion. An investor purchasing the same property as a buy-to-let would pay £25,000 due to the 5% surcharge (£7,500 standard tax + £17,500 surcharge).',
     },
     faqs: [
       {
         question: 'How much stamp duty will I pay on a £300,000 house in the UK?',
-        answer: 'For a home mover replacing their main residence, stamp duty on a £300,000 house is £2,500 (0% on the first £250,000 and 5% on the remaining £50,000). For a first-time buyer, stamp duty is £0 because first-time buyers pay 0% up to £425,000. For an additional property or buy-to-let, stamp duty is £17,500 due to the 5% surcharge.',
+        answer: 'For a home mover replacing their main residence, stamp duty on a £300,000 house is £5,000 (0% on the first £125,000, 2% on the next £125,000 = £2,500, and 5% on the remaining £50,000 = £2,500). For a first-time buyer, stamp duty is £0 because first-time buyers pay 0% up to £300,000. For an additional property or buy-to-let, stamp duty is £20,000 (£5,000 standard tax + £15,000 surcharge at 5% of £300,000).',
       },
       {
         question: 'How much stamp duty will I pay on a £400,000 or £500,000 house?',
-        answer: 'For a home mover: a £400,000 house incurs £7,500 in SDLT; a £500,000 house incurs £12,500. For a first-time buyer: a £400,000 house incurs £0 SDLT; a £500,000 house incurs £3,750 (5% on £75,000 above £425k). For second homes/buy-to-let: a £400,000 house incurs £27,500 and a £500,000 house incurs £37,500.',
+        answer: 'For a home mover: a £400,000 house incurs £10,000 in SDLT; a £500,000 house incurs £15,000. For a first-time buyer: a £400,000 house incurs £5,000 SDLT (5% on £100,000 above £300,000); a £500,000 house incurs £10,000 (5% on £200,000 above £300,000). For second homes/buy-to-let: a £400,000 house incurs £30,000 and a £500,000 house incurs £40,000 (standard tax + 5% of the full price).',
       },
       {
         question: 'What is Stamp Duty Land Tax (SDLT)?',
@@ -1066,7 +1067,7 @@ export const CALCULATOR_CONTENT_CONFIG: Record<string, CalculatorPageContent> = 
       },
       {
         question: 'How does First-Time Buyer Stamp Duty relief work?',
-        answer: 'First-time buyers pay 0% Stamp Duty on properties up to £425,000, and 5% on the portion between £425,001 and £625,000. If the purchase price exceeds £625,000, no first-time buyer relief is available and standard rates apply.',
+        answer: 'First-time buyers pay 0% Stamp Duty on properties up to £300,000, and 5% on the portion between £300,001 and £500,000. If the purchase price exceeds £500,000, no first-time buyer relief is available and standard rates apply.',
       },
       {
         question: 'What is the Stamp Duty surcharge on second homes and buy-to-let properties?',
@@ -1075,6 +1076,18 @@ export const CALCULATOR_CONTENT_CONFIG: Record<string, CalculatorPageContent> = 
       {
         question: 'When do I have to pay Stamp Duty to HMRC?',
         answer: 'You have 14 days from the date of completion to submit a Stamp Duty Land Tax return to HMRC and pay any tax due. Usually, your conveyancing solicitor handles this as part of the legal completion process.',
+      },
+      {
+        question: 'How much stamp duty will I pay on a second home?',
+        answer: 'A second home or buy-to-let pays standard SDLT plus a 5% surcharge on the full price. For example, on a £400,000 second home the standard tax is £10,000 and the surcharge is £20,000, for a total of £30,000. On a £500,000 second home the total is £40,000 (£15,000 standard tax + £25,000 surcharge).',
+      },
+      {
+        question: 'How much stamp duty do I pay on a £450,000 house?',
+        answer: 'For a home mover, stamp duty on a £450,000 house is £12,500 (0% on the first £125,000, 2% on the next £125,000 = £2,500, and 5% on the remaining £200,000 = £10,000). For a first-time buyer it is £7,500 (5% on £150,000 above £300,000). For a second home it is £35,000 (£12,500 standard tax + £22,500 surcharge).',
+      },
+      {
+        question: 'What is the stamp duty on a house calculator for England and Northern Ireland?',
+        answer: 'Use the calculator above: enter the property price and buyer type (home mover, first-time buyer, or second home / buy-to-let) and it applies the current SDLT bands — 0% to £125,000, 2% to £250,000, 5% to £925,000, 10% to £1,500,000, 12% above — plus first-time buyer relief to £500,000 and the 5% second-home surcharge where it applies. Scotland (LBTT) and Wales (LTT) use different taxes.',
       },
       {
         question: 'Does this stamp calculator apply to properties in Scotland or Wales?',
@@ -1870,7 +1883,7 @@ export const CALCULATOR_CONTENT_CONFIG: Record<string, CalculatorPageContent> = 
       title: 'How Credit Card Minimum Payments & Interest Work in the UK',
       paragraphs: [
         'UK credit card interest is calculated daily and compounded monthly based on your Annual Percentage Rate (APR). If you carry a balance from month to month, interest is added to your account.',
-        'Standard minimum repayments in the UK are typically set to the highest of £5 (or £25 depending on provider), 2.5% to 3% of the outstanding balance, or 1% of the principal plus that month\'s interest and any charges. Paying only the minimum results in long repayment timelines and excessive interest costs.',
+        'This calculator assumes interest = balance x APR / 12 and the minimum payment is the greatest of £5, 2.5% of the balance, or 1% of the balance plus monthly interest. Your card issuer statement may differ slightly. The FCA requires lenders to set a minimum payment in general terms, but individual lenders choose their own formula, so the exact rule varies by card. Paying only the minimum results in long repayment timelines and excessive interest costs.',
         'Switching to a fixed monthly repayment or paying off your balance within a target timeframe rapidly decreases principal debt and drastically reduces the total interest paid.',
       ],
       steps: [
@@ -1894,7 +1907,7 @@ export const CALCULATOR_CONTENT_CONFIG: Record<string, CalculatorPageContent> = 
     assumptions: [
       'Assumes no additional spending or purchases are added to the card balance during the repayment period.',
       'Interest is compounded monthly based on the nominal equivalent of the stated APR.',
-      'Minimum repayment calculation follows the standard UK regulatory formula: max(£5, 2.5% balance, 1% balance + interest).',
+      'Minimum repayment calculation follows this site\'s assumed rule, read from UK_CREDIT_CARD_RULES: max(£5, 2.5% balance, 1% balance + monthly interest), where monthly interest = balance x APR / 12. This is a typical lender pattern, not a single FCA-prescribed formula.',
       'Does not include annual card fees or late payment penalties.',
     ],
     practicalExample: {
@@ -1903,30 +1916,30 @@ export const CALCULATOR_CONTENT_CONFIG: Record<string, CalculatorPageContent> = 
       breakdown: [
         { label: 'Current Credit Card Balance', value: '£3,000.00' },
         { label: 'Annual Interest Rate (APR)', value: '24.9%' },
-        { label: 'Minimum Payment Only Timeline', value: '18 years 5 months' },
-        { label: 'Minimum Payment Total Interest', value: '£3,240.00' },
-        { label: 'Fixed £150/month Timeline', value: '2 years 2 months (26 months)' },
-        { label: 'Fixed £150/month Total Interest', value: '£815.00' },
-        { label: 'Total Interest Saved', value: '£2,425.00' },
+        { label: 'Minimum Payment Only Timeline', value: '28 years 9 months (345 months)' },
+        { label: 'Minimum Payment Total Interest', value: '£5,998.48' },
+        { label: 'Fixed £150/month Timeline', value: '2 years 3 months (27 months)' },
+        { label: 'Fixed £150/month Total Interest', value: '£915.95' },
+        { label: 'Total Interest Saved', value: '£5,082.53' },
       ],
-      conclusion: 'By fixing repayments at £150/month instead of minimum payments, the cardholder becomes debt-free 16 years earlier and saves over £2,400 in interest.',
+      conclusion: 'By fixing repayments at £150/month instead of minimum payments, the cardholder becomes debt-free 26 years 6 months earlier (345 months vs 27 months) and saves £5,082.53 in interest.',
     },
     faqs: [
       {
         question: 'How much is the minimum payment on a credit card in the UK?',
-        answer: 'In the UK, your minimum monthly credit card payment is usually calculated as the highest of: (1) A fixed minimum sum of £5 or £25; (2) 2% to 3% of your total outstanding balance; or (3) 1% of your principal balance PLUS that month\'s interest and any default charges. For example, on a £2,000 balance at 24.9% APR, your initial minimum payment would be approximately £60 to £65.',
+        answer: 'This calculator assumes interest = balance x APR / 12 and the minimum payment is the greatest of £5, 2.5% of the balance, or 1% of the balance plus monthly interest. Your card issuer statement may differ slightly. For example, on a £2,000 balance at 24.9% APR, month 1 interest is £41.50, so the candidates are £5, £50.00 (2.5%) and £61.50 (1% + interest) — the initial minimum payment is exactly £61.50.',
       },
       {
         question: 'What is the minimum repayment on a credit card if I have a £1,000, £3,000, or £5,000 balance?',
-        answer: 'On a standard 24.9% APR UK credit card: for a £1,000 balance, the initial minimum payment is around £30 to £35/month; for a £3,000 balance, it is around £90 to £100/month; and for a £5,000 balance, it is around £150 to £165/month. As you pay down the balance, the required minimum drops each month, which slows down your debt reduction.',
+        answer: 'On a standard 24.9% APR UK credit card, using this calculator rule: for a £1,000 balance, the initial minimum payment is £30.75/month; for a £3,000 balance, it is £92.25/month; and for a £5,000 balance, it is £153.75/month. As you pay down the balance, the required minimum drops each month, which slows down your debt reduction.',
       },
       {
         question: 'What will my minimum credit card payment be if I only pay the minimum each month?',
-        answer: 'If you only pay the minimum, your payment will decrease every month as your principal balance falls. However, because smaller payments cover less and less principal, clearing even a modest £2,500 balance at 24.9% APR could take over 15 to 18 years and cost more in interest than the original borrowed amount.',
+        answer: 'If you only pay the minimum, your payment will decrease every month as your principal balance falls. However, because smaller payments cover less and less principal, clearing a £2,500 balance at 24.9% APR takes 327 months (27 years 3 months) and £4,960.98 in interest on this calculator rule — almost twice the original balance in interest alone.',
       },
       {
         question: 'How much will my minimum credit card payment be on a 0% interest balance transfer card?',
-        answer: 'On a 0% interest promotional card, there is no monthly interest added, so your minimum payment is typically just 1% to 2.5% of the balance (or a minimum £5 to £25). On a £3,000 balance at 0%, the minimum payment is usually £30 to £75 per month. To clear the balance before the 0% deal expires (e.g. 24 months), you should divide £3,000 by 24 = £125 fixed per month.',
+        answer: 'On a 0% interest promotional card, there is no monthly interest added, so under this calculator rule the candidates are £5, £75.00 (2.5%) and £30.00 (1%) — the minimum payment is £75.00 per month on a £3,000 balance. To clear the balance before the 0% deal expires (e.g. 24 months), you should divide £3,000 by 24 = £125 fixed per month.',
       },
       {
         question: 'Why do minimum credit card payments take so long to clear debt?',
@@ -1943,6 +1956,18 @@ export const CALCULATOR_CONTENT_CONFIG: Record<string, CalculatorPageContent> = 
       {
         question: 'What is a 0% balance transfer credit card?',
         answer: 'A 0% balance transfer card allows you to move existing high-interest credit card debt to a new provider with 0% interest for a promotional period (typically 12 to 30 months), usually in exchange for a one-off transfer fee of 1.5% to 3.5%.',
+      },
+      {
+        question: 'How do I calculate the minimum payment on a credit card?',
+        answer: 'This calculator assumes interest = balance x APR / 12 and the minimum payment is the greatest of £5, 2.5% of the balance, or 1% of the balance plus monthly interest. For example, on a £3,000 balance at 24.9% APR, month 1 interest is £62.25, so the candidates are £5, £75.00 (2.5%) and £92.25 (1% + interest) — the initial minimum payment is £92.25.',
+      },
+      {
+        question: 'How long will it take to pay off my credit card if I only pay the minimum?',
+        answer: 'On this calculator at 24.9% APR, a £1,000 balance takes 236 months (19 years 8 months) and £1,848.48 in interest; a £2,500 balance takes 327 months (27 years 3 months) and £4,960.98 in interest; a £5,000 balance takes 396 months (33 years 0 months) and £10,148.48 in interest. Paying a fixed amount instead cuts years off that timeline.',
+      },
+      {
+        question: 'How much interest will I pay on a credit card?',
+        answer: 'It depends on the balance, APR and payment. On this calculator at 24.9% APR, a £3,000 balance paid at the minimum only costs £5,998.48 in interest over 345 months, while a fixed £150/month payment costs £915.95 in interest over 27 months — a saving of £5,082.53. Use the calculator above with your own balance and APR for an exact figure.',
       },
       {
         question: 'What are persistent debt rules in the UK?',

@@ -1,3 +1,4 @@
+import { formatGBP } from '../../utils/format';
 import React, { useState, useMemo } from 'react';
 import { StudentLoanPlan } from '../../types';
 import { calculateStudentLoan } from '../../utils/calculations';
@@ -13,11 +14,11 @@ export const StudentLoanCalculator: React.FC = () => {
   const result = useMemo(() => calculateStudentLoan({ annualSalary: salary, plan }), [salary, plan]);
 
   const copyText = `PayWise UK Student Loan Repayment Calculation:
-Annual Salary: £${salary.toLocaleString('en-GB')}
+Annual Salary: ${formatGBP(salary)}
 Plan: ${result.planName}
-Threshold: £${result.threshold.toLocaleString('en-GB')}/yr (${result.repaymentRatePercent}% rate)
-Monthly Repayment: £${result.totalStudentLoanMonthly.toFixed(2)}/mo
-Annual Repayment: £${result.totalStudentLoanAnnual.toFixed(2)}/yr
+Threshold: ${formatGBP(result.threshold)}/yr (${result.repaymentRatePercent}% rate)
+Monthly Repayment: ${formatGBP(result.totalStudentLoanMonthly)}/mo
+Annual Repayment: ${formatGBP(result.totalStudentLoanAnnual)}/yr
 Calculated via PayWise UK (https://paywiseuk.vercel.app/student-loan-repayment-calculator)`;
 
   const comparisonPlans: { id: StudentLoanPlan; label: string; threshold: string; rate: string }[] = [
@@ -44,7 +45,7 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/student-loan-repayment-c
                 Annual Gross Salary (£)
               </label>
               <span className="text-xs font-extrabold text-emerald-600 dark:text-emerald-400">
-                £{(salary || 0).toLocaleString('en-GB')}
+                {formatGBP((salary || 0))}
               </span>
             </div>
             <div className="relative">
@@ -118,9 +119,9 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/student-loan-repayment-c
               <span>
                 Total annual deduction:{' '}
                 <strong className="text-[#059669] dark:text-[#10B981] font-bold">
-                  £{result.totalStudentLoanAnnual.toFixed(2)}/year
+                  {formatGBP(result.totalStudentLoanAnnual)}/year
                 </strong>{' '}
-                (approx. £{result.weeklyRepayment.toFixed(2)}/week)
+                (approx. {formatGBP(result.weeklyRepayment)}/week)
               </span>
             </p>
           </div>
@@ -129,7 +130,7 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/student-loan-repayment-c
             <div className="bg-white dark:bg-[#111111] p-3.5 rounded-xl border border-[#E5E5E5] dark:border-[#2A2A2A] shadow-2xs">
               <span className="text-2xs uppercase text-[#525252] dark:text-[#A3A3A3] font-bold block">Repayment Threshold</span>
               <p className="text-base sm:text-lg font-black text-[#111111] dark:text-[#F5F5F5] mt-0.5 tabular-nums">
-                £{result.threshold.toLocaleString('en-GB')}/yr
+                {formatGBP(result.threshold)}/yr
               </p>
             </div>
 

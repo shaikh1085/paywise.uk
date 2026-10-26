@@ -139,7 +139,7 @@ export const TaxCodeCalculatorPage: React.FC = () => {
         )}
       </div>
 
-      <FaqAccordion items={content.faqs} title="Frequently Asked Questions about UK Tax Codes" />
+      <FaqAccordion items={content.faqs} title="Frequently Asked Questions about UK Tax Codes" badge="Tax Code Knowledge Base" subtitle="Clear answers to common questions about UK tax codes." />
       <DisclaimerNotice />
     </div>
   );

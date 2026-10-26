@@ -6,12 +6,14 @@ interface FaqAccordionProps {
   items: FaqItem[];
   title?: string;
   subtitle?: string;
+  badge?: string;
 }
 
 export const FaqAccordion: React.FC<FaqAccordionProps> = ({
   items,
   title = 'Frequently Asked Questions',
-  subtitle = 'Find clear answers to common questions about UK income tax, take-home pay calculations, and statutory payroll deductions.',
+  subtitle = 'Find clear answers to common questions about this calculator.',
+  badge = 'FAQ',
 }) => {
   const [openIndexes, setOpenIndexes] = useState<number[]>([0]);
 
@@ -27,7 +29,7 @@ export const FaqAccordion: React.FC<FaqAccordionProps> = ({
         <div className="text-center mb-7 space-y-1.5">
           <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-[#F5F5F5] dark:bg-[#222222] border border-[#E5E5E5] dark:border-[#2A2A2A] text-[#059669] dark:text-[#10B981] text-2xs font-bold uppercase tracking-wider">
             <HelpCircle className="w-3.5 h-3.5" />
-            <span>Tax Knowledge Base</span>
+            <span>{badge}</span>
           </div>
           <h2 className="text-xl sm:text-2xl font-bold tracking-tight text-[#111111] dark:text-[#F5F5F5]">
             {title}

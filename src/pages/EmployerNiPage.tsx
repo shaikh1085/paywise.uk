@@ -139,7 +139,7 @@ export const EmployerNiPage: React.FC = () => {
         )}
       </div>
 
-      <FaqAccordion items={content.faqs} title="Frequently Asked Questions about Employer National Insurance" />
+      <FaqAccordion items={content.faqs} title="Frequently Asked Questions about Employer National Insurance" badge="Employer National Insurance Knowledge Base" subtitle="Clear answers to common questions about UK employer National Insurance." />
       <DisclaimerNotice />
     </div>
   );

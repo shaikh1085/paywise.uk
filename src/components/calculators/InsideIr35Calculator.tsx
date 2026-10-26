@@ -1,3 +1,4 @@
+import { formatGBP } from '../../utils/format';
 import React, { useState, useMemo } from 'react';
 import { InsideIr35Input } from '../../types';
 import { calculateInsideIr35 } from '../../utils/calculations';
@@ -19,8 +20,8 @@ export const InsideIr35Calculator: React.FC = () => {
 
   const copyText = `PayWise UK Inside IR35 Calculation:
 Contract Day Rate: £${input.dayRate} | Days/Year: ${input.workingDaysPerYear}
-Total Contract Value: £${result.contractGrossAnnual.toLocaleString('en-GB')}
-Umbrella Fees: -£${result.umbrellaFeesAnnual.toLocaleString('en-GB')}
+Total Contract Value: ${formatGBP(result.contractGrossAnnual)}
+Umbrella Fees: -${formatGBP(result.umbrellaFeesAnnual)}
 Employer NI (15%): -£${result.employerNiAnnual.toLocaleString('en-GB', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
 Apprenticeship Levy (0.5%): -£${result.apprenticeshipLevyAnnual.toLocaleString('en-GB', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
 Gross Pay to Worker: £${result.grossPayToWorkerAnnual.toLocaleString('en-GB', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
@@ -118,7 +119,7 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/inside-ir35-calculator)`
               Inside IR35 Net Monthly Take-Home
             </span>
             <span className="text-xs text-[#525252] dark:text-[#A3A3A3] tabular-nums">
-              Contract: £{result.contractGrossAnnual.toLocaleString('en-GB')}/yr
+              Contract: {formatGBP(result.contractGrossAnnual)}/yr
             </span>
           </div>
 

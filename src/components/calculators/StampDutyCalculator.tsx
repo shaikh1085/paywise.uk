@@ -1,3 +1,4 @@
+import { formatGBP } from '../../utils/format';
 import React, { useState, useMemo } from 'react';
 import { StampDutyInput, BuyerType } from '../../types';
 import { calculateStampDuty } from '../../utils/calculations';
@@ -25,7 +26,7 @@ export const StampDutyCalculator: React.FC = () => {
   };
 
   const copySummaryText = `PayWise UK Stamp Duty (SDLT) Calculation:
-Property Price: £${result.propertyPrice.toLocaleString('en-GB', { minimumFractionDigits: 2 })}
+Property Price: ${formatGBP(result.propertyPrice)}
 Buyer Category: ${
     result.buyerType === 'first_time_buyer'
       ? 'First-Time Buyer'
@@ -33,9 +34,9 @@ Buyer Category: ${
       ? 'Additional Property / Buy-to-Let'
       : 'Standard Residential Move'
   }
-Total Stamp Duty Payable: £${result.totalStampDuty.toLocaleString('en-GB', { minimumFractionDigits: 2 })}
+Total Stamp Duty Payable: ${formatGBP(result.totalStampDuty)}
 Effective SDLT Rate: ${result.effectiveRate.toFixed(2)}%
-${result.ftbReliefApplied ? `First-Time Buyer Relief Savings: £${result.ftbReliefSavings.toLocaleString('en-GB', { minimumFractionDigits: 2 })}\n` : ''}${result.surchargeAmount > 0 ? `Additional Property Surcharge (5%): £${result.surchargeAmount.toLocaleString('en-GB', { minimumFractionDigits: 2 })}\n` : ''}
+${result.ftbReliefApplied ? `First-Time Buyer Relief Savings: ${formatGBP(result.ftbReliefSavings)}\n` : ''}${result.surchargeAmount > 0 ? `Additional Property Surcharge (5%): ${formatGBP(result.surchargeAmount)}\n` : ''}
 Calculated via PayWise UK (https://paywiseuk.vercel.app/stamp-duty-calculator) - Estimate Only.`;
 
   return (
@@ -218,7 +219,7 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/stamp-duty-calculator) -
                 Purchase Price
               </span>
               <span className="text-base font-bold text-[#111111] dark:text-[#F5F5F5]">
-                £{result.propertyPrice.toLocaleString('en-GB')}
+                {formatGBP(result.propertyPrice)}
               </span>
             </div>
 
@@ -249,9 +250,9 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/stamp-duty-calculator) -
                 }`}
               >
                 {result.ftbReliefApplied
-                  ? `£${result.ftbReliefSavings.toLocaleString('en-GB')}`
+                  ? `${formatGBP(result.ftbReliefSavings)}`
                   : result.surchargeAmount > 0
-                  ? `£${result.surchargeAmount.toLocaleString('en-GB')}`
+                  ? `${formatGBP(result.surchargeAmount)}`
                   : '£0'}
               </span>
             </div>
@@ -262,7 +263,7 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/stamp-duty-calculator) -
             <div className="p-4 rounded-2xl bg-emerald-500/10 border border-emerald-500/20 text-emerald-800 dark:text-emerald-300 text-xs flex items-center gap-3">
               <Award className="w-5 h-5 text-[#059669] dark:text-[#10B981] shrink-0" />
               <div>
-                <span className="font-bold block">First-Time Buyer Relief Saved £{result.ftbReliefSavings.toLocaleString('en-GB')}</span>
+                <span className="font-bold block">First-Time Buyer Relief Saved {formatGBP(result.ftbReliefSavings)}</span>
                 <span className="text-2xs text-emerald-700 dark:text-emerald-400">
                   You benefit from 0% Stamp Duty on the first £425,000 of your purchase.
                 </span>
@@ -296,10 +297,10 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/stamp-duty-calculator) -
                           {band.ratePercent}%
                         </td>
                         <td className="py-2.5 px-3 text-[#525252] dark:text-[#A3A3A3]">
-                          £{band.taxableInBand.toLocaleString('en-GB', { minimumFractionDigits: 2 })}
+                          {formatGBP(band.taxableInBand)}
                         </td>
                         <td className="py-2.5 px-3 text-right font-bold text-[#111111] dark:text-[#F5F5F5]">
-                          £{band.taxInBand.toLocaleString('en-GB', { minimumFractionDigits: 2 })}
+                          {formatGBP(band.taxInBand)}
                         </td>
                       </tr>
                     ))
@@ -317,7 +318,7 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/stamp-duty-calculator) -
                       Total Stamp Duty Land Tax (SDLT)
                     </td>
                     <td className="py-3 px-3 text-right text-sm text-[#059669] dark:text-[#10B981]">
-                      £{result.totalStampDuty.toLocaleString('en-GB', { minimumFractionDigits: 2 })}
+                      {formatGBP(result.totalStampDuty)}
                     </td>
                   </tr>
                 </tfoot>

@@ -1,3 +1,4 @@
+import { formatGBP } from '../../utils/format';
 import React, { useState, useMemo } from 'react';
 import { MortgageOverpaymentInput } from '../../types';
 import { calculateMortgageOverpayment } from '../../utils/calculations';
@@ -31,15 +32,15 @@ export const MortgageOverpaymentCalculator: React.FC = () => {
   };
 
   const copySummaryText = `PayWise UK Mortgage Overpayment Calculation:
-Current Balance: £${result.currentBalance.toLocaleString('en-GB', { minimumFractionDigits: 2 })}
+Current Balance: ${formatGBP(result.currentBalance)}
 Interest Rate: ${result.interestRate.toFixed(2)}%
 Original Term: ${result.originalTermYears} years
-Monthly Overpayment: £${result.monthlyOverpayment.toLocaleString('en-GB', { minimumFractionDigits: 2 })} / month
-Total Interest Saved: £${result.totalInterestSaved.toLocaleString('en-GB', { minimumFractionDigits: 2 })}
+Monthly Overpayment: ${formatGBP(result.monthlyOverpayment)} / month
+Total Interest Saved: ${formatGBP(result.totalInterestSaved)}
 Mortgage Term Shortened By: ${result.yearsSaved} years and ${result.monthsSaved} months
 New Payoff Term: ${result.newTermYears} years and ${result.newTermMonths} months
-Standard Total Interest: £${result.totalInterestStandard.toLocaleString('en-GB', { minimumFractionDigits: 2 })}
-Overpayment Total Interest: £${result.totalInterestWithOverpayment.toLocaleString('en-GB', { minimumFractionDigits: 2 })}
+Standard Total Interest: ${formatGBP(result.totalInterestStandard)}
+Overpayment Total Interest: ${formatGBP(result.totalInterestWithOverpayment)}
 Calculated via PayWise UK (https://paywiseuk.vercel.app/mortgage-overpayment-calculator) - Estimate Only.`;
 
   return (

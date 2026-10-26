@@ -135,7 +135,7 @@ export const MaternityPayPage: React.FC = () => {
         </section>
       </div>
 
-      <FaqAccordion items={MATERNITY_FAQS} />
+      <FaqAccordion items={MATERNITY_FAQS} badge="Maternity Pay Knowledge Base" subtitle="Clear answers to common questions about UK maternity pay." />
       <DisclaimerNotice />
     </div>
   );

@@ -138,7 +138,7 @@ export const MortgagePage: React.FC = () => {
         )}
       </div>
 
-      <FaqAccordion items={content.faqs} title="Frequently Asked Questions about UK Mortgages" />
+      <FaqAccordion items={content.faqs} title="Frequently Asked Questions about UK Mortgages" badge="Mortgage Knowledge Base" subtitle="Clear answers to common questions about UK mortgages." />
       <DisclaimerNotice />
     </div>
   );

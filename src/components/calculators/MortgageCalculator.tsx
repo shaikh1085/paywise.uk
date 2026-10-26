@@ -1,3 +1,4 @@
+import { formatGBP } from '../../utils/format';
 import React, { useState, useMemo } from 'react';
 import { MortgageInput } from '../../types';
 import { calculateMortgageRepayment } from '../../utils/calculations';
@@ -20,14 +21,14 @@ export const MortgageCalculator: React.FC = () => {
   const depositPercent = input.propertyPrice > 0 ? (input.depositAmount / input.propertyPrice) * 100 : 0;
 
   const copyText = `PayWise UK Mortgage Repayment Calculation:
-Property Price: £${(input.propertyPrice || 0).toLocaleString('en-GB')}
-Deposit: £${(input.depositAmount || 0).toLocaleString('en-GB')} (${depositPercent.toFixed(1)}% deposit, ${result.loanToValue.toFixed(1)}% LTV)
-Loan Amount: £${result.loanAmount.toLocaleString('en-GB', { minimumFractionDigits: 2 })}
+Property Price: ${formatGBP((input.propertyPrice || 0))}
+Deposit: ${formatGBP((input.depositAmount || 0))} (${depositPercent.toFixed(1)}% deposit, ${result.loanToValue.toFixed(1)}% LTV)
+Loan Amount: ${formatGBP(result.loanAmount)}
 Interest Rate: ${input.interestRate}% over ${input.termYears} years (${input.repaymentType === 'repayment' ? 'Capital & Interest' : 'Interest-Only'})
-Monthly Repayment: £${result.monthlyPayment.toLocaleString('en-GB', { minimumFractionDigits: 2 })}/month
-Total Interest Paid: £${result.totalInterest.toLocaleString('en-GB', { minimumFractionDigits: 2 })}
-Total Amount Repaid: £${result.totalRepaid.toLocaleString('en-GB', { minimumFractionDigits: 2 })}
-${result.overpaymentImpact ? `Overpayment Savings: £${result.overpaymentImpact.totalInterestSaved.toLocaleString('en-GB')} saved in interest and term shortened by ${result.overpaymentImpact.yearsSaved} years ${result.overpaymentImpact.monthsSaved} months` : ''}
+Monthly Repayment: ${formatGBP(result.monthlyPayment)}/month
+Total Interest Paid: ${formatGBP(result.totalInterest)}
+Total Amount Repaid: ${formatGBP(result.totalRepaid)}
+${result.overpaymentImpact ? `Overpayment Savings: ${formatGBP(result.overpaymentImpact.totalInterestSaved)} saved in interest and term shortened by ${result.overpaymentImpact.yearsSaved} years ${result.overpaymentImpact.monthsSaved} months` : ''}
 Calculated via PayWise UK (https://paywiseuk.vercel.app/mortgage-calculator)`;
 
   return (
@@ -52,7 +53,7 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/mortgage-calculator)`;
                 Property Purchase Price (£)
               </label>
               <span className="text-xs font-extrabold text-[#059669] dark:text-[#10B981]">
-                £{(input.propertyPrice || 0).toLocaleString('en-GB')}
+                {formatGBP((input.propertyPrice || 0))}
               </span>
             </div>
             <div className="relative">
@@ -76,7 +77,7 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/mortgage-calculator)`;
                 Deposit Amount (£)
               </label>
               <span className="text-xs font-bold text-[#525252] dark:text-[#A3A3A3]">
-                £{(input.depositAmount || 0).toLocaleString('en-GB')} ({depositPercent.toFixed(1)}%)
+                {formatGBP((input.depositAmount || 0))} ({depositPercent.toFixed(1)}%)
               </span>
             </div>
             <div className="relative">
@@ -226,14 +227,14 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/mortgage-calculator)`;
             <div className="bg-white dark:bg-[#111111] p-3 rounded-xl border border-[#E5E5E5] dark:border-[#2A2A2A] shadow-2xs">
               <span className="text-2xs uppercase text-[#525252] dark:text-[#A3A3A3] font-bold block truncate">Total Interest</span>
               <p className="text-base sm:text-lg font-black text-[#059669] dark:text-[#10B981] mt-0.5 tabular-nums">
-                £{result.totalInterest.toLocaleString('en-GB', { minimumFractionDigits: 2 })}
+                {formatGBP(result.totalInterest)}
               </p>
             </div>
 
             <div className="bg-white dark:bg-[#111111] p-3 rounded-xl border border-[#E5E5E5] dark:border-[#2A2A2A] shadow-2xs col-span-2 sm:col-span-1">
               <span className="text-2xs uppercase text-[#525252] dark:text-[#A3A3A3] font-bold block truncate">Total Repaid</span>
               <p className="text-base sm:text-lg font-black text-[#111111] dark:text-[#F5F5F5] mt-0.5 tabular-nums">
-                £{result.totalRepaid.toLocaleString('en-GB', { minimumFractionDigits: 2 })}
+                {formatGBP(result.totalRepaid)}
               </p>
             </div>
           </div>
@@ -246,7 +247,7 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/mortgage-calculator)`;
             <div>
               <strong className="block font-bold">Overpayment Advantage</strong>
               <span>
-                By overpaying £{input.monthlyOverpayment}/month, you could save approximately <strong>£{result.overpaymentImpact.totalInterestSaved.toLocaleString('en-GB', { minimumFractionDigits: 2 })}</strong> in total interest and pay off your mortgage <strong>{result.overpaymentImpact.yearsSaved} years and {result.overpaymentImpact.monthsSaved} months earlier</strong>.
+                By overpaying £{input.monthlyOverpayment}/month, you could save approximately <strong>{formatGBP(result.overpaymentImpact.totalInterestSaved)}</strong> in total interest and pay off your mortgage <strong>{result.overpaymentImpact.yearsSaved} years and {result.overpaymentImpact.monthsSaved} months earlier</strong>.
               </span>
             </div>
           </div>
@@ -275,13 +276,13 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/mortgage-calculator)`;
                     <tr key={row.year} className="text-[#111111] dark:text-[#F5F5F5]">
                       <td className="py-2.5 font-bold">Year {row.year}</td>
                       <td className="py-2.5 text-right font-medium text-[#059669] dark:text-[#10B981]">
-                        £{row.principalPaidYear.toLocaleString('en-GB', { minimumFractionDigits: 2 })}
+                        {formatGBP(row.principalPaidYear)}
                       </td>
                       <td className="py-2.5 text-right font-medium text-[#525252] dark:text-[#A3A3A3]">
-                        £{row.interestPaidYear.toLocaleString('en-GB', { minimumFractionDigits: 2 })}
+                        {formatGBP(row.interestPaidYear)}
                       </td>
                       <td className="py-2.5 text-right font-bold text-[#111111] dark:text-[#F5F5F5]">
-                        £{row.endBalance.toLocaleString('en-GB', { minimumFractionDigits: 2 })}
+                        {formatGBP(row.endBalance)}
                       </td>
                     </tr>
                   ))}

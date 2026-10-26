@@ -115,7 +115,7 @@ export const TeacherSalaryPage: React.FC = () => {
         </div>
       </div>
 
-      <FaqAccordion items={TEACHER_FAQS} />
+      <FaqAccordion items={TEACHER_FAQS} badge="Teacher Pay Knowledge Base" subtitle="Clear answers to common questions about UK teacher pay." />
       <DisclaimerNotice />
     </div>
   );

@@ -1,3 +1,4 @@
+import { formatGBP } from '../../utils/format';
 import React, { useState, useMemo } from 'react';
 import { EmployerNiInput, TaxYear } from '../../types';
 import { calculateEmployerNationalInsurance } from '../../utils/calculations';
@@ -19,13 +20,13 @@ export const EmployerNiCalculator: React.FC = () => {
   const result = useMemo(() => calculateEmployerNationalInsurance(input), [input]);
 
   const copyText = `PayWise UK Employer National Insurance & Employment Cost Calculation:
-Tax Year: ${result.taxYearLabel} (Employer Rate: ${result.employerNiRate}%, Secondary Threshold: £${result.secondaryThreshold.toLocaleString('en-GB')})
-Employee Gross Pay: £${result.grossPay.toLocaleString('en-GB', { minimumFractionDigits: 2 })}
-Employer Class 1 NI (Gross): £${result.employerNiAnnual.toLocaleString('en-GB', { minimumFractionDigits: 2 })}
-Employment Allowance Offset: £${result.employmentAllowanceApplied.toLocaleString('en-GB', { minimumFractionDigits: 2 })}
-Net Employer NI Payable: £${result.netEmployerNi.toLocaleString('en-GB', { minimumFractionDigits: 2 })}
-Employer Workplace Pension: £${result.employerPensionAnnual.toLocaleString('en-GB', { minimumFractionDigits: 2 })}
-Total Cost of Employment: £${result.totalCostOfEmploymentAnnual.toLocaleString('en-GB', { minimumFractionDigits: 2 })}/yr (£${result.totalCostOfEmploymentMonthly.toLocaleString('en-GB', { minimumFractionDigits: 2 })}/mo)
+Tax Year: ${result.taxYearLabel} (Employer Rate: ${result.employerNiRate}%, Secondary Threshold: ${formatGBP(result.secondaryThreshold)})
+Employee Gross Pay: ${formatGBP(result.grossPay)}
+Employer Class 1 NI (Gross): ${formatGBP(result.employerNiAnnual)}
+Employment Allowance Offset: ${formatGBP(result.employmentAllowanceApplied)}
+Net Employer NI Payable: ${formatGBP(result.netEmployerNi)}
+Employer Workplace Pension: ${formatGBP(result.employerPensionAnnual)}
+Total Cost of Employment: ${formatGBP(result.totalCostOfEmploymentAnnual)}/yr (${formatGBP(result.totalCostOfEmploymentMonthly)}/mo)
 Overhead on Gross Pay: ${result.overheadPercentage.toFixed(2)}%
 Calculated via PayWise UK (https://paywiseuk.vercel.app/employer-national-insurance-calculator)`;
 
@@ -68,7 +69,7 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/employer-national-insura
                 Employee Gross Salary (£/year)
               </label>
               <span className="text-xs font-extrabold text-[#059669] dark:text-[#10B981]">
-                £{(input.grossSalary || 0).toLocaleString('en-GB')}
+                {formatGBP((input.grossSalary || 0))}
               </span>
             </div>
             <div className="relative">
@@ -164,7 +165,7 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/employer-national-insura
               <p className="text-xs sm:text-sm text-[#525252] dark:text-[#A3A3A3] flex items-center gap-1.5 pt-1">
                 <TrendingUp className="w-4 h-4 text-[#059669] dark:text-[#10B981] shrink-0" />
                 <span>
-                  Total monthly employer cost: <strong className="text-[#111111] dark:text-[#F5F5F5]">£{result.totalCostOfEmploymentMonthly.toFixed(2)}/month</strong>
+                  Total monthly employer cost: <strong className="text-[#111111] dark:text-[#F5F5F5]">{formatGBP(result.totalCostOfEmploymentMonthly)}/month</strong>
                 </span>
               </p>
             </div>
@@ -198,7 +199,7 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/employer-national-insura
             <div className="bg-white dark:bg-[#111111] p-3 rounded-xl border border-[#E5E5E5] dark:border-[#2A2A2A] shadow-2xs col-span-2 sm:col-span-1">
               <span className="text-2xs uppercase text-[#525252] dark:text-[#A3A3A3] font-bold block truncate">Secondary Threshold</span>
               <p className="text-base sm:text-lg font-black text-[#111111] dark:text-[#F5F5F5] mt-0.5 tabular-nums">
-                £{result.secondaryThreshold.toLocaleString('en-GB')}
+                {formatGBP(result.secondaryThreshold)}
               </p>
             </div>
           </div>
@@ -215,28 +216,28 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/employer-national-insura
             <div className="flex justify-between py-2 border-b border-[#E5E5E5] dark:border-[#2A2A2A] text-[#525252] dark:text-[#A3A3A3]">
               <span>Gross Pay to Employee</span>
               <span className="font-bold text-[#111111] dark:text-[#F5F5F5]">
-                £{result.grossPay.toLocaleString('en-GB', { minimumFractionDigits: 2 })}
+                {formatGBP(result.grossPay)}
               </span>
             </div>
 
             <div className="flex justify-between py-2 border-b border-[#E5E5E5] dark:border-[#2A2A2A] text-[#525252] dark:text-[#A3A3A3]">
               <span>Secondary Threshold (0% Employer NI)</span>
               <span className="font-medium text-[#111111] dark:text-[#F5F5F5]">
-                -£{result.secondaryThreshold.toLocaleString('en-GB')}
+                -{formatGBP(result.secondaryThreshold)}
               </span>
             </div>
 
             <div className="flex justify-between py-2 border-b border-[#E5E5E5] dark:border-[#2A2A2A] text-[#525252] dark:text-[#A3A3A3]">
               <span>Earnings Subject to {result.employerNiRate}% Employer NI</span>
               <span className="font-medium text-[#111111] dark:text-[#F5F5F5]">
-                £{result.grossSubjectToNi.toLocaleString('en-GB', { minimumFractionDigits: 2 })}
+                {formatGBP(result.grossSubjectToNi)}
               </span>
             </div>
 
             <div className="flex justify-between py-2 border-b border-[#E5E5E5] dark:border-[#2A2A2A] text-[#525252] dark:text-[#A3A3A3]">
               <span>Employer Class 1 NI ({result.employerNiRate}%)</span>
               <span className="font-bold text-rose-600 dark:text-rose-400">
-                +£{result.employerNiAnnual.toLocaleString('en-GB', { minimumFractionDigits: 2 })}
+                +{formatGBP(result.employerNiAnnual)}
               </span>
             </div>
 
@@ -244,7 +245,7 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/employer-national-insura
               <div className="flex justify-between py-2 border-b border-[#E5E5E5] dark:border-[#2A2A2A] text-[#059669] dark:text-[#10B981]">
                 <span>Employment Allowance Offset Applied</span>
                 <span className="font-bold">
-                  -£{result.employmentAllowanceApplied.toLocaleString('en-GB', { minimumFractionDigits: 2 })}
+                  -{formatGBP(result.employmentAllowanceApplied)}
                 </span>
               </div>
             )}
@@ -252,14 +253,14 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/employer-national-insura
             <div className="flex justify-between py-2 border-b border-[#E5E5E5] dark:border-[#2A2A2A] text-[#525252] dark:text-[#A3A3A3]">
               <span>Employer Workplace Pension Contribution</span>
               <span className="font-medium text-[#111111] dark:text-[#F5F5F5]">
-                +£{result.employerPensionAnnual.toLocaleString('en-GB', { minimumFractionDigits: 2 })}
+                +{formatGBP(result.employerPensionAnnual)}
               </span>
             </div>
 
             <div className="flex justify-between py-3 bg-[#F5F5F5] dark:bg-[#202020] px-4 rounded-2xl font-bold text-[#111111] dark:text-[#F5F5F5]">
               <span>Total Cost of Employment</span>
               <span className="text-[#059669] dark:text-[#10B981] text-base font-extrabold">
-                £{result.totalCostOfEmploymentAnnual.toLocaleString('en-GB', { minimumFractionDigits: 2 })}
+                {formatGBP(result.totalCostOfEmploymentAnnual)}
               </span>
             </div>
           </div>

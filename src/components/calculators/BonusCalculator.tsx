@@ -1,3 +1,4 @@
+import { formatGBP } from '../../utils/format';
 import React, { useState, useMemo } from 'react';
 import { BonusTaxInput, TaxRegion, StudentLoanPlan, PensionType } from '../../types';
 import { calculateBonusTax } from '../../utils/calculations';
@@ -77,7 +78,7 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/bonus-tax-calculator)`;
                 Annual Base Salary (£)
               </label>
               <span className="text-xs font-semibold text-[#059669] dark:text-[#10B981] tabular-nums">
-                £{(input.baseSalary || 0).toLocaleString('en-GB')}
+                {formatGBP((input.baseSalary || 0))}
               </span>
             </div>
             <div className="relative">
@@ -102,7 +103,7 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/bonus-tax-calculator)`;
                 One-Off Gross Bonus (£)
               </label>
               <span className="text-xs font-semibold text-[#059669] dark:text-[#10B981] tabular-nums">
-                £{(input.bonusAmount || 0).toLocaleString('en-GB')}
+                {formatGBP((input.bonusAmount || 0))}
               </span>
             </div>
             <div className="relative">
@@ -131,7 +132,7 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/bonus-tax-calculator)`;
                       : 'bg-[#FAFAFA] dark:bg-[#151515] border border-[#E5E5E5] dark:border-[#2A2A2A] text-[#525252] dark:text-[#A3A3A3] hover:text-[#111111] dark:hover:text-[#F5F5F5]'
                   }`}
                 >
-                  +£{amount.toLocaleString('en-GB')}
+                  +{formatGBP(amount)}
                 </button>
               ))}
             </div>
@@ -262,7 +263,7 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/bonus-tax-calculator)`;
                 <div className="flex justify-between items-center text-xs">
                   <span className="font-semibold text-[#111111] dark:text-[#F5F5F5]">Amount to Sacrifice:</span>
                   <span className="font-bold text-[#059669] dark:text-[#10B981]">
-                    £{(input.salarySacrificeBonusAmount || 0).toLocaleString('en-GB')}
+                    {formatGBP((input.salarySacrificeBonusAmount || 0))}
                   </span>
                 </div>
                 <input
@@ -276,7 +277,7 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/bonus-tax-calculator)`;
                 />
                 <div className="flex justify-between text-2xs text-[#525252] dark:text-[#A3A3A3]">
                   <span>£0 (Take all cash)</span>
-                  <span>100% (£{(input.bonusAmount).toLocaleString('en-GB')})</span>
+                  <span>100% ({formatGBP((input.bonusAmount))})</span>
                 </div>
               </div>
             )}
@@ -309,7 +310,7 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/bonus-tax-calculator)`;
                 />
               </div>
               <p className="text-xs text-[#525252] dark:text-[#A3A3A3] pt-1">
-                From a gross bonus of <strong className="text-[#111111] dark:text-[#F5F5F5]">£{result.bonusAmount.toLocaleString('en-GB')}</strong> (Total Deductions: £{result.totalDeductionsOnBonus.toLocaleString('en-GB', { minimumFractionDigits: 2, maximumFractionDigits: 2 })})
+                From a gross bonus of <strong className="text-[#111111] dark:text-[#F5F5F5]">{formatGBP(result.bonusAmount)}</strong> (Total Deductions: £{result.totalDeductionsOnBonus.toLocaleString('en-GB', { minimumFractionDigits: 2, maximumFractionDigits: 2 })})
               </p>
             </div>
 
@@ -360,10 +361,10 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/bonus-tax-calculator)`;
                 <AlertTriangle className="w-5 h-5 text-amber-600 dark:text-amber-400 shrink-0 mt-0.5" />
                 <div className="text-xs space-y-1">
                   <strong className="text-amber-900 dark:text-amber-200 font-bold block">
-                    Higher Rate Threshold Crossed (£{result.higherRateThreshold.toLocaleString('en-GB')})
+                    Higher Rate Threshold Crossed ({formatGBP(result.higherRateThreshold)})
                   </strong>
                   <p className="text-amber-800/80 dark:text-amber-300/80">
-                    This bonus pushes your total earnings into the Higher Rate band. The portion of your bonus above £{result.higherRateThreshold.toLocaleString('en-GB')} is taxed at {input.region === 'scotland' ? '42%' : '40%'} Income Tax + 2% National Insurance.
+                    This bonus pushes your total earnings into the Higher Rate band. The portion of your bonus above {formatGBP(result.higherRateThreshold)} is taxed at {input.region === 'scotland' ? '42%' : '40%'} Income Tax + 2% National Insurance.
                   </p>
                 </div>
               </div>
@@ -412,7 +413,7 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/bonus-tax-calculator)`;
               <div className="p-3 rounded-xl bg-white/80 dark:bg-[#151515] border border-emerald-200/60 dark:border-emerald-800/40">
                 <span className="text-[#525252] dark:text-[#A3A3A3] block text-2xs">Added to Pension Pot</span>
                 <span className="text-sm font-extrabold text-[#059669] dark:text-[#10B981] tabular-nums">
-                  +£{result.salarySacrificeComparison.pensionPotAdded.toLocaleString('en-GB')}
+                  +{formatGBP(result.salarySacrificeComparison.pensionPotAdded)}
                 </span>
               </div>
               <div className="p-3 rounded-xl bg-white/80 dark:bg-[#151515] border border-emerald-200/60 dark:border-emerald-800/40">
@@ -429,7 +430,7 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/bonus-tax-calculator)`;
               </div>
             </div>
             <p className="text-2xs text-emerald-800/90 dark:text-emerald-300/90 leading-relaxed">
-              By redirecting £{result.salarySacrificeComparison.sacrificedAmount.toLocaleString('en-GB')} of bonus into your pension, you boost your retirement savings by £{result.salarySacrificeComparison.pensionPotAdded.toLocaleString('en-GB')} at a real net take-home cost of only £{result.salarySacrificeComparison.netCashLost.toLocaleString('en-GB', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}.
+              By redirecting {formatGBP(result.salarySacrificeComparison.sacrificedAmount)} of bonus into your pension, you boost your retirement savings by {formatGBP(result.salarySacrificeComparison.pensionPotAdded)} at a real net take-home cost of only £{result.salarySacrificeComparison.netCashLost.toLocaleString('en-GB', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}.
             </p>
           </div>
         )}
@@ -563,17 +564,17 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/bonus-tax-calculator)`;
         <ExportActions
           textToCopy={copyText}
           csvData={[
-            { Metric: 'Annual Base Salary', Value: `£${result.baseSalary.toFixed(2)}` },
-            { Metric: 'Gross Bonus Amount', Value: `£${result.bonusAmount.toFixed(2)}` },
-            { Metric: 'Total Gross Income', Value: `£${result.totalGrossIncome.toFixed(2)}` },
-            { Metric: 'Net Bonus in Pocket', Value: `£${result.netBonus.toFixed(2)}` },
+            { Metric: 'Annual Base Salary', Value: `${formatGBP(result.baseSalary)}` },
+            { Metric: 'Gross Bonus Amount', Value: `${formatGBP(result.bonusAmount)}` },
+            { Metric: 'Total Gross Income', Value: `${formatGBP(result.totalGrossIncome)}` },
+            { Metric: 'Net Bonus in Pocket', Value: `${formatGBP(result.netBonus)}` },
             { Metric: 'Bonus Retention Rate', Value: `${result.retentionPercentage.toFixed(2)}%` },
-            { Metric: 'Income Tax on Bonus', Value: `£${result.taxOnBonus.toFixed(2)}` },
-            { Metric: 'National Insurance on Bonus', Value: `£${result.niOnBonus.toFixed(2)}` },
-            { Metric: 'Pension Deducted from Bonus', Value: `£${result.pensionOnBonus.toFixed(2)}` },
-            { Metric: 'Student Loan Deducted from Bonus', Value: `£${result.studentLoanOnBonus.toFixed(2)}` },
-            { Metric: 'Regular Month Net Pay', Value: `£${result.normalMonthNet.toFixed(2)}` },
-            { Metric: 'Bonus Month Net Pay', Value: `£${result.bonusMonthNet.toFixed(2)}` },
+            { Metric: 'Income Tax on Bonus', Value: `${formatGBP(result.taxOnBonus)}` },
+            { Metric: 'National Insurance on Bonus', Value: `${formatGBP(result.niOnBonus)}` },
+            { Metric: 'Pension Deducted from Bonus', Value: `${formatGBP(result.pensionOnBonus)}` },
+            { Metric: 'Student Loan Deducted from Bonus', Value: `${formatGBP(result.studentLoanOnBonus)}` },
+            { Metric: 'Regular Month Net Pay', Value: `${formatGBP(result.normalMonthNet)}` },
+            { Metric: 'Bonus Month Net Pay', Value: `${formatGBP(result.bonusMonthNet)}` },
           ]}
           fileName={`paywise-bonus-tax-calculation-${result.bonusAmount}`}
           title="Bonus Tax & Take-Home Analysis"

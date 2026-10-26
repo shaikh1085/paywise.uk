@@ -8,8 +8,11 @@
  * Government legislation. Verify with official HMRC/payroll guidance before production launch.
  */
 
+// lastUpdated is NOT a second source: it mirrors SITE_CONFIG.lastUpdated.
+// (Kept as a literal here to avoid a config import cycle in tests; update
+// SITE_CONFIG.lastUpdated and this value together — they must match.)
 export const TAX_CONFIG_METADATA = {
-  lastUpdated: 'April 2026',
+  lastUpdated: '26 October 2026',
   currentTaxYearLabel: '2026 / 2027 (Current)',
   disclaimerShort: 'Calculations are estimates for illustration only and do not constitute financial, tax, or legal advice.',
   version: '2.6.0',

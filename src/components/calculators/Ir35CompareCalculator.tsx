@@ -1,3 +1,4 @@
+import { formatGBP } from '../../utils/format';
 import React, { useState, useMemo } from 'react';
 import { Ir35CompareInput, TaxRegion } from '../../types';
 import { calculateIr35Compare } from '../../utils/calculations';
@@ -39,20 +40,20 @@ export const Ir35CompareCalculator: React.FC = () => {
 
   const copyText = `PayWise UK Inside vs Outside IR35 Comparison:
 Contract Day Rate: £${input.dayRate}/day | Days/Year: ${input.workingDaysPerYear}
-Total Gross Contract Value: £${result.contractGrossAnnual.toLocaleString('en-GB')}
+Total Gross Contract Value: ${formatGBP(result.contractGrossAnnual)}
 
 === OUTSIDE IR35 (Limited Company) ===
-- Company Turnover: £${result.outside.turnoverAnnual.toLocaleString('en-GB')}
-- Business Expenses: -£${result.outside.allowableExpenses.toLocaleString('en-GB')}
-- Director Salary: £${result.outside.directorSalary.toLocaleString('en-GB')}
+- Company Turnover: ${formatGBP(result.outside.turnoverAnnual)}
+- Business Expenses: -${formatGBP(result.outside.allowableExpenses)}
+- Director Salary: ${formatGBP(result.outside.directorSalary)}
 - Corporation Tax: -£${result.outside.corporationTaxAnnual.toLocaleString('en-GB', { minimumFractionDigits: 2, maximumFractionDigits: 2 })} (${result.outside.corporationTaxEffectiveRate.toFixed(1)}%)
 - Dividend Tax: -£${result.outside.dividendTaxTotal.toLocaleString('en-GB', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
 - Net Take-Home Pay: £${result.outside.netTakeHomeAnnual.toLocaleString('en-GB', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}/yr (£${result.outside.netTakeHomeMonthly.toLocaleString('en-GB', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}/mo)
 - Retention Rate: ${result.outside.effectiveRetentionRate.toFixed(1)}%
 
 === INSIDE IR35 (Deemed Employment / Umbrella) ===
-- Contract Assignment Value: £${result.inside.contractGrossAnnual.toLocaleString('en-GB')}
-- Umbrella Margin: -£${result.inside.umbrellaFeesAnnual.toLocaleString('en-GB')}
+- Contract Assignment Value: ${formatGBP(result.inside.contractGrossAnnual)}
+- Umbrella Margin: -${formatGBP(result.inside.umbrellaFeesAnnual)}
 - Employer NI (15%): -£${result.inside.employerNiAnnual.toLocaleString('en-GB', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
 - Apprenticeship Levy (0.5%): -£${result.inside.apprenticeshipLevyAnnual.toLocaleString('en-GB', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
 - PAYE Income Tax: -£${result.inside.incomeTaxAnnual.toLocaleString('en-GB', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
@@ -171,7 +172,7 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/inside-vs-outside-ir35-c
               Gross Contract Turnover
             </span>
             <div className="text-lg sm:text-xl font-black text-[#111111] dark:text-[#F5F5F5] tabular-nums mt-0.5">
-              £{result.contractGrossAnnual.toLocaleString('en-GB')}
+              {formatGBP(result.contractGrossAnnual)}
               <span className="text-2xs text-[#737373] font-normal ml-1">/ year</span>
             </div>
           </div>
@@ -549,15 +550,15 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/inside-vs-outside-ir35-c
         csvData={[
           { Metric: 'Day Rate', Value: `£${input.dayRate}` },
           { Metric: 'Working Days / Year', Value: `${input.workingDaysPerYear}` },
-          { Metric: 'Total Gross Contract Turnover', Value: `£${result.contractGrossAnnual.toFixed(2)}` },
-          { Metric: 'Outside IR35 Net Annual Take-Home', Value: `£${result.outside.netTakeHomeAnnual.toFixed(2)}` },
-          { Metric: 'Outside IR35 Net Monthly Take-Home', Value: `£${result.outside.netTakeHomeMonthly.toFixed(2)}` },
+          { Metric: 'Total Gross Contract Turnover', Value: `${formatGBP(result.contractGrossAnnual)}` },
+          { Metric: 'Outside IR35 Net Annual Take-Home', Value: `${formatGBP(result.outside.netTakeHomeAnnual)}` },
+          { Metric: 'Outside IR35 Net Monthly Take-Home', Value: `${formatGBP(result.outside.netTakeHomeMonthly)}` },
           { Metric: 'Outside IR35 Retention %', Value: `${result.outside.effectiveRetentionRate.toFixed(1)}%` },
-          { Metric: 'Inside IR35 Net Annual Take-Home', Value: `£${result.inside.netTakeHomeAnnual.toFixed(2)}` },
-          { Metric: 'Inside IR35 Net Monthly Take-Home', Value: `£${result.inside.netTakeHomeMonthly.toFixed(2)}` },
+          { Metric: 'Inside IR35 Net Annual Take-Home', Value: `${formatGBP(result.inside.netTakeHomeAnnual)}` },
+          { Metric: 'Inside IR35 Net Monthly Take-Home', Value: `${formatGBP(result.inside.netTakeHomeMonthly)}` },
           { Metric: 'Inside IR35 Retention %', Value: `${result.inside.takeHomePercentage.toFixed(1)}%` },
-          { Metric: 'Annual Difference (Outside - Inside)', Value: `£${result.comparison.annualDifference.toFixed(2)}` },
-          { Metric: 'Monthly Difference', Value: `£${result.comparison.monthlyDifference.toFixed(2)}` },
+          { Metric: 'Annual Difference (Outside - Inside)', Value: `${formatGBP(result.comparison.annualDifference)}` },
+          { Metric: 'Monthly Difference', Value: `${formatGBP(result.comparison.monthlyDifference)}` },
           { Metric: 'Retention Gain %', Value: `+${result.comparison.retentionDifferencePercent.toFixed(1)}%` },
         ]}
         fileName={`paywise-inside-vs-outside-ir35-${input.dayRate}day`}

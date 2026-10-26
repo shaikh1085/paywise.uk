@@ -1,3 +1,4 @@
+import { formatGBP } from '../../utils/format';
 import React, { useState, useMemo } from 'react';
 import { IsaInput, IsaType } from '../../types';
 import { calculateIsaGrowth } from '../../utils/calculations';
@@ -21,13 +22,13 @@ export const IsaCalculator: React.FC = () => {
 
   const copyText = `PayWise UK ISA Growth & Tax Shelter Calculation:
 ISA Type: ${input.isaType === 'stocks_and_shares_isa' ? 'Stocks & Shares ISA' : input.isaType === 'cash_isa' ? 'Cash ISA' : input.isaType === 'lifetime_isa' ? 'Lifetime ISA (LISA)' : 'General ISA'}
-Starting Balance: £${(input.currentBalance || 0).toLocaleString('en-GB')}
-Monthly Contribution: £${(input.monthlyContribution || 0).toLocaleString('en-GB')}/month
+Starting Balance: ${formatGBP((input.currentBalance || 0))}
+Monthly Contribution: ${formatGBP((input.monthlyContribution || 0))}/month
 Timeframe: ${input.timePeriodYears} Years at ${input.annualGrowthRate}% p.a.
-Total Money Invested: £${result.totalContributions.toLocaleString('en-GB', { minimumFractionDigits: 2 })}
-Total Investment Growth: £${result.totalGrowth.toLocaleString('en-GB', { minimumFractionDigits: 2 })}
-Projected Ending Value: £${result.projectedEndingBalance.toLocaleString('en-GB', { minimumFractionDigits: 2 })}
-${result.lisaBonusTotal ? `Total Lifetime ISA Government Bonus: £${result.lisaBonusTotal.toLocaleString('en-GB')}` : ''}
+Total Money Invested: ${formatGBP(result.totalContributions)}
+Total Investment Growth: ${formatGBP(result.totalGrowth)}
+Projected Ending Value: ${formatGBP(result.projectedEndingBalance)}
+${result.lisaBonusTotal ? `Total Lifetime ISA Government Bonus: ${formatGBP(result.lisaBonusTotal)}` : ''}
 Calculated via PayWise UK (https://paywiseuk.vercel.app/isa-calculator)`;
 
   return (
@@ -70,7 +71,7 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/isa-calculator)`;
                 Starting Balance (£)
               </label>
               <span className="text-xs font-extrabold text-[#059669] dark:text-[#10B981]">
-                £{(input.currentBalance || 0).toLocaleString('en-GB')}
+                {formatGBP((input.currentBalance || 0))}
               </span>
             </div>
             <div className="relative">
@@ -94,7 +95,7 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/isa-calculator)`;
                 Monthly Contribution (£/month)
               </label>
               <span className="text-xs font-bold text-[#525252] dark:text-[#A3A3A3]">
-                £{(input.monthlyContribution || 0).toLocaleString('en-GB')}/mo
+                {formatGBP((input.monthlyContribution || 0))}/mo
               </span>
             </div>
             <div className="relative">
@@ -167,7 +168,7 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/isa-calculator)`;
               <p className="text-xs sm:text-sm text-[#525252] dark:text-[#A3A3A3] flex items-center gap-1.5 pt-1">
                 <TrendingUp className="w-4 h-4 text-[#059669] dark:text-[#10B981] shrink-0" />
                 <span>
-                  Total Growth: <strong className="text-[#059669] dark:text-[#10B981]">£{result.totalGrowth.toLocaleString('en-GB', { minimumFractionDigits: 2 })}</strong>
+                  Total Growth: <strong className="text-[#059669] dark:text-[#10B981]">{formatGBP(result.totalGrowth)}</strong>
                 </span>
               </p>
             </div>
@@ -187,7 +188,7 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/isa-calculator)`;
             <div className="bg-white dark:bg-[#111111] p-3 rounded-xl border border-[#E5E5E5] dark:border-[#2A2A2A] shadow-2xs">
               <span className="text-2xs uppercase text-[#525252] dark:text-[#A3A3A3] font-bold block truncate">Total Deposited</span>
               <p className="text-base sm:text-lg font-black text-[#111111] dark:text-[#F5F5F5] mt-0.5 tabular-nums">
-                £{result.totalContributions.toLocaleString('en-GB', { minimumFractionDigits: 2 })}
+                {formatGBP(result.totalContributions)}
               </p>
             </div>
 
@@ -201,7 +202,7 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/isa-calculator)`;
             <div className="bg-white dark:bg-[#111111] p-3 rounded-xl border border-[#E5E5E5] dark:border-[#2A2A2A] shadow-2xs col-span-2 sm:col-span-1">
               <span className="text-2xs uppercase text-[#525252] dark:text-[#A3A3A3] font-bold block truncate">Allowance Left</span>
               <p className="text-base sm:text-lg font-black text-[#059669] dark:text-[#10B981] mt-0.5 tabular-nums">
-                £{result.allowanceRemaining.toLocaleString('en-GB', { minimumFractionDigits: 0 })}
+                {formatGBP(result.allowanceRemaining)}
               </p>
             </div>
           </div>
@@ -214,7 +215,7 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/isa-calculator)`;
             <div>
               <strong className="block font-bold">Government 25% Bonus Applied</strong>
               <span>
-                You will receive approximately <strong>£{result.lisaBonusTotal.toLocaleString('en-GB')}</strong> in free UK government bonuses over your {input.timePeriodYears}-year timeframe.
+                You will receive approximately <strong>{formatGBP(result.lisaBonusTotal)}</strong> in free UK government bonuses over your {input.timePeriodYears}-year timeframe.
               </span>
             </div>
           </div>
@@ -243,13 +244,13 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/isa-calculator)`;
                     <tr key={row.year} className="text-[#111111] dark:text-[#F5F5F5]">
                       <td className="py-2.5 font-bold">Year {row.year}</td>
                       <td className="py-2.5 text-right font-medium text-[#525252] dark:text-[#A3A3A3]">
-                        £{row.totalContributionsToDate.toLocaleString('en-GB', { minimumFractionDigits: 2 })}
+                        {formatGBP(row.totalContributionsToDate)}
                       </td>
                       <td className="py-2.5 text-right font-medium text-[#059669] dark:text-[#10B981]">
-                        £{row.totalGrowthToDate.toLocaleString('en-GB', { minimumFractionDigits: 2 })}
+                        {formatGBP(row.totalGrowthToDate)}
                       </td>
                       <td className="py-2.5 text-right font-bold text-[#111111] dark:text-[#F5F5F5]">
-                        £{row.endingBalance.toLocaleString('en-GB', { minimumFractionDigits: 2 })}
+                        {formatGBP(row.endingBalance)}
                       </td>
                     </tr>
                   ))}

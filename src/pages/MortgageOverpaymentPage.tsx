@@ -165,7 +165,7 @@ export const MortgageOverpaymentPage: React.FC = () => {
       </div>
 
       {/* FAQs Section */}
-      <FaqAccordion items={content.faqs} title="Frequently Asked Questions about Mortgage Overpayments" />
+      <FaqAccordion items={content.faqs} title="Frequently Asked Questions about Mortgage Overpayments" badge="Mortgage Knowledge Base" subtitle="Clear answers to common questions about UK mortgage overpayments." />
 
       {/* Standard Disclaimer Notice */}
       <DisclaimerNotice />

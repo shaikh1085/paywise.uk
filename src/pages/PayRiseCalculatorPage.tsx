@@ -172,7 +172,7 @@ export const PayRiseCalculatorPage: React.FC = () => {
         </div>
       </div>
 
-      <FaqAccordion items={PAY_RISE_FAQS} />
+      <FaqAccordion items={PAY_RISE_FAQS} badge="Pay Rise Knowledge Base" subtitle="Clear answers to common questions about UK pay rises and take-home pay." />
       <DisclaimerNotice />
     </div>
   );

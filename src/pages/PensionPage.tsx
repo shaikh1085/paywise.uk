@@ -115,7 +115,7 @@ export const PensionPage: React.FC = () => {
         </div>
       </div>
 
-      <FaqAccordion items={PENSION_FAQS} />
+      <FaqAccordion items={PENSION_FAQS} badge="Pension Knowledge Base" subtitle="Clear answers to common questions about UK pensions." />
       <DisclaimerNotice />
     </div>
   );

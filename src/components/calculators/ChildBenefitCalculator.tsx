@@ -1,3 +1,4 @@
+import { formatGBP } from '../../utils/format';
 import React, { useState, useMemo } from 'react';
 import { ChildBenefitInput, TaxYear } from '../../types';
 import { calculateChildBenefit } from '../../utils/calculations';
@@ -29,10 +30,10 @@ export const ChildBenefitCalculator: React.FC = () => {
   };
 
   const fmt = (n: number) =>
-    '£' + n.toLocaleString('en-GB', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+    formatGBP(n);
 
   const fmtInt = (n: number) =>
-    '£' + Math.round(n).toLocaleString('en-GB');
+    formatGBP(Math.round(n), 0);
 
   const taxYears: { value: TaxYear; label: string }[] = [
     { value: '2025_26', label: '2025/26' },
@@ -240,7 +241,7 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/child-benefit-calculator
                     positive: true
                   }] : []),
                   { label: 'Total Gross Child Benefit (annual)', value: result.totalAnnualBenefit, positive: true, bold: true },
-                  ...(result.isAboveThreshold ? [{ label: `HICBC — ${result.chargePercent.toFixed(0)}% clawback (income £${result.higherEarnerIncome.toLocaleString('en-GB')})`, value: result.hicbcAnnual, positive: false, bold: false }] : []),
+                  ...(result.isAboveThreshold ? [{ label: `HICBC — ${result.chargePercent.toFixed(0)}% clawback (income ${formatGBP(result.higherEarnerIncome)})`, value: result.hicbcAnnual, positive: false, bold: false }] : []),
                   { label: 'Net Child Benefit (annual)', value: result.netAnnualBenefit, positive: true, bold: true, green: true },
                   { label: 'Net Child Benefit (monthly)', value: result.netMonthlyBenefit, positive: true, bold: false, green: true },
                 ].map((item, i) => (
@@ -268,7 +269,7 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/child-benefit-calculator
                     />
                   </div>
                   <p className="text-2xs text-[#737373] dark:text-[#666666] mt-2 text-center">
-                    Your income is £{(result.higherEarnerIncome - result.hicbcThreshold).toLocaleString('en-GB')} above the threshold
+                    Your income is {formatGBP((result.higherEarnerIncome - result.hicbcThreshold))} above the threshold
                   </p>
                 </div>
               )}

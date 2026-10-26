@@ -1,3 +1,4 @@
+import { formatGBP } from '../../utils/format';
 import React, { useState, useMemo } from 'react';
 import { CouncilTaxBand, CouncilTaxCountry, CouncilTaxInput } from '../../types';
 import { calculateCouncilTax } from '../../utils/calculations';
@@ -39,7 +40,7 @@ export const CouncilTaxCalculator: React.FC = () => {
 Location: ${COUNCIL_TAX_BAND_D_AVERAGES[result?.country || 'england']?.label || 'England Average'}
 Selected Band: Band ${result.band} (${result.valuationBandRange})
 Household Adults: ${result.adultCount} ${result.adultCount === 1 ? '(25% Single Person Discount Applied)' : '(Full Charge)'}
-Band D Baseline Applied: £${result.effectiveBandD.toFixed(2)}${result.isCustomRate ? ' (Custom Local Rate)' : ' (National Average)'}
+Band D Baseline Applied: ${formatGBP(result.effectiveBandD)}${result.isCustomRate ? ' (Custom Local Rate)' : ' (National Average)'}
 ---
 Band Ratio: ${result.multiplierLabel}
 Gross Annual Council Tax: £${(result.grossAnnualCharge || 0).toLocaleString('en-GB', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
@@ -235,7 +236,7 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/council-tax-calculator)`
               <div className="p-2.5 rounded-xl bg-[#FAFAFA] dark:bg-[#151515] border border-[#E5E5E5] dark:border-[#2A2A2A] text-2xs text-[#525252] dark:text-[#A3A3A3] flex items-center justify-between">
                 <span>Using {COUNCIL_TAX_BAND_D_AVERAGES[input.country]?.label || 'National Average'} baseline:</span>
                 <strong className="text-[#111111] dark:text-[#F5F5F5] font-bold text-xs">
-                  £{(COUNCIL_TAX_BAND_D_AVERAGES[input.country]?.averageBandD || 2171).toLocaleString('en-GB')}/yr
+                  {formatGBP((COUNCIL_TAX_BAND_D_AVERAGES[input.country]?.averageBandD || 2171))}/yr
                 </strong>
               </div>
             )}
@@ -427,13 +428,13 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/council-tax-calculator)`
             { Metric: 'Valuation Range', Value: result.valuationBandRange },
             { Metric: 'Adult Count', Value: `${result.adultCount}` },
             { Metric: 'Single Person Discount', Value: `${result.singlePersonDiscountPercentage}%` },
-            { Metric: 'Band D Baseline Applied', Value: `£${result.effectiveBandD.toFixed(2)}` },
-            { Metric: 'Gross Annual Charge', Value: `£${result.grossAnnualCharge.toFixed(2)}` },
-            { Metric: 'Single Discount Amount', Value: `£${result.singlePersonDiscountAmount.toFixed(2)}` },
-            { Metric: 'Net Annual Council Tax', Value: `£${result.netAnnualCouncilTax.toFixed(2)}` },
-            { Metric: '10 Monthly Payments', Value: `£${result.monthly10Months.toFixed(2)}` },
-            { Metric: '12 Monthly Payments', Value: `£${result.monthly12Months.toFixed(2)}` },
-            { Metric: 'Weekly Cost', Value: `£${result.weeklyEstimate.toFixed(2)}` },
+            { Metric: 'Band D Baseline Applied', Value: `${formatGBP(result.effectiveBandD)}` },
+            { Metric: 'Gross Annual Charge', Value: `${formatGBP(result.grossAnnualCharge)}` },
+            { Metric: 'Single Discount Amount', Value: `${formatGBP(result.singlePersonDiscountAmount)}` },
+            { Metric: 'Net Annual Council Tax', Value: `${formatGBP(result.netAnnualCouncilTax)}` },
+            { Metric: '10 Monthly Payments', Value: `${formatGBP(result.monthly10Months)}` },
+            { Metric: '12 Monthly Payments', Value: `${formatGBP(result.monthly12Months)}` },
+            { Metric: 'Weekly Cost', Value: `${formatGBP(result.weeklyEstimate)}` },
           ]}
           fileName={`paywise-council-tax-band-${result.band}-${result.country}`}
           title="Council Tax Estimate"

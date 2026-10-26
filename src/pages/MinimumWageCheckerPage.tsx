@@ -187,7 +187,7 @@ export const MinimumWageCheckerPage: React.FC = () => {
         </div>
       </div>
 
-      <FaqAccordion items={MINIMUM_WAGE_FAQS} />
+      <FaqAccordion items={MINIMUM_WAGE_FAQS} badge="Minimum Wage Knowledge Base" subtitle="Clear answers to common questions about UK minimum wage." />
       <DisclaimerNotice />
     </div>
   );

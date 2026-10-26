@@ -116,7 +116,7 @@ export const DayRatePage: React.FC = () => {
         </div>
       </div>
 
-      <FaqAccordion items={DAY_RATE_FAQS} />
+      <FaqAccordion items={DAY_RATE_FAQS} badge="Day Rate Knowledge Base" subtitle="Clear answers to common questions about UK day rates and take-home pay." />
       <DisclaimerNotice />
     </div>
   );

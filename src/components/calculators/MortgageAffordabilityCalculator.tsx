@@ -1,3 +1,4 @@
+import { formatGBP } from '../../utils/format';
 import React, { useState, useMemo } from 'react';
 import { MortgageAffordabilityInput } from '../../types';
 import { calculateMortgageAffordability } from '../../utils/calculations';
@@ -22,11 +23,11 @@ export const MortgageAffordabilityCalculator: React.FC = () => {
   const result = useMemo(() => calculateMortgageAffordability(input), [input]);
 
   const copyText = `PayWise UK Mortgage Affordability Calculation:
-Combined Gross Income: £${result.totalGrossIncome.toLocaleString('en-GB', { minimumFractionDigits: 2 })}
-Deposit Available: £${result.depositAmount.toLocaleString('en-GB')}
-Standard Max Borrowing (4.5x LTI): £${result.indicativeMaxBorrowing.toLocaleString('en-GB', { minimumFractionDigits: 2 })}
-Estimated Max Property Budget: £${result.indicativeMaxPropertyPrice.toLocaleString('en-GB', { minimumFractionDigits: 2 })}
-Estimated Monthly Repayment: £${result.estimatedMonthlyPayment.toLocaleString('en-GB', { minimumFractionDigits: 2 })}/mo (at ${input.interestRate || 4.5}%, ${input.termYears || 25} yrs)
+Combined Gross Income: ${formatGBP(result.totalGrossIncome)}
+Deposit Available: ${formatGBP(result.depositAmount)}
+Standard Max Borrowing (4.5x LTI): ${formatGBP(result.indicativeMaxBorrowing)}
+Estimated Max Property Budget: ${formatGBP(result.indicativeMaxPropertyPrice)}
+Estimated Monthly Repayment: ${formatGBP(result.estimatedMonthlyPayment)}/mo (at ${input.interestRate || 4.5}%, ${input.termYears || 25} yrs)
 Calculated via PayWise UK (https://paywiseuk.vercel.app/mortgage-affordability-calculator)`;
 
   return (
@@ -78,7 +79,7 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/mortgage-affordability-c
                 {isJoint ? 'Applicant 1 Gross Annual Salary (£)' : 'Your Gross Annual Salary (£)'}
               </label>
               <span className="text-xs font-extrabold text-[#059669] dark:text-[#10B981]">
-                £{(input.applicant1Income || 0).toLocaleString('en-GB')}
+                {formatGBP((input.applicant1Income || 0))}
               </span>
             </div>
             <div className="relative">
@@ -103,7 +104,7 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/mortgage-affordability-c
                   Applicant 2 Gross Annual Salary (£)
                 </label>
                 <span className="text-xs font-extrabold text-[#059669] dark:text-[#10B981]">
-                  £{(input.applicant2Income || 0).toLocaleString('en-GB')}
+                  {formatGBP((input.applicant2Income || 0))}
                 </span>
               </div>
               <div className="relative">
@@ -128,7 +129,7 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/mortgage-affordability-c
                 Deposit Available (£)
               </label>
               <span className="text-xs font-bold text-[#525252] dark:text-[#A3A3A3]">
-                £{(input.depositAmount || 0).toLocaleString('en-GB')}
+                {formatGBP((input.depositAmount || 0))}
               </span>
             </div>
             <div className="relative">

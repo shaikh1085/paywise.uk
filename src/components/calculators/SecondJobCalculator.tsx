@@ -1,3 +1,4 @@
+import { formatGBP } from '../../utils/format';
 import React, { useState, useMemo } from 'react';
 import { SecondJobInput, TaxYear, TaxRegion } from '../../types';
 import { calculateSecondJobTax } from '../../utils/calculations';
@@ -41,7 +42,7 @@ export const SecondJobCalculator: React.FC = () => {
   };
 
   const fmt = (n: number) =>
-    '£' + n.toLocaleString('en-GB', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+    formatGBP(n);
 
   const taxYears: { value: TaxYear; label: string }[] = [
     { value: '2025_26', label: '2025/26 (Current)' },

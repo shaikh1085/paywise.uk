@@ -1,3 +1,4 @@
+import { formatGBP } from '../../utils/format';
 import React, { useState, useMemo } from 'react';
 import { PayRiseInput, TaxYear, TaxRegion, StudentLoanPlan, PensionType } from '../../types';
 import { calculatePayRise } from '../../utils/calculations';
@@ -44,7 +45,7 @@ After Net Take-Home Pay: £${result.after.netAnnual.toLocaleString('en-GB', { mi
 ---
 Extra Take-Home in Your Pocket: +£${result.extraTakeHomeAnnual.toLocaleString('en-GB', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}/yr (+£${result.extraTakeHomeMonthly.toLocaleString('en-GB', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}/mo)
 Net Retention of Pay Rise: ${result.takeHomeRetentionPercent.toFixed(1)}% kept
-Extra Annual Deductions: Income Tax +£${result.extraTaxAnnual.toFixed(2)}, National Insurance +£${result.extraNiAnnual.toFixed(2)}, Pension +£${result.extraPensionAnnual.toFixed(2)}${result.extraStudentLoanAnnual > 0 ? `, Student Loan +£${result.extraStudentLoanAnnual.toFixed(2)}` : ''}
+Extra Annual Deductions: Income Tax +${formatGBP(result.extraTaxAnnual)}, National Insurance +${formatGBP(result.extraNiAnnual)}, Pension +${formatGBP(result.extraPensionAnnual)}${result.extraStudentLoanAnnual > 0 ? `, Student Loan +${formatGBP(result.extraStudentLoanAnnual)}` : ''}
 New Marginal Tax Rate: ${result.newMarginalTaxRate.toFixed(1)}%
 ${result.crossesHigherRateTax ? '⚠️ Warning: This pay rise pushes you into the Higher Rate tax band.\n' : ''}${result.crossesPersonalAllowanceTaper ? '⚠️ Warning: This pay rise falls within or enters the £100k Personal Allowance taper zone (60% effective income tax trap).\n' : ''}${result.crossesChildBenefitCharge ? '⚠️ Warning: This pay rise enters or affects the High Income Child Benefit Charge zone (£60k–£80k).\n' : ''}
 Calculated via PayWise UK (https://paywiseuk.vercel.app/pay-rise-calculator)`;
@@ -101,7 +102,7 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/pay-rise-calculator)`;
                 Current Annual Salary (£)
               </label>
               <span className="text-xs font-semibold text-[#059669] dark:text-[#10B981] tabular-nums">
-                £{(input.currentSalary || 0).toLocaleString('en-GB')}
+                {formatGBP((input.currentSalary || 0))}
               </span>
             </div>
             <div className="relative">
@@ -164,7 +165,7 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/pay-rise-calculator)`;
                   Percentage Increase (%)
                 </label>
                 <span className="text-xs font-semibold text-[#059669] dark:text-[#10B981] tabular-nums">
-                  +{input.percentageIncrease}% (+£{result.grossIncreaseAnnual.toLocaleString('en-GB')}/yr)
+                  +{input.percentageIncrease}% (+{formatGBP(result.grossIncreaseAnnual)}/yr)
                 </span>
               </div>
               <div className="relative">
@@ -206,7 +207,7 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/pay-rise-calculator)`;
                   New Annual Gross Salary (£)
                 </label>
                 <span className="text-xs font-semibold text-[#059669] dark:text-[#10B981] tabular-nums">
-                  +£{result.grossIncreaseAnnual.toLocaleString('en-GB')} (+{result.grossIncreasePercentage.toFixed(1)}%)
+                  +{formatGBP(result.grossIncreaseAnnual)} (+{result.grossIncreasePercentage.toFixed(1)}%)
                 </span>
               </div>
               <div className="relative">
@@ -365,7 +366,7 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/pay-rise-calculator)`;
             <div className="bg-white dark:bg-[#111111] p-3 rounded-xl border border-[#E5E5E5] dark:border-[#2A2A2A] shadow-2xs">
               <span className="text-[#525252] dark:text-[#A3A3A3] block text-2xs uppercase font-bold">Gross Pay Rise</span>
               <span className="font-bold text-[#111111] dark:text-[#F5F5F5] tabular-nums mt-0.5 block">
-                +£{result.grossIncreaseAnnual.toLocaleString('en-GB')}
+                +{formatGBP(result.grossIncreaseAnnual)}
               </span>
             </div>
             <div className="bg-white dark:bg-[#111111] p-3 rounded-xl border border-[#E5E5E5] dark:border-[#2A2A2A] shadow-2xs">
@@ -397,10 +398,10 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/pay-rise-calculator)`;
                 <AlertTriangle className="w-5 h-5 text-amber-600 dark:text-amber-400 shrink-0 mt-0.5" />
                 <div className="text-xs space-y-1">
                   <strong className="text-amber-900 dark:text-amber-200 font-bold block">
-                    Higher Rate Tax Band Threshold Crossed (£{result.higherRateThreshold.toLocaleString('en-GB')})
+                    Higher Rate Tax Band Threshold Crossed ({formatGBP(result.higherRateThreshold)})
                   </strong>
                   <p className="text-amber-800/80 dark:text-amber-300/80">
-                    This salary increase moves part of your earnings above the £{result.higherRateThreshold.toLocaleString('en-GB')} threshold. Earnings in this band are taxed at {input.region === 'scotland' ? '42% Scottish Higher Rate' : '40% Higher Rate'} (plus 2% National Insurance). Remember that only income <em>above</em> the threshold is taxed at the higher rate, not your entire salary.
+                    This salary increase moves part of your earnings above the {formatGBP(result.higherRateThreshold)} threshold. Earnings in this band are taxed at {input.region === 'scotland' ? '42% Scottish Higher Rate' : '40% Higher Rate'} (plus 2% National Insurance). Remember that only income <em>above</em> the threshold is taxed at the higher rate, not your entire salary.
                   </p>
                 </div>
               </div>
@@ -597,19 +598,19 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/pay-rise-calculator)`;
         <ExportActions
           textToCopy={copyText}
           csvData={[
-            { Metric: 'Current Gross Salary', Value: `£${result.currentSalary.toFixed(2)}` },
-            { Metric: 'New Gross Salary', Value: `£${result.newSalary.toFixed(2)}` },
-            { Metric: 'Gross Pay Rise Annual', Value: `£${result.grossIncreaseAnnual.toFixed(2)}` },
+            { Metric: 'Current Gross Salary', Value: `${formatGBP(result.currentSalary)}` },
+            { Metric: 'New Gross Salary', Value: `${formatGBP(result.newSalary)}` },
+            { Metric: 'Gross Pay Rise Annual', Value: `${formatGBP(result.grossIncreaseAnnual)}` },
             { Metric: 'Gross Pay Rise Percentage', Value: `${result.grossIncreasePercentage.toFixed(2)}%` },
-            { Metric: 'Before Net Take-Home (Annual)', Value: `£${result.before.netAnnual.toFixed(2)}` },
-            { Metric: 'Before Net Take-Home (Monthly)', Value: `£${result.before.netMonthly.toFixed(2)}` },
-            { Metric: 'After Net Take-Home (Annual)', Value: `£${result.after.netAnnual.toFixed(2)}` },
-            { Metric: 'After Net Take-Home (Monthly)', Value: `£${result.after.netMonthly.toFixed(2)}` },
-            { Metric: 'Extra Take-Home Annual', Value: `£${result.extraTakeHomeAnnual.toFixed(2)}` },
-            { Metric: 'Extra Take-Home Monthly', Value: `£${result.extraTakeHomeMonthly.toFixed(2)}` },
+            { Metric: 'Before Net Take-Home (Annual)', Value: `${formatGBP(result.before.netAnnual)}` },
+            { Metric: 'Before Net Take-Home (Monthly)', Value: `${formatGBP(result.before.netMonthly)}` },
+            { Metric: 'After Net Take-Home (Annual)', Value: `${formatGBP(result.after.netAnnual)}` },
+            { Metric: 'After Net Take-Home (Monthly)', Value: `${formatGBP(result.after.netMonthly)}` },
+            { Metric: 'Extra Take-Home Annual', Value: `${formatGBP(result.extraTakeHomeAnnual)}` },
+            { Metric: 'Extra Take-Home Monthly', Value: `${formatGBP(result.extraTakeHomeMonthly)}` },
             { Metric: 'Pay Rise Retention Rate', Value: `${result.takeHomeRetentionPercent.toFixed(2)}%` },
-            { Metric: 'Extra Annual Income Tax', Value: `£${result.extraTaxAnnual.toFixed(2)}` },
-            { Metric: 'Extra Annual National Insurance', Value: `£${result.extraNiAnnual.toFixed(2)}` },
+            { Metric: 'Extra Annual Income Tax', Value: `${formatGBP(result.extraTaxAnnual)}` },
+            { Metric: 'Extra Annual National Insurance', Value: `${formatGBP(result.extraNiAnnual)}` },
             { Metric: 'New Marginal Tax Rate', Value: `${result.newMarginalTaxRate.toFixed(2)}%` },
           ]}
           fileName={`paywise-pay-rise-from-${result.currentSalary}-to-${result.newSalary}`}

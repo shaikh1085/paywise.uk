@@ -1,3 +1,4 @@
+import { formatGBP } from '../../utils/format';
 import React, { useState, useMemo } from 'react';
 import { VatInput, VatMode, VatRate } from '../../types';
 import { calculateVat } from '../../utils/calculations';
@@ -33,7 +34,7 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/vat-calculator)`;
   ];
 
   const fmt = (n: number | undefined | null) =>
-    '£' + (typeof n === 'number' && !isNaN(n) ? n : 0).toLocaleString('en-GB', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+    formatGBP((typeof n === 'number' && !isNaN(n) ? n : 0));
 
   return (
     <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">

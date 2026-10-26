@@ -124,7 +124,7 @@ export const VatCalculatorPage: React.FC = () => {
         </section>
       </div>
 
-      <FaqAccordion items={VAT_FAQS} />
+      <FaqAccordion items={VAT_FAQS} badge="VAT Knowledge Base" subtitle="Clear answers to common questions about UK VAT." />
       <DisclaimerNotice />
     </div>
   );

@@ -115,7 +115,7 @@ export const OvertimePage: React.FC = () => {
         </div>
       </div>
 
-      <FaqAccordion items={OVERTIME_FAQS} />
+      <FaqAccordion items={OVERTIME_FAQS} badge="Overtime Pay Knowledge Base" subtitle="Clear answers to common questions about UK overtime pay." />
       <DisclaimerNotice />
     </div>
   );

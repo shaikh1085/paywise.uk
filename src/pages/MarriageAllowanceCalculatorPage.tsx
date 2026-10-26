@@ -143,7 +143,7 @@ export const MarriageAllowanceCalculatorPage: React.FC = () => {
         </div>
       </div>
 
-      <FaqAccordion items={MARRIAGE_ALLOWANCE_FAQS} />
+      <FaqAccordion items={MARRIAGE_ALLOWANCE_FAQS} badge="Marriage Allowance Knowledge Base" subtitle="Clear answers to common questions about UK Marriage Allowance." />
       <DisclaimerNotice />
     </div>
   );

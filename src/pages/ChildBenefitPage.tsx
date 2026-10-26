@@ -122,7 +122,7 @@ export const ChildBenefitPage: React.FC = () => {
         </section>
       </div>
 
-      <FaqAccordion items={CHILD_BENEFIT_FAQS} />
+      <FaqAccordion items={CHILD_BENEFIT_FAQS} badge="Child Benefit Knowledge Base" subtitle="Clear answers to common questions about UK Child Benefit." />
       <DisclaimerNotice />
     </div>
   );
