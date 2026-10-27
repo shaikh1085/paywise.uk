@@ -45,7 +45,7 @@ export const InsideIr35Page: React.FC = () => {
         <h1 className="text-2xl sm:text-4xl font-black text-[#111111] dark:text-[#F5F5F5] tracking-tight">
           Inside IR35 Calculator UK
         </h1>
-        <p className="text-xs sm:text-sm text-[#525252] dark:text-[#A3A3A3] leading-relaxed">
+        <p className="text-xs sm:text-sm text-[#262626] dark:text-[#D4D4D4] leading-relaxed">
           Estimate contract retention under off-payroll working rules (IR35) via an umbrella company, taking into account Employer National Insurance, Apprenticeship Levy, umbrella weekly fees, and employee PAYE taxes.
         </p>
       </div>
@@ -57,7 +57,7 @@ export const InsideIr35Page: React.FC = () => {
           <h2 className="text-lg sm:text-xl font-bold text-[#111111] dark:text-[#F5F5F5] mb-2">
             How Inside IR35 Payroll and Retention are Calculated
           </h2>
-          <p className="text-xs sm:text-sm text-[#525252] dark:text-[#A3A3A3] leading-relaxed">
+          <p className="text-xs sm:text-sm text-[#262626] dark:text-[#D4D4D4] leading-relaxed">
             When a contract falls inside IR35, HMRC treats the worker as an employee for tax purposes. If paid via an umbrella company, employment taxes are deducted from the assignment rate.
           </p>
         </div>
@@ -65,21 +65,21 @@ export const InsideIr35Page: React.FC = () => {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs sm:text-sm">
           <div className="p-4 rounded-xl bg-[#FAFAFA] dark:bg-[#151515] border border-[#E5E5E5] dark:border-[#2A2A2A] space-y-1.5">
             <h3 className="font-bold text-[#111111] dark:text-[#F5F5F5]">Employment Taxes</h3>
-            <p className="text-[#525252] dark:text-[#A3A3A3] text-xs leading-relaxed">
+            <p className="text-[#262626] dark:text-[#D4D4D4] text-xs leading-relaxed">
               Employer National Insurance (15% above £5,000 threshold) and the Apprenticeship Levy (0.5%) are funded directly from the contract assignment value.
             </p>
           </div>
 
           <div className="p-4 rounded-xl bg-[#FAFAFA] dark:bg-[#151515] border border-[#E5E5E5] dark:border-[#2A2A2A] space-y-1.5">
             <h3 className="font-bold text-[#111111] dark:text-[#F5F5F5]">Employee PAYE Taxes</h3>
-            <p className="text-[#525252] dark:text-[#A3A3A3] text-xs leading-relaxed">
+            <p className="text-[#262626] dark:text-[#D4D4D4] text-xs leading-relaxed">
               Once employment taxes and margins are deducted, the remaining gross salary is processed for standard 20%/40% Income Tax and 8% employee NI.
             </p>
           </div>
 
           <div className="p-4 rounded-xl bg-[#FAFAFA] dark:bg-[#151515] border border-[#E5E5E5] dark:border-[#2A2A2A] space-y-1.5">
             <h3 className="font-bold text-[#111111] dark:text-[#F5F5F5]">Salary Sacrifice SIPP</h3>
-            <p className="text-[#525252] dark:text-[#A3A3A3] text-xs leading-relaxed">
+            <p className="text-[#262626] dark:text-[#D4D4D4] text-xs leading-relaxed">
               Many compliant umbrella companies support salary sacrifice pension contributions, eliminating both employee and employer NI on contributed amounts.
             </p>
           </div>
@@ -115,7 +115,7 @@ export const InsideIr35Page: React.FC = () => {
         </div>
       </div>
 
-      <FaqAccordion items={IR35_FAQS} />
+      <FaqAccordion items={IR35_FAQS} badge="IR35 Knowledge Base" subtitle="Clear answers to common questions about UK IR35 rules." />
       <DisclaimerNotice />
     </div>
   );

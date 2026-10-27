@@ -423,7 +423,7 @@ const nhsCalc = calculateNhsSalary({
   optInPension: true,
   studentLoanPlan: 'none',
 });
-assert(nhsCalc.basicSalary === 28407, 'NHS Band 5 entry point is £28,407');
+assert(nhsCalc.basicSalary === 32073, 'NHS Band 5 entry point is £32,073 (2026/27 Agenda for Change)');
 
 // Teacher M1 Calculator
 const teacherCalc = calculateTeacherSalary({

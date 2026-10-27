@@ -45,7 +45,7 @@ export const UmbrellaCompanyPage: React.FC = () => {
         <h1 className="text-2xl sm:text-4xl font-black text-[#111111] dark:text-[#F5F5F5] tracking-tight">
           Umbrella Company Calculator UK
         </h1>
-        <p className="text-xs sm:text-sm text-[#525252] dark:text-[#A3A3A3] leading-relaxed">
+        <p className="text-xs sm:text-sm text-[#262626] dark:text-[#D4D4D4] leading-relaxed">
           Model monthly invoice retention through an accredited UK umbrella company, including weekly margins, Employer National Insurance, Apprenticeship Levy, and PAYE tax deductions.
         </p>
       </div>
@@ -57,7 +57,7 @@ export const UmbrellaCompanyPage: React.FC = () => {
           <h2 className="text-lg sm:text-xl font-bold text-[#111111] dark:text-[#F5F5F5] mb-2">
             How Umbrella Company Payslips Work in the UK
           </h2>
-          <p className="text-xs sm:text-sm text-[#525252] dark:text-[#A3A3A3] leading-relaxed">
+          <p className="text-xs sm:text-sm text-[#262626] dark:text-[#D4D4D4] leading-relaxed">
             An umbrella company acts as the employer of record for agency contractors. The recruitment agency pays the umbrella company the agreed assignment invoice value, from which statutory employer costs and provider margins are deducted before your personal tax is processed.
           </p>
         </div>
@@ -65,21 +65,21 @@ export const UmbrellaCompanyPage: React.FC = () => {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs sm:text-sm">
           <div className="p-4 rounded-xl bg-[#FAFAFA] dark:bg-[#151515] border border-[#E5E5E5] dark:border-[#2A2A2A] space-y-1.5">
             <h3 className="font-bold text-[#111111] dark:text-[#F5F5F5]">Standard Margin Fees</h3>
-            <p className="text-[#525252] dark:text-[#A3A3A3] text-xs leading-relaxed">
+            <p className="text-[#262626] dark:text-[#D4D4D4] text-xs leading-relaxed">
               Compliant umbrella company margins typically range from £15 to £30 per week (approx. £65 to £130 per month).
             </p>
           </div>
 
           <div className="p-4 rounded-xl bg-[#FAFAFA] dark:bg-[#151515] border border-[#E5E5E5] dark:border-[#2A2A2A] space-y-1.5">
             <h3 className="font-bold text-[#111111] dark:text-[#F5F5F5]">Accredited Compliance</h3>
-            <p className="text-[#525252] dark:text-[#A3A3A3] text-xs leading-relaxed">
+            <p className="text-[#262626] dark:text-[#D4D4D4] text-xs leading-relaxed">
               Always select an FCSA or Professional Passport accredited umbrella company to guarantee full HMRC compliance and avoid disguised remuneration schemes.
             </p>
           </div>
 
           <div className="p-4 rounded-xl bg-[#FAFAFA] dark:bg-[#151515] border border-[#E5E5E5] dark:border-[#2A2A2A] space-y-1.5">
             <h3 className="font-bold text-[#111111] dark:text-[#F5F5F5]">Holiday Pay Accrual</h3>
-            <p className="text-[#525252] dark:text-[#A3A3A3] text-xs leading-relaxed">
+            <p className="text-[#262626] dark:text-[#D4D4D4] text-xs leading-relaxed">
               Holiday pay is either accrued (held in an umbrella holiday pot) or rolled up directly with each weekly or monthly payslip.
             </p>
           </div>
@@ -115,7 +115,7 @@ export const UmbrellaCompanyPage: React.FC = () => {
         </div>
       </div>
 
-      <FaqAccordion items={UMBRELLA_FAQS} />
+      <FaqAccordion items={UMBRELLA_FAQS} badge="Umbrella Company Knowledge Base" subtitle="Clear answers to common questions about UK umbrella companies." />
       <DisclaimerNotice />
     </div>
   );

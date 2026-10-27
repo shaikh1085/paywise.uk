@@ -50,7 +50,7 @@ export const MinimumWageCheckerPage: React.FC = () => {
         <h1 className="text-2xl sm:text-4xl font-black text-[#111111] dark:text-[#F5F5F5] tracking-tight">
           National Minimum Wage Checker UK
         </h1>
-        <p className="text-xs sm:text-sm text-[#525252] dark:text-[#A3A3A3] leading-relaxed">
+        <p className="text-xs sm:text-sm text-[#262626] dark:text-[#D4D4D4] leading-relaxed">
           Check if you're being paid at least the UK National Minimum Wage or National Living Wage for your age, based on your hourly rate, salary, or hours worked.
         </p>
       </div>
@@ -62,7 +62,7 @@ export const MinimumWageCheckerPage: React.FC = () => {
           <h2 className="text-lg sm:text-xl font-bold text-[#111111] dark:text-[#F5F5F5] mb-2">
             Current UK National Minimum Wage and National Living Wage Rates by Age
           </h2>
-          <p className="text-xs sm:text-sm text-[#525252] dark:text-[#A3A3A3] leading-relaxed">
+          <p className="text-xs sm:text-sm text-[#262626] dark:text-[#D4D4D4] leading-relaxed">
             The National Minimum Wage (NMW) and National Living Wage (NLW) are the minimum hourly rates of pay that almost all workers in the UK are entitled to by law. The rates are updated every year in April following recommendations from the independent Low Pay Commission.
           </p>
         </div>
@@ -73,8 +73,8 @@ export const MinimumWageCheckerPage: React.FC = () => {
               <ShieldCheck className="w-4 h-4 text-[#059669] dark:text-[#10B981]" />
               National Living Wage (21+)
             </h3>
-            <p className="text-[#525252] dark:text-[#A3A3A3] text-xs leading-relaxed">
-              For 2025/26, the statutory rate for all workers aged 21 and over is <strong>£12.21/hour</strong> (up from £11.44 in 2024/25).
+            <p className="text-[#262626] dark:text-[#D4D4D4] text-xs leading-relaxed">
+              For 2026/27, the statutory rate for all workers aged 21 and over is <strong>£12.71/hour</strong> (up from £12.21 in 2025/26).
             </p>
           </div>
 
@@ -83,8 +83,8 @@ export const MinimumWageCheckerPage: React.FC = () => {
               <Scale className="w-4 h-4 text-[#059669] dark:text-[#10B981]" />
               18–20 &amp; Under 18 Rates
             </h3>
-            <p className="text-[#525252] dark:text-[#A3A3A3] text-xs leading-relaxed">
-              Workers aged 18 to 20 are entitled to <strong>£10.00/hour</strong>. Workers aged 16 to 17 above school leaving age are entitled to <strong>£7.55/hour</strong>.
+            <p className="text-[#262626] dark:text-[#D4D4D4] text-xs leading-relaxed">
+              Workers aged 18 to 20 are entitled to <strong>£10.85/hour</strong>. Workers aged 16 to 17 above school leaving age are entitled to <strong>£8.00/hour</strong>.
             </p>
           </div>
 
@@ -93,8 +93,8 @@ export const MinimumWageCheckerPage: React.FC = () => {
               <AlertCircle className="w-4 h-4 text-[#059669] dark:text-[#10B981]" />
               Apprentice Entitlement
             </h3>
-            <p className="text-[#525252] dark:text-[#A3A3A3] text-xs leading-relaxed">
-              Apprentices under 19 or in their first year receive <strong>£7.55/hour</strong>. After year 1, apprentices aged 19+ must receive the full rate for their age.
+            <p className="text-[#262626] dark:text-[#D4D4D4] text-xs leading-relaxed">
+              Apprentices under 19 or in their first year receive <strong>£8.00/hour</strong>. After year 1, apprentices aged 19+ must receive the full rate for their age.
             </p>
           </div>
         </div>
@@ -103,14 +103,14 @@ export const MinimumWageCheckerPage: React.FC = () => {
           <h2 className="text-lg sm:text-xl font-bold text-[#111111] dark:text-[#F5F5F5] mb-2">
             What Counts as Pay for National Minimum Wage Purposes
           </h2>
-          <p className="text-xs sm:text-sm text-[#525252] dark:text-[#A3A3A3] leading-relaxed mb-4">
+          <p className="text-xs sm:text-sm text-[#262626] dark:text-[#D4D4D4] leading-relaxed mb-4">
             Under UK employment regulations, your total earnings in each pay reference period divided by your actual hours worked must never fall below the statutory minimum wage.
           </p>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs sm:text-sm">
             <div className="p-4 rounded-xl bg-[#F0FDF4] dark:bg-[#052e16]/40 border border-[#059669]/20 space-y-2">
               <h3 className="font-bold text-[#059669] dark:text-[#10B981]">Hours that must be counted as working time:</h3>
-              <ul className="list-disc pl-4 space-y-1 text-2xs sm:text-xs text-[#525252] dark:text-[#D1D5DB]">
+              <ul className="list-disc pl-4 space-y-1 text-2xs sm:text-xs text-[#262626] dark:text-[#D1D5DB]">
                 <li>Mandatory handover, opening, setup, and cleaning time before or after shifts</li>
                 <li>Compulsory staff training, inductions, and team meetings</li>
                 <li>Security checks, bag inspections, and badge scanning at workplace entrances</li>
@@ -125,7 +125,7 @@ export const MinimumWageCheckerPage: React.FC = () => {
                 <li>Cost of mandatory uniforms, work clothing, or safety gear (PPE)</li>
                 <li>Deductions for till shortages, breakages, or customer walkouts</li>
                 <li>Mandatory tools, materials, or equipment hire required for the job</li>
-                <li>Accommodation charges that exceed the statutory accommodation offset (£10.66/day in 2025/26)</li>
+                <li>Accommodation charges that exceed the statutory accommodation offset (£11.10/day in 2026/27)</li>
                 <li>Administrative fees for payroll, criminal record checks (DBS), or tips administration</li>
               </ul>
             </div>
@@ -136,21 +136,21 @@ export const MinimumWageCheckerPage: React.FC = () => {
           <h2 className="text-lg sm:text-xl font-bold text-[#111111] dark:text-[#F5F5F5] mb-2">
             What to Do If You're Being Paid Below the Minimum Wage
           </h2>
-          <p className="text-xs sm:text-sm text-[#525252] dark:text-[#A3A3A3] leading-relaxed mb-4">
+          <p className="text-xs sm:text-sm text-[#262626] dark:text-[#D4D4D4] leading-relaxed mb-4">
             If your employer is paying you below the statutory minimum wage, they are breaking the law. You are legally entitled to recover all back-pay for up to 6 years.
           </p>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs sm:text-sm">
             <div className="p-4 rounded-xl bg-[#FAFAFA] dark:bg-[#151515] border border-[#E5E5E5] dark:border-[#2A2A2A] space-y-2">
               <h3 className="font-bold text-[#111111] dark:text-[#F5F5F5]">1. Contact Acas for Free Advice</h3>
-              <p className="text-[#525252] dark:text-[#A3A3A3] text-xs leading-relaxed">
+              <p className="text-[#262626] dark:text-[#D4D4D4] text-xs leading-relaxed">
                 Call the Acas Helpline on <strong>0300 123 1100</strong> (Monday to Friday, 8am to 6pm). Acas provides free, confidential, and impartial employment advice to workers.
               </p>
             </div>
 
             <div className="p-4 rounded-xl bg-[#FAFAFA] dark:bg-[#151515] border border-[#E5E5E5] dark:border-[#2A2A2A] space-y-2">
               <h3 className="font-bold text-[#111111] dark:text-[#F5F5F5]">2. Report to HMRC Confidentially</h3>
-              <p className="text-[#525252] dark:text-[#A3A3A3] text-xs leading-relaxed">
+              <p className="text-[#262626] dark:text-[#D4D4D4] text-xs leading-relaxed">
                 HMRC investigates all complaints of minimum wage non-compliance. Employers found in breach must pay 100% of arrears to workers and face penalties up to 200% of arrears.
               </p>
             </div>
@@ -187,7 +187,7 @@ export const MinimumWageCheckerPage: React.FC = () => {
         </div>
       </div>
 
-      <FaqAccordion items={MINIMUM_WAGE_FAQS} />
+      <FaqAccordion items={MINIMUM_WAGE_FAQS} badge="Minimum Wage Knowledge Base" subtitle="Clear answers to common questions about UK minimum wage." />
       <DisclaimerNotice />
     </div>
   );

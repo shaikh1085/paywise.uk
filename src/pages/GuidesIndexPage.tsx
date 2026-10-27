@@ -76,7 +76,7 @@ export const GuidesIndexPage: React.FC = () => {
           <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black text-[#111111] dark:text-[#F5F5F5] tracking-tight">
             UK Salary & Tax Guides
           </h1>
-          <p className="text-sm sm:text-base text-[#525252] dark:text-[#A3A3A3] leading-relaxed">
+          <p className="text-sm sm:text-base text-[#262626] dark:text-[#D4D4D4] leading-relaxed">
             Practical, plain-English guides to help you navigate UK income tax brackets, National Insurance contributions, workplace pension tax relief, and salary sacrifice arrangements.
           </p>
         </div>
@@ -98,7 +98,7 @@ export const GuidesIndexPage: React.FC = () => {
                       <Icon className="w-5 h-5" />
                     </div>
                     <div className="flex items-center gap-2">
-                      <span className="text-3xs uppercase font-bold tracking-wider px-2 py-0.5 rounded-md bg-[#F5F5F5] dark:bg-[#222222] text-[#525252] dark:text-[#A3A3A3] border border-[#E5E5E5] dark:border-[#2A2A2A]">
+                      <span className="text-3xs uppercase font-bold tracking-wider px-2 py-0.5 rounded-md bg-[#F5F5F5] dark:bg-[#222222] text-[#262626] dark:text-[#D4D4D4] border border-[#E5E5E5] dark:border-[#2A2A2A]">
                         {g.category}
                       </span>
                       <span className="text-3xs text-[#737373] dark:text-[#888888] font-medium">
@@ -109,7 +109,7 @@ export const GuidesIndexPage: React.FC = () => {
                   <h2 className="text-base sm:text-lg font-bold text-[#111111] dark:text-[#F5F5F5] group-hover:text-[#059669] dark:group-hover:text-[#10B981] transition-colors">
                     {g.title}
                   </h2>
-                  <p className="text-xs sm:text-sm text-[#525252] dark:text-[#A3A3A3] mt-2 leading-relaxed">
+                  <p className="text-xs sm:text-sm text-[#262626] dark:text-[#D4D4D4] mt-2 leading-relaxed">
                     {g.description}
                   </p>
                 </div>

@@ -40,7 +40,7 @@ export const CapitalGainsTaxPage: React.FC = () => {
         <h1 className="text-2xl sm:text-4xl font-black text-[#111111] dark:text-[#F5F5F5] tracking-tight">
           {content.h1}
         </h1>
-        <p className="text-xs sm:text-sm text-[#525252] dark:text-[#A3A3A3] leading-relaxed">
+        <p className="text-xs sm:text-sm text-[#262626] dark:text-[#D4D4D4] leading-relaxed">
           {content.directAnswerParagraph}
         </p>
       </div>
@@ -53,7 +53,7 @@ export const CapitalGainsTaxPage: React.FC = () => {
             <BookOpen className="w-5 h-5 text-[#059669] dark:text-[#10B981]" />
             {content.howItWorks.title}
           </h2>
-          <div className="space-y-3 text-xs sm:text-sm text-[#525252] dark:text-[#A3A3A3] leading-relaxed">
+          <div className="space-y-3 text-xs sm:text-sm text-[#262626] dark:text-[#D4D4D4] leading-relaxed">
             {content.howItWorks.paragraphs.map((p, idx) => (
               <p key={idx}>{p}</p>
             ))}
@@ -65,7 +65,7 @@ export const CapitalGainsTaxPage: React.FC = () => {
                 <div key={step.stepNumber} className="p-4 rounded-2xl bg-[#FAFAFA] dark:bg-[#121212] border border-[#E5E5E5] dark:border-[#2A2A2A] space-y-1.5">
                   <span className="text-xs font-bold text-[#059669] dark:text-[#10B981]">Step {step.stepNumber}</span>
                   <h3 className="text-sm font-bold text-[#111111] dark:text-[#F5F5F5]">{step.title}</h3>
-                  <p className="text-xs text-[#525252] dark:text-[#A3A3A3] leading-relaxed">{step.description}</p>
+                  <p className="text-xs text-[#262626] dark:text-[#D4D4D4] leading-relaxed">{step.description}</p>
                 </div>
               ))}
             </div>
@@ -78,7 +78,7 @@ export const CapitalGainsTaxPage: React.FC = () => {
               <CheckCircle className="w-4 h-4 text-[#059669] dark:text-[#10B981]" />
               {content.practicalExample.title}
             </h3>
-            <p className="text-xs sm:text-sm text-[#525252] dark:text-[#A3A3A3]">
+            <p className="text-xs sm:text-sm text-[#262626] dark:text-[#D4D4D4]">
               {content.practicalExample.scenario}
             </p>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
@@ -96,11 +96,11 @@ export const CapitalGainsTaxPage: React.FC = () => {
         )}
 
         <div className="space-y-3">
-          <h3 className="text-sm font-bold uppercase tracking-wider text-[#525252] dark:text-[#A3A3A3] flex items-center gap-1.5">
+          <h3 className="text-sm font-bold uppercase tracking-wider text-[#262626] dark:text-[#D4D4D4] flex items-center gap-1.5">
             <Info className="w-4 h-4 text-[#737373]" />
             Capital Gains Tax Rules & Assumptions
           </h3>
-          <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs text-[#525252] dark:text-[#A3A3A3]">
+          <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs text-[#262626] dark:text-[#D4D4D4]">
             {content.assumptions.map((assump, idx) => (
               <li key={idx} className="flex items-start gap-2">
                 <span className="w-1.5 h-1.5 rounded-full bg-[#059669] dark:bg-[#10B981] mt-1.5 shrink-0" />
@@ -139,7 +139,7 @@ export const CapitalGainsTaxPage: React.FC = () => {
         )}
       </div>
 
-      <FaqAccordion items={content.faqs} title="Frequently Asked Questions about Capital Gains Tax" />
+      <FaqAccordion items={content.faqs} title="Frequently Asked Questions about Capital Gains Tax" badge="Capital Gains Tax Knowledge Base" subtitle="Clear answers to common questions about UK capital gains tax." />
       <DisclaimerNotice />
     </div>
   );

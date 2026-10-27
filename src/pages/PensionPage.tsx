@@ -45,7 +45,7 @@ export const PensionPage: React.FC = () => {
         <h1 className="text-2xl sm:text-4xl font-black text-[#111111] dark:text-[#F5F5F5] tracking-tight">
           UK Pension Calculator
         </h1>
-        <p className="text-xs sm:text-sm text-[#525252] dark:text-[#A3A3A3] leading-relaxed">
+        <p className="text-xs sm:text-sm text-[#262626] dark:text-[#D4D4D4] leading-relaxed">
           Forecast your future retirement pot, calculate the power of compound investment returns, employer contributions, basic-rate tax relief, and estimated safe 4% annual drawdowns.
         </p>
       </div>
@@ -57,7 +57,7 @@ export const PensionPage: React.FC = () => {
           <h2 className="text-lg sm:text-xl font-bold text-[#111111] dark:text-[#F5F5F5] mb-2">
             How UK Workplace Pensions and Tax Relief Work
           </h2>
-          <p className="text-xs sm:text-sm text-[#525252] dark:text-[#A3A3A3] leading-relaxed">
+          <p className="text-xs sm:text-sm text-[#262626] dark:text-[#D4D4D4] leading-relaxed">
             Workplace pensions in the UK are one of the most tax-efficient vehicles for building wealth. Under auto-enrolment rules, qualifying employees contribute a minimum of 5% and employers contribute at least 3%.
           </p>
         </div>
@@ -65,21 +65,21 @@ export const PensionPage: React.FC = () => {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs sm:text-sm">
           <div className="p-4 rounded-xl bg-[#FAFAFA] dark:bg-[#151515] border border-[#E5E5E5] dark:border-[#2A2A2A] space-y-1.5">
             <h3 className="font-bold text-[#111111] dark:text-[#F5F5F5]">Tax Relief Boost</h3>
-            <p className="text-[#525252] dark:text-[#A3A3A3] text-xs leading-relaxed">
+            <p className="text-[#262626] dark:text-[#D4D4D4] text-xs leading-relaxed">
               Every £80 you contribute into a relief-at-source scheme is automatically topped up with £20 basic-rate tax relief by HMRC, creating an instant £100 investment pot.
             </p>
           </div>
 
           <div className="p-4 rounded-xl bg-[#FAFAFA] dark:bg-[#151515] border border-[#E5E5E5] dark:border-[#2A2A2A] space-y-1.5">
             <h3 className="font-bold text-[#111111] dark:text-[#F5F5F5]">Employer Matching</h3>
-            <p className="text-[#525252] dark:text-[#A3A3A3] text-xs leading-relaxed">
+            <p className="text-[#262626] dark:text-[#D4D4D4] text-xs leading-relaxed">
               Employer contributions represent non-taxable employer money paid directly into your pension scheme on top of your standard cash salary.
             </p>
           </div>
 
           <div className="p-4 rounded-xl bg-[#FAFAFA] dark:bg-[#151515] border border-[#E5E5E5] dark:border-[#2A2A2A] space-y-1.5">
             <h3 className="font-bold text-[#111111] dark:text-[#F5F5F5]">25% Tax-Free Lump Sum</h3>
-            <p className="text-[#525252] dark:text-[#A3A3A3] text-xs leading-relaxed">
+            <p className="text-[#262626] dark:text-[#D4D4D4] text-xs leading-relaxed">
               At retirement age (currently age 55, rising to 57 in 2028), you can typically withdraw up to 25% of your accumulated pot completely tax-free (up to £268,275).
             </p>
           </div>
@@ -115,7 +115,7 @@ export const PensionPage: React.FC = () => {
         </div>
       </div>
 
-      <FaqAccordion items={PENSION_FAQS} />
+      <FaqAccordion items={PENSION_FAQS} badge="Pension Knowledge Base" subtitle="Clear answers to common questions about UK pensions." />
       <DisclaimerNotice />
     </div>
   );

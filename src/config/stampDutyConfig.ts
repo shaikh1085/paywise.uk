@@ -7,7 +7,12 @@
  * Note: Scotland applies Land and Buildings Transaction Tax (LBTT) and Wales applies
  * Land Transaction Tax (LTT), which have separate devolved schedules.
  * 
- * VERIFY AGAINST OFFICIAL UK SOURCES BEFORE PRODUCTION
+ * Rates below match GOV.UK "SDLT rates and thresholds" (England & Northern Ireland):
+ * https://www.gov.uk/guidance/sdlt-rates-and-thresholds — standard residential
+ * 0% to £125,000, 2% to £250,000, 5% to £925,000, 10% to £1,500,000, 12% above;
+ * first-time buyer 0% to £300,000, 5% to £500,000; additional-property
+ * surcharge 5%. Values checked against that page on 2026-10-26; re-check
+ * before any future tax-year change.
  */
 
 export interface SdltBand {

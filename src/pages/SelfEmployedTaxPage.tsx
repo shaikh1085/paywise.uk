@@ -31,7 +31,8 @@ export const SelfEmployedTaxPage: React.FC = () => {
           'freelancer tax calculator uk',
           'sole trader take home pay uk',
           'self assessment tax estimate calculator',
-        ]}
+        
+          'how much tax do you pay if self employed',]}
         canonicalPath="/self-employed-tax-calculator"
         isCalculator={true}
         calculatorName="Self-Employed Tax Calculator UK"
@@ -50,7 +51,7 @@ export const SelfEmployedTaxPage: React.FC = () => {
         <h1 className="text-2xl sm:text-4xl font-black text-[#111111] dark:text-[#F5F5F5] tracking-tight">
           Self-Employed Tax Calculator UK
         </h1>
-        <p className="text-xs sm:text-sm text-[#525252] dark:text-[#A3A3A3] leading-relaxed">
+        <p className="text-xs sm:text-sm text-[#262626] dark:text-[#D4D4D4] leading-relaxed">
           Calculate your estimated Income Tax, Class 2 & Class 4 National Insurance, Student Loan repayments, and net take-home pay as a UK sole trader or freelancer.
         </p>
       </div>
@@ -62,7 +63,7 @@ export const SelfEmployedTaxPage: React.FC = () => {
           <h2 className="text-lg sm:text-xl font-bold text-[#111111] dark:text-[#F5F5F5] mb-2">
             How Self-Employed Tax Works in the UK
           </h2>
-          <p className="text-xs sm:text-sm text-[#525252] dark:text-[#A3A3A3] leading-relaxed">
+          <p className="text-xs sm:text-sm text-[#262626] dark:text-[#D4D4D4] leading-relaxed">
             Unlike employed PAYE workers who have tax automatically deducted from their monthly paychecks, self-employed individuals (sole traders and freelancers) report their business turnover and allowable expenses once a year via HMRC Self Assessment. Tax and National Insurance are charged on your net taxable profit, not your gross revenue.
           </p>
         </div>
@@ -70,21 +71,21 @@ export const SelfEmployedTaxPage: React.FC = () => {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs sm:text-sm">
           <div className="p-4 rounded-xl bg-[#FAFAFA] dark:bg-[#151515] border border-[#E5E5E5] dark:border-[#2A2A2A] space-y-1.5">
             <h3 className="font-bold text-[#111111] dark:text-[#F5F5F5]">Tax-Free Personal Allowance</h3>
-            <p className="text-[#525252] dark:text-[#A3A3A3] text-xs leading-relaxed">
+            <p className="text-[#262626] dark:text-[#D4D4D4] text-xs leading-relaxed">
               The first £12,570 of your net profit is tax-free. If your net profit exceeds £100,000, your personal allowance reduces by £1 for every £2 earned above £100k until it reaches zero at £125,140.
             </p>
           </div>
 
           <div className="p-4 rounded-xl bg-[#FAFAFA] dark:bg-[#151515] border border-[#E5E5E5] dark:border-[#2A2A2A] space-y-1.5">
             <h3 className="font-bold text-[#111111] dark:text-[#F5F5F5]">Allowable Business Expenses</h3>
-            <p className="text-[#525252] dark:text-[#A3A3A3] text-xs leading-relaxed">
+            <p className="text-[#262626] dark:text-[#D4D4D4] text-xs leading-relaxed">
               You can deduct running costs wholly and exclusively incurred for your trade, such as software, equipment, phone bills, insurance, home office, and travel expenses, reducing your taxable profit.
             </p>
           </div>
 
           <div className="p-4 rounded-xl bg-[#FAFAFA] dark:bg-[#151515] border border-[#E5E5E5] dark:border-[#2A2A2A] space-y-1.5">
             <h3 className="font-bold text-[#111111] dark:text-[#F5F5F5]">Self Assessment Deadlines</h3>
-            <p className="text-[#525252] dark:text-[#A3A3A3] text-xs leading-relaxed">
+            <p className="text-[#262626] dark:text-[#D4D4D4] text-xs leading-relaxed">
               Online tax returns and balancing payments must be submitted to HMRC by 31 January following the end of the tax year (e.g. 31 January 2026 for the 2024/25 tax year).
             </p>
           </div>
@@ -94,21 +95,21 @@ export const SelfEmployedTaxPage: React.FC = () => {
           <h2 className="text-lg sm:text-xl font-bold text-[#111111] dark:text-[#F5F5F5] mb-2">
             Class 2 vs Class 4 National Insurance Explained
           </h2>
-          <p className="text-xs sm:text-sm text-[#525252] dark:text-[#A3A3A3] leading-relaxed mb-4">
+          <p className="text-xs sm:text-sm text-[#262626] dark:text-[#D4D4D4] leading-relaxed mb-4">
             Sole traders pay different classes of National Insurance than PAYE employees (who pay Class 1 NI). Recent legislative reforms have significantly changed how self-employed National Insurance is structured:
           </p>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs sm:text-sm">
             <div className="p-4 rounded-xl bg-[#FAFAFA] dark:bg-[#151515] border border-[#E5E5E5] dark:border-[#2A2A2A] space-y-2">
               <h3 className="font-bold text-[#111111] dark:text-[#F5F5F5]">Class 2 National Insurance (State Pension Credits)</h3>
-              <p className="text-[#525252] dark:text-[#A3A3A3] text-xs leading-relaxed">
+              <p className="text-[#262626] dark:text-[#D4D4D4] text-xs leading-relaxed">
                 From 6 April 2024, self-employed workers with annual profits at or above the Small Profits Threshold (£6,725) automatically receive qualifying National Insurance credits toward the UK State Pension at £0 cost. If your profits fall below £6,725, you can opt to pay voluntary Class 2 NI (£3.45/week or £179.40/year) to protect your contributory benefits.
               </p>
             </div>
 
             <div className="p-4 rounded-xl bg-[#FAFAFA] dark:bg-[#151515] border border-[#E5E5E5] dark:border-[#2A2A2A] space-y-2">
               <h3 className="font-bold text-[#111111] dark:text-[#F5F5F5]">Class 4 National Insurance (Profit Surtax)</h3>
-              <p className="text-[#525252] dark:text-[#A3A3A3] text-xs leading-relaxed">
+              <p className="text-[#262626] dark:text-[#D4D4D4] text-xs leading-relaxed">
                 Class 4 NI is calculated directly on your net profits. You pay 6% on profits between the Lower Profits Limit (£12,570) and the Upper Profits Limit (£50,270), and 2% on any profit above £50,270. Class 4 contributions do not grant direct benefit credits but form part of your overall statutory tax bill.
               </p>
             </div>
@@ -119,11 +120,11 @@ export const SelfEmployedTaxPage: React.FC = () => {
           <h2 className="text-lg sm:text-xl font-bold text-[#111111] dark:text-[#F5F5F5] mb-2">
             Payments on Account: What Self-Employed Workers Need to Know
           </h2>
-          <p className="text-xs sm:text-sm text-[#525252] dark:text-[#A3A3A3] leading-relaxed mb-3">
+          <p className="text-xs sm:text-sm text-[#262626] dark:text-[#D4D4D4] leading-relaxed mb-3">
             If your combined annual Income Tax and Class 4 NI bill exceeds £1,000 (and less than 80% was collected via PAYE elsewhere), HMRC automatically enrolls you in the Payments on Account regime. This requires you to pay your tax in advance across two installments:
           </p>
           <div className="p-4 rounded-xl bg-[#FAFAFA] dark:bg-[#151515] border border-[#E5E5E5] dark:border-[#2A2A2A] space-y-2 text-xs">
-            <ul className="list-disc list-inside space-y-1.5 text-[#525252] dark:text-[#A3A3A3]">
+            <ul className="list-disc list-inside space-y-1.5 text-[#262626] dark:text-[#D4D4D4]">
               <li>
                 <strong className="text-[#111111] dark:text-[#F5F5F5]">31 January:</strong> You pay 100% of your balancing payment for the prior tax year, PLUS your 1st Payment on Account (equal to 50% of your estimated upcoming tax liability).
               </li>
@@ -167,7 +168,7 @@ export const SelfEmployedTaxPage: React.FC = () => {
         </div>
       </div>
 
-      <FaqAccordion items={SELF_EMPLOYED_FAQS} />
+      <FaqAccordion items={SELF_EMPLOYED_FAQS} badge="Self-Employed Tax Knowledge Base" subtitle="Clear answers to common questions about UK self-employed tax." />
       <DisclaimerNotice />
     </div>
   );

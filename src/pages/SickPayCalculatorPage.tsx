@@ -50,7 +50,7 @@ export const SickPayCalculatorPage: React.FC = () => {
         <h1 className="text-2xl sm:text-4xl font-black text-[#111111] dark:text-[#F5F5F5] tracking-tight">
           Statutory Sick Pay Calculator UK
         </h1>
-        <p className="text-xs sm:text-sm text-[#525252] dark:text-[#A3A3A3] leading-relaxed">
+        <p className="text-xs sm:text-sm text-[#262626] dark:text-[#D4D4D4] leading-relaxed">
           Calculate your statutory sick pay entitlement, check whether you meet the Lower Earnings Limit, and calculate the deduction for unpaid waiting days when off work sick.
         </p>
       </div>
@@ -62,29 +62,29 @@ export const SickPayCalculatorPage: React.FC = () => {
           <h2 className="text-lg sm:text-xl font-bold text-[#111111] dark:text-[#F5F5F5] mb-2">
             How Statutory Sick Pay (SSP) Works
           </h2>
-          <p className="text-xs sm:text-sm text-[#525252] dark:text-[#A3A3A3] leading-relaxed">
-            Statutory Sick Pay (SSP) is the legal minimum amount employers in the UK must pay to qualifying employees who cannot work due to sickness. For the 2025/26 tax year, the statutory rate is £116.75 per week. SSP is paid in the same way as your normal wages through PAYE, meaning Income Tax and National Insurance will be deducted.
+          <p className="text-xs sm:text-sm text-[#262626] dark:text-[#D4D4D4] leading-relaxed">
+            Statutory Sick Pay (SSP) is the legal minimum amount employers in the UK must pay to qualifying employees who cannot work due to sickness. For the 2026/27 tax year, the statutory rate is £123.25 per week. SSP is paid in the same way as your normal wages through PAYE, meaning Income Tax and National Insurance will be deducted.
           </p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs sm:text-sm">
           <div className="p-4 rounded-xl bg-[#FAFAFA] dark:bg-[#151515] border border-[#E5E5E5] dark:border-[#2A2A2A] space-y-1.5">
             <h3 className="font-bold text-[#111111] dark:text-[#F5F5F5]">Lower Earnings Limit (LEL)</h3>
-            <p className="text-[#525252] dark:text-[#A3A3A3] text-xs leading-relaxed">
-              To qualify for SSP, your average gross weekly earnings (AWE) must be at least £125 per week before tax over the 8 weeks prior to your sickness absence.
+            <p className="text-[#262626] dark:text-[#D4D4D4] text-xs leading-relaxed">
+              To qualify for SSP, your average gross weekly earnings (AWE) must be at least £129 per week before tax over the 8 weeks prior to your sickness absence.
             </p>
           </div>
 
           <div className="p-4 rounded-xl bg-[#FAFAFA] dark:bg-[#151515] border border-[#E5E5E5] dark:border-[#2A2A2A] space-y-1.5">
             <h3 className="font-bold text-[#111111] dark:text-[#F5F5F5]">Qualifying Days</h3>
-            <p className="text-[#525252] dark:text-[#A3A3A3] text-xs leading-relaxed">
+            <p className="text-[#262626] dark:text-[#D4D4D4] text-xs leading-relaxed">
               SSP is only paid for qualifying days — the days you are contracted to work. The daily SSP rate is calculated by dividing the statutory weekly rate by your contracted days.
             </p>
           </div>
 
           <div className="p-4 rounded-xl bg-[#FAFAFA] dark:bg-[#151515] border border-[#E5E5E5] dark:border-[#2A2A2A] space-y-1.5">
             <h3 className="font-bold text-[#111111] dark:text-[#F5F5F5]">28-Week Cap</h3>
-            <p className="text-[#525252] dark:text-[#A3A3A3] text-xs leading-relaxed">
+            <p className="text-[#262626] dark:text-[#D4D4D4] text-xs leading-relaxed">
               Employers must pay SSP for up to 28 weeks. Once this maximum is reached, you are given an SSP1 form to transition to Employment and Support Allowance (ESA).
             </p>
           </div>
@@ -94,10 +94,10 @@ export const SickPayCalculatorPage: React.FC = () => {
           <h2 className="text-lg sm:text-xl font-bold text-[#111111] dark:text-[#F5F5F5] mb-2">
             Waiting Days: Why the First 3 Sick Days Are Usually Unpaid
           </h2>
-          <p className="text-xs sm:text-sm text-[#525252] dark:text-[#A3A3A3] leading-relaxed">
+          <p className="text-xs sm:text-sm text-[#262626] dark:text-[#D4D4D4] leading-relaxed">
             By statutory UK law, you do not receive SSP for the first 3 qualifying days you miss from work. These are called &ldquo;waiting days&rdquo;. You only begin receiving SSP from the 4th qualifying day off work.
           </p>
-          <div className="mt-3 p-4 rounded-xl bg-[#FAFAFA] dark:bg-[#151515] border border-[#E5E5E5] dark:border-[#2A2A2A] text-xs text-[#525252] dark:text-[#A3A3A3] leading-relaxed">
+          <div className="mt-3 p-4 rounded-xl bg-[#FAFAFA] dark:bg-[#151515] border border-[#E5E5E5] dark:border-[#2A2A2A] text-xs text-[#262626] dark:text-[#D4D4D4] leading-relaxed">
             <strong className="text-[#111111] dark:text-[#F5F5F5]">Exception for Linked Sickness Periods:</strong> If you were off sick for 4 or more consecutive days within the previous 8 weeks and already served your 3 waiting days, the new period of sickness is classed as &ldquo;linked&rdquo;. For linked periods, no waiting days apply and SSP is payable from your first qualifying day off.
           </div>
         </div>
@@ -106,7 +106,7 @@ export const SickPayCalculatorPage: React.FC = () => {
           <h2 className="text-lg sm:text-xl font-bold text-[#111111] dark:text-[#F5F5F5] mb-2">
             Statutory Sick Pay vs Occupational Sick Pay
           </h2>
-          <p className="text-xs sm:text-sm text-[#525252] dark:text-[#A3A3A3] leading-relaxed">
+          <p className="text-xs sm:text-sm text-[#262626] dark:text-[#D4D4D4] leading-relaxed">
             Statutory Sick Pay is the legal minimum floor. Many UK employers offer an <strong>occupational (contractual) sick pay scheme</strong> as part of employee benefits. Company schemes typically provide full basic salary for an initial number of weeks (such as 4 to 26 weeks) followed by a period of half-pay. Check your employment contract or staff handbook: employers cannot pay less than SSP, so any contractual scheme replaces or tops up SSP to the higher amount.
           </p>
         </div>
@@ -141,7 +141,7 @@ export const SickPayCalculatorPage: React.FC = () => {
         </div>
       </div>
 
-      <FaqAccordion items={SICK_PAY_FAQS} />
+      <FaqAccordion items={SICK_PAY_FAQS} badge="Sick Pay Knowledge Base" subtitle="Clear answers to common questions about UK statutory sick pay." />
       <DisclaimerNotice />
     </div>
   );

@@ -1,3 +1,4 @@
+import { formatGBP } from '../../utils/format';
 import React, { useMemo } from 'react';
 import { SEO } from '../../components/seo/SEO';
 import { UK_TAX_CONFIGS, TAX_CONFIG_METADATA } from '../../config/taxConfig';
@@ -65,7 +66,7 @@ export const TaxRateChecklistPage: React.FC = () => {
       items: [
         {
           name: 'Personal Allowance',
-          codeValue: `£${currentTaxConfig.standardPersonalAllowance.toLocaleString('en-GB')}`,
+          codeValue: `${formatGBP(currentTaxConfig.standardPersonalAllowance)}`,
           sourceLabel: 'GOV.UK Income Tax Rates & Allowances',
           sourceUrl: 'https://www.gov.uk/income-tax-rates',
           configLocation: 'src/config/taxConfig.ts → standardPersonalAllowance',
@@ -73,7 +74,7 @@ export const TaxRateChecklistPage: React.FC = () => {
         },
         {
           name: 'Personal Allowance Taper Threshold',
-          codeValue: `£${currentTaxConfig.personalAllowanceTaperThreshold.toLocaleString('en-GB')}`,
+          codeValue: `${formatGBP(currentTaxConfig.personalAllowanceTaperThreshold)}`,
           sourceLabel: 'GOV.UK Income Tax Taper Rules',
           sourceUrl: 'https://www.gov.uk/income-tax-rates/income-over-100000',
           configLocation: 'src/config/taxConfig.ts → personalAllowanceTaperThreshold',
@@ -81,7 +82,7 @@ export const TaxRateChecklistPage: React.FC = () => {
         },
         ...currentTaxConfig.rUKTaxBands.map((band) => ({
           name: `${band.name} (${(band.rate * 100).toFixed(0)}%)`,
-          codeValue: `£${band.thresholdMin.toLocaleString('en-GB')} to ${band.thresholdMax === Infinity ? 'Over £125,140' : `£${band.thresholdMax.toLocaleString('en-GB')}`} (${(band.rate * 100).toFixed(0)}%)`,
+          codeValue: `${formatGBP(band.thresholdMin)} to ${band.thresholdMax === Infinity ? 'Over £125,140' : `${formatGBP(band.thresholdMax)}`} (${(band.rate * 100).toFixed(0)}%)`,
           sourceLabel: 'GOV.UK Income Tax Rates',
           sourceUrl: 'https://www.gov.uk/income-tax-rates',
           configLocation: 'src/config/taxConfig.ts → rUKTaxBands',
@@ -95,7 +96,7 @@ export const TaxRateChecklistPage: React.FC = () => {
       items: [
         ...currentTaxConfig.scotlandTaxBands.map((band) => ({
           name: `Scottish ${band.name} (${(band.rate * 100).toFixed(0)}%)`,
-          codeValue: `£${band.thresholdMin.toLocaleString('en-GB')} to ${band.thresholdMax === Infinity ? 'Over £125,140' : `£${band.thresholdMax.toLocaleString('en-GB')}`} (${(band.rate * 100).toFixed(0)}%)`,
+          codeValue: `${formatGBP(band.thresholdMin)} to ${band.thresholdMax === Infinity ? 'Over £125,140' : `${formatGBP(band.thresholdMax)}`} (${(band.rate * 100).toFixed(0)}%)`,
           sourceLabel: 'GOV.UK Scottish Income Tax',
           sourceUrl: 'https://www.gov.uk/scottish-income-tax',
           configLocation: 'src/config/taxConfig.ts → scotlandTaxBands',
@@ -109,14 +110,14 @@ export const TaxRateChecklistPage: React.FC = () => {
       items: [
         {
           name: 'Primary Threshold (PT)',
-          codeValue: `£${currentTaxConfig.employeeNI.primaryThreshold.toLocaleString('en-GB')}/year (£${(currentTaxConfig.employeeNI.primaryThreshold / 12).toFixed(2)}/month)`,
+          codeValue: `${formatGBP(currentTaxConfig.employeeNI.primaryThreshold)}/year (${formatGBP((currentTaxConfig.employeeNI.primaryThreshold / 12))}/month)`,
           sourceLabel: 'GOV.UK National Insurance Rates and Letters',
           sourceUrl: 'https://www.gov.uk/national-insurance-rates-letters',
           configLocation: 'src/config/taxConfig.ts → employeeNI.primaryThreshold',
         },
         {
           name: 'Upper Earnings Limit (UEL)',
-          codeValue: `£${currentTaxConfig.employeeNI.upperEarningsLimit.toLocaleString('en-GB')}/year (£${(currentTaxConfig.employeeNI.upperEarningsLimit / 12).toFixed(2)}/month)`,
+          codeValue: `${formatGBP(currentTaxConfig.employeeNI.upperEarningsLimit)}/year (${formatGBP((currentTaxConfig.employeeNI.upperEarningsLimit / 12))}/month)`,
           sourceLabel: 'GOV.UK National Insurance Rates and Letters',
           sourceUrl: 'https://www.gov.uk/national-insurance-rates-letters',
           configLocation: 'src/config/taxConfig.ts → employeeNI.upperEarningsLimit',
@@ -144,7 +145,7 @@ export const TaxRateChecklistPage: React.FC = () => {
       items: [
         {
           name: 'Employer Secondary Threshold (ST)',
-          codeValue: `£${currentTaxConfig.employerNI.secondaryThreshold.toLocaleString('en-GB')}/year`,
+          codeValue: `${formatGBP(currentTaxConfig.employerNI.secondaryThreshold)}/year`,
           sourceLabel: 'GOV.UK National Insurance Rates for Employers',
           sourceUrl: 'https://www.gov.uk/national-insurance-rates-letters',
           configLocation: 'src/config/taxConfig.ts → employerNI.secondaryThreshold',
@@ -160,7 +161,7 @@ export const TaxRateChecklistPage: React.FC = () => {
         },
         {
           name: 'Employment Allowance',
-          codeValue: `£${currentTaxConfig.employerNI.employmentAllowance.toLocaleString('en-GB')}/year`,
+          codeValue: `${formatGBP(currentTaxConfig.employerNI.employmentAllowance)}/year`,
           sourceLabel: 'GOV.UK Claim Employment Allowance',
           sourceUrl: 'https://www.gov.uk/claim-employment-allowance',
           configLocation: 'src/config/taxConfig.ts → employerNI.employmentAllowance',
@@ -175,35 +176,35 @@ export const TaxRateChecklistPage: React.FC = () => {
       items: [
         {
           name: 'Plan 1 Repayment Threshold',
-          codeValue: `£${currentTaxConfig.studentLoans.plan1.threshold.toLocaleString('en-GB')}/year (${(currentTaxConfig.studentLoans.plan1.rate * 100).toFixed(0)}% above threshold)`,
+          codeValue: `${formatGBP(currentTaxConfig.studentLoans.plan1.threshold)}/year (${(currentTaxConfig.studentLoans.plan1.rate * 100).toFixed(0)}% above threshold)`,
           sourceLabel: 'GOV.UK Repaying Your Student Loan - Plan 1',
           sourceUrl: 'https://www.gov.uk/repaying-your-student-loan/what-you-pay',
           configLocation: 'src/config/taxConfig.ts → studentLoans.plan1.threshold',
         },
         {
           name: 'Plan 2 Repayment Threshold',
-          codeValue: `£${currentTaxConfig.studentLoans.plan2.threshold.toLocaleString('en-GB')}/year (${(currentTaxConfig.studentLoans.plan2.rate * 100).toFixed(0)}% above threshold)`,
+          codeValue: `${formatGBP(currentTaxConfig.studentLoans.plan2.threshold)}/year (${(currentTaxConfig.studentLoans.plan2.rate * 100).toFixed(0)}% above threshold)`,
           sourceLabel: 'GOV.UK Repaying Your Student Loan - Plan 2',
           sourceUrl: 'https://www.gov.uk/repaying-your-student-loan/what-you-pay',
           configLocation: 'src/config/taxConfig.ts → studentLoans.plan2.threshold',
         },
         {
           name: 'Plan 4 Repayment Threshold (Scotland)',
-          codeValue: `£${currentTaxConfig.studentLoans.plan4.threshold.toLocaleString('en-GB')}/year (${(currentTaxConfig.studentLoans.plan4.rate * 100).toFixed(0)}% above threshold)`,
+          codeValue: `${formatGBP(currentTaxConfig.studentLoans.plan4.threshold)}/year (${(currentTaxConfig.studentLoans.plan4.rate * 100).toFixed(0)}% above threshold)`,
           sourceLabel: 'GOV.UK Repaying Your Student Loan - Plan 4',
           sourceUrl: 'https://www.gov.uk/repaying-your-student-loan/what-you-pay',
           configLocation: 'src/config/taxConfig.ts → studentLoans.plan4.threshold',
         },
         {
           name: 'Plan 5 Repayment Threshold',
-          codeValue: `£${currentTaxConfig.studentLoans.plan5.threshold.toLocaleString('en-GB')}/year (${(currentTaxConfig.studentLoans.plan5.rate * 100).toFixed(0)}% above threshold)`,
+          codeValue: `${formatGBP(currentTaxConfig.studentLoans.plan5.threshold)}/year (${(currentTaxConfig.studentLoans.plan5.rate * 100).toFixed(0)}% above threshold)`,
           sourceLabel: 'GOV.UK Repaying Your Student Loan - Plan 5',
           sourceUrl: 'https://www.gov.uk/repaying-your-student-loan/what-you-pay',
           configLocation: 'src/config/taxConfig.ts → studentLoans.plan5.threshold',
         },
         {
           name: 'Postgraduate Loan Threshold',
-          codeValue: `£${currentTaxConfig.studentLoans.postgrad.threshold.toLocaleString('en-GB')}/year (${(currentTaxConfig.studentLoans.postgrad.rate * 100).toFixed(0)}% above threshold)`,
+          codeValue: `${formatGBP(currentTaxConfig.studentLoans.postgrad.threshold)}/year (${(currentTaxConfig.studentLoans.postgrad.rate * 100).toFixed(0)}% above threshold)`,
           sourceLabel: 'GOV.UK Repaying Your Postgraduate Loan',
           sourceUrl: 'https://www.gov.uk/repaying-your-student-loan/what-you-pay',
           configLocation: 'src/config/taxConfig.ts → studentLoans.postgrad.threshold',
@@ -217,21 +218,21 @@ export const TaxRateChecklistPage: React.FC = () => {
       items: [
         ...currentSdltConfig.standardResidentialBands.map((band) => ({
           name: `Standard Residential: ${band.name}`,
-          codeValue: `${(band.rate * 100).toFixed(0)}% (Min: £${band.min.toLocaleString('en-GB')}, Max: ${band.max === Infinity ? 'Over £1.5m' : `£${band.max.toLocaleString('en-GB')}`})`,
+          codeValue: `${(band.rate * 100).toFixed(0)}% (Min: ${formatGBP(band.min)}, Max: ${band.max === Infinity ? 'Over £1.5m' : `${formatGBP(band.max)}`})`,
           sourceLabel: 'GOV.UK Stamp Duty Land Tax Residential Rates',
           sourceUrl: 'https://www.gov.uk/stamp-duty-land-tax/residential-property-rates',
           configLocation: 'src/config/stampDutyConfig.ts → standardResidentialBands',
         })),
         ...currentSdltConfig.firstTimeBuyerBands.map((band) => ({
           name: `First-Time Buyer: ${band.name}`,
-          codeValue: `${(band.rate * 100).toFixed(0)}% (Min: £${band.min.toLocaleString('en-GB')}, Max: £${band.max.toLocaleString('en-GB')})`,
+          codeValue: `${(band.rate * 100).toFixed(0)}% (Min: ${formatGBP(band.min)}, Max: ${formatGBP(band.max)})`,
           sourceLabel: 'GOV.UK First-Time Buyer SDLT Relief',
           sourceUrl: 'https://www.gov.uk/stamp-duty-land-tax/residential-property-rates',
           configLocation: 'src/config/stampDutyConfig.ts → firstTimeBuyerBands',
         })),
         {
           name: 'First-Time Buyer Max Property Cap',
-          codeValue: `£${currentSdltConfig.firstTimeBuyerMaxPropertyPrice.toLocaleString('en-GB')}`,
+          codeValue: `${formatGBP(currentSdltConfig.firstTimeBuyerMaxPropertyPrice)}`,
           sourceLabel: 'GOV.UK First-Time Buyer Eligibility Cap',
           sourceUrl: 'https://www.gov.uk/stamp-duty-land-tax/residential-property-rates',
           configLocation: 'src/config/stampDutyConfig.ts → firstTimeBuyerMaxPropertyPrice',
@@ -254,7 +255,7 @@ export const TaxRateChecklistPage: React.FC = () => {
       items: [
         {
           name: 'Dividend Allowance',
-          codeValue: `£${currentDividendConfig.dividendAllowance.toLocaleString('en-GB')}`,
+          codeValue: `${formatGBP(currentDividendConfig.dividendAllowance)}`,
           sourceLabel: 'GOV.UK Tax on Dividends',
           sourceUrl: 'https://www.gov.uk/tax-on-dividends',
           configLocation: 'src/config/dividendTaxConfig.ts → dividendAllowance',
@@ -290,7 +291,7 @@ export const TaxRateChecklistPage: React.FC = () => {
       items: [
         {
           name: 'Annual Exempt Amount (Individuals)',
-          codeValue: `£${currentCgtConfig.annualExemptAmountIndividual.toLocaleString('en-GB')}`,
+          codeValue: `${formatGBP(currentCgtConfig.annualExemptAmountIndividual)}`,
           sourceLabel: 'GOV.UK Capital Gains Tax Allowances',
           sourceUrl: 'https://www.gov.uk/capital-gains-tax/allowances',
           configLocation: 'src/config/capitalGainsTaxConfig.ts → annualExemptAmountIndividual',
@@ -333,7 +334,7 @@ export const TaxRateChecklistPage: React.FC = () => {
         },
         {
           name: 'BADR Lifetime Limit',
-          codeValue: `£${currentCgtConfig.rates.badr.lifetimeLimit.toLocaleString('en-GB')}`,
+          codeValue: `${formatGBP(currentCgtConfig.rates.badr.lifetimeLimit)}`,
           sourceLabel: 'GOV.UK Business Asset Disposal Relief Lifetime Limit',
           sourceUrl: 'https://www.gov.uk/business-asset-disposal-relief',
           configLocation: 'src/config/capitalGainsTaxConfig.ts → rates.badr.lifetimeLimit',
@@ -360,7 +361,7 @@ export const TaxRateChecklistPage: React.FC = () => {
           <h1 className="text-2xl sm:text-3xl font-extrabold text-[#111111] dark:text-[#F5F5F5] tracking-tight">
             Tax Rate Verification Checklist
           </h1>
-          <p className="text-sm text-[#525252] dark:text-[#A3A3A3] max-w-3xl leading-relaxed">
+          <p className="text-sm text-[#262626] dark:text-[#D4D4D4] max-w-3xl leading-relaxed">
             Centralized reference matrix of all active UK tax allowances, thresholds, and contribution rates currently implemented in the codebase, paired directly with official GOV.UK verification endpoints.
           </p>
         </div>
@@ -375,22 +376,22 @@ export const TaxRateChecklistPage: React.FC = () => {
               <h2 className="text-sm font-bold text-[#111111] dark:text-[#F5F5F5]">
                 Annual Verification Instructions
               </h2>
-              <p className="text-xs sm:text-sm text-[#525252] dark:text-[#A3A3A3] leading-relaxed">
+              <p className="text-xs sm:text-sm text-[#262626] dark:text-[#D4D4D4] leading-relaxed">
                 Each April, UK tax rates change. Use this page once a year: open each &apos;Official Source&apos; link, compare the published figure to the &apos;Current Value in Code&apos; column, and manually update the relevant config file if it has changed. This page does not fetch live data or make any changes automatically.
               </p>
             </div>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-2 border-t border-[#E5E5E5] dark:border-[#2A2A2A] text-xs">
-            <div className="flex items-center gap-2 text-[#525252] dark:text-[#A3A3A3]">
+            <div className="flex items-center gap-2 text-[#262626] dark:text-[#D4D4D4]">
               <Calendar className="w-4 h-4 text-[#059669] dark:text-[#10B981] shrink-0" />
               <span>Current Tax Year: <strong className="text-[#111111] dark:text-[#F5F5F5]">{TAX_CONFIG_METADATA.currentTaxYearLabel}</strong></span>
             </div>
-            <div className="flex items-center gap-2 text-[#525252] dark:text-[#A3A3A3]">
+            <div className="flex items-center gap-2 text-[#262626] dark:text-[#D4D4D4]">
               <FileCheck className="w-4 h-4 text-[#059669] dark:text-[#10B981] shrink-0" />
               <span>Last Reviewed: <strong className="text-[#111111] dark:text-[#F5F5F5]">{TAX_CONFIG_METADATA.lastUpdated}</strong></span>
             </div>
-            <div className="flex items-center gap-2 text-[#525252] dark:text-[#A3A3A3]">
+            <div className="flex items-center gap-2 text-[#262626] dark:text-[#D4D4D4]">
               <ShieldCheck className="w-4 h-4 text-[#059669] dark:text-[#10B981] shrink-0" />
               <span>Config Version: <strong className="text-[#111111] dark:text-[#F5F5F5]">{TAX_CONFIG_METADATA.version}</strong></span>
             </div>
@@ -414,7 +415,7 @@ export const TaxRateChecklistPage: React.FC = () => {
                     <h2 className="text-base font-bold text-[#111111] dark:text-[#F5F5F5]">
                       {section.title}
                     </h2>
-                    <p className="text-xs text-[#525252] dark:text-[#A3A3A3]">
+                    <p className="text-xs text-[#262626] dark:text-[#D4D4D4]">
                       {section.description}
                     </p>
                   </div>
@@ -449,7 +450,7 @@ export const TaxRateChecklistPage: React.FC = () => {
                               {item.configLocation}
                             </div>
                             {item.notes && (
-                              <div className="text-2xs text-[#737373] dark:text-[#A3A3A3] mt-1 italic">
+                              <div className="text-2xs text-[#737373] dark:text-[#D4D4D4] mt-1 italic">
                                 {item.notes}
                               </div>
                             )}

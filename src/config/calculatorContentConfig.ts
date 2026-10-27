@@ -188,7 +188,7 @@ export const CALCULATOR_CONTENT_CONFIG: Record<string, CalculatorPageContent> = 
       title: 'How Employee National Insurance is Estimated',
       paragraphs: [
         'Class 1 National Insurance is calculated per pay period (e.g. weekly or monthly) rather than cumulatively across the whole tax year, unless you are assessed under company director annual rules.',
-        'Earnings below the Lower Earnings Limit (£6,396/year or £123–£125/week) accrue no NI credits. Earnings between the Lower Earnings Limit and Primary Threshold (£12,570/year or £242/week) are charged at 0% but protect your statutory State Pension qualifying record.',
+        'Earnings below the Lower Earnings Limit (£6,708/year or £129/week for 2026/27) accrue no NI credits. Earnings between the Lower Earnings Limit and Primary Threshold (£12,570/year or £242/week) are charged at 0% but protect your statutory State Pension qualifying record.',
         'Earnings between £12,570 and £50,270 are charged at the main rate of 8%. Earnings above the Upper Earnings Limit of £50,270 are charged at 2%.',
       ],
     },
@@ -452,15 +452,16 @@ export const CALCULATOR_CONTENT_CONFIG: Record<string, CalculatorPageContent> = 
       'how much tax on dividends UK',
       'dividend tax rate calculator UK',
       'dividend income tax calculator UK',
-    ],
+    
+      'how much tax on dividends',],
     directAnswerParagraph:
-      'This UK Dividend Tax calculator estimates how much tax you will pay on dividend income from limited companies, investment funds or individual UK shares. It accounts for the statutory £500 Dividend Allowance and tax bands across the Basic (8.75%), Higher (33.75%), and Additional (39.35%) rates.',
+      'This UK Dividend Tax calculator estimates how much tax you will pay on dividend income from limited companies, investment funds or individual UK shares. It accounts for the statutory £500 Dividend Allowance and tax bands across the Basic (10.75%), Higher (35.75%), and Additional (39.35%) rates.',
     howItWorks: {
       title: 'How UK Dividend Tax is Estimated',
       paragraphs: [
         'Dividends are taxed as the top slice of income after non-savings employment, pension, and property income. Your Personal Allowance (£12,570) is allocated first against other taxable income.',
         'Every individual receives a £500 tax-free Dividend Allowance. Dividends within this allowance are taxed at 0%, but they still count towards your total income to determine which tax band subsequent dividends fall into.',
-        'Dividend tax rates are 8.75% for Basic Rate taxpayers (income up to £50,270), 33.75% for Higher Rate taxpayers (£50,271 to £125,140), and 39.35% for Additional Rate taxpayers (over £125,140). Scottish dividend tax rates match UK-wide rates.',
+        'Dividend tax rates are 10.75% for Basic Rate taxpayers (income up to £50,270), 35.75% for Higher Rate taxpayers (£50,271 to £125,140), and 39.35% for Additional Rate taxpayers (over £125,140). Scottish dividend tax rates match UK-wide rates.',
       ],
     },
     assumptions: [
@@ -476,12 +477,12 @@ export const CALCULATOR_CONTENT_CONFIG: Record<string, CalculatorPageContent> = 
         { label: 'Salary (covers Personal Allowance)', value: '£12,570 (Tax: £0)' },
         { label: 'Total Dividends', value: '£30,000' },
         { label: 'Dividend Allowance (0%)', value: '£500 (Tax: £0)' },
-        { label: 'Taxable Dividends in Basic Band (8.75%)', value: '£29,500' },
-        { label: 'Estimated Dividend Tax (8.75% of £29,500)', value: '£2,581.25' },
-        { label: 'Total Net Income from Salary + Dividends', value: '£39,988.75' },
-        { label: 'Effective Tax Rate on Dividends', value: '8.60%' },
+        { label: 'Taxable Dividends in Basic Band (10.75%)', value: '£29,500' },
+        { label: 'Estimated Dividend Tax (10.75% of £29,500)', value: '£3,171.25' },
+        { label: 'Total Net Income from Salary + Dividends', value: '£39,398.75' },
+        { label: 'Effective Tax Rate on Dividends', value: '10.57%' },
       ],
-      conclusion: 'The director pays £2,581.25 in dividend tax across the year, typically remitted via Self Assessment by 31 January following the tax year end.',
+      conclusion: 'The director pays £3,171.25 in dividend tax across the year, typically remitted via Self Assessment by 31 January following the tax year end.',
     },
     faqs: [
       {
@@ -564,12 +565,12 @@ export const CALCULATOR_CONTENT_CONFIG: Record<string, CalculatorPageContent> = 
         { label: 'Property Purchase Price', value: '£300,000.00' },
         { label: 'Deposit (15%)', value: '£45,000.00' },
         { label: 'Mortgage Loan Amount (85% LTV)', value: '£255,000.00' },
-        { label: 'Estimated Monthly Repayment', value: '£1,417.34' },
+        { label: 'Estimated Monthly Repayment', value: '£1,417.37' },
         { label: 'Annual Repayment Amount', value: '£17,008.08' },
-        { label: 'Total Interest Paid Over 25 Years', value: '£170,202.00' },
-        { label: 'Total Cost of Mortgage (Principal + Interest)', value: '£425,202.00' },
+        { label: 'Total Interest Paid Over 25 Years', value: '£170,211.85' },
+        { label: 'Total Cost of Mortgage (Principal + Interest)', value: '£425,211.85' },
       ],
-      conclusion: 'Paying an extra £100 per month in overpayments would save approximately £23,400 in interest and shorten the mortgage term by 2 years and 8 months.',
+      conclusion: 'Paying an extra £100 per month in overpayments would save £21,930.08 in interest and shorten the mortgage term by 2 years and 10 months (new term 22 years 2 months).',
     },
     faqs: [
       {
@@ -745,11 +746,11 @@ export const CALCULATOR_CONTENT_CONFIG: Record<string, CalculatorPageContent> = 
         { label: 'Monthly Contribution', value: '£300.00' },
         { label: 'Time Horizon', value: '15 Years' },
         { label: 'Total Contributions Made', value: '£54,000.00' },
-        { label: 'Estimated Investment Growth', value: '£40,782.00' },
-        { label: 'Estimated Total ISA Value', value: '£94,782.00' },
+        { label: 'Estimated Investment Growth', value: '£37,556.69' },
+        { label: 'Estimated Total ISA Value', value: '£91,556.69' },
         { label: 'UK Tax Paid on Growth & Dividends', value: '£0.00 (100% Tax-Free)' },
       ],
-      conclusion: 'Inside an ISA, the entire £40,782 in compound growth is sheltered from Capital Gains Tax and dividend tax, saving thousands compared to a general investment account.',
+      conclusion: 'Inside an ISA, the entire £37,556.69 in compound growth is sheltered from Capital Gains Tax and dividend tax, saving thousands compared to a general investment account.',
     },
     faqs: [
       {
@@ -838,10 +839,10 @@ export const CALCULATOR_CONTENT_CONFIG: Record<string, CalculatorPageContent> = 
         { label: 'Initial Opening Balance', value: '£5,000.00' },
         { label: 'Monthly Contribution', value: '£250.00 (£3,000/year)' },
         { label: 'Total Principal Deposited Over 5 Years', value: '£20,000.00' },
-        { label: 'Total Compound Interest Earned', value: '£3,068.50' },
-        { label: 'Final Total Savings Balance', value: '£23,068.50' },
+        { label: 'Total Compound Interest Earned', value: '£3,297.79' },
+        { label: 'Final Total Savings Balance', value: '£23,297.79' },
       ],
-      conclusion: 'Over 5 years, the saver accumulates £23,068.50, of which £3,068.50 is pure interest income generated by compound growth.',
+      conclusion: 'Over 5 years, the saver accumulates £23,297.79, of which £3,297.79 is pure interest income generated by compound growth.',
     },
     faqs: [
       {
@@ -901,7 +902,11 @@ export const CALCULATOR_CONTENT_CONFIG: Record<string, CalculatorPageContent> = 
       'how much Capital Gains Tax will I pay UK',
       'property Capital Gains Tax calculator UK',
       'shares CGT calculator UK',
-    ],
+    
+      'how to calculate capital gains tax',
+      'how to calculate capital gains tax uk',
+      'how is capital gains tax calculated uk',
+      'how to calculate capital gains tax on shares',],
     directAnswerParagraph:
       'This UK Capital Gains Tax (CGT) Calculator estimates the tax due when selling shares, investments, residential property or other valuable assets. It incorporates the £3,000 Annual Exempt Amount and the unified 18% (Basic Rate) and 24% (Higher Rate) tax rates established in the Autumn Budget.',
     howItWorks: {
@@ -965,6 +970,10 @@ export const CALCULATOR_CONTENT_CONFIG: Record<string, CalculatorPageContent> = 
         question: 'Do I pay Capital Gains Tax on assets transferred to a spouse?',
         answer: 'Transfers of assets between legally married spouses or registered civil partners who live together are treated on a \'no gain, no loss\' basis and do not trigger an immediate Capital Gains Tax charge.',
       },
+      {
+        question: 'How do I calculate capital gains tax on shares in the UK?',
+        answer: 'Take the sale proceeds, subtract the purchase cost and allowable costs (such as broker fees) to get the gain, then subtract the £3,000 Annual Exempt Amount. The remaining taxable gain is taxed at 18% if it falls within your unused basic-rate band (up to £50,270 of total taxable income) and 24% above it. For example, a basic-rate taxpayer selling shares with a £14,500 gain after £500 of fees pays tax on £11,500, which is £2,070 at 18%. Shares held inside an ISA are exempt. Use the calculator above with your proceeds, costs and other income for an exact figure.',
+      },
     ],
     relatedCalculators: [
       {
@@ -989,29 +998,39 @@ export const CALCULATOR_CONTENT_CONFIG: Record<string, CalculatorPageContent> = 
   stamp_duty: {
     slug: 'stamp-duty-calculator',
     canonicalUrl: 'https://paywiseuk.vercel.app/stamp-duty-calculator',
-    seoTitle: 'Stamp Duty Calculator UK 2025/26 | Free SDLT Stamp Calculator',
-    metaDescription: 'Free UK Stamp Duty Calculator (SDLT) for 2025/2026. Calculate Stamp Duty Land Tax for first-time buyers, home movers, and second homes (5% surcharge).',
-    h1: 'Stamp Duty Calculator UK (SDLT 2025/2026)',
+    seoTitle: 'Stamp Duty Calculator UK 2026/27 | Free SDLT Stamp Calculator',
+    metaDescription: 'Free UK Stamp Duty Calculator (SDLT) for 2026/2027. Calculate Stamp Duty Land Tax for first-time buyers, home movers, and second homes (5% surcharge).',
+    h1: 'Stamp Duty Calculator UK (SDLT 2026/2027)',
     primaryKeyword: 'stamp duty calculator',
     secondaryKeywords: [
       'stamp calculator uk',
       'stamp duty calculator UK',
       'first time buyer stamp duty calculator uk',
-      'sdlt calculator uk 2025 26',
-      'stamp duty rates 2025/26',
+      'sdlt calculator uk 2026 27',
+      'stamp duty rates 2026/27',
       'how much stamp duty will i pay uk',
       'stamp duty on second home uk calculator',
       'buy to let stamp duty calculator',
       'stamp duty land tax calculator',
       'sdlt rates england northern ireland',
-    ],
+    
+      'how to calculate stamp duty',
+      'how to work out stamp duty',
+      'how is stamp duty calculated',
+      'how to calculate stamp duty uk',
+      'how to calculate stamp duty land tax',
+      'how much stamp duty will i pay on 250k',
+      'how much stamp duty on 350k',
+      'how much stamp duty on 600k',
+      'what is stamp duty calculator',
+      'how much stamp duty calculator',],
     directAnswerParagraph:
-      'Calculate your exact Stamp Duty Land Tax (SDLT) payable when purchasing a residential property in England or Northern Ireland. Instant breakdown for home movers (£250k 0% threshold), first-time buyers (£425k relief), and second homes/buy-to-let (5% Autumn Budget surcharge).',
+      'Calculate your exact Stamp Duty Land Tax (SDLT) payable when purchasing a residential property in England or Northern Ireland. Instant breakdown for home movers (0% to £125,000, 2% to £250,000, 5% to £925,000), first-time buyers (0% to £300,000, 5% to £500,000), and second homes/buy-to-let (5% surcharge on top of standard rates).',
     howItWorks: {
       title: 'How Stamp Duty Land Tax (SDLT) is Calculated in England & NI',
       paragraphs: [
         'Stamp Duty Land Tax (SDLT) is a progressive tiered tax paid when purchasing residential property or land in England and Northern Ireland. The tax is charged only on the portion of the property price falling within each specific rate band.',
-        'First-time buyers benefit from relief on properties up to £625,000, paying 0% on the first £425,000 and 5% on the portion between £425,001 and £625,000. If the purchase price exceeds £625,000, standard residential rates apply to the entire price.',
+        'First-time buyers benefit from relief on properties up to £500,000, paying 0% on the first £300,000 and 5% on the portion between £300,001 and £500,000. If the purchase price exceeds £500,000, no first-time buyer relief is available and standard residential rates apply to the entire price.',
         'Purchasers of additional residential properties (including second homes, holiday cottages, and buy-to-let investments) pay a 5% surcharge across every single price band on top of standard residential SDLT rates following the Autumn Budget.',
       ],
       steps: [
@@ -1044,21 +1063,22 @@ export const CALCULATOR_CONTENT_CONFIG: Record<string, CalculatorPageContent> = 
       scenario: 'A homeowner in England sells their existing main residence and purchases a new home for £350,000 under standard residential rates.',
       breakdown: [
         { label: 'Property Purchase Price', value: '£350,000.00' },
-        { label: '0% Band (First £250,000)', value: '£0.00' },
-        { label: '5% Band (Remaining £100,000)', value: '£5,000.00' },
-        { label: 'Total Stamp Duty Payable', value: '£5,000.00' },
-        { label: 'Effective SDLT Rate', value: '1.43% of purchase price' },
+        { label: '0% Band (First £125,000)', value: '£0.00' },
+        { label: '2% Band (£125,001 to £250,000)', value: '£2,500.00' },
+        { label: '5% Band (£250,001 to £350,000)', value: '£5,000.00' },
+        { label: 'Total Stamp Duty Payable', value: '£7,500.00' },
+        { label: 'Effective SDLT Rate', value: '2.14% of purchase price' },
       ],
-      conclusion: 'The buyer owes an estimated £5,000 in SDLT upon completion. An investor purchasing the same property as a buy-to-let would pay £22,500 due to the 5% surcharge.',
+      conclusion: 'The buyer owes an estimated £7,500 in SDLT upon completion. An investor purchasing the same property as a buy-to-let would pay £25,000 due to the 5% surcharge (£7,500 standard tax + £17,500 surcharge).',
     },
     faqs: [
       {
         question: 'How much stamp duty will I pay on a £300,000 house in the UK?',
-        answer: 'For a home mover replacing their main residence, stamp duty on a £300,000 house is £2,500 (0% on the first £250,000 and 5% on the remaining £50,000). For a first-time buyer, stamp duty is £0 because first-time buyers pay 0% up to £425,000. For an additional property or buy-to-let, stamp duty is £17,500 due to the 5% surcharge.',
+        answer: 'For a home mover replacing their main residence, stamp duty on a £300,000 house is £5,000 (0% on the first £125,000, 2% on the next £125,000 = £2,500, and 5% on the remaining £50,000 = £2,500). For a first-time buyer, stamp duty is £0 because first-time buyers pay 0% up to £300,000. For an additional property or buy-to-let, stamp duty is £20,000 (£5,000 standard tax + £15,000 surcharge at 5% of £300,000).',
       },
       {
         question: 'How much stamp duty will I pay on a £400,000 or £500,000 house?',
-        answer: 'For a home mover: a £400,000 house incurs £7,500 in SDLT; a £500,000 house incurs £12,500. For a first-time buyer: a £400,000 house incurs £0 SDLT; a £500,000 house incurs £3,750 (5% on £75,000 above £425k). For second homes/buy-to-let: a £400,000 house incurs £27,500 and a £500,000 house incurs £37,500.',
+        answer: 'For a home mover: a £400,000 house incurs £10,000 in SDLT; a £500,000 house incurs £15,000. For a first-time buyer: a £400,000 house incurs £5,000 SDLT (5% on £100,000 above £300,000); a £500,000 house incurs £10,000 (5% on £200,000 above £300,000). For second homes/buy-to-let: a £400,000 house incurs £30,000 and a £500,000 house incurs £40,000 (standard tax + 5% of the full price).',
       },
       {
         question: 'What is Stamp Duty Land Tax (SDLT)?',
@@ -1066,7 +1086,7 @@ export const CALCULATOR_CONTENT_CONFIG: Record<string, CalculatorPageContent> = 
       },
       {
         question: 'How does First-Time Buyer Stamp Duty relief work?',
-        answer: 'First-time buyers pay 0% Stamp Duty on properties up to £425,000, and 5% on the portion between £425,001 and £625,000. If the purchase price exceeds £625,000, no first-time buyer relief is available and standard rates apply.',
+        answer: 'First-time buyers pay 0% Stamp Duty on properties up to £300,000, and 5% on the portion between £300,001 and £500,000. If the purchase price exceeds £500,000, no first-time buyer relief is available and standard rates apply.',
       },
       {
         question: 'What is the Stamp Duty surcharge on second homes and buy-to-let properties?',
@@ -1077,12 +1097,32 @@ export const CALCULATOR_CONTENT_CONFIG: Record<string, CalculatorPageContent> = 
         answer: 'You have 14 days from the date of completion to submit a Stamp Duty Land Tax return to HMRC and pay any tax due. Usually, your conveyancing solicitor handles this as part of the legal completion process.',
       },
       {
+        question: 'How much stamp duty will I pay on a second home?',
+        answer: 'A second home or buy-to-let pays standard SDLT plus a 5% surcharge on the full price. For example, on a £400,000 second home the standard tax is £10,000 and the surcharge is £20,000, for a total of £30,000. On a £500,000 second home the total is £40,000 (£15,000 standard tax + £25,000 surcharge).',
+      },
+      {
+        question: 'How much stamp duty do I pay on a £450,000 house?',
+        answer: 'For a home mover, stamp duty on a £450,000 house is £12,500 (0% on the first £125,000, 2% on the next £125,000 = £2,500, and 5% on the remaining £200,000 = £10,000). For a first-time buyer it is £7,500 (5% on £150,000 above £300,000). For a second home it is £35,000 (£12,500 standard tax + £22,500 surcharge).',
+      },
+      {
+        question: 'What is the stamp duty on a house calculator for England and Northern Ireland?',
+        answer: 'Use the calculator above: enter the property price and buyer type (home mover, first-time buyer, or second home / buy-to-let) and it applies the current SDLT bands — 0% to £125,000, 2% to £250,000, 5% to £925,000, 10% to £1,500,000, 12% above — plus first-time buyer relief to £500,000 and the 5% second-home surcharge where it applies. Scotland (LBTT) and Wales (LTT) use different taxes.',
+      },
+      {
         question: 'Does this stamp calculator apply to properties in Scotland or Wales?',
         answer: 'No. Stamp Duty (SDLT) applies to England and Northern Ireland only. Property purchases in Scotland are subject to Land and Buildings Transaction Tax (LBTT), while Wales operates Land Transaction Tax (LTT).',
       },
       {
         question: 'Can I add Stamp Duty to my mortgage loan?',
         answer: 'Some mortgage lenders permit you to borrow extra funds to cover Stamp Duty if your loan-to-value (LTV) ratio and affordability allow it. However, this increases your monthly repayment and total interest paid.',
+      },
+      {
+        question: 'How do I calculate stamp duty, and how is stamp duty land tax worked out?',
+        answer: 'First choose your buyer type, then split the price across the bands: 0% on the first £125,000, 2% on £125,001–£250,000, 5% on £250,001–£925,000, 10% to £1,500,000 and 12% above. First-time buyers pay 0% to £300,000 and 5% to £500,000, with no relief above £500,000. Second homes and buy-to-let add a 5% surcharge on the full price. For example, a home mover buying at £350,000 pays £7,500 (0% + £2,500 + £5,000). Enter your price and buyer type above for an exact figure. This calculator covers England and Northern Ireland only; Scotland and Wales use LBTT and LTT.',
+      },
+      {
+        question: 'How much stamp duty will I pay on a £250,000, £350,000 or £600,000 house?',
+        answer: 'On a £250,000 house: home mover £2,500, first-time buyer £0, second home £15,000. On a £350,000 house: home mover £7,500, first-time buyer £2,500, second home £25,000. On a £600,000 house: home mover £20,000, first-time buyer £20,000 (no relief above £500,000, so standard rates apply), second home £50,000. For any other price, enter it in the calculator above — it applies the same bands, relief and surcharge.',
       },
     ],
     relatedCalculators: [
@@ -1158,11 +1198,11 @@ export const CALCULATOR_CONTENT_CONFIG: Record<string, CalculatorPageContent> = 
         { label: 'Current Mortgage Balance', value: '£200,000.00' },
         { label: 'Standard Monthly Payment', value: '£1,111.66' },
         { label: 'Monthly Overpayment', value: '£150.00' },
-        { label: 'New Term to Pay Off', value: '20 years 4 months' },
-        { label: 'Time Saved Off Mortgage', value: '4 years 8 months' },
-        { label: 'Total Interest Saved', value: '£27,342.00' },
+        { label: 'New Term to Pay Off', value: '20 years 2 months' },
+        { label: 'Time Saved Off Mortgage', value: '4 years 10 months' },
+        { label: 'Total Interest Saved', value: '£29,283.67' },
       ],
-      conclusion: 'By overpaying £150 each month, the borrower becomes mortgage-free 4 years and 8 months sooner and saves over £27,000 in interest.',
+      conclusion: 'By overpaying £150 each month, the borrower becomes mortgage-free 4 years and 10 months sooner and saves £29,283.67 in interest.',
     },
     faqs: [
       {
@@ -1471,17 +1511,17 @@ export const CALCULATOR_CONTENT_CONFIG: Record<string, CalculatorPageContent> = 
     ],
     practicalExample: {
       title: 'Practical Example: Target £3,000 Monthly Take-Home Pay',
-      scenario: 'An employee in England wants a net monthly income of £3,000 (£36,000 net/yr) with a 5% workplace pension and Plan 2 student loan.',
+      scenario: 'An employee in England wants a net monthly income of £3,000 (£36,000 net/yr) with a 5% salary-sacrifice workplace pension and Plan 2 student loan.',
       breakdown: [
         { label: 'Target Monthly Net Pay', value: '£3,000.00 / month' },
         { label: 'Target Annual Net Pay', value: '£36,000.00 / year' },
-        { label: 'Required Gross Annual Salary', value: '£49,850.00' },
-        { label: 'Estimated Annual Income Tax', value: '£7,456.00' },
-        { label: 'Estimated Annual National Insurance', value: '£2,982.00' },
-        { label: 'Annual Pension Contribution (5%)', value: '£2,492.00' },
-        { label: 'Annual Student Loan (Plan 2)', value: '£920.00' },
+        { label: 'Required Gross Annual Salary', value: '£46,007.34' },
+        { label: 'Estimated Annual Income Tax', value: '£6,227.39' },
+        { label: 'Estimated Annual National Insurance', value: '£2,490.96' },
+        { label: 'Annual Pension Contribution (5%)', value: '£2,300.37' },
+        { label: 'Annual Student Loan (Plan 2)', value: '£1,288.98' },
       ],
-      conclusion: 'To take home £3,000 every month, the worker must negotiate a gross salary of approximately £49,850 per year.',
+      conclusion: 'To take home £3,000 every month, the worker must negotiate a gross salary of approximately £46,007 per year.',
     },
     faqs: [
       {
@@ -1579,14 +1619,14 @@ export const CALCULATOR_CONTENT_CONFIG: Record<string, CalculatorPageContent> = 
       title: 'Practical Example: 45-Year-Old Employee with 10 Years Service',
       scenario: 'An employee aged 45 with 10 completed years of service earns £800/week (statutory cap £700/week applies).',
       breakdown: [
-        { label: 'Completed Years Aged 41–45 (4 years @ 1.5 wks)', value: '6.0 weeks' },
-        { label: 'Completed Years Aged 35–40 (6 years @ 1.0 wk)', value: '6.0 weeks' },
-        { label: 'Total Statutory Weeks Entitlement', value: '12.0 weeks' },
+        { label: 'Completed Years Aged 41–45 (5 years @ 1.5 wks)', value: '7.5 weeks' },
+        { label: 'Completed Years Aged 36–40 (5 years @ 1.0 wk)', value: '5.0 weeks' },
+        { label: 'Total Statutory Weeks Entitlement', value: '12.5 weeks' },
         { label: 'Capped Weekly Pay', value: '£700.00' },
-        { label: 'Total Statutory Redundancy Pay', value: '£8,400.00' },
+        { label: 'Total Statutory Redundancy Pay', value: '£8,750.00' },
         { label: 'Tax & NI Due (Under £30,000 threshold)', value: '£0.00 (100% Tax-Free)' },
       ],
-      conclusion: 'The employee receives a statutory redundancy payout of £8,400 completely tax-free.',
+      conclusion: 'The employee receives a statutory redundancy payout of £8,750 completely tax-free. Service years are counted ending at the current age: ages 41–45 at 1.5 weeks and ages 36–40 at 1.0 week.',
     },
     faqs: [
       {
@@ -1846,7 +1886,7 @@ export const CALCULATOR_CONTENT_CONFIG: Record<string, CalculatorPageContent> = 
   credit_card_repayment: {
     slug: 'credit-card-repayment-calculator',
     canonicalUrl: 'https://paywiseuk.vercel.app/credit-card-repayment-calculator',
-    seoTitle: 'Credit Card Repayment & Minimum Payment Calculator UK (2025/2026)',
+    seoTitle: 'Credit Card Repayment & Minimum Payment Calculator UK (2026/2027)',
     metaDescription: 'Calculate how much the minimum payment is on your UK credit card, what your monthly repayment will be, payoff timeline, and how much interest you will save.',
     h1: 'Credit Card Repayment & Minimum Payment Calculator UK',
     primaryKeyword: 'how much is the minimum payment on a credit card',
@@ -1863,14 +1903,30 @@ export const CALCULATOR_CONTENT_CONFIG: Record<string, CalculatorPageContent> = 
       'credit card interest calculator UK',
       'how long to pay off credit card UK',
       'credit card minimum repayment calculator UK',
-    ],
+    
+      'how to work out minimum payment on credit card',
+      'how are credit card repayments calculated',
+      'how do credit card repayments work',
+      'how to calculate credit card payments with interest',
+      'how to calculate credit card interest payment',
+      'how to calculate credit card charges',
+      'how to calculate credit card apr',
+      'which credit card to pay off first calculator',
+      'which credit card should i pay off first calculator',
+      'how many months to pay off credit card calculator',
+      'how to work out monthly credit card repayments',
+      'how to work out credit card minimum payments',
+      'what is my minimum credit card payment calculator',
+      'how to calculate credit card payoff',
+      'how long to pay off my credit card uk',
+      'how much interest will i pay on my credit card calculator',],
     directAnswerParagraph:
       'Find out exactly how much the minimum payment on your credit card will be and calculate how long it will take to clear your balance. Compare standard UK minimum repayments against fixed monthly contributions to become debt-free years sooner and save thousands in interest.',
     howItWorks: {
       title: 'How Credit Card Minimum Payments & Interest Work in the UK',
       paragraphs: [
         'UK credit card interest is calculated daily and compounded monthly based on your Annual Percentage Rate (APR). If you carry a balance from month to month, interest is added to your account.',
-        'Standard minimum repayments in the UK are typically set to the highest of £5 (or £25 depending on provider), 2.5% to 3% of the outstanding balance, or 1% of the principal plus that month\'s interest and any charges. Paying only the minimum results in long repayment timelines and excessive interest costs.',
+        'This calculator assumes interest = balance x APR / 12 and the minimum payment is the greatest of £5, 2.5% of the balance, or 1% of the balance plus monthly interest. Your card issuer statement may differ slightly. The FCA requires lenders to set a minimum payment in general terms, but individual lenders choose their own formula, so the exact rule varies by card. Paying only the minimum results in long repayment timelines and excessive interest costs.',
         'Switching to a fixed monthly repayment or paying off your balance within a target timeframe rapidly decreases principal debt and drastically reduces the total interest paid.',
       ],
       steps: [
@@ -1894,7 +1950,7 @@ export const CALCULATOR_CONTENT_CONFIG: Record<string, CalculatorPageContent> = 
     assumptions: [
       'Assumes no additional spending or purchases are added to the card balance during the repayment period.',
       'Interest is compounded monthly based on the nominal equivalent of the stated APR.',
-      'Minimum repayment calculation follows the standard UK regulatory formula: max(£5, 2.5% balance, 1% balance + interest).',
+      'Minimum repayment calculation follows this site\'s assumed rule, read from UK_CREDIT_CARD_RULES: max(£5, 2.5% balance, 1% balance + monthly interest), where monthly interest = balance x APR / 12. This is a typical lender pattern, not a single FCA-prescribed formula.',
       'Does not include annual card fees or late payment penalties.',
     ],
     practicalExample: {
@@ -1903,30 +1959,30 @@ export const CALCULATOR_CONTENT_CONFIG: Record<string, CalculatorPageContent> = 
       breakdown: [
         { label: 'Current Credit Card Balance', value: '£3,000.00' },
         { label: 'Annual Interest Rate (APR)', value: '24.9%' },
-        { label: 'Minimum Payment Only Timeline', value: '18 years 5 months' },
-        { label: 'Minimum Payment Total Interest', value: '£3,240.00' },
-        { label: 'Fixed £150/month Timeline', value: '2 years 2 months (26 months)' },
-        { label: 'Fixed £150/month Total Interest', value: '£815.00' },
-        { label: 'Total Interest Saved', value: '£2,425.00' },
+        { label: 'Minimum Payment Only Timeline', value: '28 years 9 months (345 months)' },
+        { label: 'Minimum Payment Total Interest', value: '£5,998.48' },
+        { label: 'Fixed £150/month Timeline', value: '2 years 3 months (27 months)' },
+        { label: 'Fixed £150/month Total Interest', value: '£915.95' },
+        { label: 'Total Interest Saved', value: '£5,082.53' },
       ],
-      conclusion: 'By fixing repayments at £150/month instead of minimum payments, the cardholder becomes debt-free 16 years earlier and saves over £2,400 in interest.',
+      conclusion: 'By fixing repayments at £150/month instead of minimum payments, the cardholder becomes debt-free 26 years 6 months earlier (345 months vs 27 months) and saves £5,082.53 in interest.',
     },
     faqs: [
       {
         question: 'How much is the minimum payment on a credit card in the UK?',
-        answer: 'In the UK, your minimum monthly credit card payment is usually calculated as the highest of: (1) A fixed minimum sum of £5 or £25; (2) 2% to 3% of your total outstanding balance; or (3) 1% of your principal balance PLUS that month\'s interest and any default charges. For example, on a £2,000 balance at 24.9% APR, your initial minimum payment would be approximately £60 to £65.',
+        answer: 'This calculator assumes interest = balance x APR / 12 and the minimum payment is the greatest of £5, 2.5% of the balance, or 1% of the balance plus monthly interest. Your card issuer statement may differ slightly. For example, on a £2,000 balance at 24.9% APR, month 1 interest is £41.50, so the candidates are £5, £50.00 (2.5%) and £61.50 (1% + interest) — the initial minimum payment is exactly £61.50.',
       },
       {
         question: 'What is the minimum repayment on a credit card if I have a £1,000, £3,000, or £5,000 balance?',
-        answer: 'On a standard 24.9% APR UK credit card: for a £1,000 balance, the initial minimum payment is around £30 to £35/month; for a £3,000 balance, it is around £90 to £100/month; and for a £5,000 balance, it is around £150 to £165/month. As you pay down the balance, the required minimum drops each month, which slows down your debt reduction.',
+        answer: 'On a standard 24.9% APR UK credit card, using this calculator rule: for a £1,000 balance, the initial minimum payment is £30.75/month; for a £3,000 balance, it is £92.25/month; and for a £5,000 balance, it is £153.75/month. As you pay down the balance, the required minimum drops each month, which slows down your debt reduction.',
       },
       {
         question: 'What will my minimum credit card payment be if I only pay the minimum each month?',
-        answer: 'If you only pay the minimum, your payment will decrease every month as your principal balance falls. However, because smaller payments cover less and less principal, clearing even a modest £2,500 balance at 24.9% APR could take over 15 to 18 years and cost more in interest than the original borrowed amount.',
+        answer: 'If you only pay the minimum, your payment will decrease every month as your principal balance falls. However, because smaller payments cover less and less principal, clearing a £2,500 balance at 24.9% APR takes 327 months (27 years 3 months) and £4,960.98 in interest on this calculator rule — almost twice the original balance in interest alone.',
       },
       {
         question: 'How much will my minimum credit card payment be on a 0% interest balance transfer card?',
-        answer: 'On a 0% interest promotional card, there is no monthly interest added, so your minimum payment is typically just 1% to 2.5% of the balance (or a minimum £5 to £25). On a £3,000 balance at 0%, the minimum payment is usually £30 to £75 per month. To clear the balance before the 0% deal expires (e.g. 24 months), you should divide £3,000 by 24 = £125 fixed per month.',
+        answer: 'On a 0% interest promotional card, there is no monthly interest added, so under this calculator rule the candidates are £5, £75.00 (2.5%) and £30.00 (1%) — the minimum payment is £75.00 per month on a £3,000 balance. To clear the balance before the 0% deal expires (e.g. 24 months), you should divide £3,000 by 24 = £125 fixed per month.',
       },
       {
         question: 'Why do minimum credit card payments take so long to clear debt?',
@@ -1945,12 +2001,36 @@ export const CALCULATOR_CONTENT_CONFIG: Record<string, CalculatorPageContent> = 
         answer: 'A 0% balance transfer card allows you to move existing high-interest credit card debt to a new provider with 0% interest for a promotional period (typically 12 to 30 months), usually in exchange for a one-off transfer fee of 1.5% to 3.5%.',
       },
       {
+        question: 'How do I calculate the minimum payment on a credit card?',
+        answer: 'This calculator assumes interest = balance x APR / 12 and the minimum payment is the greatest of £5, 2.5% of the balance, or 1% of the balance plus monthly interest. For example, on a £3,000 balance at 24.9% APR, month 1 interest is £62.25, so the candidates are £5, £75.00 (2.5%) and £92.25 (1% + interest) — the initial minimum payment is £92.25.',
+      },
+      {
+        question: 'How long will it take to pay off my credit card if I only pay the minimum?',
+        answer: 'On this calculator at 24.9% APR, a £1,000 balance takes 236 months (19 years 8 months) and £1,848.48 in interest; a £2,500 balance takes 327 months (27 years 3 months) and £4,960.98 in interest; a £5,000 balance takes 396 months (33 years 0 months) and £10,148.48 in interest. Paying a fixed amount instead cuts years off that timeline.',
+      },
+      {
+        question: 'How much interest will I pay on a credit card?',
+        answer: 'It depends on the balance, APR and payment. On this calculator at 24.9% APR, a £3,000 balance paid at the minimum only costs £5,998.48 in interest over 345 months, while a fixed £150/month payment costs £915.95 in interest over 27 months — a saving of £5,082.53. Use the calculator above with your own balance and APR for an exact figure.',
+      },
+      {
         question: 'What are persistent debt rules in the UK?',
         answer: 'Under Financial Conduct Authority (FCA) rules, if you have paid more in interest and charges than principal over an 18 to 36 month period, your lender must contact you and encourage you to increase your payments to clear the balance within 3 to 4 years.',
       },
       {
         question: 'Will paying off my credit card early hurt my credit score?',
         answer: 'No. Clearing your balance reduces your credit utilisation ratio (the percentage of available credit you are using), which is one of the most positive factors for boosting your UK credit score.',
+      },
+      {
+        question: 'How do credit card repayments work, and how are credit card repayments calculated?',
+        answer: 'Each month your payment first covers interest and charges, then reduces the balance. On this calculator, monthly interest is balance x APR / 12, and the minimum payment is the greatest of £5, 2.5% of the balance, or 1% of the balance plus monthly interest. Because a minimum payment falls as the balance falls, it clears debt slowly: at 24.9% APR a £2,500 balance takes 327 months and £4,960.98 in interest on minimum payments alone. A fixed monthly payment clears the same balance far faster — use the fixed-payment option above to compare.',
+      },
+      {
+        question: 'Which credit card should I pay off first?',
+        answer: 'If you have more than one card, the method that saves the most interest is to pay the minimum on every card, then put any extra money towards the card with the highest APR first, then move to the next highest once it is cleared. The alternative, paying the smallest balance first, can help motivation but usually costs more interest. This calculator works one card at a time: enter each card\'s balance and APR separately to compare total interest and payoff time, then apply the extra payment to the highest-APR card.',
+      },
+      {
+        question: 'How do I calculate credit card interest, charges and APR?',
+        answer: 'Monthly interest is balance x APR / 12. For example, a £3,000 balance at 24.9% APR accrues £62.25 of interest in a month, or about £2.05 per day (APR / 365 x balance). APR is the annual rate including most mandatory charges, so it is the right rate to compare cards, but it does not include late-payment or cash-advance fees, which are charged separately. Enter your balance and APR above for an exact payoff timeline and total interest figure.',
       },
     ],
     relatedCalculators: [
@@ -2024,15 +2104,15 @@ export const CALCULATOR_CONTENT_CONFIG: Record<string, CalculatorPageContent> = 
       scenario: 'A family in the UK with 2 qualifying children has a higher-earning partner with an adjusted net income of £70,000.',
       breakdown: [
         { label: 'Number of Children', value: '2 children' },
-        { label: 'Weekly Gross Child Benefit', value: '£43.30 / week (£26.05 + £17.25)' },
-        { label: 'Annual Gross Child Benefit', value: '£2,251.60 / year' },
+        { label: 'Weekly Gross Child Benefit', value: '£44.95 / week (£27.05 + £17.90)' },
+        { label: 'Annual Gross Child Benefit', value: '£2,337.40 / year' },
         { label: 'Higher Earner Adjusted Net Income', value: '£70,000.00' },
         { label: 'Income Above £60,000 Threshold', value: '£10,000.00' },
         { label: 'HICBC Clawback Percentage', value: '50% (1% per £200 over £60k)' },
-        { label: 'High Income Tax Charge (HICBC)', value: '£1,125.80 / year' },
-        { label: 'Net Retained Child Benefit', value: '£1,125.80 / year (£93.82 / month)' },
+        { label: 'High Income Tax Charge (HICBC)', value: '£1,168.70 / year' },
+        { label: 'Net Retained Child Benefit', value: '£1,168.70 / year (£97.39 / month)' },
       ],
-      conclusion: 'The family keeps £1,125.80 net per year. Making a £10,000 pension contribution would reduce adjusted net income to £60,000, eliminating the charge completely.',
+      conclusion: 'The family keeps £1,168.70 net per year. Making a £10,000 pension contribution would reduce adjusted net income to £60,000, eliminating the charge completely.',
     },
     faqs: [
       {

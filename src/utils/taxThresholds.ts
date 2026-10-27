@@ -230,19 +230,22 @@ export const CORPORATION_TAX_MARGINAL_FRACTION = 3 / 200; // 0.015 standard reli
 
 // Dividend Tax Constants
 export const DIVIDEND_ALLOWANCE = 500; // £500 tax-free dividend allowance
+// 2026/27 dividend tax rates (Autumn Budget 2025, +2pp from 6 April 2026).
+// Only used by calculateOutsideIr35; the standalone dividend calculator
+// reads its year-specific rates from dividendTaxConfig.ts.
 export const DIVIDEND_TAX_RATES = {
-  basic: 0.0875, // 8.75%
-  higher: 0.3375, // 33.75%
+  basic: 0.1075, // 10.75%
+  higher: 0.3575, // 35.75%
   additional: 0.3935, // 39.35%
 };
 export const OPTIMAL_DIRECTOR_SALARY_DEFAULT = 12570;
 
 // UK National Minimum Wage & National Living Wage Rates (2026/27, 2025/26 & 2024/25)
-export const NMW_RATE_21_AND_OVER_2026_27 = 12.21; // National Living Wage (21+)
-export const NMW_RATE_18_TO_20_2026_27 = 10.00;    // 18-20 Year Old Rate
-export const NMW_RATE_UNDER_18_2026_27 = 7.55;     // Under 18 (16-17) Rate
-export const NMW_RATE_APPRENTICE_2026_27 = 7.55;   // Apprentice Rate
-export const NMW_ACCOMMODATION_OFFSET_DAILY_2026_27 = 10.66; // £10.66/day (£74.62/wk)
+export const NMW_RATE_21_AND_OVER_2026_27 = 12.71; // National Living Wage (21+)
+export const NMW_RATE_18_TO_20_2026_27 = 10.85;    // 18-20 Year Old Rate
+export const NMW_RATE_UNDER_18_2026_27 = 8.00;     // Under 18 (16-17) Rate
+export const NMW_RATE_APPRENTICE_2026_27 = 8.00;   // Apprentice Rate
+export const NMW_ACCOMMODATION_OFFSET_DAILY_2026_27 = 11.10; // £11.10/day (2026/27; taxConfig is the value used by the engine)
 
 export const NMW_RATE_21_AND_OVER_2025_26 = 12.21; // National Living Wage (21+)
 export const NMW_RATE_18_TO_20_2025_26 = 10.00;    // 18-20 Year Old Rate

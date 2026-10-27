@@ -45,7 +45,7 @@ export const OvertimePage: React.FC = () => {
         <h1 className="text-2xl sm:text-4xl font-black text-[#111111] dark:text-[#F5F5F5] tracking-tight">
           Overtime Pay Calculator UK
         </h1>
-        <p className="text-xs sm:text-sm text-[#525252] dark:text-[#A3A3A3] leading-relaxed">
+        <p className="text-xs sm:text-sm text-[#262626] dark:text-[#D4D4D4] leading-relaxed">
           Calculate your gross and net overtime pay after marginal Income Tax and National Insurance deductions for time-and-a-half (1.5x), double-time (2.0x), and custom pay multipliers.
         </p>
       </div>
@@ -57,7 +57,7 @@ export const OvertimePage: React.FC = () => {
           <h2 className="text-lg sm:text-xl font-bold text-[#111111] dark:text-[#F5F5F5] mb-2">
             How Overtime is Taxed in the UK
           </h2>
-          <p className="text-xs sm:text-sm text-[#525252] dark:text-[#A3A3A3] leading-relaxed">
+          <p className="text-xs sm:text-sm text-[#262626] dark:text-[#D4D4D4] leading-relaxed">
             Overtime income is not subject to any punitive penalty rate. Instead, it is added to your total pay and taxed at your current marginal rate of Income Tax and National Insurance.
           </p>
         </div>
@@ -65,21 +65,21 @@ export const OvertimePage: React.FC = () => {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs sm:text-sm">
           <div className="p-4 rounded-xl bg-[#FAFAFA] dark:bg-[#151515] border border-[#E5E5E5] dark:border-[#2A2A2A] space-y-1.5">
             <h3 className="font-bold text-[#111111] dark:text-[#F5F5F5]">Marginal Tax Rates</h3>
-            <p className="text-[#525252] dark:text-[#A3A3A3] text-xs leading-relaxed">
+            <p className="text-[#262626] dark:text-[#D4D4D4] text-xs leading-relaxed">
               If your regular salary is within the 20% basic band, overtime pay is taxed at 20% Income Tax + 8% NI (keeping £72 per £100).
             </p>
           </div>
 
           <div className="p-4 rounded-xl bg-[#FAFAFA] dark:bg-[#151515] border border-[#E5E5E5] dark:border-[#2A2A2A] space-y-1.5">
             <h3 className="font-bold text-[#111111] dark:text-[#F5F5F5]">Higher Rate Bracket</h3>
-            <p className="text-[#525252] dark:text-[#A3A3A3] text-xs leading-relaxed">
+            <p className="text-[#262626] dark:text-[#D4D4D4] text-xs leading-relaxed">
               If overtime pushes total annual pay above £50,270, the excess is taxed at 40% Income Tax + 2% NI (keeping £58 per £100).
             </p>
           </div>
 
           <div className="p-4 rounded-xl bg-[#FAFAFA] dark:bg-[#151515] border border-[#E5E5E5] dark:border-[#2A2A2A] space-y-1.5">
             <h3 className="font-bold text-[#111111] dark:text-[#F5F5F5]">Holiday Pay Inclusion</h3>
-            <p className="text-[#525252] dark:text-[#A3A3A3] text-xs leading-relaxed">
+            <p className="text-[#262626] dark:text-[#D4D4D4] text-xs leading-relaxed">
               Under UK employment law, regular overtime must be included when calculating your statutory holiday pay over a 52-week reference period.
             </p>
           </div>
@@ -115,7 +115,7 @@ export const OvertimePage: React.FC = () => {
         </div>
       </div>
 
-      <FaqAccordion items={OVERTIME_FAQS} />
+      <FaqAccordion items={OVERTIME_FAQS} badge="Overtime Pay Knowledge Base" subtitle="Clear answers to common questions about UK overtime pay." />
       <DisclaimerNotice />
     </div>
   );

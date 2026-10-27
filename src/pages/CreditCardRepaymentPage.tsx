@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import { Link } from 'react-router-dom';
 import { SEO } from '../components/seo/SEO';
 import { Breadcrumbs } from '../components/layout/Breadcrumbs';
@@ -7,10 +7,42 @@ import { FaqAccordion } from '../components/common/FaqAccordion';
 import { DisclaimerNotice } from '../components/common/DisclaimerNotice';
 import { CALCULATOR_CONTENT_CONFIG } from '../config/calculatorContentConfig';
 import { TAX_CONFIG_METADATA } from '../config/taxConfig';
+import { calculateCreditCardRepayment } from '../utils/calculations';
+import { UK_CREDIT_CARD_RULES } from '../config/creditCardConfig';
+import { formatGBP } from '../utils/format';
 import { ArrowRight, BookOpen, Info } from 'lucide-react';
 
 export const CreditCardRepaymentPage: React.FC = () => {
   const content = CALCULATOR_CONTENT_CONFIG['credit_card_repayment'];
+
+  // Task 1: table rows are computed by the SAME function the calculator uses,
+  // so they can never drift from the calculator again. No hardcoded results.
+  const formatYearsMonths = (months: number): string => {
+    const y = Math.floor(months / 12);
+    const m = months % 12;
+    return `${y} years ${m} months`;
+  };
+  const ccTableRows = useMemo(() => {
+    const apr = 24.9;
+    const fixedPayment = 100;
+    return [1000, 2500, 5000].map((balance) => {
+      const min = calculateCreditCardRepayment({
+        currentBalance: balance,
+        annualInterestRate: apr,
+        strategy: 'minimum_only',
+        fixedMonthlyPayment: 0,
+        targetMonths: 24,
+      });
+      const fixed = calculateCreditCardRepayment({
+        currentBalance: balance,
+        annualInterestRate: apr,
+        strategy: 'fixed_monthly',
+        fixedMonthlyPayment: fixedPayment,
+        targetMonths: 24,
+      });
+      return { balance, min, fixed };
+    });
+  }, []);
 
   const breadcrumbs = [
     { label: 'Calculators', path: '/salary-calculators' },
@@ -42,7 +74,7 @@ export const CreditCardRepaymentPage: React.FC = () => {
         <h1 className="text-2xl sm:text-4xl font-black text-[#111111] dark:text-[#F5F5F5] tracking-tight">
           {content.h1}
         </h1>
-        <p className="text-xs sm:text-sm text-[#525252] dark:text-[#A3A3A3] leading-relaxed">
+        <p className="text-xs sm:text-sm text-[#262626] dark:text-[#D4D4D4] leading-relaxed">
           {content.directAnswerParagraph}
         </p>
       </div>
@@ -55,29 +87,29 @@ export const CreditCardRepaymentPage: React.FC = () => {
         <h2 className="text-xl sm:text-2xl font-bold text-[#111111] dark:text-[#F5F5F5] tracking-tight">
           How Much is the Minimum Payment on a Credit Card in the UK?
         </h2>
-        <p className="text-xs sm:text-sm text-[#525252] dark:text-[#A3A3A3] leading-relaxed">
-          In the UK, your minimum credit card repayment is the lowest amount you can pay each month to keep your account in good standing and avoid default charges. Most major UK lenders (such as Barclays, HSBC, Lloyds, NatWest, and Santander) use a standard three-part regulatory formula set under FCA lending guidelines.
+        <p className="text-xs sm:text-sm text-[#262626] dark:text-[#D4D4D4] leading-relaxed">
+          In the UK, your minimum credit card repayment is the lowest amount you can pay each month to keep your account in good standing and avoid default charges. This calculator assumes interest = balance x APR / 12 and the minimum payment is the greatest of £5, 2.5% of the balance, or 1% of the balance plus monthly interest. Your card issuer's statement may differ slightly. The FCA requires lenders to set a minimum payment in general terms, but individual lenders choose their own formula, so the exact rule varies by card.
         </p>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 pt-2">
           <div className="p-4 rounded-2xl bg-[#FAFAFA] dark:bg-[#121212] border border-[#E5E5E5] dark:border-[#2A2A2A] space-y-2">
             <h3 className="text-sm font-bold text-[#111111] dark:text-[#F5F5F5]">1. Percentage Rule</h3>
-            <p className="text-xs text-[#525252] dark:text-[#A3A3A3] leading-relaxed">
-              Between <strong>2% and 3%</strong> of your total outstanding statement balance.
+            <p className="text-xs text-[#262626] dark:text-[#D4D4D4] leading-relaxed">
+              <strong>{(UK_CREDIT_CARD_RULES.minPaymentPercentOfBalance * 100).toFixed(1)}%</strong> of your total outstanding statement balance.
             </p>
           </div>
 
           <div className="p-4 rounded-2xl bg-[#FAFAFA] dark:bg-[#121212] border border-[#E5E5E5] dark:border-[#2A2A2A] space-y-2">
             <h3 className="text-sm font-bold text-[#111111] dark:text-[#F5F5F5]">2. Interest + 1% Rule</h3>
-            <p className="text-xs text-[#525252] dark:text-[#A3A3A3] leading-relaxed">
-              <strong>1% of principal</strong> balance plus that month&apos;s accrued interest, default fees, and annual fees.
+            <p className="text-xs text-[#262626] dark:text-[#D4D4D4] leading-relaxed">
+              <strong>{(UK_CREDIT_CARD_RULES.minPaymentPrincipalPercent * 100).toFixed(0)}% of principal</strong> balance plus that month&apos;s interest (interest = balance x APR / 12).
             </p>
           </div>
 
           <div className="p-4 rounded-2xl bg-[#FAFAFA] dark:bg-[#121212] border border-[#E5E5E5] dark:border-[#2A2A2A] space-y-2">
             <h3 className="text-sm font-bold text-[#111111] dark:text-[#F5F5F5]">3. Flat Floor Minimum</h3>
-            <p className="text-xs text-[#525252] dark:text-[#A3A3A3] leading-relaxed">
-              A flat minimum floor of <strong>£5 to £25</strong> (or the full balance if less than £5).
+            <p className="text-xs text-[#262626] dark:text-[#D4D4D4] leading-relaxed">
+              A flat minimum floor of <strong>{formatGBP(UK_CREDIT_CARD_RULES.minPaymentFlatFloor)}</strong> (or the full balance plus interest, if less).
             </p>
           </div>
         </div>
@@ -86,7 +118,7 @@ export const CreditCardRepaymentPage: React.FC = () => {
           <h3 className="text-base sm:text-lg font-bold text-[#111111] dark:text-[#F5F5F5]">
             What Will My Minimum Credit Card Payment Be? (Representative UK Balances at 24.9% APR)
           </h3>
-          <p className="text-xs sm:text-sm text-[#525252] dark:text-[#A3A3A3]">
+          <p className="text-xs sm:text-sm text-[#262626] dark:text-[#D4D4D4]">
             Here is what your initial minimum monthly repayment looks like across common UK credit card balances compared against paying a fixed amount:
           </p>
 
@@ -102,27 +134,26 @@ export const CreditCardRepaymentPage: React.FC = () => {
                 </tr>
               </thead>
               <tbody className="divide-y divide-[#E5E5E5] dark:divide-[#2A2A2A]">
-                <tr>
-                  <td className="py-3 px-4 font-bold text-[#111111] dark:text-[#F5F5F5]">£1,000</td>
-                  <td className="py-3 px-4 text-[#525252] dark:text-[#A3A3A3]">£31 / month</td>
-                  <td className="py-3 px-4 text-[#525252] dark:text-[#A3A3A3]">12 years 4 months</td>
-                  <td className="py-3 px-4 text-[#DC2626] dark:text-[#F87171]">£890</td>
-                  <td className="py-3 px-4 font-bold text-[#059669] dark:text-[#10B981]">11 months (£122 interest)</td>
-                </tr>
-                <tr>
-                  <td className="py-3 px-4 font-bold text-[#111111] dark:text-[#F5F5F5]">£2,500</td>
-                  <td className="py-3 px-4 text-[#525252] dark:text-[#A3A3A3]">£77 / month</td>
-                  <td className="py-3 px-4 text-[#525252] dark:text-[#A3A3A3]">17 years 2 months</td>
-                  <td className="py-3 px-4 text-[#DC2626] dark:text-[#F87171]">£2,650</td>
-                  <td className="py-3 px-4 font-bold text-[#059669] dark:text-[#10B981]">31 months (£785 interest)</td>
-                </tr>
-                <tr>
-                  <td className="py-3 px-4 font-bold text-[#111111] dark:text-[#F5F5F5]">£5,000</td>
-                  <td className="py-3 px-4 text-[#525252] dark:text-[#A3A3A3]">£154 / month</td>
-                  <td className="py-3 px-4 text-[#525252] dark:text-[#A3A3A3]">21 years 8 months</td>
-                  <td className="py-3 px-4 text-[#DC2626] dark:text-[#F87171]">£5,840</td>
-                  <td className="py-3 px-4 font-bold text-[#059669] dark:text-[#10B981]">7 years 2 months (£3,580 interest)</td>
-                </tr>
+                {ccTableRows.map((row) => (
+                  <tr key={row.balance}>
+                    <td className="py-3 px-4 font-bold text-[#111111] dark:text-[#F5F5F5]">{formatGBP(row.balance)}</td>
+                    <td className="py-3 px-4 text-[#262626] dark:text-[#D4D4D4]">{formatGBP(row.min.monthlyRepayment)} / month</td>
+                    <td className="py-3 px-4 text-[#262626] dark:text-[#D4D4D4]">{formatYearsMonths(row.min.totalMonthsToPayoff)}</td>
+                    <td className="py-3 px-4 text-[#DC2626] dark:text-[#F87171]">{formatGBP(row.min.totalInterestPaid)}</td>
+                    <td className="py-3 px-4 font-bold text-[#059669] dark:text-[#10B981]">
+                      {row.fixed.isRepaymentTooLow ? (
+                        <>
+                          Not repayable at £100/mo
+                          <span className="block font-normal text-[#262626] dark:text-[#D4D4D4]">
+                            Monthly interest ({formatGBP(row.balance * 0.249 / 12)}) is higher than £100, so the balance would grow, not fall.
+                          </span>
+                        </>
+                      ) : (
+                        `${formatYearsMonths(row.fixed.totalMonthsToPayoff)} (${formatGBP(row.fixed.totalInterestPaid)} interest)`
+                      )}
+                    </td>
+                  </tr>
+                ))}
               </tbody>
             </table>
           </div>
@@ -132,7 +163,7 @@ export const CreditCardRepaymentPage: React.FC = () => {
           <h3 className="text-base font-bold text-[#111111] dark:text-[#F5F5F5]">
             Why You Should Avoid Paying Only the Minimum Repayment
           </h3>
-          <p className="text-xs sm:text-sm text-[#525252] dark:text-[#A3A3A3] leading-relaxed">
+          <p className="text-xs sm:text-sm text-[#262626] dark:text-[#D4D4D4] leading-relaxed">
             As your outstanding balance gradually reduces, your credit card issuer recalculates and lowers your required minimum monthly payment. Because your monthly payments shrink along with your debt, the amount going toward paying off the actual principal slows down to a crawl. Setting a standing order for a <strong>fixed monthly amount</strong> (or moving debt to a 0% balance transfer card) keeps your repayment constant, cutting years off your debt timeline and saving thousands of pounds in interest charges.
           </p>
         </div>
@@ -146,7 +177,7 @@ export const CreditCardRepaymentPage: React.FC = () => {
             <BookOpen className="w-5 h-5 text-[#059669] dark:text-[#10B981]" />
             {content.howItWorks.title}
           </h2>
-          <div className="space-y-3 text-xs sm:text-sm text-[#525252] dark:text-[#A3A3A3] leading-relaxed">
+          <div className="space-y-3 text-xs sm:text-sm text-[#262626] dark:text-[#D4D4D4] leading-relaxed">
             {content.howItWorks.paragraphs.map((p, idx) => (
               <p key={idx}>{p}</p>
             ))}
@@ -163,7 +194,7 @@ export const CreditCardRepaymentPage: React.FC = () => {
                   {step.stepNumber}
                 </div>
                 <h3 className="text-xs font-bold text-[#111111] dark:text-[#F5F5F5]">{step.title}</h3>
-                <p className="text-2xs text-[#525252] dark:text-[#A3A3A3] leading-relaxed">
+                <p className="text-2xs text-[#262626] dark:text-[#D4D4D4] leading-relaxed">
                   {step.description}
                 </p>
               </div>
@@ -178,7 +209,7 @@ export const CreditCardRepaymentPage: React.FC = () => {
               <h3 className="text-sm sm:text-base font-bold text-[#111111] dark:text-[#F5F5F5] mb-1">
                 {content.practicalExample.title}
               </h3>
-              <p className="text-xs text-[#525252] dark:text-[#A3A3A3] leading-relaxed">
+              <p className="text-xs text-[#262626] dark:text-[#D4D4D4] leading-relaxed">
                 {content.practicalExample.scenario}
               </p>
             </div>
@@ -188,7 +219,7 @@ export const CreditCardRepaymentPage: React.FC = () => {
                 <tbody className="divide-y divide-[#E5E5E5] dark:divide-[#2A2A2A]">
                   {content.practicalExample.breakdown.map((item, idx) => (
                     <tr key={idx} className="hover:bg-white dark:hover:bg-[#171717] transition-colors">
-                      <td className="py-2.5 px-3 font-medium text-[#525252] dark:text-[#A3A3A3]">
+                      <td className="py-2.5 px-3 font-medium text-[#262626] dark:text-[#D4D4D4]">
                         {item.label}
                       </td>
                       <td className="py-2.5 px-3 text-right font-bold text-[#111111] dark:text-[#F5F5F5]">
@@ -208,11 +239,11 @@ export const CreditCardRepaymentPage: React.FC = () => {
 
         {/* Assumptions & Methodology */}
         <div className="space-y-3">
-          <h3 className="text-xs font-bold uppercase tracking-wider text-[#525252] dark:text-[#A3A3A3] flex items-center gap-1.5">
+          <h3 className="text-xs font-bold uppercase tracking-wider text-[#262626] dark:text-[#D4D4D4] flex items-center gap-1.5">
             <Info className="w-4 h-4 text-[#737373]" />
             Calculation Assumptions & Rules
           </h3>
-          <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs text-[#525252] dark:text-[#A3A3A3]">
+          <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs text-[#262626] dark:text-[#D4D4D4]">
             {content.assumptions.map((assump, idx) => (
               <li key={idx} className="flex items-start gap-2">
                 <span className="w-1.5 h-1.5 rounded-full bg-[#059669] dark:bg-[#10B981] mt-1.5 shrink-0" />
@@ -253,7 +284,7 @@ export const CreditCardRepaymentPage: React.FC = () => {
       </div>
 
       {/* FAQs Section */}
-      <FaqAccordion items={content.faqs} title="Frequently Asked Questions about Credit Card Repayments" />
+      <FaqAccordion items={content.faqs} title="Frequently Asked Questions about Credit Card Repayments" badge="Credit Card Knowledge Base" subtitle="Clear answers to common questions about UK credit card minimum payments, interest and repayment." />
 
       {/* Standard Disclaimer Notice */}
       <DisclaimerNotice />

@@ -17,8 +17,8 @@ export const ChildBenefitPage: React.FC = () => {
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-8">
       <SEO
-        title="Child Benefit Calculator UK 2025/26 | HICBC High Income Charge"
-        description="Calculate your UK Child Benefit and High Income Child Benefit Charge (HICBC) for 2025/26. See exactly how much you keep after the tax charge, and whether to claim or opt out."
+        title="Child Benefit Calculator UK 2026/27 | HICBC High Income Charge"
+        description="Calculate your UK Child Benefit and High Income Child Benefit Charge (HICBC) for 2026/27. See exactly how much you keep after the tax charge, and whether to claim or opt out."
         keywords={[
           'child benefit calculator uk',
           'high income child benefit charge calculator',
@@ -33,8 +33,8 @@ export const ChildBenefitPage: React.FC = () => {
         ]}
         canonicalPath="/child-benefit-calculator"
         isCalculator={true}
-        calculatorName="Child Benefit & HICBC Calculator UK 2025/26"
-        calculatorDescription="Calculate your Child Benefit entitlement and High Income Child Benefit Charge (HICBC) for 2025/26, with net benefit after tax charge and personalised recommendation."
+        calculatorName="Child Benefit & HICBC Calculator UK 2026/27"
+        calculatorDescription="Calculate your Child Benefit entitlement and High Income Child Benefit Charge (HICBC) for 2026/27, with net benefit after tax charge and personalised recommendation."
         faqs={CHILD_BENEFIT_FAQS}
         breadcrumbs={breadcrumbs}
       />
@@ -47,10 +47,10 @@ export const ChildBenefitPage: React.FC = () => {
           HICBC threshold £60,000 · Updated April 2024
         </div>
         <h1 className="text-2xl sm:text-4xl font-black text-[#111111] dark:text-[#F5F5F5] tracking-tight">
-          Child Benefit Calculator UK 2025/26
+          Child Benefit Calculator UK 2026/27
         </h1>
-        <p className="text-xs sm:text-sm text-[#525252] dark:text-[#A3A3A3] leading-relaxed">
-          Calculate your Child Benefit entitlement for 2025/26 and find out how much you keep after the High Income Child Benefit Charge (HICBC). Enter the number of children and the higher earner's income to instantly see your gross benefit, the tax charge, and your net annual and monthly payment — with a personalised recommendation on whether to claim.
+        <p className="text-xs sm:text-sm text-[#262626] dark:text-[#D4D4D4] leading-relaxed">
+          Calculate your Child Benefit entitlement for 2026/27 and find out how much you keep after the High Income Child Benefit Charge (HICBC). Enter the number of children and the higher earner's income to instantly see your gross benefit, the tax charge, and your net annual and monthly payment — with a personalised recommendation on whether to claim.
         </p>
       </div>
 
@@ -60,9 +60,9 @@ export const ChildBenefitPage: React.FC = () => {
 
         <section className="space-y-3">
           <h2 className="text-lg sm:text-xl font-bold text-[#111111] dark:text-[#F5F5F5]">
-            How the HICBC works in 2025/26
+            How the HICBC works in 2026/27
           </h2>
-          <p className="text-xs sm:text-sm text-[#525252] dark:text-[#A3A3A3] leading-relaxed">
+          <p className="text-xs sm:text-sm text-[#262626] dark:text-[#D4D4D4] leading-relaxed">
             Since April 2024, the High Income Child Benefit Charge threshold is £60,000. For every £200 of adjusted net income above £60,000, 1% of the Child Benefit is clawed back. At £80,000 the full benefit is charged back.
           </p>
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 text-xs">
@@ -73,7 +73,7 @@ export const ChildBenefitPage: React.FC = () => {
             ].map((row, i) => (
               <div key={i} className={`p-4 rounded-xl border space-y-1 ${row.color}`}>
                 <p className="font-black text-[#111111] dark:text-[#F5F5F5]">{row.income}</p>
-                <p className="text-[#525252] dark:text-[#A3A3A3]">{row.charge}</p>
+                <p className="text-[#262626] dark:text-[#D4D4D4]">{row.charge}</p>
                 <p className="font-semibold text-[#111111] dark:text-[#F5F5F5]">{row.keep}</p>
               </div>
             ))}
@@ -93,7 +93,7 @@ export const ChildBenefitPage: React.FC = () => {
             ].map((item, i) => (
               <div key={i} className="p-4 rounded-xl bg-[#FAFAFA] dark:bg-[#151515] border border-[#E5E5E5] dark:border-[#2A2A2A] space-y-1.5">
                 <h3 className="font-bold text-[#111111] dark:text-[#F5F5F5]">{item.title}</h3>
-                <p className="text-[#525252] dark:text-[#A3A3A3] leading-relaxed">{item.desc}</p>
+                <p className="text-[#262626] dark:text-[#D4D4D4] leading-relaxed">{item.desc}</p>
               </div>
             ))}
           </div>
@@ -122,7 +122,7 @@ export const ChildBenefitPage: React.FC = () => {
         </section>
       </div>
 
-      <FaqAccordion items={CHILD_BENEFIT_FAQS} />
+      <FaqAccordion items={CHILD_BENEFIT_FAQS} badge="Child Benefit Knowledge Base" subtitle="Clear answers to common questions about UK Child Benefit." />
       <DisclaimerNotice />
     </div>
   );

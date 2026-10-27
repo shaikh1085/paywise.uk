@@ -45,7 +45,7 @@ export const SalarySacrificePage: React.FC = () => {
         <h1 className="text-2xl sm:text-4xl font-black text-[#111111] dark:text-[#F5F5F5] tracking-tight">
           Salary Sacrifice Calculator UK
         </h1>
-        <p className="text-xs sm:text-sm text-[#525252] dark:text-[#A3A3A3] leading-relaxed">
+        <p className="text-xs sm:text-sm text-[#262626] dark:text-[#D4D4D4] leading-relaxed">
           Model how contractual salary sacrifice arrangements reduce your taxable gross pay to save Income Tax, employee National Insurance, and employer contributions.
         </p>
       </div>
@@ -57,7 +57,7 @@ export const SalarySacrificePage: React.FC = () => {
           <h2 className="text-lg sm:text-xl font-bold text-[#111111] dark:text-[#F5F5F5] mb-2">
             Why Salary Sacrifice is so Tax Efficient in the UK
           </h2>
-          <p className="text-xs sm:text-sm text-[#525252] dark:text-[#A3A3A3] leading-relaxed">
+          <p className="text-xs sm:text-sm text-[#262626] dark:text-[#D4D4D4] leading-relaxed">
             Unlike standard employee deductions which are made from post-National Insurance income, salary sacrifice reduces your contractual gross salary before PAYE calculations take place.
           </p>
         </div>
@@ -65,21 +65,21 @@ export const SalarySacrificePage: React.FC = () => {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs sm:text-sm">
           <div className="p-4 rounded-xl bg-[#FAFAFA] dark:bg-[#151515] border border-[#E5E5E5] dark:border-[#2A2A2A] space-y-1.5">
             <h3 className="font-bold text-[#111111] dark:text-[#F5F5F5]">Income Tax & NI Relief</h3>
-            <p className="text-[#525252] dark:text-[#A3A3A3] text-xs leading-relaxed">
+            <p className="text-[#262626] dark:text-[#D4D4D4] text-xs leading-relaxed">
               You save 20%, 40%, or 45% Income Tax plus 8% or 2% Class 1 National Insurance on every £1 sacrificed into your pension pot.
             </p>
           </div>
 
           <div className="p-4 rounded-xl bg-[#FAFAFA] dark:bg-[#151515] border border-[#E5E5E5] dark:border-[#2A2A2A] space-y-1.5">
             <h3 className="font-bold text-[#111111] dark:text-[#F5F5F5]">Employer NI Savings</h3>
-            <p className="text-[#525252] dark:text-[#A3A3A3] text-xs leading-relaxed">
+            <p className="text-[#262626] dark:text-[#D4D4D4] text-xs leading-relaxed">
               Employers save 15% Employer National Insurance on the sacrificed sum, and many employers pass back part of this savings as extra pension funding.
             </p>
           </div>
 
           <div className="p-4 rounded-xl bg-[#FAFAFA] dark:bg-[#151515] border border-[#E5E5E5] dark:border-[#2A2A2A] space-y-1.5">
             <h3 className="font-bold text-[#111111] dark:text-[#F5F5F5]">Taper & Child Benefit</h3>
-            <p className="text-[#525252] dark:text-[#A3A3A3] text-xs leading-relaxed">
+            <p className="text-[#262626] dark:text-[#D4D4D4] text-xs leading-relaxed">
               Sacrificing salary reduces your Adjusted Net Income, helping avoid the 60% £100k Personal Allowance taper and the High Income Child Benefit Charge.
             </p>
           </div>
@@ -115,7 +115,7 @@ export const SalarySacrificePage: React.FC = () => {
         </div>
       </div>
 
-      <FaqAccordion items={SALARY_SACRIFICE_FAQS} />
+      <FaqAccordion items={SALARY_SACRIFICE_FAQS} badge="Salary Sacrifice Knowledge Base" subtitle="Clear answers to common questions about UK salary sacrifice." />
       <DisclaimerNotice />
     </div>
   );

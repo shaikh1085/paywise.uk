@@ -47,7 +47,7 @@ export const ContactPage: React.FC = () => {
         <h1 className="text-2xl sm:text-4xl font-black text-[#111111] dark:text-[#F5F5F5] tracking-tight">
           Contact PayWise UK
         </h1>
-        <p className="text-xs sm:text-sm text-[#525252] dark:text-[#A3A3A3] leading-relaxed">
+        <p className="text-xs sm:text-sm text-[#262626] dark:text-[#D4D4D4] leading-relaxed">
           Have a suggestion, spot a tax discrepancy, or need assistance with one of our salary calculators? Send us a message and our team will get back to you promptly.
         </p>
       </header>
@@ -61,7 +61,7 @@ export const ContactPage: React.FC = () => {
             <h2 className="text-lg font-bold text-[#111111] dark:text-[#F5F5F5]">
               Thank you for reaching out
             </h2>
-            <p className="text-xs sm:text-sm text-[#525252] dark:text-[#A3A3A3] max-w-md mx-auto">
+            <p className="text-xs sm:text-sm text-[#262626] dark:text-[#D4D4D4] max-w-md mx-auto">
               Your message has been received. Our team will review your feedback and respond via email if necessary.
             </p>
           </div>

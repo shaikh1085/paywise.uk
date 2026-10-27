@@ -125,7 +125,7 @@ export const FAQ_PAGE_GROUPS: { category: string; title: string; items: FaqItem[
       },
       {
         question: 'How often are tax rates and thresholds updated?',
-        answer: 'Our calculation engine is updated immediately following UK Autumn Budgets, Spring Statements, and official HMRC statutory updates for the 2025/26 tax year.',
+        answer: 'Our calculation engine is updated immediately following UK Autumn Budgets, Spring Statements, and official HMRC statutory updates for the 2026/27 tax year.',
       },
       {
         question: 'Are my personal financial details stored or transmitted?',
@@ -311,6 +311,14 @@ export const STUDENT_LOAN_FAQS: FaqItem[] = [
   {
     question: 'What happens if my earnings drop below the repayment threshold?',
     answer: 'If your gross earnings drop below your plan’s statutory threshold in any given pay period, student loan deductions automatically stop until your earnings rise above the threshold again.',
+  },
+  {
+    question: 'How much student loan will I pay, and how is student loan repayment calculated?',
+    answer: 'Repayments are 9% of gross earnings above your plan\'s threshold for undergraduate loans (Plan 1 £26,900, Plan 2 £29,385, Plan 4 £33,795, Plan 5 £25,000) and 6% above £21,000 for postgraduate loans, deducted through PAYE. For example, a Plan 2 graduate earning £35,000 pays 9% of £5,615, which is £505.35 a year, about £42.11 a month. If you have both an undergraduate and a postgraduate loan, both deductions run at the same time. Enter your salary and plan above for an exact figure.',
+  },
+  {
+    question: 'Which student loan should I pay off first?',
+    answer: 'Unlike credit cards, you do not choose the order through PAYE: if you have more than one plan, each deduction is taken at the same time on earnings above its own threshold. Voluntary overpayments are a separate decision and are not usually the best use of money for Plan 2 and Plan 5 loans, because unpaid balances are written off after 30 or 40 years and repayments stop if earnings fall below the threshold. This calculator shows your mandatory monthly repayment for each plan; it does not rank loans for voluntary overpayment, so take regulated advice before paying extra.',
   },
 ];
 
@@ -499,7 +507,7 @@ export const GUIDE_50K_FAQS: FaqItem[] = [
   },
   {
     question: 'What is the student loan deduction on £50,000 on Plan 2?',
-    answer: 'Plan 2 graduates repay 9% on income above £27,295. On £50,000, your annual student loan repayment is £2,043 (£170.29 per month).',
+    answer: 'Plan 2 graduates repay 9% on income above £29,385. On £50,000, your annual student loan repayment is £1,855.35 (£154.61 per month).',
   },
   {
     question: 'How much does a 5% workplace pension cost on a £50,000 salary?',
@@ -534,7 +542,7 @@ export const GUIDE_60K_FAQS: FaqItem[] = [
   },
   {
     question: 'What is the Plan 2 student loan repayment on £60,000?',
-    answer: 'On £60,000, 9% above the £27,295 threshold equals £2,943.45 per year (£245.29 per month) in student loan repayments.',
+    answer: 'On £60,000, 9% above the £29,385 threshold equals £2,755.35 per year (£229.61 per month) in student loan repayments.',
   },
   {
     question: 'What is the effective tax rate on £60,000?',
@@ -575,7 +583,7 @@ export const GUIDE_SALARY_SACRIFICE_FAQS: FaqItem[] = [
 
 export const GUIDE_INCOME_TAX_FAQS: FaqItem[] = [
   {
-    question: 'What is the UK Personal Allowance for 2025/2026?',
+    question: 'What is the UK Personal Allowance for 2026/2027?',
     answer: 'The standard UK Personal Allowance is £12,570. This is the amount of income you can earn each tax year without paying any Income Tax.',
   },
   {
@@ -750,7 +758,7 @@ export const IR35_COMPARE_FAQS: FaqItem[] = [
   },
   {
     question: 'How is dividend tax calculated for contractors?',
-    answer: 'After paying Corporation Tax (19% on profits under £50,000; 25% over £250,000) on company profits, limited company directors can distribute retained profit as dividends. The first £500 of dividends is tax-free under the Dividend Allowance. Any dividends above £500 are taxed based on your total income tax band: 8.75% within the Basic Rate band (up to £50,270), 33.75% within the Higher Rate band (£50,270 to £125,140), and 39.35% in the Additional Rate band (above £125,140). Dividends are exempt from National Insurance.',
+    answer: 'After paying Corporation Tax (19% on profits under £50,000; 25% over £250,000) on company profits, limited company directors can distribute retained profit as dividends. The first £500 of dividends is tax-free under the Dividend Allowance. Any dividends above £500 are taxed based on your total income tax band: 10.75% within the Basic Rate band (up to £50,270), 35.75% within the Higher Rate band (£50,270 to £125,140), and 39.35% in the Additional Rate band (above £125,140) for 2026/27. Dividends are exempt from National Insurance.',
   },
   {
     question: 'Who decides if I\'m inside or outside IR35?',
@@ -835,7 +843,7 @@ export const NET_TO_GROSS_FAQS: FaqItem[] = [
 export const MINIMUM_WAGE_FAQS: FaqItem[] = [
   {
     question: 'What is the current National Minimum Wage in the UK?',
-    answer: 'For the 2025/26 tax year (effective April 2025), the statutory UK National Living Wage for workers aged 21 and over is £12.21 per hour. For workers aged 18 to 20, the rate is £10.00 per hour. For workers aged 16 to 17 (under 18), the rate is £7.55 per hour. The statutory Apprentice rate is £7.55 per hour (for apprentices under 19 or in their first year of apprenticeship). In the 2024/25 tax year, the rates were £11.44 (21+), £8.60 (18-20), and £6.40 (under 18 and apprentices).',
+    answer: 'For the 2026/27 tax year (effective April 2026), the statutory UK National Living Wage for workers aged 21 and over is £12.71 per hour. For workers aged 18 to 20, the rate is £10.85 per hour. For workers aged 16 to 17 (under 18), the rate is £8.00 per hour. The statutory Apprentice rate is £8.00 per hour (for apprentices under 19 or in their first year of apprenticeship). In the 2025/26 tax year, the rates were £12.21 (21+), £10.00 (18-20), and £7.55 (under 18 and apprentices).',
   },
   {
     question: 'What is the difference between National Minimum Wage and National Living Wage?',
@@ -851,7 +859,7 @@ export const MINIMUM_WAGE_FAQS: FaqItem[] = [
   },
   {
     question: 'Does the minimum wage apply to apprentices?',
-    answer: 'Yes. Apprentices are entitled to the statutory Apprentice rate (£7.55/hr in 2025/26) if they are aged under 19, OR if they are aged 19 and over and in the first year of their apprenticeship program. If an apprentice is aged 19 or older and has completed their first year, they are legally entitled to the standard National Minimum Wage or National Living Wage rate for their age group.',
+    answer: 'Yes. Apprentices are entitled to the statutory Apprentice rate (£8.00/hr in 2026/27) if they are aged under 19, OR if they are aged 19 and over and in the first year of their apprenticeship program. If an apprentice is aged 19 or older and has completed their first year, they are legally entitled to the standard National Minimum Wage or National Living Wage rate for their age group.',
   },
   {
     question: 'Do unpaid working hours or overtime affect minimum wage compliance?',
@@ -861,8 +869,8 @@ export const MINIMUM_WAGE_FAQS: FaqItem[] = [
 
 export const NMW_FAQS: FaqItem[] = [
   {
-    question: 'What is the National Minimum Wage in the UK for 2025/26?',
-    answer: 'For the 2025/26 tax year (from April 2025), the National Living Wage for workers aged 21 and over is £12.21 per hour. Workers aged 18 to 20 are entitled to £10.00 per hour, workers aged 16 to 17 receive £7.55 per hour, and apprentices (under 19, or in their first year of apprenticeship aged 19+) receive £7.55 per hour.',
+    question: 'What is the National Minimum Wage in the UK for 2026/27?',
+    answer: 'For the 2026/27 tax year (from April 2026), the National Living Wage for workers aged 21 and over is £12.71 per hour. Workers aged 18 to 20 are entitled to £10.85 per hour, workers aged 16 to 17 receive £8.00 per hour, and apprentices (under 19, or in their first year of apprenticeship aged 19+) receive £8.00 per hour.',
   },
   {
     question: 'What is the difference between the National Minimum Wage and the National Living Wage?',
@@ -878,15 +886,15 @@ export const NMW_FAQS: FaqItem[] = [
   },
   {
     question: 'How does accommodation affect minimum wage calculations?',
-    answer: 'If your employer provides accommodation, they can count an accommodation offset of £10.66 per day (2025/26) toward your minimum wage. This means if you are charged more than £10.66 per day for accommodation, the excess counts as a deduction from your pay and reduces your effective hourly rate for minimum wage purposes. If you are charged less than the offset rate, the difference increases your effective pay.',
+    answer: 'If your employer provides accommodation, they can count an accommodation offset of £11.10 per day (2026/27) toward your minimum wage. This means if you are charged more than £11.10 per day for accommodation, the excess counts as a deduction from your pay and reduces your effective hourly rate for minimum wage purposes. If you are charged less than the offset rate, the difference increases your effective pay.',
   },
   {
     question: 'What is the minimum wage for apprentices?',
-    answer: 'Apprentices are entitled to the apprentice rate of £7.55 per hour (2025/26) if they are under 19 years old, or if they are 19 or over but in the first year of their apprenticeship. Once an apprentice is both aged 19 or over AND has completed their first year, they become entitled to the minimum wage rate for their age group — which could be the National Living Wage rate of £12.21 if they are 21 or over.',
+    answer: 'Apprentices are entitled to the apprentice rate of £8.00 per hour (2026/27) if they are under 19 years old, or if they are 19 or over but in the first year of their apprenticeship. Once an apprentice is both aged 19 or over AND has completed their first year, they become entitled to the minimum wage rate for their age group — which could be the National Living Wage rate of £12.71 if they are 21 or over.',
   },
   {
     question: 'Does the minimum wage increase every year?',
-    answer: 'Yes. The UK government increases the National Minimum Wage and National Living Wage every April, usually based on recommendations from the Low Pay Commission. The government has committed to raising the National Living Wage toward two-thirds of median earnings. Rates for 2025/26 rose from £11.44 to £12.21 for the NLW — an increase of 6.7%.',
+    answer: 'Yes. The UK government increases the National Minimum Wage and National Living Wage every April, usually based on recommendations from the Low Pay Commission. The government has committed to raising the National Living Wage toward two-thirds of median earnings. Rates for 2026/27 rose from £12.21 to £12.71 for the NLW — an increase of 4.1%.',
   },
   {
     question: 'Am I entitled to minimum wage if I am on a zero-hours contract?',
@@ -896,20 +904,20 @@ export const NMW_FAQS: FaqItem[] = [
 
 export const MATERNITY_FAQS: FaqItem[] = [
   {
-    question: 'How much is Statutory Maternity Pay (SMP) in 2025/26?',
-    answer: 'For 2025/26, Statutory Maternity Pay is paid at two rates: for the first 6 weeks, you receive 90% of your average weekly earnings (AWE) with no upper cap. For the remaining 33 weeks, you receive the lower of £187.18 per week or 90% of your AWE. SMP is paid for up to 39 weeks in total. The remaining 13 weeks of maternity leave are unpaid.',
+    question: 'How much is Statutory Maternity Pay (SMP) in 2026/27?',
+    answer: 'For 2026/27, Statutory Maternity Pay is paid at two rates: for the first 6 weeks, you receive 90% of your average weekly earnings (AWE) with no upper cap. For the remaining 33 weeks, you receive the lower of £194.32 per week or 90% of your AWE. SMP is paid for up to 39 weeks in total. The remaining 13 weeks of maternity leave are unpaid.',
   },
   {
     question: 'Who is eligible for Statutory Maternity Pay?',
-    answer: 'To qualify for SMP you must be an employee (not self-employed), have worked for your employer continuously for at least 26 weeks into the 15th week before your baby is due, and earn on average at least £125 per week (2025/26 lower earnings limit) before tax. You must also still be employed by your employer in the 15th week before the baby is due.',
+    answer: 'To qualify for SMP you must be an employee (not self-employed), have worked for your employer continuously for at least 26 weeks into the 15th week before your baby is due, and earn on average at least £129 per week (2026/27 lower earnings limit) before tax. You must also still be employed by your employer in the 15th week before the baby is due.',
   },
   {
     question: 'How is average weekly earnings (AWE) calculated for SMP?',
     answer: 'Your average weekly earnings for SMP are calculated by averaging your gross pay over the 8 weeks (or 2 months if paid monthly) before the end of the 15th week before your due date — this period is called the qualifying period. Include all earnings subject to National Insurance, including overtime and bonuses paid in that period.',
   },
   {
-    question: 'How much is Statutory Paternity Pay (SPP) in 2025/26?',
-    answer: 'Statutory Paternity Pay for 2025/26 is £187.18 per week or 90% of your average weekly earnings — whichever is lower. SPP is paid for up to 2 weeks. To qualify, you must be the biological father, the mother\'s partner, or an adopter; earn at least £125/week on average; and have worked continuously for your employer for 26 weeks by the 15th week before the due date.',
+    question: 'How much is Statutory Paternity Pay (SPP) in 2026/27?',
+    answer: 'Statutory Paternity Pay for 2026/27 is £194.32 per week or 90% of your average weekly earnings — whichever is lower. SPP is paid for up to 2 weeks. To qualify, you must be the biological father, the mother\'s partner, or an adopter; earn at least £129/week on average; and have worked continuously for your employer for 26 weeks by the 15th week before the due date.',
   },
   {
     question: 'What is enhanced maternity pay?',
@@ -917,7 +925,7 @@ export const MATERNITY_FAQS: FaqItem[] = [
   },
   {
     question: 'What is Shared Parental Leave (SPL) and Shared Parental Pay (ShPP)?',
-    answer: 'Shared Parental Leave allows eligible parents to share up to 50 weeks of leave and up to 37 weeks of Statutory Shared Parental Pay between them, in the year after their baby is born or adopted. ShPP is paid at the same rate as SMP flat rate — £187.18 per week (2025/26) or 90% of AWE, whichever is lower. Both parents must meet eligibility requirements and give notice to their employers.',
+    answer: 'Shared Parental Leave allows eligible parents to share up to 50 weeks of leave and up to 37 weeks of Statutory Shared Parental Pay between them, in the year after their baby is born or adopted. ShPP is paid at the same rate as SMP flat rate — £194.32 per week (2026/27) or 90% of AWE, whichever is lower. Both parents must meet eligibility requirements and give notice to their employers.',
   },
   {
     question: 'Is Statutory Maternity Pay taxable?',
@@ -931,8 +939,8 @@ export const MATERNITY_FAQS: FaqItem[] = [
 
 export const CHILD_BENEFIT_FAQS: FaqItem[] = [
   {
-    question: 'How much is Child Benefit in the UK for 2025/26?',
-    answer: 'For 2025/26, Child Benefit is £26.05 per week for the eldest or only child, and £17.25 per week for each additional child. This is paid every 4 weeks directly into a bank account. The rates are usually increased every April in line with inflation.',
+    question: 'How much is Child Benefit in the UK for 2026/27?',
+    answer: 'For 2026/27, Child Benefit is £27.05 per week for the eldest or only child, and £17.90 per week for each additional child. This is paid every 4 weeks directly into a bank account. The rates are usually increased every April in line with inflation.',
   },
   {
     question: 'What is the High Income Child Benefit Charge (HICBC)?',
@@ -967,11 +975,11 @@ export const CHILD_BENEFIT_FAQS: FaqItem[] = [
 export const SICK_PAY_FAQS: FaqItem[] = [
   {
     question: 'How much is Statutory Sick Pay in the UK?',
-    answer: 'For the 2025/26 tax year, Statutory Sick Pay (SSP) is £116.75 per week. It is paid by your employer for the qualifying days you miss due to sickness, calculated by dividing the weekly rate by the number of days you normally work per week (e.g. £23.35 per day for a standard 5-day working week). SSP is subject to standard PAYE Income Tax and National Insurance deductions.',
+    answer: 'For the 2026/27 tax year, Statutory Sick Pay (SSP) is £123.25 per week. It is paid by your employer for the qualifying days you miss due to sickness, calculated by dividing the weekly rate by the number of days you normally work per week (e.g. £24.65 per day for a standard 5-day working week). SSP is subject to standard PAYE Income Tax and National Insurance deductions.',
   },
   {
     question: 'Who is eligible for Statutory Sick Pay?',
-    answer: 'To qualify for SSP you must be classed as an employee/worker who has done work for an employer, earn an average of at least £125 per week (the Lower Earnings Limit for 2025/26) before tax, and have been sick for at least 4 consecutive days in a row (including non-working days). You must also tell your employer within their deadline or within 7 days.',
+    answer: 'To qualify for SSP you must be classed as an employee/worker who has done work for an employer, earn an average of at least £129 per week (the Lower Earnings Limit for 2026/27) before tax, and have been sick for at least 4 consecutive days in a row (including non-working days). You must also tell your employer within their deadline or within 7 days.',
   },
   {
     question: 'What are SSP waiting days?',
@@ -983,7 +991,7 @@ export const SICK_PAY_FAQS: FaqItem[] = [
   },
   {
     question: 'Can my employer pay more than the statutory minimum?',
-    answer: 'Yes. Many employers offer an occupational (company/contractual) sick pay scheme that provides higher pay than SSP — such as full pay for a set number of weeks followed by half pay. Your employer cannot pay you less than the statutory minimum (£116.75/wk), so contractual sick pay will either replace SSP (if higher) or top it up to the agreed amount.',
+    answer: 'Yes. Many employers offer an occupational (company/contractual) sick pay scheme that provides higher pay than SSP — such as full pay for a set number of weeks followed by half pay. Your employer cannot pay you less than the statutory minimum (£123.25/wk), so contractual sick pay will either replace SSP (if higher) or top it up to the agreed amount.',
   },
   {
     question: 'How does a linked period of sickness work for SSP?',
@@ -998,11 +1006,11 @@ export const MARRIAGE_ALLOWANCE_FAQS: FaqItem[] = [
   },
   {
     question: 'Who is eligible for Marriage Allowance?',
-    answer: 'To be eligible: 1) You must be married or in a registered civil partnership (cohabiting couples do not qualify); 2) One partner must have an income below the Personal Allowance (£12,570 in 2025/26), meaning they do not pay Income Tax; 3) The other partner must pay Income Tax at the Basic Rate (income between £12,571 and £50,270 in England/Wales/NI, or between £12,571 and £43,662 in Scotland). If either partner pays higher rate or additional rate tax, you cannot claim.',
+    answer: 'To be eligible: 1) You must be married or in a registered civil partnership (cohabiting couples do not qualify); 2) One partner must have an income below the Personal Allowance (£12,570 in 2026/27), meaning they do not pay Income Tax; 3) The other partner must pay Income Tax at the Basic Rate (income between £12,571 and £50,270 in England/Wales/NI, or between £12,571 and £43,662 in Scotland). If either partner pays higher rate or additional rate tax, you cannot claim.',
   },
   {
     question: 'How much can Marriage Allowance save me?',
-    answer: 'For the 2025/26 tax year, transferring £1,260 of Personal Allowance saves the higher earner £252 per year in Income Tax (£1,260 × 20% basic rate). If the lower earner earns between £11,310 and £12,570, they may pay a small amount of basic rate tax on the excess, but the net household benefit remains positive.',
+    answer: 'For the 2026/27 tax year, transferring £1,260 of Personal Allowance saves the higher earner £252 per year in Income Tax (£1,260 × 20% basic rate). If the lower earner earns between £11,310 and £12,570, they may pay a small amount of basic rate tax on the excess, but the net household benefit remains positive.',
   },
   {
     question: 'Can I backdate a Marriage Allowance claim?',
@@ -1021,7 +1029,7 @@ export const MARRIAGE_ALLOWANCE_FAQS: FaqItem[] = [
 export const SECOND_JOB_FAQS: FaqItem[] = [
   {
     question: 'How much tax do I pay on a second job in the UK?',
-    answer: 'In the UK, you do not pay extra tax simply for having a second job. Instead, your tax is based on your total combined earnings across all employments. Because your full tax-free Personal Allowance (£12,570 in 2025/26) is usually applied to your primary/main job, all earnings from your second job are generally taxed from the very first pound at the basic rate of 20% (under a BR tax code) or at 40% (under a D0 code) if your combined income exceeds £50,270.',
+    answer: 'In the UK, you do not pay extra tax simply for having a second job. Instead, your tax is based on your total combined earnings across all employments. Because your full tax-free Personal Allowance (£12,570 in 2026/27) is usually applied to your primary/main job, all earnings from your second job are generally taxed from the very first pound at the basic rate of 20% (under a BR tax code) or at 40% (under a D0 code) if your combined income exceeds £50,270.',
   },
   {
     question: 'What is a BR tax code?',

@@ -54,7 +54,7 @@ export function formatGBP(amount: number): string {
 
 export function formatWholeGBP(amount: number): string {
   if (isNaN(amount) || amount === 0) return '£0';
-  return '£' + Math.round(amount).toLocaleString('en-GB');
+  return '£' + Math.round(amount).toLocaleString('en-GB', { minimumFractionDigits: 0, maximumFractionDigits: 0 });
 }
 
 export const DISCLAIMER_TEXT =
