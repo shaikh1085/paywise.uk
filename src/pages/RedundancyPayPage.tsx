@@ -50,7 +50,7 @@ export const RedundancyPayPage: React.FC = () => {
         <h1 className="text-2xl sm:text-4xl font-black text-[#111111] dark:text-[#F5F5F5] tracking-tight">
           Redundancy Pay Calculator UK
         </h1>
-        <p className="text-xs sm:text-sm text-[#525252] dark:text-[#A3A3A3] leading-relaxed">
+        <p className="text-xs sm:text-sm text-[#262626] dark:text-[#D4D4D4] leading-relaxed">
           Calculate your UK statutory redundancy entitlement based on your age and continuous service, and model tax on contractual or enhanced redundancy payouts under the £30,000 exemption.
         </p>
       </div>
@@ -62,7 +62,7 @@ export const RedundancyPayPage: React.FC = () => {
           <h2 className="text-lg sm:text-xl font-bold text-[#111111] dark:text-[#F5F5F5] mb-2">
             How Statutory Redundancy Pay Is Calculated
           </h2>
-          <p className="text-xs sm:text-sm text-[#525252] dark:text-[#A3A3A3] leading-relaxed">
+          <p className="text-xs sm:text-sm text-[#262626] dark:text-[#D4D4D4] leading-relaxed">
             In the United Kingdom, statutory redundancy pay is legally guaranteed for eligible employees who have completed at least 2 full continuous years of service. The calculation uses an official age-banded formula, counting backwards from your current age for up to 20 years of service:
           </p>
         </div>
@@ -70,21 +70,21 @@ export const RedundancyPayPage: React.FC = () => {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs sm:text-sm">
           <div className="p-4 rounded-xl bg-[#FAFAFA] dark:bg-[#151515] border border-[#E5E5E5] dark:border-[#2A2A2A] space-y-1.5">
             <h3 className="font-bold text-[#111111] dark:text-[#F5F5F5]">Under Age 22</h3>
-            <p className="text-[#525252] dark:text-[#A3A3A3] text-xs leading-relaxed">
+            <p className="text-[#262626] dark:text-[#D4D4D4] text-xs leading-relaxed">
               <strong>0.5 week's pay</strong> for each full continuous year of employment completed under the age of 22.
             </p>
           </div>
 
           <div className="p-4 rounded-xl bg-[#FAFAFA] dark:bg-[#151515] border border-[#E5E5E5] dark:border-[#2A2A2A] space-y-1.5">
             <h3 className="font-bold text-[#111111] dark:text-[#F5F5F5]">Aged 22 to 40</h3>
-            <p className="text-[#525252] dark:text-[#A3A3A3] text-xs leading-relaxed">
+            <p className="text-[#262626] dark:text-[#D4D4D4] text-xs leading-relaxed">
               <strong>1.0 week's pay</strong> for each full continuous year of employment completed between ages 22 and 40.
             </p>
           </div>
 
           <div className="p-4 rounded-xl bg-[#FAFAFA] dark:bg-[#151515] border border-[#E5E5E5] dark:border-[#2A2A2A] space-y-1.5">
             <h3 className="font-bold text-[#111111] dark:text-[#F5F5F5]">Aged 41 and Over</h3>
-            <p className="text-[#525252] dark:text-[#A3A3A3] text-xs leading-relaxed">
+            <p className="text-[#262626] dark:text-[#D4D4D4] text-xs leading-relaxed">
               <strong>1.5 weeks' pay</strong> for each full continuous year of employment completed at age 41 and older.
             </p>
           </div>
@@ -94,7 +94,7 @@ export const RedundancyPayPage: React.FC = () => {
           <h2 className="text-lg sm:text-xl font-bold text-[#111111] dark:text-[#F5F5F5] mb-2">
             The £30,000 Tax-Free Redundancy Threshold
           </h2>
-          <p className="text-xs sm:text-sm text-[#525252] dark:text-[#A3A3A3] leading-relaxed mb-3">
+          <p className="text-xs sm:text-sm text-[#262626] dark:text-[#D4D4D4] leading-relaxed mb-3">
             HM Revenue and Customs (HMRC) provides a substantial tax exemption on genuine termination and redundancy payments:
           </p>
           <div className="p-4 rounded-xl bg-[#FAFAFA] dark:bg-[#151515] border border-[#E5E5E5] dark:border-[#2A2A2A] space-y-3 text-xs">
@@ -102,7 +102,7 @@ export const RedundancyPayPage: React.FC = () => {
               <strong className="text-[#111111] dark:text-[#F5F5F5] block">
                 1. First £30,000 Is 100% Tax-Free:
               </strong>
-              <p className="text-[#525252] dark:text-[#A3A3A3] leading-relaxed">
+              <p className="text-[#262626] dark:text-[#D4D4D4] leading-relaxed">
                 Your statutory redundancy pay plus any enhanced contractual redundancy pay is completely exempt from UK Income Tax and Employee National Insurance up to £30,000.
               </p>
             </div>
@@ -110,7 +110,7 @@ export const RedundancyPayPage: React.FC = () => {
               <strong className="text-[#111111] dark:text-[#F5F5F5] block">
                 2. Taxation on Amounts Above £30,000:
               </strong>
-              <p className="text-[#525252] dark:text-[#A3A3A3] leading-relaxed">
+              <p className="text-[#262626] dark:text-[#D4D4D4] leading-relaxed">
                 Any redundancy payout exceeding £30,000 is subject to Income Tax at your normal marginal rate (20%, 40%, or 45%). However, it remains exempt from employee Class 1 National Insurance contributions. Employers pay Class 1A NI on the excess.
               </p>
             </div>
@@ -121,17 +121,17 @@ export const RedundancyPayPage: React.FC = () => {
           <h2 className="text-lg sm:text-xl font-bold text-[#111111] dark:text-[#F5F5F5] mb-2">
             Statutory vs Enhanced (Contractual) Redundancy Pay
           </h2>
-          <p className="text-xs sm:text-sm text-[#525252] dark:text-[#A3A3A3] leading-relaxed mb-3">
+          <p className="text-xs sm:text-sm text-[#262626] dark:text-[#D4D4D4] leading-relaxed mb-3">
             Many UK employers offer packages that exceed the legal minimum:
           </p>
           <div className="p-4 rounded-xl bg-[#FAFAFA] dark:bg-[#151515] border border-[#E5E5E5] dark:border-[#2A2A2A] space-y-2 text-xs">
-            <p className="text-[#525252] dark:text-[#A3A3A3] leading-relaxed">
-              • <strong>Statutory Redundancy:</strong> The non-negotiable legal floor set by UK employment law, subject to the 20-year service cap and weekly pay cap (£700/week).
+            <p className="text-[#262626] dark:text-[#D4D4D4] leading-relaxed">
+              • <strong>Statutory Redundancy:</strong> The non-negotiable legal floor set by UK employment law, subject to the 20-year service cap and weekly pay cap (£751/week from 6 April 2026).
             </p>
-            <p className="text-[#525252] dark:text-[#A3A3A3] leading-relaxed">
+            <p className="text-[#262626] dark:text-[#D4D4D4] leading-relaxed">
               • <strong>Enhanced Redundancy:</strong> Company schemes that may uncap weekly pay, offer higher multiples per year of service (e.g. 2–4 weeks per year), or pay an agreed ex-gratia settlement sum.
             </p>
-            <p className="text-[#525252] dark:text-[#A3A3A3] leading-relaxed">
+            <p className="text-[#262626] dark:text-[#D4D4D4] leading-relaxed">
               • <strong>Notice &amp; Holiday Pay:</strong> Note that Pay in Lieu of Notice (PILON) and accrued untaken holiday pay are treated as standard earnings and are not eligible for the £30,000 exemption.
             </p>
           </div>
@@ -167,7 +167,7 @@ export const RedundancyPayPage: React.FC = () => {
         </div>
       </div>
 
-      <FaqAccordion items={REDUNDANCY_FAQS} />
+      <FaqAccordion items={REDUNDANCY_FAQS} badge="Redundancy Pay Knowledge Base" subtitle="Clear answers to common questions about UK redundancy pay." />
       <DisclaimerNotice />
     </div>
   );

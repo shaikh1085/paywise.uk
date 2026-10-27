@@ -1,3 +1,4 @@
+import { formatGBP } from '../../utils/format';
 import React, { useState, useMemo } from 'react';
 import {
   MinimumWageInput,
@@ -36,7 +37,7 @@ export const MinimumWageChecker: React.FC = () => {
     isApprentice: false,
     deductionsFromPay: 0,
     deductionFrequency: 'monthly',
-    taxYear: '2025_26',
+    taxYear: '2026_27',
   });
 
   const [showAdvanced, setShowAdvanced] = useState(false);
@@ -53,7 +54,7 @@ export const MinimumWageChecker: React.FC = () => {
       isApprentice: false,
       deductionsFromPay: 0,
       deductionFrequency: 'monthly',
-      taxYear: '2025_26',
+      taxYear: '2026_27',
     });
     setShowAdvanced(false);
   };
@@ -65,7 +66,7 @@ export const MinimumWageChecker: React.FC = () => {
     });
 
   const fmtWhole = (n: number | undefined | null) =>
-    '£' + Math.round(typeof n === 'number' && !isNaN(n) ? n : 0).toLocaleString('en-GB');
+    formatGBP(typeof n === 'number' && !isNaN(n) ? Math.round(n) : 0, 0);
 
   const copyText = `PayWise UK National Minimum Wage Compliance Check:
 Worker Status: ${result.ageBandLabel} (Tax Year ${input.taxYear.replace('_', '/')})
@@ -94,11 +95,12 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/national-minimum-wage-ch
   ];
 
   const taxYears: { value: TaxYear; label: string }[] = [
-    { value: '2025_26', label: '2025/26 (Current)' },
+    { value: '2026_27', label: '2026/27 (Current)' },
+    { value: '2025_26', label: '2025/26' },
     { value: '2024_25', label: '2024/25' },
   ];
 
-  const isCurrent2025 = input.taxYear === '2025_26';
+  const accommodationOffset = input.taxYear === '2026_27' ? '11.10' : input.taxYear === '2025_26' ? '10.66' : '9.99';
 
   return (
     <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
@@ -112,7 +114,7 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/national-minimum-wage-ch
           <button
             type="button"
             onClick={handleReset}
-            className="inline-flex items-center gap-1 text-xs font-semibold text-[#525252] hover:text-[#111111] dark:text-[#A3A3A3] dark:hover:text-[#F5F5F5] transition-colors p-1.5 rounded-lg hover:bg-[#F5F5F5] dark:hover:bg-[#222222]"
+            className="inline-flex items-center gap-1 text-xs font-semibold text-[#262626] hover:text-[#111111] dark:text-[#D4D4D4] dark:hover:text-[#F5F5F5] transition-colors p-1.5 rounded-lg hover:bg-[#F5F5F5] dark:hover:bg-[#222222]"
             title="Reset to defaults"
           >
             <RotateCcw className="w-3.5 h-3.5" />
@@ -157,7 +159,7 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/national-minimum-wage-ch
                       (input.isApprentice && band.value === 'apprentice') ||
                       (!input.isApprentice && input.ageBand === band.value)
                         ? 'text-emerald-100'
-                        : 'text-[#737373] dark:text-[#A3A3A3]'
+                        : 'text-[#737373] dark:text-[#D4D4D4]'
                     }`}
                   >
                     {band.ageHint}
@@ -186,7 +188,7 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/national-minimum-wage-ch
                 <span className="font-bold text-[#111111] dark:text-[#F5F5F5]">
                   I am on a recognized apprenticeship
                 </span>
-                <p className="text-2xs text-[#737373] dark:text-[#A3A3A3] mt-0.5 leading-relaxed">
+                <p className="text-2xs text-[#737373] dark:text-[#D4D4D4] mt-0.5 leading-relaxed">
                   Apprentice rate applies if aged under 19, or aged 19+ in the 1st year of apprenticeship.
                 </p>
               </div>
@@ -228,7 +230,7 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/national-minimum-wage-ch
                 </span>
               </div>
               <div className="relative">
-                <span className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3.5 text-[#525252] dark:text-[#A3A3A3] font-bold text-base">
+                <span className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3.5 text-[#262626] dark:text-[#D4D4D4] font-bold text-base">
                   £
                 </span>
                 <input
@@ -255,7 +257,7 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/national-minimum-wage-ch
                 </span>
               </div>
               <div className="relative">
-                <span className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3.5 text-[#525252] dark:text-[#A3A3A3] font-bold text-base">
+                <span className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3.5 text-[#262626] dark:text-[#D4D4D4] font-bold text-base">
                   £
                 </span>
                 <input
@@ -354,7 +356,7 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/national-minimum-wage-ch
             <button
               type="button"
               onClick={() => setShowAdvanced(!showAdvanced)}
-              className="w-full flex items-center justify-between py-2 text-xs font-bold text-[#525252] hover:text-[#111111] dark:text-[#A3A3A3] dark:hover:text-[#F5F5F5] transition-colors"
+              className="w-full flex items-center justify-between py-2 text-xs font-bold text-[#262626] hover:text-[#111111] dark:text-[#D4D4D4] dark:hover:text-[#F5F5F5] transition-colors"
             >
               <span className="flex items-center gap-1.5">
                 <Sliders className="w-3.5 h-3.5 text-[#059669] dark:text-[#10B981]" />
@@ -371,7 +373,7 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/national-minimum-wage-ch
                     What reduces NMW pay?
                   </p>
                   <p className="text-2xs leading-relaxed opacity-90">
-                    Mandatory purchases for uniforms, PPE, tools, administration fees, or rent charges exceeding the accommodation offset (£{isCurrent2025 ? '10.66' : '9.99'}/day) reduce your effective pay for minimum wage calculation.
+                    Mandatory purchases for uniforms, PPE, tools, administration fees, or rent charges exceeding the accommodation offset (£{accommodationOffset}/day) reduce your effective pay for minimum wage calculation.
                   </p>
                 </div>
 
@@ -381,7 +383,7 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/national-minimum-wage-ch
                   </label>
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
                     <div className="relative">
-                      <span className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3 text-[#525252] dark:text-[#A3A3A3] font-bold text-sm">
+                      <span className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3 text-[#262626] dark:text-[#D4D4D4] font-bold text-sm">
                         £
                       </span>
                       <input
@@ -441,7 +443,7 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/national-minimum-wage-ch
                 Potential Minimum Wage Underpayment Detected
               </span>
             )}
-            <span className="text-2xs text-[#525252] dark:text-[#A3A3A3] font-medium">
+            <span className="text-2xs text-[#262626] dark:text-[#D4D4D4] font-medium">
               Tax Year {input.taxYear.replace('_', '/')}
             </span>
           </div>
@@ -449,12 +451,12 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/national-minimum-wage-ch
           {/* Rate Comparison Hero Display */}
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pb-5 mb-5 border-b border-[#E5E5E5] dark:border-[#2A2A2A]">
             <div className="p-4 rounded-xl bg-[#FAFAFA] dark:bg-[#141414] border border-[#E5E5E5] dark:border-[#2A2A2A]">
-              <p className="text-2xs font-bold uppercase tracking-wider text-[#525252] dark:text-[#A3A3A3] mb-1">
+              <p className="text-2xs font-bold uppercase tracking-wider text-[#262626] dark:text-[#D4D4D4] mb-1">
                 Your Effective Hourly Rate
               </p>
               <p className="text-2xl sm:text-3xl font-black text-[#111111] dark:text-[#F5F5F5] tabular-nums">
                 <AnimatedNumber value={result.effectiveHourlyRateAfterDeductions} prefix="£" decimals={2} />
-                <span className="text-sm font-semibold text-[#525252] dark:text-[#A3A3A3]">/hr</span>
+                <span className="text-sm font-semibold text-[#262626] dark:text-[#D4D4D4]">/hr</span>
               </p>
               {input.deductionsFromPay > 0 && (
                 <p className="text-2xs text-[#DC2626] dark:text-[#F87171] mt-0.5">
@@ -464,14 +466,14 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/national-minimum-wage-ch
             </div>
 
             <div className="p-4 rounded-xl bg-[#FAFAFA] dark:bg-[#141414] border border-[#E5E5E5] dark:border-[#2A2A2A]">
-              <p className="text-2xs font-bold uppercase tracking-wider text-[#525252] dark:text-[#A3A3A3] mb-1">
+              <p className="text-2xs font-bold uppercase tracking-wider text-[#262626] dark:text-[#D4D4D4] mb-1">
                 Statutory Legal Minimum ({result.ageBandLabel})
               </p>
               <p className="text-2xl sm:text-3xl font-black text-[#059669] dark:text-[#10B981] tabular-nums">
                 <AnimatedNumber value={result.applicableMinimumRate} prefix="£" decimals={2} />
-                <span className="text-sm font-semibold text-[#525252] dark:text-[#A3A3A3]">/hr</span>
+                <span className="text-sm font-semibold text-[#262626] dark:text-[#D4D4D4]">/hr</span>
               </p>
-              <p className="text-2xs text-[#737373] dark:text-[#A3A3A3] mt-0.5">
+              <p className="text-2xs text-[#737373] dark:text-[#D4D4D4] mt-0.5">
                 Legally binding UK statutory floor
               </p>
             </div>
@@ -484,7 +486,7 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/national-minimum-wage-ch
                 <span>Pay Buffer Above Statutory Minimum:</span>
                 <span className="text-sm tabular-nums">+{fmt(result.hourlyDifference)}/hr</span>
               </div>
-              <p className="text-2xs text-[#525252] dark:text-[#D1D5DB] leading-relaxed">
+              <p className="text-2xs text-[#262626] dark:text-[#D1D5DB] leading-relaxed">
                 Based on your {input.hoursPerWeek} weekly hours, your pay is currently <strong>+{fmt(result.hourlyDifference * input.hoursPerWeek)} per week</strong> (+{fmt(result.hourlyDifference * input.hoursPerWeek * 52)}/year) above the UK legal minimum rate.
               </p>
             </div>
@@ -499,15 +501,15 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/national-minimum-wage-ch
 
               <div className="grid grid-cols-3 gap-2 text-center">
                 <div className="p-2 rounded-lg bg-white/80 dark:bg-[#171717] border border-red-200 dark:border-red-900/40">
-                  <p className="text-2xs text-[#737373] dark:text-[#A3A3A3]">Weekly Loss</p>
+                  <p className="text-2xs text-[#737373] dark:text-[#D4D4D4]">Weekly Loss</p>
                   <p className="font-bold text-red-600 dark:text-red-400 tabular-nums">-{fmt(result.weeklyShortfall)}</p>
                 </div>
                 <div className="p-2 rounded-lg bg-white/80 dark:bg-[#171717] border border-red-200 dark:border-red-900/40">
-                  <p className="text-2xs text-[#737373] dark:text-[#A3A3A3]">Monthly Loss</p>
+                  <p className="text-2xs text-[#737373] dark:text-[#D4D4D4]">Monthly Loss</p>
                   <p className="font-bold text-red-600 dark:text-red-400 tabular-nums">-{fmt(result.monthlyShortfall)}</p>
                 </div>
                 <div className="p-2 rounded-lg bg-white/80 dark:bg-[#171717] border border-red-200 dark:border-red-900/40">
-                  <p className="text-2xs text-[#737373] dark:text-[#A3A3A3]">Annual Loss</p>
+                  <p className="text-2xs text-[#737373] dark:text-[#D4D4D4]">Annual Loss</p>
                   <p className="font-bold text-red-600 dark:text-red-400 tabular-nums">-{fmt(result.annualShortfall)}</p>
                 </div>
               </div>
@@ -548,7 +550,7 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/national-minimum-wage-ch
             </div>
             <div className="divide-y divide-[#E5E5E5] dark:divide-[#2A2A2A]">
               <div className="px-4 py-2 flex justify-between bg-white dark:bg-[#171717]">
-                <span className="text-[#525252] dark:text-[#A3A3A3]">Hourly Rate</span>
+                <span className="text-[#262626] dark:text-[#D4D4D4]">Hourly Rate</span>
                 <span className="tabular-nums font-bold">
                   {fmt(result.effectiveHourlyRateAfterDeductions)}/hr{' '}
                   <span className="font-normal text-[#737373]">
@@ -557,7 +559,7 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/national-minimum-wage-ch
                 </span>
               </div>
               <div className="px-4 py-2 flex justify-between bg-white dark:bg-[#171717]">
-                <span className="text-[#525252] dark:text-[#A3A3A3]">Weekly Pay ({input.hoursPerWeek} hrs)</span>
+                <span className="text-[#262626] dark:text-[#D4D4D4]">Weekly Pay ({input.hoursPerWeek} hrs)</span>
                 <span className="tabular-nums font-bold">
                   {fmt(result.weeklyGrossPay)}{' '}
                   <span className="font-normal text-[#737373]">
@@ -566,7 +568,7 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/national-minimum-wage-ch
                 </span>
               </div>
               <div className="px-4 py-2 flex justify-between bg-white dark:bg-[#171717]">
-                <span className="text-[#525252] dark:text-[#A3A3A3]">Monthly Pay</span>
+                <span className="text-[#262626] dark:text-[#D4D4D4]">Monthly Pay</span>
                 <span className="tabular-nums font-bold">
                   {fmt(result.monthlyGrossPay)}{' '}
                   <span className="font-normal text-[#737373]">
@@ -575,7 +577,7 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/national-minimum-wage-ch
                 </span>
               </div>
               <div className="px-4 py-2 flex justify-between bg-white dark:bg-[#171717]">
-                <span className="text-[#525252] dark:text-[#A3A3A3]">Annual Equivalent</span>
+                <span className="text-[#262626] dark:text-[#D4D4D4]">Annual Equivalent</span>
                 <span className="tabular-nums font-bold">
                   {fmt(result.annualGrossPay)}{' '}
                   <span className="font-normal text-[#737373]">
@@ -603,6 +605,7 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/national-minimum-wage-ch
                 <tr className="border-b border-[#E5E5E5] dark:border-[#2A2A2A] text-2xs uppercase tracking-wider text-[#737373]">
                   <th className="py-2 pr-3">Category</th>
                   <th className="py-2 px-3">Age / Eligibility</th>
+                  <th className="py-2 px-3 text-right">Rate 2026/27</th>
                   <th className="py-2 px-3 text-right">Rate 2025/26</th>
                   <th className="py-2 pl-3 text-right">Rate 2024/25</th>
                 </tr>
@@ -628,14 +631,17 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/national-minimum-wage-ch
                           {band.label}
                         </div>
                       </td>
-                      <td className="py-2.5 px-3 text-[#525252] dark:text-[#A3A3A3] text-2xs">
+                      <td className="py-2.5 px-3 text-[#262626] dark:text-[#D4D4D4] text-2xs">
                         {band.ageDescription}
                       </td>
                       <td className="py-2.5 px-3 text-right tabular-nums whitespace-nowrap font-extrabold">
-                        £{band.rate2025_26.toFixed(2)}/hr
+                        {formatGBP(band.rate2026_27)}/hr
+                      </td>
+                      <td className="py-2.5 px-3 text-right tabular-nums whitespace-nowrap font-extrabold">
+                        {formatGBP(band.rate2025_26)}/hr
                       </td>
                       <td className="py-2.5 pl-3 text-right tabular-nums whitespace-nowrap text-[#737373]">
-                        £{band.rate2024_25.toFixed(2)}/hr
+                        {formatGBP(band.rate2024_25)}/hr
                       </td>
                     </tr>
                   );

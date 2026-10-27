@@ -26,7 +26,7 @@ export const NetToGrossCalculatorPage: React.FC = () => {
           'how much gross for 3000 net uk',
           'calculate gross salary from take home pay',
           'reverse paye tax calculator',
-          'net to gross pay calculator 2025/26',
+          'net to gross pay calculator 2026/27',
           'target take home pay calculator',
           'gross salary needed for target net',
           'reverse income tax calculator uk',
@@ -49,7 +49,7 @@ export const NetToGrossCalculatorPage: React.FC = () => {
         <h1 className="text-2xl sm:text-4xl font-black text-[#111111] dark:text-[#F5F5F5] tracking-tight">
           Net to Gross Salary Calculator UK
         </h1>
-        <p className="text-xs sm:text-sm text-[#525252] dark:text-[#A3A3A3] leading-relaxed">
+        <p className="text-xs sm:text-sm text-[#262626] dark:text-[#D4D4D4] leading-relaxed">
           Find out exactly what gross annual salary you need to earn to achieve your desired take-home pay in your bank account. Accounts for UK Income Tax, 8% Class 1 National Insurance, pension schemes, and student loans across England, Wales, and Scotland.
         </p>
       </div>
@@ -61,25 +61,25 @@ export const NetToGrossCalculatorPage: React.FC = () => {
           <h2 className="text-lg sm:text-xl font-bold text-[#111111] dark:text-[#F5F5F5]">
             How to calculate gross salary from desired take-home pay
           </h2>
-          <p className="text-xs sm:text-sm text-[#525252] dark:text-[#A3A3A3] leading-relaxed">
+          <p className="text-xs sm:text-sm text-[#262626] dark:text-[#D4D4D4] leading-relaxed">
             When employers advertise salaries, they quote the gross amount before deductions. However, when budgeting for rent, mortgage payments, bills, and lifestyle goals, you care about the net amount deposited into your bank account.
           </p>
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 text-xs">
             <div className="p-4 rounded-xl bg-[#FAFAFA] dark:bg-[#151515] border border-[#E5E5E5] dark:border-[#2A2A2A] space-y-1.5">
               <h3 className="font-bold text-[#111111] dark:text-[#F5F5F5]">1. Target Net Target</h3>
-              <p className="text-[#525252] dark:text-[#A3A3A3] leading-relaxed">
+              <p className="text-[#262626] dark:text-[#D4D4D4] leading-relaxed">
                 Start with your monthly living expenses, savings, and discretionary budget to establish your minimum required monthly or annual take-home pay.
               </p>
             </div>
             <div className="p-4 rounded-xl bg-[#FAFAFA] dark:bg-[#151515] border border-[#E5E5E5] dark:border-[#2A2A2A] space-y-1.5">
               <h3 className="font-bold text-[#111111] dark:text-[#F5F5F5]">2. Reverse PAYE Math</h3>
-              <p className="text-[#525252] dark:text-[#A3A3A3] leading-relaxed">
+              <p className="text-[#262626] dark:text-[#D4D4D4] leading-relaxed">
                 Because UK Income Tax is progressive and banded (20%, 40%, 45%), reverse calculation must account for marginal tax rate jumps and NI thresholds.
               </p>
             </div>
             <div className="p-4 rounded-xl bg-[#FAFAFA] dark:bg-[#151515] border border-[#E5E5E5] dark:border-[#2A2A2A] space-y-1.5">
               <h3 className="font-bold text-[#111111] dark:text-[#F5F5F5]">3. Factor In Deductions</h3>
-              <p className="text-[#525252] dark:text-[#A3A3A3] leading-relaxed">
+              <p className="text-[#262626] dark:text-[#D4D4D4] leading-relaxed">
                 Add any employee pension contributions (e.g. 5% auto-enrolment) and student loan repayments to find the true gross offer you need to negotiate.
               </p>
             </div>
@@ -95,7 +95,7 @@ export const NetToGrossCalculatorPage: React.FC = () => {
               <h3 className="font-bold text-[#111111] dark:text-[#F5F5F5] mb-1">
                 Tax Year &amp; Personal Allowance
               </h3>
-              <p className="text-[#525252] dark:text-[#A3A3A3] leading-relaxed">
+              <p className="text-[#262626] dark:text-[#D4D4D4] leading-relaxed">
                 The standard UK personal allowance is £12,570 (frozen through 2028). Earnings above this threshold attract 20% basic rate tax and 8% employee Class 1 NI up to £50,270, then 40% higher rate tax and 2% NI above £50,270.
               </p>
             </div>
@@ -103,7 +103,7 @@ export const NetToGrossCalculatorPage: React.FC = () => {
               <h3 className="font-bold text-[#111111] dark:text-[#F5F5F5] mb-1">
                 The £100k–£125k 60% Marginal Tax Trap
               </h3>
-              <p className="text-[#525252] dark:text-[#A3A3A3] leading-relaxed">
+              <p className="text-[#262626] dark:text-[#D4D4D4] leading-relaxed">
                 For earnings over £100,000, your £12,570 personal allowance reduces by £1 for every £2 earned, creating an effective 60% marginal tax rate (40% tax + 20% loss of allowance + 2% NI = 62%). To increase net pay in this range, a significantly higher gross bump is required.
               </p>
             </div>
@@ -111,7 +111,7 @@ export const NetToGrossCalculatorPage: React.FC = () => {
               <h3 className="font-bold text-[#111111] dark:text-[#F5F5F5] mb-1">
                 Scottish Income Tax Rates
               </h3>
-              <p className="text-[#525252] dark:text-[#A3A3A3] leading-relaxed">
+              <p className="text-[#262626] dark:text-[#D4D4D4] leading-relaxed">
                 Scottish residents pay different devolved tax bands: Starter (19%), Basic (20%), Intermediate (21%), Higher (42%), Advanced (45%), and Top (48%). Due to these rates, Scottish workers generally require a slightly higher gross salary to achieve the same net take-home pay.
               </p>
             </div>
@@ -119,7 +119,7 @@ export const NetToGrossCalculatorPage: React.FC = () => {
               <h3 className="font-bold text-[#111111] dark:text-[#F5F5F5] mb-1">
                 Workplace Pension Tax Relief
               </h3>
-              <p className="text-[#525252] dark:text-[#A3A3A3] leading-relaxed">
+              <p className="text-[#262626] dark:text-[#D4D4D4] leading-relaxed">
                 Pension contributions via Net Pay or Salary Sacrifice receive full tax relief, which lowers taxable income and reduces both Income Tax and National Insurance. This means you need a smaller gross salary to achieve a target take-home if salary sacrifice is utilised.
               </p>
             </div>
@@ -152,7 +152,7 @@ export const NetToGrossCalculatorPage: React.FC = () => {
         </section>
       </div>
 
-      <FaqAccordion items={NET_TO_GROSS_FAQS} />
+      <FaqAccordion items={NET_TO_GROSS_FAQS} badge="Net to Gross Knowledge Base" subtitle="Clear answers to common questions about UK net to gross salary calculations." />
       <DisclaimerNotice />
     </div>
   );

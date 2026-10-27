@@ -45,7 +45,7 @@ export const TeacherSalaryPage: React.FC = () => {
         <h1 className="text-2xl sm:text-4xl font-black text-[#111111] dark:text-[#F5F5F5] tracking-tight">
           Teacher Salary Calculator UK
         </h1>
-        <p className="text-xs sm:text-sm text-[#525252] dark:text-[#A3A3A3] leading-relaxed">
+        <p className="text-xs sm:text-sm text-[#262626] dark:text-[#D4D4D4] leading-relaxed">
           Estimate take-home pay for qualified school teachers in England across Main Pay Ranges (M1–M6), Upper Pay Ranges (U1–U3), and Leadership scales across England, Inner London, Outer London, and London Fringe.
         </p>
       </div>
@@ -57,7 +57,7 @@ export const TeacherSalaryPage: React.FC = () => {
           <h2 className="text-lg sm:text-xl font-bold text-[#111111] dark:text-[#F5F5F5] mb-2">
             School Teacher Pay Scales & Pension Tiers in England
           </h2>
-          <p className="text-xs sm:text-sm text-[#525252] dark:text-[#A3A3A3] leading-relaxed">
+          <p className="text-xs sm:text-sm text-[#262626] dark:text-[#D4D4D4] leading-relaxed">
             School teacher pay scales in state-funded schools in England are determined by the School Teachers’ Pay and Conditions Document (STPCD) across four distinct geographic pay areas.
           </p>
         </div>
@@ -65,21 +65,21 @@ export const TeacherSalaryPage: React.FC = () => {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs sm:text-sm">
           <div className="p-4 rounded-xl bg-[#FAFAFA] dark:bg-[#151515] border border-[#E5E5E5] dark:border-[#2A2A2A] space-y-1.5">
             <h3 className="font-bold text-[#111111] dark:text-[#F5F5F5]">Pay Ranges (M1 to L43)</h3>
-            <p className="text-[#525252] dark:text-[#A3A3A3] text-xs leading-relaxed">
+            <p className="text-[#262626] dark:text-[#D4D4D4] text-xs leading-relaxed">
               New teachers begin on the Main Pay Range (M1 to M6). Experienced teachers transition to the Upper Pay Range (U1 to U3) or Leadership Group (L1 to L43).
             </p>
           </div>
 
           <div className="p-4 rounded-xl bg-[#FAFAFA] dark:bg-[#151515] border border-[#E5E5E5] dark:border-[#2A2A2A] space-y-1.5">
             <h3 className="font-bold text-[#111111] dark:text-[#F5F5F5]">Teachers’ Pension Scheme (TPS)</h3>
-            <p className="text-[#525252] dark:text-[#A3A3A3] text-xs leading-relaxed">
+            <p className="text-[#262626] dark:text-[#D4D4D4] text-xs leading-relaxed">
               Teachers contribute between 7.4% and 11.7% based on salary tiers. Employers contribute 28.68% into this guaranteed defined benefit pension.
             </p>
           </div>
 
           <div className="p-4 rounded-xl bg-[#FAFAFA] dark:bg-[#151515] border border-[#E5E5E5] dark:border-[#2A2A2A] space-y-1.5">
             <h3 className="font-bold text-[#111111] dark:text-[#F5F5F5]">London Regional Weighting</h3>
-            <p className="text-[#525252] dark:text-[#A3A3A3] text-xs leading-relaxed">
+            <p className="text-[#262626] dark:text-[#D4D4D4] text-xs leading-relaxed">
               Salaries are uplifted significantly in Inner London (e.g. M1 £36,745 vs England £30,000) to account for higher capital living and housing costs.
             </p>
           </div>
@@ -115,7 +115,7 @@ export const TeacherSalaryPage: React.FC = () => {
         </div>
       </div>
 
-      <FaqAccordion items={TEACHER_FAQS} />
+      <FaqAccordion items={TEACHER_FAQS} badge="Teacher Pay Knowledge Base" subtitle="Clear answers to common questions about UK teacher pay." />
       <DisclaimerNotice />
     </div>
   );

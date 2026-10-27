@@ -423,7 +423,7 @@ const nhsCalc = calculateNhsSalary({
   optInPension: true,
   studentLoanPlan: 'none',
 });
-assert(nhsCalc.basicSalary === 28407, 'NHS Band 5 entry point is £28,407');
+assert(nhsCalc.basicSalary === 32073, 'NHS Band 5 entry point is £32,073 (2026/27 Agenda for Change)');
 
 // Teacher M1 Calculator
 const teacherCalc = calculateTeacherSalary({
@@ -1072,6 +1072,34 @@ const sspTest28Weeks = calculateSickPay({
 assert(sspTest28Weeks.isMaxWeeksExceeded, 'Exceeding 28 weeks triggers max weeks flag');
 assert(sspTest28Weeks.payableDays === 140, 'Payable days capped at 140 days (28 × 5)');
 assertCloseTo(sspTest28Weeks.totalSspAmount, 3269.00, 0.01, 'Total capped SSP is £3,269.00 (28 × £116.75)');
+
+
+// ----------------------------------------------------
+// 17b. SSP 2026/27 rules (Employment Rights Act 2025, from 6 April 2026:
+// no LEL, no waiting days, lower of flat rate or 80% of AWE)
+console.log('\n--- 17b. SSP 2026/27 rules ---');
+const ssp2627 = calculateSickPay({
+  averageWeeklyEarnings: 300,
+  qualifyingDaysOff: 10,
+  qualifyingDaysPerWeek: 5,
+  isLinkedPeriod: false,
+  taxYear: '2026_27',
+});
+assert(ssp2627.isEligible, '2026/27 SSP has no LEL gate');
+assert(ssp2627.waitingDays === 0, '2026/27 SSP has 0 waiting days');
+assertCloseTo(ssp2627.weeklySspRate, 123.25, 0.01, '2026/27 SSP weekly rate is flat £123.25 when 80% of AWE is higher');
+assert(ssp2627.payableDays === 10, '2026/27: all 10 qualifying days payable');
+assertCloseTo(ssp2627.totalSspAmount, 246.50, 0.01, '2026/27: 10 days x £24.65 = £246.50');
+const ssp2627Low = calculateSickPay({
+  averageWeeklyEarnings: 100,
+  qualifyingDaysOff: 10,
+  qualifyingDaysPerWeek: 5,
+  isLinkedPeriod: false,
+  taxYear: '2026_27',
+});
+assert(ssp2627Low.isEligible, '2026/27 low earner (£100/wk) is still eligible (no LEL)');
+assertCloseTo(ssp2627Low.weeklySspRate, 80.00, 0.01, '2026/27 low earner weekly rate is 80% of AWE (£80)');
+assertCloseTo(ssp2627Low.totalSspAmount, 160.00, 0.01, '2026/27 low earner: 10 days x £16 = £160');
 
 // ----------------------------------------------------
 // 21. MARRIAGE ALLOWANCE CALCULATOR TESTS

@@ -45,7 +45,7 @@ export const NhsSalaryPage: React.FC = () => {
         <h1 className="text-2xl sm:text-4xl font-black text-[#111111] dark:text-[#F5F5F5] tracking-tight">
           NHS Salary Calculator UK
         </h1>
-        <p className="text-xs sm:text-sm text-[#525252] dark:text-[#A3A3A3] leading-relaxed">
+        <p className="text-xs sm:text-sm text-[#262626] dark:text-[#D4D4D4] leading-relaxed">
           Estimate take-home pay for NHS healthcare staff under the Agenda for Change (AfC) framework, including pay step points from Band 2 to Band 9, London HCAS allowances, and NHS pension contribution tiers.
         </p>
       </div>
@@ -57,7 +57,7 @@ export const NhsSalaryPage: React.FC = () => {
           <h2 className="text-lg sm:text-xl font-bold text-[#111111] dark:text-[#F5F5F5] mb-2">
             NHS Agenda for Change (AfC) Pay Architecture
           </h2>
-          <p className="text-xs sm:text-sm text-[#525252] dark:text-[#A3A3A3] leading-relaxed">
+          <p className="text-xs sm:text-sm text-[#262626] dark:text-[#D4D4D4] leading-relaxed">
             The Agenda for Change pay system applies to all direct NHS staff in England (excluding doctors and dentists). Base pay is structured across Bands 2 to 9 with incremental step points.
           </p>
         </div>
@@ -65,21 +65,21 @@ export const NhsSalaryPage: React.FC = () => {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs sm:text-sm">
           <div className="p-4 rounded-xl bg-[#FAFAFA] dark:bg-[#151515] border border-[#E5E5E5] dark:border-[#2A2A2A] space-y-1.5">
             <h3 className="font-bold text-[#111111] dark:text-[#F5F5F5]">London HCAS Supplements</h3>
-            <p className="text-[#525252] dark:text-[#A3A3A3] text-xs leading-relaxed">
+            <p className="text-[#262626] dark:text-[#D4D4D4] text-xs leading-relaxed">
               Staff working in London receive High Cost Area Supplements: Inner London (+20%, min £5,132, max £7,718), Outer London (+15%, min £4,313, max £5,436), or Fringe (+5%, min £1,192, max £2,011).
             </p>
           </div>
 
           <div className="p-4 rounded-xl bg-[#FAFAFA] dark:bg-[#151515] border border-[#E5E5E5] dark:border-[#2A2A2A] space-y-1.5">
             <h3 className="font-bold text-[#111111] dark:text-[#F5F5F5]">NHS Pension Scheme Tiers</h3>
-            <p className="text-[#525252] dark:text-[#A3A3A3] text-xs leading-relaxed">
+            <p className="text-[#262626] dark:text-[#D4D4D4] text-xs leading-relaxed">
               Members contribute tiered rates from 5.2% to 12.5% based on actual pensionable pay. Contributions are deducted before Income Tax under Net Pay arrangements.
             </p>
           </div>
 
           <div className="p-4 rounded-xl bg-[#FAFAFA] dark:bg-[#151515] border border-[#E5E5E5] dark:border-[#2A2A2A] space-y-1.5">
             <h3 className="font-bold text-[#111111] dark:text-[#F5F5F5]">Step Point Progression</h3>
-            <p className="text-[#525252] dark:text-[#A3A3A3] text-xs leading-relaxed">
+            <p className="text-[#262626] dark:text-[#D4D4D4] text-xs leading-relaxed">
               Staff advance to higher pay step points within their band upon achieving 2 years or 4–5 years of completed service and satisfactory appraisal reviews.
             </p>
           </div>
@@ -115,7 +115,7 @@ export const NhsSalaryPage: React.FC = () => {
         </div>
       </div>
 
-      <FaqAccordion items={NHS_FAQS} />
+      <FaqAccordion items={NHS_FAQS} badge="NHS Pay Knowledge Base" subtitle="Clear answers to common questions about NHS pay in the UK." />
       <DisclaimerNotice />
     </div>
   );

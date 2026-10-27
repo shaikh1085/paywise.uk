@@ -17,8 +17,8 @@ export const MaternityPayPage: React.FC = () => {
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-8">
       <SEO
-        title="Maternity Pay Calculator UK 2025/26 | SMP, SPP & Shared Parental Pay"
-        description="Calculate your UK Statutory Maternity Pay (SMP), Paternity Pay (SPP), Adoption Pay and Shared Parental Pay for 2025/26. Free calculator with week-by-week breakdown and enhanced pay support."
+        title="Maternity Pay Calculator UK 2026/27 | SMP, SPP & Shared Parental Pay"
+        description="Calculate your UK Statutory Maternity Pay (SMP), Paternity Pay (SPP), Adoption Pay and Shared Parental Pay for 2026/27. Free calculator with week-by-week breakdown and enhanced pay support."
         keywords={[
           'maternity pay calculator uk',
           'statutory maternity pay calculator 2025',
@@ -33,8 +33,8 @@ export const MaternityPayPage: React.FC = () => {
         ]}
         canonicalPath="/maternity-pay-calculator"
         isCalculator={true}
-        calculatorName="UK Maternity & Paternity Pay Calculator 2025/26"
-        calculatorDescription="Calculate Statutory Maternity Pay (SMP), Paternity Pay (SPP), Adoption Pay and Shared Parental Pay for 2025/26 with a full week-by-week breakdown."
+        calculatorName="UK Maternity & Paternity Pay Calculator 2026/27"
+        calculatorDescription="Calculate Statutory Maternity Pay (SMP), Paternity Pay (SPP), Adoption Pay and Shared Parental Pay for 2026/27 with a full week-by-week breakdown."
         faqs={MATERNITY_FAQS}
         breadcrumbs={breadcrumbs}
       />
@@ -44,13 +44,13 @@ export const MaternityPayPage: React.FC = () => {
       <div className="max-w-3xl space-y-2">
         <div className="inline-flex items-center gap-2 px-3 py-1 rounded-lg bg-[#F5F5F5] dark:bg-[#171717] border border-[#E5E5E5] dark:border-[#2A2A2A] text-[#059669] dark:text-[#10B981] text-xs font-bold shadow-xs">
           <span className="w-2 h-2 rounded-full bg-[#059669] dark:bg-[#10B981]" />
-          SMP £187.18/wk · Updated April 2025
+          SMP £194.32/wk · Updated April 2026
         </div>
         <h1 className="text-2xl sm:text-4xl font-black text-[#111111] dark:text-[#F5F5F5] tracking-tight">
-          Maternity & Paternity Pay Calculator UK 2025/26
+          Maternity & Paternity Pay Calculator UK 2026/27
         </h1>
-        <p className="text-xs sm:text-sm text-[#525252] dark:text-[#A3A3A3] leading-relaxed">
-          Calculate your Statutory Maternity Pay (SMP), Paternity Pay (SPP), Adoption Pay, or Shared Parental Pay for 2025/26. Enter your average weekly earnings and get an instant week-by-week breakdown of exactly what you will receive and when — including employer enhanced pay.
+        <p className="text-xs sm:text-sm text-[#262626] dark:text-[#D4D4D4] leading-relaxed">
+          Calculate your Statutory Maternity Pay (SMP), Paternity Pay (SPP), Adoption Pay, or Shared Parental Pay for 2026/27. Enter your average weekly earnings and get an instant week-by-week breakdown of exactly what you will receive and when — including employer enhanced pay.
         </p>
       </div>
 
@@ -60,31 +60,31 @@ export const MaternityPayPage: React.FC = () => {
 
         <section className="space-y-3">
           <h2 className="text-lg sm:text-xl font-bold text-[#111111] dark:text-[#F5F5F5]">
-            UK Statutory Maternity Pay rates 2025/26
+            UK Statutory Maternity Pay rates 2026/27
           </h2>
           <div className="overflow-x-auto">
             <table className="w-full text-xs border-collapse">
               <thead>
                 <tr className="border-b border-[#E5E5E5] dark:border-[#2A2A2A]">
                   <th className="text-left py-2.5 px-3 font-bold text-[#111111] dark:text-[#F5F5F5]">Pay Type</th>
-                  <th className="text-right py-2.5 px-3 font-bold text-[#111111] dark:text-[#F5F5F5]">2024/25</th>
                   <th className="text-right py-2.5 px-3 font-bold text-[#111111] dark:text-[#F5F5F5]">2025/26</th>
+                  <th className="text-right py-2.5 px-3 font-bold text-[#111111] dark:text-[#F5F5F5]">2026/27</th>
                   <th className="text-right py-2.5 px-3 font-bold text-[#111111] dark:text-[#F5F5F5]">Duration</th>
                 </tr>
               </thead>
               <tbody>
                 {[
                   { type: 'SMP — First 6 weeks', prev: '90% AWE', curr: '90% AWE', dur: '6 weeks' },
-                  { type: 'SMP — Weeks 7–39', prev: '£184.03/wk', curr: '£187.18/wk', dur: '33 weeks' },
-                  { type: 'Statutory Paternity Pay', prev: '£184.03/wk', curr: '£187.18/wk', dur: '1–2 weeks' },
-                  { type: 'Statutory Adoption Pay', prev: '£184.03/wk', curr: '£187.18/wk', dur: '39 weeks' },
-                  { type: 'Shared Parental Pay', prev: '£184.03/wk', curr: '£187.18/wk', dur: 'Up to 37 weeks' },
+                  { type: 'SMP — Weeks 7–39', prev: '£187.18/wk', curr: '£194.32/wk', dur: '33 weeks' },
+                  { type: 'Statutory Paternity Pay', prev: '£187.18/wk', curr: '£194.32/wk', dur: '1–2 weeks' },
+                  { type: 'Statutory Adoption Pay', prev: '£187.18/wk', curr: '£194.32/wk', dur: '39 weeks' },
+                  { type: 'Shared Parental Pay', prev: '£187.18/wk', curr: '£194.32/wk', dur: 'Up to 37 weeks' },
                 ].map((row, i) => (
                   <tr key={i} className="border-b border-[#F5F5F5] dark:border-[#1A1A1A] hover:bg-[#FAFAFA] dark:hover:bg-[#151515]">
                     <td className="py-2.5 px-3 font-semibold text-[#111111] dark:text-[#F5F5F5]">{row.type}</td>
-                    <td className="py-2.5 px-3 text-right text-[#525252] dark:text-[#A3A3A3]">{row.prev}</td>
+                    <td className="py-2.5 px-3 text-right text-[#262626] dark:text-[#D4D4D4]">{row.prev}</td>
                     <td className="py-2.5 px-3 text-right font-bold text-[#059669] dark:text-[#10B981]">{row.curr}</td>
-                    <td className="py-2.5 px-3 text-right text-[#525252] dark:text-[#A3A3A3]">{row.dur}</td>
+                    <td className="py-2.5 px-3 text-right text-[#262626] dark:text-[#D4D4D4]">{row.dur}</td>
                   </tr>
                 ))}
               </tbody>
@@ -100,13 +100,13 @@ export const MaternityPayPage: React.FC = () => {
             {[
               { check: '✅', text: 'You are an employee (not self-employed)' },
               { check: '✅', text: 'You have worked for your employer for at least 26 weeks by the 15th week before your due date' },
-              { check: '✅', text: 'You earn at least £125/week (2025/26) on average before tax' },
+              { check: '✅', text: 'You earn at least £129/week (2026/27) on average before tax' },
               { check: '✅', text: 'You are still employed (or were employed) in the qualifying week' },
               { check: '❌', text: 'If self-employed, you do not qualify for SMP — apply for Maternity Allowance instead' },
             ].map((item, i) => (
               <div key={i} className="flex gap-2 p-3 rounded-xl bg-[#FAFAFA] dark:bg-[#151515] border border-[#E5E5E5] dark:border-[#2A2A2A]">
                 <span className="shrink-0">{item.check}</span>
-                <span className="text-[#525252] dark:text-[#A3A3A3] leading-relaxed">{item.text}</span>
+                <span className="text-[#262626] dark:text-[#D4D4D4] leading-relaxed">{item.text}</span>
               </div>
             ))}
           </div>
@@ -135,7 +135,7 @@ export const MaternityPayPage: React.FC = () => {
         </section>
       </div>
 
-      <FaqAccordion items={MATERNITY_FAQS} />
+      <FaqAccordion items={MATERNITY_FAQS} badge="Maternity Pay Knowledge Base" subtitle="Clear answers to common questions about UK maternity pay." />
       <DisclaimerNotice />
     </div>
   );

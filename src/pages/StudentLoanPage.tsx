@@ -26,7 +26,12 @@ export const StudentLoanPage: React.FC = () => {
           'plan 2 student loan repayment',
           'plan 1 student loan deduction',
           'postgraduate loan repayment calculator',
-        ]}
+        
+          'how much student loan do i pay calculator',
+          'how much student loan will i pay calculator',
+          'how much student loan will i pay back calculator',
+          'how much student loan do i pay back calculator',
+          'which student loan to pay off first calculator',]}
         canonicalPath="/student-loan-repayment-calculator"
         isCalculator={true}
         calculatorName="Student Loan Repayment Calculator UK"
@@ -45,7 +50,7 @@ export const StudentLoanPage: React.FC = () => {
         <h1 className="text-2xl sm:text-4xl font-black text-[#111111] dark:text-[#F5F5F5] tracking-tight">
           Student Loan Repayment Calculator UK
         </h1>
-        <p className="text-xs sm:text-sm text-[#525252] dark:text-[#A3A3A3] leading-relaxed">
+        <p className="text-xs sm:text-sm text-[#262626] dark:text-[#D4D4D4] leading-relaxed">
           Calculate monthly and annual deductions across UK Student Loan Plans (Plan 1, Plan 2, Plan 4, Plan 5, and Postgraduate loans) based on statutory repayment thresholds.
         </p>
       </div>
@@ -57,7 +62,7 @@ export const StudentLoanPage: React.FC = () => {
           <h2 className="text-lg sm:text-xl font-bold text-[#111111] dark:text-[#F5F5F5] mb-2">
             UK Student Loan Repayment Plans Explained
           </h2>
-          <p className="text-xs sm:text-sm text-[#525252] dark:text-[#A3A3A3] leading-relaxed">
+          <p className="text-xs sm:text-sm text-[#262626] dark:text-[#D4D4D4] leading-relaxed">
             In the UK, student loans function as an income-contingent graduate tax deducted through PAYE. You only repay if your gross earnings exceed your plan’s statutory threshold.
           </p>
         </div>
@@ -65,27 +70,27 @@ export const StudentLoanPage: React.FC = () => {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 text-xs">
           <div className="p-4 rounded-xl bg-[#FAFAFA] dark:bg-[#151515] border border-[#E5E5E5] dark:border-[#2A2A2A] space-y-1">
             <h3 className="font-bold text-[#111111] dark:text-[#F5F5F5]">Plan 1</h3>
-            <p className="text-[#525252] dark:text-[#A3A3A3]">Threshold: £24,990 / year. 9% deducted above threshold. Applies to courses starting 1998–2011 (England/Wales) or Northern Ireland.</p>
+            <p className="text-[#262626] dark:text-[#D4D4D4]">Threshold: £26,900 / year. 9% deducted above threshold. Applies to courses starting 1998–2011 (England/Wales) or Northern Ireland.</p>
           </div>
 
           <div className="p-4 rounded-xl bg-[#FAFAFA] dark:bg-[#151515] border border-[#E5E5E5] dark:border-[#2A2A2A] space-y-1">
             <h3 className="font-bold text-[#111111] dark:text-[#F5F5F5]">Plan 2</h3>
-            <p className="text-[#525252] dark:text-[#A3A3A3]">Threshold: £27,295 / year. 9% deducted above threshold. Applies to undergraduate courses between Sept 2012 and July 2023.</p>
+            <p className="text-[#262626] dark:text-[#D4D4D4]">Threshold: £29,385 / year. 9% deducted above threshold. Applies to undergraduate courses between Sept 2012 and July 2023.</p>
           </div>
 
           <div className="p-4 rounded-xl bg-[#FAFAFA] dark:bg-[#151515] border border-[#E5E5E5] dark:border-[#2A2A2A] space-y-1">
             <h3 className="font-bold text-[#111111] dark:text-[#F5F5F5]">Plan 4 (Scotland)</h3>
-            <p className="text-[#525252] dark:text-[#A3A3A3]">Threshold: £31,395 / year. 9% deducted above threshold. Applies to Scottish students funded via SAAS.</p>
+            <p className="text-[#262626] dark:text-[#D4D4D4]">Threshold: £33,795 / year. 9% deducted above threshold. Applies to Scottish students funded via SAAS.</p>
           </div>
 
           <div className="p-4 rounded-xl bg-[#FAFAFA] dark:bg-[#151515] border border-[#E5E5E5] dark:border-[#2A2A2A] space-y-1">
             <h3 className="font-bold text-[#111111] dark:text-[#F5F5F5]">Plan 5</h3>
-            <p className="text-[#525252] dark:text-[#A3A3A3]">Threshold: £25,000 / year. 9% deducted above threshold. Applies to new courses starting from 1 August 2023.</p>
+            <p className="text-[#262626] dark:text-[#D4D4D4]">Threshold: £25,000 / year. 9% deducted above threshold. Applies to new courses starting from 1 August 2023.</p>
           </div>
 
           <div className="p-4 rounded-xl bg-[#FAFAFA] dark:bg-[#151515] border border-[#E5E5E5] dark:border-[#2A2A2A] space-y-1">
             <h3 className="font-bold text-[#111111] dark:text-[#F5F5F5]">Postgraduate Loan</h3>
-            <p className="text-[#525252] dark:text-[#A3A3A3]">Threshold: £21,000 / year. 6% deducted above threshold. Deducted concurrently alongside undergraduate loans.</p>
+            <p className="text-[#262626] dark:text-[#D4D4D4]">Threshold: £21,000 / year. 6% deducted above threshold. Deducted concurrently alongside undergraduate loans.</p>
           </div>
         </div>
 
@@ -119,7 +124,7 @@ export const StudentLoanPage: React.FC = () => {
         </div>
       </div>
 
-      <FaqAccordion items={STUDENT_LOAN_FAQS} />
+      <FaqAccordion items={STUDENT_LOAN_FAQS} badge="Student Loan Knowledge Base" subtitle="Clear answers to common questions about UK student loan repayments." />
       <DisclaimerNotice />
     </div>
   );

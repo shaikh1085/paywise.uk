@@ -1,3 +1,4 @@
+import { formatGBP } from '../utils/format';
 import React, { useMemo } from 'react';
 import { Link } from 'react-router-dom';
 import { SEO } from '../components/seo/SEO';
@@ -41,7 +42,7 @@ export const HomePage: React.FC = () => {
       const res = calculateTakeHomePay({
         grossSalary: gross,
         payFrequency: 'annual',
-        taxYear: '2025_26',
+        taxYear: '2026_27',
         region: 'england_ni',
         taxCode: '1257L',
         pensionPercentage: 5,
@@ -298,8 +299,8 @@ export const HomePage: React.FC = () => {
       <GradientBackground />
 
       <SEO
-        title="UK Salary & Take-Home Pay Calculator (2025/2026)"
-        description="Calculate estimated UK take-home pay after Income Tax, National Insurance, pension and student loan deductions. Free salary calculator for 2025/26."
+        title="UK Salary & Take-Home Pay Calculator (2026/2027)"
+        description="Calculate estimated UK take-home pay after Income Tax, National Insurance, pension and student loan deductions. Free salary calculator for 2026/27."
         keywords={[
           'UK salary calculator',
           'UK take-home pay calculator',
@@ -314,7 +315,7 @@ export const HomePage: React.FC = () => {
         canonicalPath="/"
         isCalculator={true}
         calculatorName="UK Salary & Take-Home Pay Calculator"
-        calculatorDescription="Calculate estimated UK take-home pay after Income Tax, National Insurance, pension and student loan deductions. Free salary calculator for 2025/26."
+        calculatorDescription="Calculate estimated UK take-home pay after Income Tax, National Insurance, pension and student loan deductions. Free salary calculator for 2026/27."
         faqs={HOME_FAQS}
       />
 
@@ -332,7 +333,7 @@ export const HomePage: React.FC = () => {
               UK Salary &amp; Take-Home Pay Calculator
             </h1>
             
-            <p className="text-sm sm:text-base text-[#525252] dark:text-[#A3A3A3] leading-relaxed max-w-2xl font-medium">
+            <p className="text-sm sm:text-base text-[#262626] dark:text-[#D4D4D4] leading-relaxed max-w-2xl font-medium">
               Use our free UK salary and take-home pay calculator to estimate your exact monthly, weekly, and annual net pay after statutory deductions. Factor in current Income Tax rates, 8% National Insurance, auto-enrolment workplace pensions, and student loan repayment plans.
             </p>
           </div>
@@ -340,16 +341,18 @@ export const HomePage: React.FC = () => {
       </section>
 
       {/* 2. H2: Calculate Your UK Take-Home Pay */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="mb-4">
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative overflow-hidden">
+        {/* Watermark: green £ only (no dark square), 12% opacity, centered OVER the calculator cards so it stays visible in both light and dark mode; pointer-events-none so it never blocks clicks */}
+        <div aria-hidden="true" className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none select-none text-[#059669] dark:text-[#10B981] opacity-[0.12] text-[280px] sm:text-[420px] leading-none font-black z-20">£</div>
+        <div className="mb-4 relative z-10">
           <h2 className="text-xl sm:text-2xl font-bold text-[#111111] dark:text-[#F5F5F5] tracking-tight">
             Calculate Your UK Take-Home Pay
           </h2>
-          <p className="text-xs sm:text-sm text-[#525252] dark:text-[#A3A3A3] mt-1">
+          <p className="text-xs sm:text-sm text-[#262626] dark:text-[#D4D4D4] mt-1">
             Enter your gross salary, choose your tax region (England/Wales/NI or Scotland), and customize your pension contribution or student loan plan for an instant payslip calculation.
           </p>
         </div>
-        <TakeHomeCalculator />
+        <div className="relative z-10"><TakeHomeCalculator /></div>
       </section>
 
       {/* 3. H2: How the UK Salary Calculator Works */}
@@ -358,7 +361,7 @@ export const HomePage: React.FC = () => {
           <h2 className="text-lg sm:text-xl font-bold text-[#111111] dark:text-[#F5F5F5] tracking-tight">
             How the UK Salary Calculator Works
           </h2>
-          <p className="text-xs sm:text-sm text-[#525252] dark:text-[#A3A3A3] leading-relaxed">
+          <p className="text-xs sm:text-sm text-[#262626] dark:text-[#D4D4D4] leading-relaxed">
             Our calculation engine processes your earnings through the official Pay As You Earn (PAYE) framework established by HM Revenue &amp; Customs (HMRC). The calculation follows a strict four-step statutory sequence:
           </p>
 
@@ -368,7 +371,7 @@ export const HomePage: React.FC = () => {
                 <span className="w-5 h-5 rounded-full bg-[#059669] text-white flex items-center justify-center text-2xs font-bold shrink-0">1</span>
                 Gross Pay &amp; Region
               </h3>
-              <p className="text-xs text-[#525252] dark:text-[#A3A3A3] leading-relaxed">
+              <p className="text-xs text-[#262626] dark:text-[#D4D4D4] leading-relaxed">
                 Your contractual annual, monthly, or hourly earnings form the baseline. If you earn wages on an irregular schedule, you can use our <Link to="/hourly-to-salary-calculator" className="text-[#059669] dark:text-[#10B981] font-semibold hover:underline">Hourly Rate Calculator</Link> or <Link to="/day-rate-to-salary-calculator" className="text-[#059669] dark:text-[#10B981] font-semibold hover:underline">Day Rate Calculator</Link>.
               </p>
             </div>
@@ -378,7 +381,7 @@ export const HomePage: React.FC = () => {
                 <span className="w-5 h-5 rounded-full bg-[#059669] text-white flex items-center justify-center text-2xs font-bold shrink-0">2</span>
                 Tax-Free Allowance
               </h3>
-              <p className="text-xs text-[#525252] dark:text-[#A3A3A3] leading-relaxed">
+              <p className="text-xs text-[#262626] dark:text-[#D4D4D4] leading-relaxed">
                 The standard UK Personal Allowance of £12,570 (tax code 1257L) is deducted before applying income tax. Check tax code rules with our <Link to="/tax-code-calculator" className="text-[#059669] dark:text-[#10B981] font-semibold hover:underline">Tax Code Calculator</Link>.
               </p>
             </div>
@@ -388,7 +391,7 @@ export const HomePage: React.FC = () => {
                 <span className="w-5 h-5 rounded-full bg-[#059669] text-white flex items-center justify-center text-2xs font-bold shrink-0">3</span>
                 Tax &amp; National Insurance
               </h3>
-              <p className="text-xs text-[#525252] dark:text-[#A3A3A3] leading-relaxed">
+              <p className="text-xs text-[#262626] dark:text-[#D4D4D4] leading-relaxed">
                 Marginal tax bands (20%, 40%, 45%) and 8% Class 1 National Insurance are applied. Explore full tax band breakdowns using our <Link to="/income-tax-calculator" className="text-[#059669] dark:text-[#10B981] font-semibold hover:underline">Income Tax Calculator</Link> and <Link to="/national-insurance-calculator" className="text-[#059669] dark:text-[#10B981] font-semibold hover:underline">National Insurance Calculator</Link>.
               </p>
             </div>
@@ -398,7 +401,7 @@ export const HomePage: React.FC = () => {
                 <span className="w-5 h-5 rounded-full bg-[#059669] text-white flex items-center justify-center text-2xs font-bold shrink-0">4</span>
                 Pensions &amp; Student Loans
               </h3>
-              <p className="text-xs text-[#525252] dark:text-[#A3A3A3] leading-relaxed">
+              <p className="text-xs text-[#262626] dark:text-[#D4D4D4] leading-relaxed">
                 Workplace pension deductions and student loan repayments are applied, arriving at your true net take-home pay. See our <Link to="/pension-calculator" className="text-[#059669] dark:text-[#10B981] font-semibold hover:underline">Pension Calculator</Link> and <Link to="/student-loan-repayment-calculator" className="text-[#059669] dark:text-[#10B981] font-semibold hover:underline">Student Loan Calculator</Link>.
               </p>
             </div>
@@ -412,7 +415,7 @@ export const HomePage: React.FC = () => {
           <h2 className="text-lg sm:text-xl font-bold text-[#111111] dark:text-[#F5F5F5] tracking-tight">
             What Is Included in Your Take-Home Pay?
           </h2>
-          <p className="text-xs sm:text-sm text-[#525252] dark:text-[#A3A3A3] leading-relaxed">
+          <p className="text-xs sm:text-sm text-[#262626] dark:text-[#D4D4D4] leading-relaxed">
             Understanding the difference between gross pay and take-home pay is vital for personal budgeting, evaluating job offers, and planning mortgage affordability. In the UK, your payslip itemises several statutory and voluntary deductions:
           </p>
 
@@ -422,7 +425,7 @@ export const HomePage: React.FC = () => {
                 <CheckCircle2 className="w-4 h-4 text-[#059669] dark:text-[#10B981] shrink-0" />
                 Gross Pay vs Take-Home Net Pay
               </h3>
-              <p className="text-xs text-[#525252] dark:text-[#A3A3A3] leading-relaxed">
+              <p className="text-xs text-[#262626] dark:text-[#D4D4D4] leading-relaxed">
                 <strong>Gross pay</strong> is your total agreed salary before any deductions are made. <strong>Take-home pay (net pay)</strong> is the actual amount paid directly into your bank account. If you want to calculate the reverse — the gross salary needed to reach a specific net monthly budget — use our <Link to="/net-to-gross-calculator" className="text-[#059669] dark:text-[#10B981] font-semibold hover:underline">Net to Gross Calculator</Link>.
               </p>
             </div>
@@ -432,7 +435,7 @@ export const HomePage: React.FC = () => {
                 <CheckCircle2 className="w-4 h-4 text-[#059669] dark:text-[#10B981] shrink-0" />
                 Personal Allowance (Tax Code 1257L)
               </h3>
-              <p className="text-xs text-[#525252] dark:text-[#A3A3A3] leading-relaxed">
+              <p className="text-xs text-[#262626] dark:text-[#D4D4D4] leading-relaxed">
                 Most UK employees receive a tax-free Personal Allowance of £12,570 per year. For income exceeding £100,000, this allowance tapers down by £1 for every £2 earned, disappearing completely at £125,140. Check your specific code on our <Link to="/tax-code-calculator" className="text-[#059669] dark:text-[#10B981] font-semibold hover:underline">Tax Code Calculator</Link>.
               </p>
             </div>
@@ -442,7 +445,7 @@ export const HomePage: React.FC = () => {
                 <CheckCircle2 className="w-4 h-4 text-[#059669] dark:text-[#10B981] shrink-0" />
                 Employee Class 1 National Insurance
               </h3>
-              <p className="text-xs text-[#525252] dark:text-[#A3A3A3] leading-relaxed">
+              <p className="text-xs text-[#262626] dark:text-[#D4D4D4] leading-relaxed">
                 Employees pay 8% National Insurance on annual earnings between the Primary Threshold (£12,570) and Upper Earnings Limit (£50,270), and 2% on earnings above £50,270. Calculate your exact NI contributions with our <Link to="/national-insurance-calculator" className="text-[#059669] dark:text-[#10B981] font-semibold hover:underline">National Insurance Calculator</Link>.
               </p>
             </div>
@@ -452,7 +455,7 @@ export const HomePage: React.FC = () => {
                 <CheckCircle2 className="w-4 h-4 text-[#059669] dark:text-[#10B981] shrink-0" />
                 Workplace Pensions &amp; Student Loans
               </h3>
-              <p className="text-xs text-[#525252] dark:text-[#A3A3A3] leading-relaxed">
+              <p className="text-xs text-[#262626] dark:text-[#D4D4D4] leading-relaxed">
                 Under UK auto-enrolment, employees typically contribute 5% of qualifying earnings to a workplace pension, which qualifies for tax relief. Undergraduates repay 9% of income above statutory thresholds. See our <Link to="/salary-sacrifice-calculator" className="text-[#059669] dark:text-[#10B981] font-semibold hover:underline">Salary Sacrifice Calculator</Link> to see how pension contributions reduce tax.
               </p>
             </div>
@@ -466,16 +469,16 @@ export const HomePage: React.FC = () => {
           <h2 className="text-lg sm:text-xl font-bold text-[#111111] dark:text-[#F5F5F5] tracking-tight">
             UK Income Tax and National Insurance
           </h2>
-          <p className="text-xs sm:text-sm text-[#525252] dark:text-[#A3A3A3] leading-relaxed">
+          <p className="text-xs sm:text-sm text-[#262626] dark:text-[#D4D4D4] leading-relaxed">
             Your take-home pay is determined by progressive marginal tax brackets. In England, Wales, and Northern Ireland, taxable income above the Personal Allowance of £12,570 is taxed across three primary bands. Scotland operates six separate devolved tax bands. If you want to calculate your income tax separately, use our dedicated <Link to="/income-tax-calculator" className="text-[#059669] dark:text-[#10B981] font-semibold hover:underline">Income Tax Calculator</Link>.
           </p>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs sm:text-sm">
             <div className="p-4 rounded-xl bg-[#FAFAFA] dark:bg-[#151515] border border-[#E5E5E5] dark:border-[#2A2A2A] space-y-2">
               <h3 className="font-bold text-[#111111] dark:text-[#F5F5F5]">
-                England, Wales &amp; Northern Ireland Tax Bands (2025/26)
+                England, Wales &amp; Northern Ireland Tax Bands (2026/27)
               </h3>
-              <ul className="space-y-1.5 text-xs text-[#525252] dark:text-[#A3A3A3]">
+              <ul className="space-y-1.5 text-xs text-[#262626] dark:text-[#D4D4D4]">
                 <li className="flex justify-between"><span>Personal Allowance (0%):</span> <strong className="text-[#111111] dark:text-[#F5F5F5]">£0 to £12,570</strong></li>
                 <li className="flex justify-between"><span>Basic Rate (20%):</span> <strong className="text-[#111111] dark:text-[#F5F5F5]">£12,571 to £50,270</strong></li>
                 <li className="flex justify-between"><span>Higher Rate (40%):</span> <strong className="text-[#111111] dark:text-[#F5F5F5]">£50,271 to £125,140</strong></li>
@@ -485,9 +488,9 @@ export const HomePage: React.FC = () => {
 
             <div className="p-4 rounded-xl bg-[#FAFAFA] dark:bg-[#151515] border border-[#E5E5E5] dark:border-[#2A2A2A] space-y-2">
               <h3 className="font-bold text-[#111111] dark:text-[#F5F5F5]">
-                Employee Class 1 National Insurance Rates (2025/26)
+                Employee Class 1 National Insurance Rates (2026/27)
               </h3>
-              <ul className="space-y-1.5 text-xs text-[#525252] dark:text-[#A3A3A3]">
+              <ul className="space-y-1.5 text-xs text-[#262626] dark:text-[#D4D4D4]">
                 <li className="flex justify-between"><span>Below Primary Threshold (0%):</span> <strong className="text-[#111111] dark:text-[#F5F5F5]">£0 to £12,570</strong></li>
                 <li className="flex justify-between"><span>Main Employee Rate (8%):</span> <strong className="text-[#111111] dark:text-[#F5F5F5]">£12,571 to £50,270</strong></li>
                 <li className="flex justify-between"><span>Upper Earnings Rate (2%):</span> <strong className="text-[#111111] dark:text-[#F5F5F5]">Over £50,270</strong></li>
@@ -500,7 +503,7 @@ export const HomePage: React.FC = () => {
             <h3 className="font-bold text-xs sm:text-sm text-[#111111] dark:text-[#F5F5F5]">
               The £100,000 Personal Allowance Taper (60% Effective Tax Trap)
             </h3>
-            <p className="text-xs text-[#525252] dark:text-[#A3A3A3] leading-relaxed">
+            <p className="text-xs text-[#262626] dark:text-[#D4D4D4] leading-relaxed">
               When your adjusted net income surpasses £100,000, your £12,570 Personal Allowance is reduced by £1 for every £2 of income above £100,000. This creates an effective 60% marginal income tax rate (62% when adding 2% National Insurance) on earnings between £100,000 and £125,140. Increasing pension contributions via <Link to="/salary-sacrifice-calculator" className="text-[#059669] dark:text-[#10B981] font-semibold hover:underline">salary sacrifice</Link> can help restore this allowance.
             </p>
           </div>
@@ -519,7 +522,7 @@ export const HomePage: React.FC = () => {
               <h3 className="font-bold text-[#111111] dark:text-[#F5F5F5]">
                 How Workplace Pensions Affect Take-Home Pay
               </h3>
-              <p className="text-xs text-[#525252] dark:text-[#A3A3A3] leading-relaxed">
+              <p className="text-xs text-[#262626] dark:text-[#D4D4D4] leading-relaxed">
                 Most UK employees are automatically enrolled into a workplace pension scheme with a statutory minimum 5% employee contribution and 3% employer contribution on qualifying earnings (£6,240 to £50,000). Pension contributions benefit from tax relief at your marginal rate. Under salary sacrifice arrangements, you also save 8% or 2% National Insurance. Forecast your long-term retirement pot using our <Link to="/pension-calculator" className="text-[#059669] dark:text-[#10B981] font-semibold hover:underline">Pension Growth Calculator</Link>.
               </p>
               <div className="pt-2">
@@ -537,8 +540,8 @@ export const HomePage: React.FC = () => {
               <h3 className="font-bold text-[#111111] dark:text-[#F5F5F5]">
                 How Student Loan Repayments are Deducted
               </h3>
-              <p className="text-xs text-[#525252] dark:text-[#A3A3A3] leading-relaxed">
-                Student loan repayments are calculated on gross income exceeding your plan's statutory threshold. Undergraduate plans (Plan 1: £26,065, Plan 2: £27,295, Plan 4 Scotland: £32,745, Plan 5: £25,000) are deducted at 9% above the threshold. Postgraduate loans are deducted at 6% on income over £21,000. Calculate your monthly repayment schedule on our <Link to="/student-loan-repayment-calculator" className="text-[#059669] dark:text-[#10B981] font-semibold hover:underline">Student Loan Repayment Calculator</Link>.
+              <p className="text-xs text-[#262626] dark:text-[#D4D4D4] leading-relaxed">
+                Student loan repayments are calculated on gross income exceeding your plan's statutory threshold. Undergraduate plans (Plan 1: £26,900, Plan 2: £29,385, Plan 4 Scotland: £33,795, Plan 5: £25,000) are deducted at 9% above the threshold. Postgraduate loans are deducted at 6% on income over £21,000. Calculate your monthly repayment schedule on our <Link to="/student-loan-repayment-calculator" className="text-[#059669] dark:text-[#10B981] font-semibold hover:underline">Student Loan Repayment Calculator</Link>.
               </p>
               <div className="pt-2">
                 <Link
@@ -562,7 +565,7 @@ export const HomePage: React.FC = () => {
               <h2 className="text-lg sm:text-xl font-bold text-[#111111] dark:text-[#F5F5F5] tracking-tight">
                 Popular UK Salary Benchmarks ({TAX_CONFIG_METADATA.currentTaxYearLabel})
               </h2>
-              <p className="text-xs text-[#525252] dark:text-[#A3A3A3] mt-0.5">
+              <p className="text-xs text-[#262626] dark:text-[#D4D4D4] mt-0.5">
                 Estimated net monthly take-home pay based on standard 1257L tax code, England/Wales/NI tax bands, and 5% auto-enrolment pension.
               </p>
             </div>
@@ -589,7 +592,7 @@ export const HomePage: React.FC = () => {
                 <div className="mt-2.5 pt-2 border-t border-[#E5E5E5] dark:border-[#2A2A2A]">
                   <span className="text-2xs text-[#737373] dark:text-[#888888] block font-medium">Est. Net Monthly</span>
                   <span className="text-xs sm:text-sm font-black text-[#059669] dark:text-[#10B981] tabular-nums">
-                    £{s.monthlyNet.toLocaleString('en-GB')}<span className="text-2xs font-bold">/mo</span>
+                    {formatGBP(s.monthlyNet)}<span className="text-2xs font-bold">/mo</span>
                   </span>
                 </div>
               </Link>
@@ -604,7 +607,7 @@ export const HomePage: React.FC = () => {
           <h2 className="text-lg sm:text-xl font-bold text-[#111111] dark:text-[#F5F5F5] tracking-tight">
             Featured UK Salary Guides
           </h2>
-          <p className="text-xs sm:text-sm text-[#525252] dark:text-[#A3A3A3] mt-0.5">
+          <p className="text-xs sm:text-sm text-[#262626] dark:text-[#D4D4D4] mt-0.5">
             In-depth tax analyses, take-home breakdowns, and take-home benchmarks across common UK salary thresholds.
           </p>
         </div>
@@ -618,7 +621,7 @@ export const HomePage: React.FC = () => {
               <h3 className="text-sm font-bold text-[#111111] dark:text-[#F5F5F5] mt-1 group-hover:text-[#059669] dark:group-hover:text-[#10B981] transition-colors">
                 £50,000 Salary After Tax in the UK
               </h3>
-              <p className="text-xs text-[#525252] dark:text-[#A3A3A3] mt-1">
+              <p className="text-xs text-[#262626] dark:text-[#D4D4D4] mt-1">
                 Full breakdown of monthly take-home pay, 20% basic rate tax band, National Insurance, and workplace pension deductions.
               </p>
             </div>
@@ -634,7 +637,7 @@ export const HomePage: React.FC = () => {
               <h3 className="text-sm font-bold text-[#111111] dark:text-[#F5F5F5] mt-1 group-hover:text-[#059669] dark:group-hover:text-[#10B981] transition-colors">
                 £60,000 Salary After Tax in the UK
               </h3>
-              <p className="text-xs text-[#525252] dark:text-[#A3A3A3] mt-1">
+              <p className="text-xs text-[#262626] dark:text-[#D4D4D4] mt-1">
                 Higher-rate 40% tax bracket breakdown, child benefit charge impact, and pension salary sacrifice tax relief.
               </p>
             </div>
@@ -649,7 +652,7 @@ export const HomePage: React.FC = () => {
           <h2 className="text-xl sm:text-2xl font-bold text-[#111111] dark:text-[#F5F5F5] tracking-tight">
             Salary Calculators and Tools
           </h2>
-          <p className="text-xs sm:text-sm text-[#525252] dark:text-[#A3A3A3]">
+          <p className="text-xs sm:text-sm text-[#262626] dark:text-[#D4D4D4]">
             Browse our full suite of precision UK financial calculators covering employment taxes, mortgages, property purchase, pensions, and debt reduction.
           </p>
         </div>
@@ -668,14 +671,14 @@ export const HomePage: React.FC = () => {
                     <div className="p-2.5 rounded-xl bg-[#F5F5F5] dark:bg-[#222222] text-[#059669] dark:text-[#10B981] flex items-center justify-center font-bold border border-[#E5E5E5] dark:border-[#2A2A2A]">
                       <Icon className="w-4 h-4" />
                     </div>
-                    <span className="text-3xs uppercase font-bold tracking-wider px-2 py-0.5 rounded-md bg-[#F5F5F5] dark:bg-[#222222] text-[#525252] dark:text-[#A3A3A3] border border-[#E5E5E5] dark:border-[#2A2A2A]">
+                    <span className="text-3xs uppercase font-bold tracking-wider px-2 py-0.5 rounded-md bg-[#F5F5F5] dark:bg-[#222222] text-[#262626] dark:text-[#D4D4D4] border border-[#E5E5E5] dark:border-[#2A2A2A]">
                       {tool.badge}
                     </span>
                   </div>
                   <h3 className="text-sm font-bold text-[#111111] dark:text-[#F5F5F5] group-hover:text-[#059669] dark:group-hover:text-[#10B981] transition-colors">
                     {tool.title}
                   </h3>
-                  <p className="text-xs text-[#525252] dark:text-[#A3A3A3] mt-1.5 leading-relaxed font-normal">
+                  <p className="text-xs text-[#262626] dark:text-[#D4D4D4] mt-1.5 leading-relaxed font-normal">
                     {tool.description}
                   </p>
                 </div>
@@ -707,7 +710,7 @@ export const HomePage: React.FC = () => {
             <h2 className="text-lg sm:text-xl font-bold text-[#111111] dark:text-[#F5F5F5] tracking-tight">
               Useful UK Tax Resources
             </h2>
-            <p className="text-xs sm:text-sm text-[#525252] dark:text-[#A3A3A3] mt-1">
+            <p className="text-xs sm:text-sm text-[#262626] dark:text-[#D4D4D4] mt-1">
               For official statutory rates, personal tax accounts, and legislative guidelines, consult these authoritative government sources:
             </p>
           </div>
@@ -729,7 +732,7 @@ export const HomePage: React.FC = () => {
                   <h3 className="text-xs sm:text-sm font-bold text-[#111111] dark:text-[#F5F5F5] group-hover:text-[#059669] dark:group-hover:text-[#10B981] transition-colors">
                     {res.title}
                   </h3>
-                  <p className="text-xs text-[#525252] dark:text-[#A3A3A3] mt-1 leading-relaxed">
+                  <p className="text-xs text-[#262626] dark:text-[#D4D4D4] mt-1 leading-relaxed">
                     {res.description}
                   </p>
                 </div>
@@ -741,7 +744,7 @@ export const HomePage: React.FC = () => {
 
       {/* 11. H2: Frequently Asked Questions */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <FaqAccordion items={HOME_FAQS} title="Frequently Asked Questions" />
+        <FaqAccordion items={HOME_FAQS} title="Frequently Asked Questions" badge="PayWise Knowledge Base" subtitle="Clear answers to common questions about UK take-home pay and salary calculators." />
       </div>
 
       {/* Site-wide Disclaimer */}

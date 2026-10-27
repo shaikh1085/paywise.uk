@@ -3,6 +3,19 @@ import react from '@vitejs/plugin-react';
 import path from 'path';
 import {defineConfig} from 'vite';
 
+// NOTE (Task 10, 2026-10-26): vite-plugin-prerender 1.0.8 was tried and
+// REMOVED — it is not viable for this project (see report):
+//  1. Its ESM build is broken (bare require() in dist/index.mjs).
+//  2. Its pinned Puppeteer 1.20 / Chromium 2019 cannot parse the Vite 6
+//     production bundle ("SyntaxError: Unexpected token '?'"), so every
+//     "prerendered" page was just the SPA shell — no per-page title/meta.
+//  3. It needs X11 system libs (libXtst etc.) that Vercel's build image
+//     does not provide, and its failure crashes the whole build (exit 1).
+// The shared route list lives on in scripts/canonical-routes.ts (used by
+// the prebuild sitemap script) for a future prerender implementation
+// (e.g. a tool with a current Chromium). Do NOT re-add this plugin
+// without re-verifying a prerendered calculator page's <title>.
+
 export default defineConfig(() => {
   return {
   base: '/',

@@ -42,7 +42,7 @@ export const MortgageOverpaymentPage: React.FC = () => {
         <h1 className="text-2xl sm:text-4xl font-black text-[#111111] dark:text-[#F5F5F5] tracking-tight">
           {content.h1}
         </h1>
-        <p className="text-xs sm:text-sm text-[#525252] dark:text-[#A3A3A3] leading-relaxed">
+        <p className="text-xs sm:text-sm text-[#262626] dark:text-[#D4D4D4] leading-relaxed">
           {content.directAnswerParagraph}
         </p>
       </div>
@@ -58,7 +58,7 @@ export const MortgageOverpaymentPage: React.FC = () => {
             <BookOpen className="w-5 h-5 text-[#059669] dark:text-[#10B981]" />
             {content.howItWorks.title}
           </h2>
-          <div className="space-y-3 text-xs sm:text-sm text-[#525252] dark:text-[#A3A3A3] leading-relaxed">
+          <div className="space-y-3 text-xs sm:text-sm text-[#262626] dark:text-[#D4D4D4] leading-relaxed">
             {content.howItWorks.paragraphs.map((p, idx) => (
               <p key={idx}>{p}</p>
             ))}
@@ -75,7 +75,7 @@ export const MortgageOverpaymentPage: React.FC = () => {
                   {step.stepNumber}
                 </div>
                 <h3 className="text-xs font-bold text-[#111111] dark:text-[#F5F5F5]">{step.title}</h3>
-                <p className="text-2xs text-[#525252] dark:text-[#A3A3A3] leading-relaxed">
+                <p className="text-2xs text-[#262626] dark:text-[#D4D4D4] leading-relaxed">
                   {step.description}
                 </p>
               </div>
@@ -90,7 +90,7 @@ export const MortgageOverpaymentPage: React.FC = () => {
               <h3 className="text-sm sm:text-base font-bold text-[#111111] dark:text-[#F5F5F5] mb-1">
                 {content.practicalExample.title}
               </h3>
-              <p className="text-xs text-[#525252] dark:text-[#A3A3A3] leading-relaxed">
+              <p className="text-xs text-[#262626] dark:text-[#D4D4D4] leading-relaxed">
                 {content.practicalExample.scenario}
               </p>
             </div>
@@ -100,7 +100,7 @@ export const MortgageOverpaymentPage: React.FC = () => {
                 <tbody className="divide-y divide-[#E5E5E5] dark:divide-[#2A2A2A]">
                   {content.practicalExample.breakdown.map((item, idx) => (
                     <tr key={idx} className="hover:bg-white dark:hover:bg-[#171717] transition-colors">
-                      <td className="py-2.5 px-3 font-medium text-[#525252] dark:text-[#A3A3A3]">
+                      <td className="py-2.5 px-3 font-medium text-[#262626] dark:text-[#D4D4D4]">
                         {item.label}
                       </td>
                       <td className="py-2.5 px-3 text-right font-bold text-[#111111] dark:text-[#F5F5F5]">
@@ -120,11 +120,11 @@ export const MortgageOverpaymentPage: React.FC = () => {
 
         {/* Assumptions & Methodology */}
         <div className="space-y-3">
-          <h3 className="text-xs font-bold uppercase tracking-wider text-[#525252] dark:text-[#A3A3A3] flex items-center gap-1.5">
+          <h3 className="text-xs font-bold uppercase tracking-wider text-[#262626] dark:text-[#D4D4D4] flex items-center gap-1.5">
             <Info className="w-4 h-4 text-[#737373]" />
             Calculation Assumptions & Rules
           </h3>
-          <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs text-[#525252] dark:text-[#A3A3A3]">
+          <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs text-[#262626] dark:text-[#D4D4D4]">
             {content.assumptions.map((assump, idx) => (
               <li key={idx} className="flex items-start gap-2">
                 <span className="w-1.5 h-1.5 rounded-full bg-[#059669] dark:bg-[#10B981] mt-1.5 shrink-0" />
@@ -165,7 +165,7 @@ export const MortgageOverpaymentPage: React.FC = () => {
       </div>
 
       {/* FAQs Section */}
-      <FaqAccordion items={content.faqs} title="Frequently Asked Questions about Mortgage Overpayments" />
+      <FaqAccordion items={content.faqs} title="Frequently Asked Questions about Mortgage Overpayments" badge="Mortgage Knowledge Base" subtitle="Clear answers to common questions about UK mortgage overpayments." />
 
       {/* Standard Disclaimer Notice */}
       <DisclaimerNotice />

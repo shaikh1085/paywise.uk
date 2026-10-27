@@ -1,3 +1,4 @@
+import { formatGBP } from '../../utils/format';
 import React, { useState, useMemo } from 'react';
 import { SickPayInput, TaxYear } from '../../types';
 import { calculateSickPay } from '../../utils/calculations';
@@ -23,7 +24,7 @@ export const SickPayCalculator: React.FC = () => {
     qualifyingDaysPerWeek: 5,
     isLinkedPeriod: false,
     occupationalWeeklyPay: 0,
-    taxYear: '2025_26',
+    taxYear: '2026_27',
   });
 
   const [showOccupational, setShowOccupational] = useState(false);
@@ -37,27 +38,27 @@ export const SickPayCalculator: React.FC = () => {
       qualifyingDaysPerWeek: 5,
       isLinkedPeriod: false,
       occupationalWeeklyPay: 0,
-      taxYear: '2025_26',
+      taxYear: '2026_27',
     });
     setShowOccupational(false);
   };
 
   const fmt = (n: number) =>
-    '£' + n.toLocaleString('en-GB', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+    formatGBP(n);
 
   const taxYears: { value: TaxYear; label: string }[] = [
-    { value: '2025_26', label: '2025/26 (Current)' },
-    { value: '2026_27', label: '2026/27 (Forecast)' },
+    { value: '2025_26', label: '2025/26' },
+    { value: '2026_27', label: '2026/27 (Current)' },
     { value: '2024_25', label: '2024/25' },
   ];
 
   const copyText = `PayWise UK — Statutory Sick Pay (SSP) Calculation:
 Tax Year: ${result.taxYearLabel}
-Average Weekly Earnings: ${fmt(result.averageWeeklyEarnings)} (LEL: ${fmt(result.lowerEarningsLimit)}/wk)
+Average Weekly Earnings: ${fmt(result.averageWeeklyEarnings)}${input.taxYear === '2026_27' ? ' (no LEL from 6 April 2026)' : ` (LEL: ${fmt(result.lowerEarningsLimit)}/wk)`}
 Eligibility: ${result.isEligible ? 'Eligible for SSP' : 'Ineligible (Earnings below LEL)'}
 ---
 Qualifying Working Days Off: ${result.qualifyingDaysOff} days (${result.qualifyingDaysPerWeek} days/wk contract)
-Unpaid Waiting Days: ${result.waitingDays} days (${result.isLinkedPeriod ? '0 waiting days — Linked sickness within 8 weeks' : 'First 3 qualifying days unpaid'})
+Unpaid Waiting Days: ${result.waitingDays} days (${input.taxYear === '2026_27' ? 'No waiting days from 6 April 2026' : result.isLinkedPeriod ? '0 waiting days — Linked sickness within 8 weeks' : 'First 3 qualifying days unpaid'})
 Payable SSP Days: ${result.payableDays} days (${result.payableWeeks.toFixed(1)} weeks)
 Daily SSP Rate: ${fmt(result.dailySspRate)}/day (${fmt(result.weeklySspRate)}/week)
 Total Statutory Sick Pay: ${fmt(result.totalSspAmount)}
@@ -76,7 +77,7 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/statutory-sick-pay-calcu
           <button
             type="button"
             onClick={handleReset}
-            className="inline-flex items-center gap-1 text-xs font-semibold text-[#525252] hover:text-[#111111] dark:text-[#A3A3A3] dark:hover:text-[#F5F5F5] transition-colors p-1.5 rounded-lg hover:bg-[#F5F5F5] dark:hover:bg-[#222222]"
+            className="inline-flex items-center gap-1 text-xs font-semibold text-[#262626] hover:text-[#111111] dark:text-[#D4D4D4] dark:hover:text-[#F5F5F5] transition-colors p-1.5 rounded-lg hover:bg-[#F5F5F5] dark:hover:bg-[#222222]"
           >
             <RotateCcw className="w-3.5 h-3.5" />
             Reset
@@ -93,7 +94,7 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/statutory-sick-pay-calcu
                 </label>
                 <Tooltip
                   title="Average Weekly Earnings"
-                  content="Your average gross weekly pay before tax, usually averaged over the 8 weeks prior to your first day of sickness. Must be at least £125/week (the Lower Earnings Limit for 2025/26) to qualify for SSP."
+                  content="Your average gross weekly pay before tax, usually averaged over the 8 weeks prior to your first day of sickness. Must be at least £129/week (the Lower Earnings Limit for 2026/27) to qualify for SSP."
                 />
               </div>
               <span className={`text-2xs font-bold px-2 py-0.5 rounded-md ${
@@ -101,11 +102,11 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/statutory-sick-pay-calcu
                   ? 'bg-emerald-50 dark:bg-emerald-950/40 text-emerald-700 dark:text-emerald-300'
                   : 'bg-rose-50 dark:bg-rose-950/40 text-rose-700 dark:text-rose-300'
               }`}>
-                {result.isEligible ? 'Above LEL (£125)' : 'Below LEL'}
+                {result.isEligible ? 'Above LEL (£129)' : 'Below LEL'}
               </span>
             </div>
             <div className="relative">
-              <span className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3.5 text-[#525252] dark:text-[#A3A3A3] font-bold text-base">£</span>
+              <span className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3.5 text-[#262626] dark:text-[#D4D4D4] font-bold text-base">£</span>
               <input
                 type="number"
                 min="0"
@@ -125,7 +126,7 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/statutory-sick-pay-calcu
                   className={`px-2.5 py-1 rounded-lg text-2xs font-bold border transition-all ${
                     input.averageWeeklyEarnings === val
                       ? 'bg-[#059669] text-white border-[#059669]'
-                      : 'bg-white dark:bg-[#151515] border-[#E5E5E5] dark:border-[#303030] text-[#525252] dark:text-[#A3A3A3] hover:border-[#059669]/50'
+                      : 'bg-white dark:bg-[#151515] border-[#E5E5E5] dark:border-[#303030] text-[#262626] dark:text-[#D4D4D4] hover:border-[#059669]/50'
                   }`}
                 >
                   £{val}
@@ -155,7 +156,7 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/statutory-sick-pay-calcu
               </button>
               <div className="flex-1 text-center">
                 <span className="text-3xl font-black text-[#111111] dark:text-[#F5F5F5]">{input.qualifyingDaysOff}</span>
-                <span className="text-sm text-[#525252] dark:text-[#A3A3A3] ml-1.5">{input.qualifyingDaysOff === 1 ? 'day' : 'days'}</span>
+                <span className="text-sm text-[#262626] dark:text-[#D4D4D4] ml-1.5">{input.qualifyingDaysOff === 1 ? 'day' : 'days'}</span>
               </div>
               <button
                 type="button"
@@ -174,7 +175,7 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/statutory-sick-pay-calcu
                   className={`px-3 py-1.5 rounded-xl text-xs font-bold border transition-all ${
                     input.qualifyingDaysOff === days
                       ? 'bg-[#059669] text-white border-[#059669]'
-                      : 'bg-white dark:bg-[#151515] border-[#E5E5E5] dark:border-[#303030] text-[#525252] dark:text-[#A3A3A3] hover:border-[#059669]/50'
+                      : 'bg-white dark:bg-[#151515] border-[#E5E5E5] dark:border-[#303030] text-[#262626] dark:text-[#D4D4D4] hover:border-[#059669]/50'
                   }`}
                 >
                   {days} {days === 1 ? 'day' : 'days'}
@@ -191,7 +192,7 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/statutory-sick-pay-calcu
               </label>
               <Tooltip
                 title="Qualifying Pattern"
-                content="The number of days you are contracted to work in a normal week. SSP daily rate is calculated as the weekly rate divided by this number (e.g. £116.75 / 5 = £23.35/day)."
+                content="The number of days you are contracted to work in a normal week. SSP daily rate is calculated as the weekly rate divided by this number (e.g. £123.25 / 5 = £24.65/day)."
               />
             </div>
             <div className="grid grid-cols-5 sm:grid-cols-7 gap-1.5">
@@ -203,7 +204,7 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/statutory-sick-pay-calcu
                   className={`py-2 rounded-xl text-xs font-bold border transition-all ${
                     (input.qualifyingDaysPerWeek || 5) === num
                       ? 'bg-[#059669] text-white border-[#059669]'
-                      : 'bg-white dark:bg-[#151515] border-[#E5E5E5] dark:border-[#303030] text-[#525252] dark:text-[#A3A3A3] hover:border-[#059669]/50'
+                      : 'bg-white dark:bg-[#151515] border-[#E5E5E5] dark:border-[#303030] text-[#262626] dark:text-[#D4D4D4] hover:border-[#059669]/50'
                   }`}
                 >
                   {num}d
@@ -272,7 +273,7 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/statutory-sick-pay-calcu
             {showOccupational && (
               <div className="space-y-2 pt-2 border-t border-[#E5E5E5] dark:border-[#2A2A2A]">
                 <div className="flex items-center gap-1 mb-1">
-                  <label className="block text-2xs font-bold uppercase tracking-wider text-[#525252] dark:text-[#A3A3A3]">
+                  <label className="block text-2xs font-bold uppercase tracking-wider text-[#262626] dark:text-[#D4D4D4]">
                     Employer Occupational Rate (£/week)
                   </label>
                   <Tooltip
@@ -281,7 +282,7 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/statutory-sick-pay-calcu
                   />
                 </div>
                 <div className="relative">
-                  <span className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3 text-[#525252] dark:text-[#A3A3A3] font-bold text-sm">£</span>
+                  <span className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3 text-[#262626] dark:text-[#D4D4D4] font-bold text-sm">£</span>
                   <input
                     type="number"
                     min="0"
@@ -305,7 +306,7 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/statutory-sick-pay-calcu
               Tax Year
             </label>
             <select
-              value={input.taxYear || '2025_26'}
+              value={input.taxYear || '2026_27'}
               onChange={(e) => setInput((p) => ({ ...p, taxYear: e.target.value as TaxYear }))}
               className="block w-full rounded-xl border border-[#E5E5E5] dark:border-[#303030] bg-white dark:bg-[#151515] px-3 py-2.5 text-xs font-bold text-[#111111] dark:text-[#F5F5F5] focus:border-[#059669] dark:focus:border-[#10B981] focus:ring-2 focus:ring-[#059669]/20 focus:outline-none transition-all"
             >
@@ -347,7 +348,9 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/statutory-sick-pay-calcu
               </p>
               <p className="font-normal opacity-90 leading-relaxed">
                 {result.isEligible
-                  ? `Your average weekly earnings of ${fmt(result.averageWeeklyEarnings)} meet the ${fmt(result.lowerEarningsLimit)}/week Lower Earnings Limit threshold.`
+                  ? input.taxYear === '2026_27'
+                  ? `From 6 April 2026 there is no lower earnings limit and no waiting days for SSP; your rate is the lower of £123.25/week or 80% of your average weekly earnings.`
+                  : `Your average weekly earnings of ${fmt(result.averageWeeklyEarnings)} meet the ${fmt(result.lowerEarningsLimit)}/week Lower Earnings Limit threshold.`
                   : result.ineligibilityReason}
               </p>
             </div>
@@ -368,7 +371,7 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/statutory-sick-pay-calcu
             </div>
 
             <div className="rounded-xl p-4 border border-[#E5E5E5] dark:border-[#2A2A2A] bg-[#FAFAFA] dark:bg-[#151515] text-center">
-              <p className="text-2xs font-bold uppercase tracking-wider text-[#525252] dark:text-[#A3A3A3] mb-1">
+              <p className="text-2xs font-bold uppercase tracking-wider text-[#262626] dark:text-[#D4D4D4] mb-1">
                 Daily SSP Rate
               </p>
               <p className="text-2xl font-black text-[#111111] dark:text-[#F5F5F5] tabular-nums">
@@ -380,14 +383,14 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/statutory-sick-pay-calcu
             </div>
 
             <div className="rounded-xl p-4 border border-[#E5E5E5] dark:border-[#2A2A2A] bg-[#FAFAFA] dark:bg-[#151515] text-center">
-              <p className="text-2xs font-bold uppercase tracking-wider text-[#525252] dark:text-[#A3A3A3] mb-1">
+              <p className="text-2xs font-bold uppercase tracking-wider text-[#262626] dark:text-[#D4D4D4] mb-1">
                 Waiting Days
               </p>
               <p className="text-2xl font-black text-[#111111] dark:text-[#F5F5F5] tabular-nums">
-                {result.waitingDays} <span className="text-xs font-semibold text-[#525252] dark:text-[#A3A3A3]">unpaid</span>
+                {result.waitingDays} <span className="text-xs font-semibold text-[#262626] dark:text-[#D4D4D4]">unpaid</span>
               </p>
               <p className="text-2xs text-[#737373] dark:text-[#888888] mt-1">
-                {result.isLinkedPeriod ? 'Linked: 0 waiting days' : 'First 3 days unpaid'}
+                {input.taxYear === '2026_27' ? 'No waiting days from 6 April 2026' : result.isLinkedPeriod ? 'Linked: 0 waiting days' : 'First 3 days unpaid'}
               </p>
             </div>
           </div>
@@ -420,7 +423,7 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/statutory-sick-pay-calcu
 
           {/* Detailed Calculation Breakdown */}
           <div className="space-y-2 mb-6">
-            <p className="text-xs font-bold uppercase tracking-wider text-[#525252] dark:text-[#A3A3A3] mb-2">
+            <p className="text-xs font-bold uppercase tracking-wider text-[#262626] dark:text-[#D4D4D4] mb-2">
               Calculation Breakdown
             </p>
             {[
@@ -470,7 +473,7 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/statutory-sick-pay-calcu
                     : 'bg-white dark:bg-[#171717] border-[#F0F0F0] dark:border-[#222222]'
                 }`}
               >
-                <span className="text-[#525252] dark:text-[#A3A3A3]">{row.label}</span>
+                <span className="text-[#262626] dark:text-[#D4D4D4]">{row.label}</span>
                 <span
                   className={`font-black tabular-nums ${
                     row.green
@@ -501,22 +504,22 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/statutory-sick-pay-calcu
             <div className="p-3 rounded-xl bg-[#FAFAFA] dark:bg-[#151515] border border-[#E5E5E5] dark:border-[#2A2A2A]">
               <p className="text-2xs text-[#737373] dark:text-[#888888] uppercase font-bold">Weekly Rate</p>
               <p className="font-black text-[#111111] dark:text-[#F5F5F5] text-sm mt-0.5">{fmt(result.weeklySspRate)} / week</p>
-              <p className="text-2xs text-[#525252] dark:text-[#A3A3A3] mt-1">Paid through standard PAYE payroll with Tax & NI.</p>
+              <p className="text-2xs text-[#262626] dark:text-[#D4D4D4] mt-1">Paid through standard PAYE payroll with Tax & NI.</p>
             </div>
             <div className="p-3 rounded-xl bg-[#FAFAFA] dark:bg-[#151515] border border-[#E5E5E5] dark:border-[#2A2A2A]">
               <p className="text-2xs text-[#737373] dark:text-[#888888] uppercase font-bold">Lower Earnings Limit</p>
               <p className="font-black text-[#111111] dark:text-[#F5F5F5] text-sm mt-0.5">{fmt(result.lowerEarningsLimit)} / week</p>
-              <p className="text-2xs text-[#525252] dark:text-[#A3A3A3] mt-1">Minimum AWE required before tax to qualify.</p>
+              <p className="text-2xs text-[#262626] dark:text-[#D4D4D4] mt-1">Minimum AWE required before tax to qualify.</p>
             </div>
             <div className="p-3 rounded-xl bg-[#FAFAFA] dark:bg-[#151515] border border-[#E5E5E5] dark:border-[#2A2A2A]">
               <p className="text-2xs text-[#737373] dark:text-[#888888] uppercase font-bold">Waiting Days</p>
               <p className="font-black text-[#111111] dark:text-[#F5F5F5] text-sm mt-0.5">3 Qualifying Days</p>
-              <p className="text-2xs text-[#525252] dark:text-[#A3A3A3] mt-1">First 3 working days unpaid unless linked within 8 weeks.</p>
+              <p className="text-2xs text-[#262626] dark:text-[#D4D4D4] mt-1">First 3 working days unpaid unless linked within 8 weeks.</p>
             </div>
             <div className="p-3 rounded-xl bg-[#FAFAFA] dark:bg-[#151515] border border-[#E5E5E5] dark:border-[#2A2A2A]">
               <p className="text-2xs text-[#737373] dark:text-[#888888] uppercase font-bold">Maximum Limit</p>
               <p className="font-black text-[#111111] dark:text-[#F5F5F5] text-sm mt-0.5">28 Weeks Max</p>
-              <p className="text-2xs text-[#525252] dark:text-[#A3A3A3] mt-1">After 28 weeks, form SSP1 is provided for ESA/benefits.</p>
+              <p className="text-2xs text-[#262626] dark:text-[#D4D4D4] mt-1">After 28 weeks, form SSP1 is provided for ESA/benefits.</p>
             </div>
           </div>
         </div>

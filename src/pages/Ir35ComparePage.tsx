@@ -50,7 +50,7 @@ export const Ir35ComparePage: React.FC = () => {
         <h1 className="text-2xl sm:text-4xl font-black text-[#111111] dark:text-[#F5F5F5] tracking-tight">
           Inside vs Outside IR35 Calculator UK
         </h1>
-        <p className="text-xs sm:text-sm text-[#525252] dark:text-[#A3A3A3] leading-relaxed">
+        <p className="text-xs sm:text-sm text-[#262626] dark:text-[#D4D4D4] leading-relaxed">
           Compare your net take-home pay, total tax liability, and retention rates side-by-side between operating as an outside IR35 limited company contractor versus an inside IR35 deemed employee via an umbrella company.
         </p>
       </div>
@@ -62,7 +62,7 @@ export const Ir35ComparePage: React.FC = () => {
           <h2 className="text-lg sm:text-xl font-bold text-[#111111] dark:text-[#F5F5F5] mb-2">
             Inside IR35 vs Outside IR35: What's the Difference
           </h2>
-          <p className="text-xs sm:text-sm text-[#525252] dark:text-[#A3A3A3] leading-relaxed">
+          <p className="text-xs sm:text-sm text-[#262626] dark:text-[#D4D4D4] leading-relaxed">
             The Intermediaries Legislation (known as IR35 or off-payroll working rules) determines whether a freelance contractor is recognized as a genuine independent business or a "disguised employee" for UK tax purposes. Your IR35 status fundamentally changes the tax structure applied to your assignment billing.
           </p>
         </div>
@@ -73,17 +73,17 @@ export const Ir35ComparePage: React.FC = () => {
               <Building className="w-4 h-4 text-[#059669] dark:text-[#10B981]" />
               <h3 className="font-bold text-[#111111] dark:text-[#F5F5F5]">Outside IR35 (Independent Business)</h3>
             </div>
-            <p className="text-[#525252] dark:text-[#A3A3A3] text-xs leading-relaxed">
+            <p className="text-[#262626] dark:text-[#D4D4D4] text-xs leading-relaxed">
               You contract via your own Personal Services Company (PSC). You have control over how work is executed, right of substitution, and financial risk. Your company pays Corporation Tax (19% to 25%) and distributes remaining profits as dividends without Employer National Insurance.
             </p>
           </div>
 
           <div className="p-4 rounded-xl bg-[#FAFAFA] dark:bg-[#151515] border border-[#E5E5E5] dark:border-[#2A2A2A] space-y-2">
             <div className="flex items-center gap-2">
-              <Briefcase className="w-4 h-4 text-[#525252] dark:text-[#A3A3A3]" />
+              <Briefcase className="w-4 h-4 text-[#262626] dark:text-[#D4D4D4]" />
               <h3 className="font-bold text-[#111111] dark:text-[#F5F5F5]">Inside IR35 (Deemed Employment)</h3>
             </div>
-            <p className="text-[#525252] dark:text-[#A3A3A3] text-xs leading-relaxed">
+            <p className="text-[#262626] dark:text-[#D4D4D4] text-xs leading-relaxed">
               HMRC treats the engagement as employment for tax purposes. The invoiced assignment rate is subject to deductions for Employer National Insurance (15%), Apprenticeship Levy (0.5%), and umbrella margins before regular PAYE Income Tax and employee NI are applied.
             </p>
           </div>
@@ -93,14 +93,14 @@ export const Ir35ComparePage: React.FC = () => {
           <h2 className="text-lg sm:text-xl font-bold text-[#111111] dark:text-[#F5F5F5]">
             How Outside IR35 Take-Home Pay Is Calculated (Corporation Tax + Dividends)
           </h2>
-          <p className="text-xs sm:text-sm text-[#525252] dark:text-[#A3A3A3] leading-relaxed">
+          <p className="text-xs sm:text-sm text-[#262626] dark:text-[#D4D4D4] leading-relaxed">
             When contracting outside IR35 through a UK limited company, take-home pay is maximized through a tax-efficient mixture of a low director salary and shareholder dividends:
           </p>
-          <ul className="list-disc pl-5 space-y-1.5 text-xs sm:text-sm text-[#525252] dark:text-[#A3A3A3]">
+          <ul className="list-disc pl-5 space-y-1.5 text-xs sm:text-sm text-[#262626] dark:text-[#D4D4D4]">
             <li><strong>Director Salary:</strong> Typically set at the annual Personal Allowance threshold (£12,570), this salary is an allowable business expense that reduces company taxable profit while preserving state pension qualifying years.</li>
             <li><strong>Corporation Tax:</strong> The company pays 19% Corporation Tax on taxable profits up to £50,000, 25% on profits exceeding £250,000, or a marginal rate (26.5%) on profits in between.</li>
             <li><strong>Dividend Allowance:</strong> The first £500 of extracted dividends each tax year is 100% tax-free.</li>
-            <li><strong>Dividend Tax Rates:</strong> Dividends above £500 are taxed according to your tax band: 8.75% (basic rate band up to £50,270), 33.75% (higher rate band £50,270–£125,140), and 39.35% (additional rate). Dividends are exempt from National Insurance.</li>
+            <li><strong>Dividend Tax Rates:</strong> Dividends above £500 are taxed according to your tax band: 10.75% (basic rate band up to £50,270), 35.75% (higher rate band £50,270–£125,140), and 39.35% (additional rate) for 2026/27. Dividends are exempt from National Insurance.</li>
           </ul>
         </div>
 
@@ -108,10 +108,10 @@ export const Ir35ComparePage: React.FC = () => {
           <h2 className="text-lg sm:text-xl font-bold text-[#111111] dark:text-[#F5F5F5]">
             How Inside IR35 Take-Home Pay Is Calculated (Deemed Employment)
           </h2>
-          <p className="text-xs sm:text-sm text-[#525252] dark:text-[#A3A3A3] leading-relaxed">
+          <p className="text-xs sm:text-sm text-[#262626] dark:text-[#D4D4D4] leading-relaxed">
             Inside IR35 deemed payments follow statutory PAYE employment mechanics. The client or umbrella company must deduct all statutory employment taxes from the contract assignment value before paying you:
           </p>
-          <ul className="list-disc pl-5 space-y-1.5 text-xs sm:text-sm text-[#525252] dark:text-[#A3A3A3]">
+          <ul className="list-disc pl-5 space-y-1.5 text-xs sm:text-sm text-[#262626] dark:text-[#D4D4D4]">
             <li><strong>Umbrella Weekly Margin:</strong> A fixed fee (£20 to £35 per week) charged by the accredited umbrella payroll provider.</li>
             <li><strong>Employer National Insurance:</strong> 15% on earnings above the statutory Secondary Threshold (£5,000 per year from April 2025).</li>
             <li><strong>Apprenticeship Levy:</strong> 0.5% statutory levy applied across larger payrolls.</li>
@@ -149,7 +149,7 @@ export const Ir35ComparePage: React.FC = () => {
         </div>
       </div>
 
-      <FaqAccordion items={IR35_COMPARE_FAQS} />
+      <FaqAccordion items={IR35_COMPARE_FAQS} badge="IR35 Knowledge Base" subtitle="Clear answers to common questions about inside vs outside IR35." />
       <DisclaimerNotice />
     </div>
   );

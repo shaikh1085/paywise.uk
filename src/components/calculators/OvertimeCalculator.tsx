@@ -1,3 +1,4 @@
+import { formatGBP } from '../../utils/format';
 import React, { useState, useMemo } from 'react';
 import { OvertimeInput } from '../../types';
 import { calculateOvertime } from '../../utils/calculations';
@@ -18,11 +19,11 @@ export const OvertimeCalculator: React.FC = () => {
   const result = useMemo(() => calculateOvertime(input), [input]);
 
   const copyText = `PayWise UK Overtime Pay Calculation:
-Basic Hourly Rate: £${input.basicHourlyRate.toFixed(2)}/hr | Overtime Multiplier: ${input.overtimeMultiplier}x (£${result.overtimeHourlyRate.toFixed(2)}/hr)
+Basic Hourly Rate: ${formatGBP(input.basicHourlyRate)}/hr | Overtime Multiplier: ${input.overtimeMultiplier}x (${formatGBP(result.overtimeHourlyRate)}/hr)
 Overtime Hours: ${input.overtimeHours} hrs
-Gross Overtime Pay: £${result.grossOvertimePay.toFixed(2)}
-Estimated Deductions (Tax & NI): -£${(result.estimatedIncomeTaxDeduction + result.estimatedNiDeduction).toFixed(2)}
-Net Overtime in Pocket: £${result.netOvertimePay.toFixed(2)} (${result.effectiveOvertimeRetentionPercent.toFixed(0)}% kept)
+Gross Overtime Pay: ${formatGBP(result.grossOvertimePay)}
+Estimated Deductions (Tax & NI): -${formatGBP((result.estimatedIncomeTaxDeduction + result.estimatedNiDeduction))}
+Net Overtime in Pocket: ${formatGBP(result.netOvertimePay)} (${result.effectiveOvertimeRetentionPercent.toFixed(0)}% kept)
 Calculated via PayWise UK (https://paywiseuk.vercel.app/overtime-pay-calculator)`;
 
   return (
@@ -41,7 +42,7 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/overtime-pay-calculator)
                 Standard Hourly Rate (£/hr)
               </label>
               <span className="text-xs font-extrabold text-emerald-600 dark:text-emerald-400">
-                £{input.basicHourlyRate.toFixed(2)}/hr
+                {formatGBP(input.basicHourlyRate)}/hr
               </span>
             </div>
             <div className="relative">
@@ -99,7 +100,7 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/overtime-pay-calculator)
                 Your Current Base Salary (£)
               </label>
               <span className="text-xs font-extrabold text-emerald-600 dark:text-emerald-400">
-                £{(input.currentAnnualSalary || 0).toLocaleString('en-GB')}
+                {formatGBP((input.currentAnnualSalary || 0))}
               </span>
             </div>
             <div className="relative">
@@ -127,8 +128,8 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/overtime-pay-calculator)
               <span className="w-2 h-2 rounded-full bg-[#059669] dark:bg-[#10B981]" />
               Net Overtime in Your Pocket
             </span>
-            <span className="text-xs text-[#525252] dark:text-[#A3A3A3] tabular-nums">
-              £{result.overtimeHourlyRate.toFixed(2)}/hr effective rate
+            <span className="text-xs text-[#262626] dark:text-[#D4D4D4] tabular-nums">
+              {formatGBP(result.overtimeHourlyRate)}/hr effective rate
             </span>
           </div>
 
@@ -142,10 +143,10 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/overtime-pay-calculator)
                   className="text-[#111111] dark:text-[#F5F5F5]"
                 />
               </div>
-              <p className="text-xs sm:text-sm font-medium text-[#525252] dark:text-[#A3A3A3] flex items-center gap-1.5">
+              <p className="text-xs sm:text-sm font-medium text-[#262626] dark:text-[#D4D4D4] flex items-center gap-1.5">
                 <ArrowUpRight className="w-4 h-4 text-[#059669] dark:text-[#10B981] shrink-0" />
                 <span>
-                  Gross overtime earnings of £{result.grossOvertimePay.toFixed(2)}
+                  Gross overtime earnings of {formatGBP(result.grossOvertimePay)}
                 </span>
               </p>
             </div>
@@ -162,23 +163,23 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/overtime-pay-calculator)
 
           <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 pt-5 border-t border-[#E5E5E5] dark:border-[#2A2A2A]">
             <div className="bg-white dark:bg-[#111111] p-3 rounded-xl border border-[#E5E5E5] dark:border-[#2A2A2A] shadow-2xs">
-              <span className="text-2xs uppercase text-[#525252] dark:text-[#A3A3A3] font-bold block truncate">Gross Overtime Pay</span>
+              <span className="text-2xs uppercase text-[#262626] dark:text-[#D4D4D4] font-bold block truncate">Gross Overtime Pay</span>
               <p className="text-base sm:text-lg font-black text-[#059669] dark:text-[#10B981] mt-0.5 tabular-nums">
-                £{result.grossOvertimePay.toFixed(2)}
+                {formatGBP(result.grossOvertimePay)}
               </p>
             </div>
 
             <div className="bg-white dark:bg-[#111111] p-3 rounded-xl border border-[#E5E5E5] dark:border-[#2A2A2A] shadow-2xs">
-              <span className="text-2xs uppercase text-[#525252] dark:text-[#A3A3A3] font-bold block truncate">Estimated Tax & NI</span>
+              <span className="text-2xs uppercase text-[#262626] dark:text-[#D4D4D4] font-bold block truncate">Estimated Tax & NI</span>
               <p className="text-base sm:text-lg font-black text-[#DC2626] dark:text-[#F87171] mt-0.5 tabular-nums">
-                -£{(result.estimatedIncomeTaxDeduction + result.estimatedNiDeduction).toFixed(2)}
+                -{formatGBP((result.estimatedIncomeTaxDeduction + result.estimatedNiDeduction))}
               </p>
             </div>
 
             <div className="bg-white dark:bg-[#111111] p-3 rounded-xl border border-[#E5E5E5] dark:border-[#2A2A2A] shadow-2xs col-span-2 sm:col-span-1">
-              <span className="text-2xs uppercase text-[#525252] dark:text-[#A3A3A3] font-bold block truncate">Effective Net / Hour</span>
+              <span className="text-2xs uppercase text-[#262626] dark:text-[#D4D4D4] font-bold block truncate">Effective Net / Hour</span>
               <p className="text-base sm:text-lg font-black text-[#111111] dark:text-[#F5F5F5] mt-0.5 tabular-nums">
-                £{(input.overtimeHours > 0 ? result.netOvertimePay / input.overtimeHours : 0).toFixed(2)}/hr
+                {formatGBP((input.overtimeHours > 0 ? result.netOvertimePay / input.overtimeHours : 0))}/hr
               </p>
             </div>
           </div>
@@ -194,28 +195,28 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/overtime-pay-calculator)
             <div className="flex justify-between py-2 border-b border-slate-100 dark:border-slate-800 text-slate-700 dark:text-slate-300">
               <span>Gross Additional Earnings</span>
               <span className="font-bold text-slate-900 dark:text-white">
-                £{result.grossOvertimePay.toFixed(2)}
+                {formatGBP(result.grossOvertimePay)}
               </span>
             </div>
 
             <div className="flex justify-between py-2 border-b border-slate-100 dark:border-slate-800 text-slate-700 dark:text-slate-300">
               <span>Marginal Income Tax</span>
               <span className="font-semibold text-rose-600 dark:text-rose-400">
-                -£{result.estimatedIncomeTaxDeduction.toFixed(2)}
+                -{formatGBP(result.estimatedIncomeTaxDeduction)}
               </span>
             </div>
 
             <div className="flex justify-between py-2 border-b border-slate-100 dark:border-slate-800 text-slate-700 dark:text-slate-300">
               <span>Marginal Class 1 National Insurance</span>
               <span className="font-semibold text-rose-600 dark:text-rose-400">
-                -£{result.estimatedNiDeduction.toFixed(2)}
+                -{formatGBP(result.estimatedNiDeduction)}
               </span>
             </div>
 
             <div className="flex justify-between py-3 bg-emerald-50/70 dark:bg-emerald-950/30 px-3.5 rounded-2xl font-bold text-slate-900 dark:text-white">
               <span className="text-emerald-900 dark:text-emerald-300">Net Additional Take-Home</span>
               <span className="text-emerald-600 dark:text-emerald-400 font-extrabold text-base">
-                +£{result.netOvertimePay.toFixed(2)}
+                +{formatGBP(result.netOvertimePay)}
               </span>
             </div>
           </div>

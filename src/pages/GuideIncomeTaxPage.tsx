@@ -18,7 +18,7 @@ export const GuideIncomeTaxPage: React.FC = () => {
     <article className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-8">
       <SEO
         title="How UK Income Tax Works | Rates, Bands & Personal Allowance"
-        description="A clear guide to UK Income Tax rates, bands, Personal Allowance and Scottish tax rates for the 2025/26 tax year."
+        description="A clear guide to UK Income Tax rates, bands, Personal Allowance and Scottish tax rates for the 2026/27 tax year."
         keywords={[
           'how UK income tax works',
           'uk income tax bands',
@@ -45,7 +45,7 @@ export const GuideIncomeTaxPage: React.FC = () => {
         <h1 className="text-2xl sm:text-4xl font-black text-[#111111] dark:text-[#F5F5F5] tracking-tight">
           How UK Income Tax Works
         </h1>
-        <p className="text-xs sm:text-sm text-[#525252] dark:text-[#A3A3A3] leading-relaxed">
+        <p className="text-xs sm:text-sm text-[#262626] dark:text-[#D4D4D4] leading-relaxed">
           The UK Income Tax system is progressive: you only pay tax on earnings above statutory thresholds, and each higher rate band applies solely to the income within that band.
         </p>
       </header>
@@ -55,7 +55,7 @@ export const GuideIncomeTaxPage: React.FC = () => {
           <h2 className="text-lg sm:text-xl font-bold text-[#111111] dark:text-[#F5F5F5] mb-2">
             The Personal Allowance (£12,570)
           </h2>
-          <p className="text-xs sm:text-sm text-[#525252] dark:text-[#A3A3A3] leading-relaxed">
+          <p className="text-xs sm:text-sm text-[#262626] dark:text-[#D4D4D4] leading-relaxed">
             Most UK residents receive a standard tax-free Personal Allowance of £12,570 per year. You pay 0% Income Tax on earnings up to this threshold.
           </p>
         </div>
@@ -65,7 +65,7 @@ export const GuideIncomeTaxPage: React.FC = () => {
             <h3 className="font-bold text-[#111111] dark:text-[#F5F5F5]">
               England, Wales & Northern Ireland
             </h3>
-            <ul className="space-y-1 text-[#525252] dark:text-[#A3A3A3] text-xs">
+            <ul className="space-y-1 text-[#262626] dark:text-[#D4D4D4] text-xs">
               <li>• <strong>Personal Allowance:</strong> £0 – £12,570 (0%)</li>
               <li>• <strong>Basic Rate:</strong> £12,571 – £50,270 (20%)</li>
               <li>• <strong>Higher Rate:</strong> £50,271 – £125,140 (40%)</li>
@@ -77,10 +77,10 @@ export const GuideIncomeTaxPage: React.FC = () => {
             <h3 className="font-bold text-[#111111] dark:text-[#F5F5F5]">
               Scotland Devolved Bands
             </h3>
-            <ul className="space-y-1 text-[#525252] dark:text-[#A3A3A3] text-xs">
-              <li>• <strong>Starter Rate (19%):</strong> £12,571 – £14,876</li>
-              <li>• <strong>Basic Rate (20%):</strong> £14,877 – £26,561</li>
-              <li>• <strong>Intermediate Rate (21%):</strong> £26,562 – £43,662</li>
+            <ul className="space-y-1 text-[#262626] dark:text-[#D4D4D4] text-xs">
+              <li>• <strong>Starter Rate (19%):</strong> £12,571 – £16,537</li>
+              <li>• <strong>Basic Rate (20%):</strong> £16,538 – £29,526</li>
+              <li>• <strong>Intermediate Rate (21%):</strong> £29,527 – £43,662</li>
               <li>• <strong>Higher Rate (42%):</strong> £43,663 – £75,000</li>
               <li>• <strong>Advanced Rate (45%):</strong> £75,001 – £125,140</li>
               <li>• <strong>Top Rate (48%):</strong> Over £125,140</li>
@@ -92,7 +92,7 @@ export const GuideIncomeTaxPage: React.FC = () => {
           <h2 className="text-base sm:text-lg font-bold text-[#111111] dark:text-[#F5F5F5] mb-2">
             The £100k Personal Allowance Taper (60% Effective Tax Trap)
           </h2>
-          <p className="text-xs text-[#525252] dark:text-[#A3A3A3] leading-relaxed">
+          <p className="text-xs text-[#262626] dark:text-[#D4D4D4] leading-relaxed">
             For every £2 your adjusted net income exceeds £100,000, your £12,570 Personal Allowance is reduced by £1. Between £100,000 and £125,140, this loss of allowance combined with 40% tax creates an effective marginal tax rate of 60% (or 62% including 2% National Insurance).
           </p>
         </div>
@@ -103,7 +103,7 @@ export const GuideIncomeTaxPage: React.FC = () => {
           <h2 className="text-base font-bold text-[#111111] dark:text-[#F5F5F5]">
             Check your personal tax calculation
           </h2>
-          <p className="text-xs text-[#525252] dark:text-[#A3A3A3] mt-1">
+          <p className="text-xs text-[#262626] dark:text-[#D4D4D4] mt-1">
             See your exact income tax band breakdown with the free PayWise UK calculator.
           </p>
         </div>
@@ -116,7 +116,7 @@ export const GuideIncomeTaxPage: React.FC = () => {
         </Link>
       </div>
 
-      <FaqAccordion items={TAKE_HOME_FAQS} />
+      <FaqAccordion items={TAKE_HOME_FAQS} badge="Income Tax Knowledge Base" subtitle="Clear answers to common questions about UK income tax." />
       <DisclaimerNotice />
     </article>
   );

@@ -52,7 +52,7 @@ export const Navbar: React.FC = () => {
               className={`px-3 py-1.5 rounded-lg text-xs font-semibold whitespace-nowrap transition-all ${
                 isActive('/take-home-pay-calculator')
                   ? 'bg-[#F5F5F5] dark:bg-[#171717] text-[#059669] dark:text-[#10B981] font-bold border border-[#E5E5E5] dark:border-[#2A2A2A]'
-                  : 'text-[#525252] dark:text-[#A3A3A3] hover:text-[#111111] dark:hover:text-[#F5F5F5] hover:bg-[#F5F5F5] dark:hover:bg-[#171717]'
+                  : 'text-[#262626] dark:text-[#D4D4D4] hover:text-[#111111] dark:hover:text-[#F5F5F5] hover:bg-[#F5F5F5] dark:hover:bg-[#171717]'
               }`}
             >
               Take-Home Pay
@@ -62,7 +62,7 @@ export const Navbar: React.FC = () => {
               className={`px-3 py-1.5 rounded-lg text-xs font-semibold whitespace-nowrap transition-all ${
                 isActive('/day-rate-to-salary-calculator')
                   ? 'bg-[#F5F5F5] dark:bg-[#171717] text-[#059669] dark:text-[#10B981] font-bold border border-[#E5E5E5] dark:border-[#2A2A2A]'
-                  : 'text-[#525252] dark:text-[#A3A3A3] hover:text-[#111111] dark:hover:text-[#F5F5F5] hover:bg-[#F5F5F5] dark:hover:bg-[#171717]'
+                  : 'text-[#262626] dark:text-[#D4D4D4] hover:text-[#111111] dark:hover:text-[#F5F5F5] hover:bg-[#F5F5F5] dark:hover:bg-[#171717]'
               }`}
             >
               Day Rate
@@ -72,7 +72,7 @@ export const Navbar: React.FC = () => {
               className={`px-3 py-1.5 rounded-lg text-xs font-semibold whitespace-nowrap transition-all ${
                 isActive('/hourly-to-salary-calculator')
                   ? 'bg-[#F5F5F5] dark:bg-[#171717] text-[#059669] dark:text-[#10B981] font-bold border border-[#E5E5E5] dark:border-[#2A2A2A]'
-                  : 'text-[#525252] dark:text-[#A3A3A3] hover:text-[#111111] dark:hover:text-[#F5F5F5] hover:bg-[#F5F5F5] dark:hover:bg-[#171717]'
+                  : 'text-[#262626] dark:text-[#D4D4D4] hover:text-[#111111] dark:hover:text-[#F5F5F5] hover:bg-[#F5F5F5] dark:hover:bg-[#171717]'
               }`}
             >
               Hourly Rate
@@ -82,7 +82,7 @@ export const Navbar: React.FC = () => {
               className={`px-3 py-1.5 rounded-lg text-xs font-semibold whitespace-nowrap transition-all ${
                 isActive('/pension-calculator')
                   ? 'bg-[#F5F5F5] dark:bg-[#171717] text-[#059669] dark:text-[#10B981] font-bold border border-[#E5E5E5] dark:border-[#2A2A2A]'
-                  : 'text-[#525252] dark:text-[#A3A3A3] hover:text-[#111111] dark:hover:text-[#F5F5F5] hover:bg-[#F5F5F5] dark:hover:bg-[#171717]'
+                  : 'text-[#262626] dark:text-[#D4D4D4] hover:text-[#111111] dark:hover:text-[#F5F5F5] hover:bg-[#F5F5F5] dark:hover:bg-[#171717]'
               }`}
             >
               Pension
@@ -92,7 +92,7 @@ export const Navbar: React.FC = () => {
               className={`px-3 py-1.5 rounded-lg text-xs font-semibold whitespace-nowrap transition-all ${
                 isActive('/salary-sacrifice-calculator')
                   ? 'bg-[#F5F5F5] dark:bg-[#171717] text-[#059669] dark:text-[#10B981] font-bold border border-[#E5E5E5] dark:border-[#2A2A2A]'
-                  : 'text-[#525252] dark:text-[#A3A3A3] hover:text-[#111111] dark:hover:text-[#F5F5F5] hover:bg-[#F5F5F5] dark:hover:bg-[#171717]'
+                  : 'text-[#262626] dark:text-[#D4D4D4] hover:text-[#111111] dark:hover:text-[#F5F5F5] hover:bg-[#F5F5F5] dark:hover:bg-[#171717]'
               }`}
             >
               Salary Sacrifice
@@ -104,7 +104,7 @@ export const Navbar: React.FC = () => {
                 type="button"
                 onClick={() => setMoreDropdownOpen(!moreDropdownOpen)}
                 onBlur={() => setTimeout(() => setMoreDropdownOpen(false), 200)}
-                className="flex items-center gap-1 px-3 py-1.5 rounded-lg text-xs font-semibold whitespace-nowrap text-[#525252] dark:text-[#A3A3A3] hover:text-[#111111] dark:hover:text-[#F5F5F5] hover:bg-[#F5F5F5] dark:hover:bg-[#171717]"
+                className="flex items-center gap-1 px-3 py-1.5 rounded-lg text-xs font-semibold whitespace-nowrap text-[#262626] dark:text-[#D4D4D4] hover:text-[#111111] dark:hover:text-[#F5F5F5] hover:bg-[#F5F5F5] dark:hover:bg-[#171717]"
                 aria-expanded={moreDropdownOpen}
                 aria-label="More calculators and tools"
               >
@@ -253,10 +253,10 @@ export const Navbar: React.FC = () => {
                       Browse All 25+ Calculators →
                     </Link>
                     <div className="flex items-center gap-3">
-                      <Link to="/guides" className="text-xs text-[#525252] dark:text-[#A3A3A3] hover:text-[#111111] dark:hover:text-[#F5F5F5]">
+                      <Link to="/guides" className="text-xs text-[#262626] dark:text-[#D4D4D4] hover:text-[#111111] dark:hover:text-[#F5F5F5]">
                         Guides
                       </Link>
-                      <Link to="/faq" className="text-xs text-[#525252] dark:text-[#A3A3A3] hover:text-[#111111] dark:hover:text-[#F5F5F5]">
+                      <Link to="/faq" className="text-xs text-[#262626] dark:text-[#D4D4D4] hover:text-[#111111] dark:hover:text-[#F5F5F5]">
                         FAQ
                       </Link>
                     </div>
@@ -290,7 +290,7 @@ export const Navbar: React.FC = () => {
             <button
               type="button"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="lg:hidden min-w-[44px] min-h-[44px] flex items-center justify-center rounded-xl text-[#525252] dark:text-[#A3A3A3] hover:text-[#111111] dark:hover:text-white hover:bg-[#F5F5F5] dark:hover:bg-[#171717] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#059669]"
+              className="lg:hidden min-w-[44px] min-h-[44px] flex items-center justify-center rounded-xl text-[#262626] dark:text-[#D4D4D4] hover:text-[#111111] dark:hover:text-white hover:bg-[#F5F5F5] dark:hover:bg-[#171717] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#059669]"
               aria-label="Toggle navigation menu"
               aria-expanded={mobileMenuOpen}
             >
@@ -545,21 +545,21 @@ export const Navbar: React.FC = () => {
               <Link
                 to="/guides"
                 onClick={() => setMobileMenuOpen(false)}
-                className="text-xs font-medium text-[#525252] dark:text-[#A3A3A3] hover:text-[#111111] dark:hover:text-[#F5F5F5]"
+                className="text-xs font-medium text-[#262626] dark:text-[#D4D4D4] hover:text-[#111111] dark:hover:text-[#F5F5F5]"
               >
                 Guides
               </Link>
               <Link
                 to="/faq"
                 onClick={() => setMobileMenuOpen(false)}
-                className="text-xs font-medium text-[#525252] dark:text-[#A3A3A3] hover:text-[#111111] dark:hover:text-[#F5F5F5]"
+                className="text-xs font-medium text-[#262626] dark:text-[#D4D4D4] hover:text-[#111111] dark:hover:text-[#F5F5F5]"
               >
                 FAQ
               </Link>
               <Link
                 to="/about"
                 onClick={() => setMobileMenuOpen(false)}
-                className="text-xs font-medium text-[#525252] dark:text-[#A3A3A3] hover:text-[#111111] dark:hover:text-[#F5F5F5]"
+                className="text-xs font-medium text-[#262626] dark:text-[#D4D4D4] hover:text-[#111111] dark:hover:text-[#F5F5F5]"
               >
                 About
               </Link>

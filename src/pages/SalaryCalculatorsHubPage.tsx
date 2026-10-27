@@ -105,7 +105,7 @@ export const SalaryCalculatorsHubPage: React.FC = () => {
     },
     {
       title: 'Dividend Tax Calculator',
-      description: 'Calculate dividend tax on UK company shares and director distributions with the £500 allowance and 8.75% / 33.75% / 39.35% rates.',
+      description: 'Calculate dividend tax on UK company shares and director distributions with the £500 allowance and 10.75% / 35.75% / 39.35% rates (2026/27).',
       path: '/dividend-tax-calculator',
       icon: TrendingUp,
       badge: 'Dividends',
@@ -517,7 +517,7 @@ export const SalaryCalculatorsHubPage: React.FC = () => {
           <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black text-[#111111] dark:text-[#F5F5F5] tracking-tight">
             UK Salary Calculators Hub
           </h1>
-          <p className="text-sm sm:text-base text-[#525252] dark:text-[#A3A3A3] leading-relaxed">
+          <p className="text-sm sm:text-base text-[#262626] dark:text-[#D4D4D4] leading-relaxed">
             Search and filter 30+ specialised UK financial tools to calculate net take-home pay, tax deductions, mortgages, pensions, statutory leaves, and contractor retention.
           </p>
         </div>
@@ -528,7 +528,7 @@ export const SalaryCalculatorsHubPage: React.FC = () => {
         <div className="p-4 sm:p-5 rounded-2xl border border-[#E5E5E5] dark:border-[#2A2A2A] bg-white dark:bg-[#171717] shadow-[0_8px_30px_rgba(0,0,0,0.06)] dark:shadow-[0_10px_35px_rgba(0,0,0,0.35)] space-y-4">
           {/* Search Input Bar */}
           <div className="relative">
-            <div className="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-[#737373] dark:text-[#A3A3A3]">
+            <div className="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-[#737373] dark:text-[#D4D4D4]">
               <Search className="w-5 h-5" aria-hidden="true" />
             </div>
             <input
@@ -546,12 +546,12 @@ export const SalaryCalculatorsHubPage: React.FC = () => {
                   type="button"
                   onClick={handleClearSearch}
                   aria-label="Clear search input"
-                  className="p-1 rounded-md text-[#737373] hover:text-[#111111] dark:text-[#A3A3A3] dark:hover:text-[#F5F5F5] hover:bg-[#E5E5E5] dark:hover:bg-[#2A2A2A] transition-colors"
+                  className="p-1 rounded-md text-[#737373] hover:text-[#111111] dark:text-[#D4D4D4] dark:hover:text-[#F5F5F5] hover:bg-[#E5E5E5] dark:hover:bg-[#2A2A2A] transition-colors"
                 >
                   <X className="w-4 h-4" />
                 </button>
               )}
-              <kbd className="hidden sm:inline-flex items-center px-2 py-0.5 text-2xs font-semibold text-[#737373] dark:text-[#A3A3A3] bg-[#E5E5E5] dark:bg-[#262626] border border-[#D4D4D4] dark:border-[#333333] rounded">
+              <kbd className="hidden sm:inline-flex items-center px-2 py-0.5 text-2xs font-semibold text-[#737373] dark:text-[#D4D4D4] bg-[#E5E5E5] dark:bg-[#262626] border border-[#D4D4D4] dark:border-[#333333] rounded">
                 /
               </kbd>
             </div>
@@ -559,7 +559,7 @@ export const SalaryCalculatorsHubPage: React.FC = () => {
 
           {/* Category Filter Pills */}
           <div className="flex flex-wrap items-center gap-2 pt-1">
-            <div className="flex items-center gap-1 text-2xs font-bold uppercase tracking-wider text-[#737373] dark:text-[#A3A3A3] mr-1 shrink-0">
+            <div className="flex items-center gap-1 text-2xs font-bold uppercase tracking-wider text-[#737373] dark:text-[#D4D4D4] mr-1 shrink-0">
               <SlidersHorizontal className="w-3.5 h-3.5" />
               <span>Category:</span>
             </div>
@@ -573,7 +573,7 @@ export const SalaryCalculatorsHubPage: React.FC = () => {
                   className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold whitespace-nowrap transition-all ${
                     isSelected
                       ? 'bg-[#059669] text-white shadow-xs'
-                      : 'bg-[#F5F5F5] dark:bg-[#222222] text-[#525252] dark:text-[#A3A3A3] hover:text-[#111111] dark:hover:text-[#F5F5F5] border border-[#E5E5E5] dark:border-[#2A2A2A]'
+                      : 'bg-[#F5F5F5] dark:bg-[#222222] text-[#262626] dark:text-[#D4D4D4] hover:text-[#111111] dark:hover:text-[#F5F5F5] border border-[#E5E5E5] dark:border-[#2A2A2A]'
                   }`}
                 >
                   <span>{cat.label}</span>
@@ -581,7 +581,7 @@ export const SalaryCalculatorsHubPage: React.FC = () => {
                     className={`text-2xs px-1.5 py-0.2 rounded-full font-bold ${
                       isSelected
                         ? 'bg-white/20 text-white'
-                        : 'bg-[#E5E5E5] dark:bg-[#2E2E2E] text-[#525252] dark:text-[#A3A3A3]'
+                        : 'bg-[#E5E5E5] dark:bg-[#2E2E2E] text-[#262626] dark:text-[#D4D4D4]'
                     }`}
                   >
                     {cat.count}
@@ -592,7 +592,7 @@ export const SalaryCalculatorsHubPage: React.FC = () => {
           </div>
 
           {/* Search Status & Result Summary */}
-          <div className="flex items-center justify-between pt-1 border-t border-[#E5E5E5] dark:border-[#2A2A2A] text-xs text-[#525252] dark:text-[#A3A3A3]">
+          <div className="flex items-center justify-between pt-1 border-t border-[#E5E5E5] dark:border-[#2A2A2A] text-xs text-[#262626] dark:text-[#D4D4D4]">
             <div>
               {searchQuery || selectedCategory !== 'all' ? (
                 <span>
@@ -636,14 +636,14 @@ export const SalaryCalculatorsHubPage: React.FC = () => {
                       <div className="p-3 rounded-xl bg-[#F5F5F5] dark:bg-[#222222] text-[#059669] dark:text-[#10B981] flex items-center justify-center font-bold border border-[#E5E5E5] dark:border-[#2A2A2A]">
                         <Icon className="w-5 h-5" />
                       </div>
-                      <span className="text-3xs uppercase font-bold tracking-wider px-2 py-0.5 rounded-md bg-[#F5F5F5] dark:bg-[#222222] text-[#525252] dark:text-[#A3A3A3] border border-[#E5E5E5] dark:border-[#2A2A2A]">
+                      <span className="text-3xs uppercase font-bold tracking-wider px-2 py-0.5 rounded-md bg-[#F5F5F5] dark:bg-[#222222] text-[#262626] dark:text-[#D4D4D4] border border-[#E5E5E5] dark:border-[#2A2A2A]">
                         {tool.badge}
                       </span>
                     </div>
                     <h2 className="text-base font-bold text-[#111111] dark:text-[#F5F5F5] group-hover:text-[#059669] dark:group-hover:text-[#10B981] transition-colors">
                       {tool.title}
                     </h2>
-                    <p className="text-xs text-[#525252] dark:text-[#A3A3A3] mt-2 leading-relaxed font-normal">
+                    <p className="text-xs text-[#262626] dark:text-[#D4D4D4] mt-2 leading-relaxed font-normal">
                       {tool.description}
                     </p>
                   </div>
@@ -658,13 +658,13 @@ export const SalaryCalculatorsHubPage: React.FC = () => {
         ) : (
           /* Empty Search State */
           <div className="p-10 text-center rounded-2xl border border-[#E5E5E5] dark:border-[#2A2A2A] bg-white dark:bg-[#171717] shadow-[0_8px_30px_rgba(0,0,0,0.06)] dark:shadow-[0_10px_35px_rgba(0,0,0,0.35)] space-y-3">
-            <div className="w-12 h-12 rounded-full bg-[#F5F5F5] dark:bg-[#222222] text-[#737373] dark:text-[#A3A3A3] flex items-center justify-center mx-auto">
+            <div className="w-12 h-12 rounded-full bg-[#F5F5F5] dark:bg-[#222222] text-[#737373] dark:text-[#D4D4D4] flex items-center justify-center mx-auto">
               <Search className="w-6 h-6" />
             </div>
             <h3 className="text-base font-bold text-[#111111] dark:text-[#F5F5F5]">
               No calculators found
             </h3>
-            <p className="text-xs text-[#525252] dark:text-[#A3A3A3] max-w-md mx-auto">
+            <p className="text-xs text-[#262626] dark:text-[#D4D4D4] max-w-md mx-auto">
               We couldn&apos;t find any calculators matching &ldquo;<strong>{searchQuery}</strong>&rdquo;
               {selectedCategory !== 'all' ? ` in the selected category` : ''}. Try checking for spelling or resetting your search filters.
             </p>
@@ -689,7 +689,7 @@ export const SalaryCalculatorsHubPage: React.FC = () => {
               <h2 className="text-lg sm:text-xl font-bold text-[#111111] dark:text-[#F5F5F5]">
                 Top UK Salary & Tax Guides
               </h2>
-              <p className="text-xs text-[#525252] dark:text-[#A3A3A3] mt-0.5">
+              <p className="text-xs text-[#262626] dark:text-[#D4D4D4] mt-0.5">
                 Explore in-depth analysis on tax brackets, take-home benchmarks, and salary sacrifice optimisation.
               </p>
             </div>
@@ -711,7 +711,7 @@ export const SalaryCalculatorsHubPage: React.FC = () => {
               <h3 className="text-xs sm:text-sm font-bold text-[#111111] dark:text-[#F5F5F5] group-hover:text-[#059669] dark:group-hover:text-[#10B981] mt-1">
                 £50,000 Salary After Tax
               </h3>
-              <p className="text-2xs text-[#525252] dark:text-[#A3A3A3] mt-1 leading-normal">
+              <p className="text-2xs text-[#262626] dark:text-[#D4D4D4] mt-1 leading-normal">
                 Monthly take-home, 20% vs 40% threshold buffer, and NI deductions.
               </p>
             </Link>
@@ -724,7 +724,7 @@ export const SalaryCalculatorsHubPage: React.FC = () => {
               <h3 className="text-xs sm:text-sm font-bold text-[#111111] dark:text-[#F5F5F5] group-hover:text-[#059669] dark:group-hover:text-[#10B981] mt-1">
                 £60,000 Salary After Tax
               </h3>
-              <p className="text-2xs text-[#525252] dark:text-[#A3A3A3] mt-1 leading-normal">
+              <p className="text-2xs text-[#262626] dark:text-[#D4D4D4] mt-1 leading-normal">
                 Higher rate tax, child benefit charge, and student loan costs.
               </p>
             </Link>
@@ -737,7 +737,7 @@ export const SalaryCalculatorsHubPage: React.FC = () => {
               <h3 className="text-xs sm:text-sm font-bold text-[#111111] dark:text-[#F5F5F5] group-hover:text-[#059669] dark:group-hover:text-[#10B981] mt-1">
                 What is Salary Sacrifice?
               </h3>
-              <p className="text-2xs text-[#525252] dark:text-[#A3A3A3] mt-1 leading-normal">
+              <p className="text-2xs text-[#262626] dark:text-[#D4D4D4] mt-1 leading-normal">
                 How pension, EV car schemes, and cycle to work save tax and NI.
               </p>
             </Link>
@@ -750,7 +750,7 @@ export const SalaryCalculatorsHubPage: React.FC = () => {
               <h3 className="text-xs sm:text-sm font-bold text-[#111111] dark:text-[#F5F5F5] group-hover:text-[#059669] dark:group-hover:text-[#10B981] mt-1">
                 How UK Income Tax Works
               </h3>
-              <p className="text-2xs text-[#525252] dark:text-[#A3A3A3] mt-1 leading-normal">
+              <p className="text-2xs text-[#262626] dark:text-[#D4D4D4] mt-1 leading-normal">
                 Personal allowances, basic vs higher bands, and Scottish tax rates.
               </p>
             </Link>
@@ -760,7 +760,7 @@ export const SalaryCalculatorsHubPage: React.FC = () => {
 
       {/* Hub FAQs */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <FaqAccordion items={hubFaqs} />
+        <FaqAccordion items={hubFaqs} badge="Calculator Hub Knowledge Base" subtitle="Clear answers to common questions about UK salary and take-home pay calculators." />
       </div>
 
       {/* Disclaimer */}

@@ -1,3 +1,4 @@
+import { formatGBP } from '../../utils/format';
 import React, { useState, useMemo } from 'react';
 import { MortgageOverpaymentInput } from '../../types';
 import { calculateMortgageOverpayment } from '../../utils/calculations';
@@ -31,15 +32,15 @@ export const MortgageOverpaymentCalculator: React.FC = () => {
   };
 
   const copySummaryText = `PayWise UK Mortgage Overpayment Calculation:
-Current Balance: £${result.currentBalance.toLocaleString('en-GB', { minimumFractionDigits: 2 })}
+Current Balance: ${formatGBP(result.currentBalance)}
 Interest Rate: ${result.interestRate.toFixed(2)}%
 Original Term: ${result.originalTermYears} years
-Monthly Overpayment: £${result.monthlyOverpayment.toLocaleString('en-GB', { minimumFractionDigits: 2 })} / month
-Total Interest Saved: £${result.totalInterestSaved.toLocaleString('en-GB', { minimumFractionDigits: 2 })}
+Monthly Overpayment: ${formatGBP(result.monthlyOverpayment)} / month
+Total Interest Saved: ${formatGBP(result.totalInterestSaved)}
 Mortgage Term Shortened By: ${result.yearsSaved} years and ${result.monthsSaved} months
 New Payoff Term: ${result.newTermYears} years and ${result.newTermMonths} months
-Standard Total Interest: £${result.totalInterestStandard.toLocaleString('en-GB', { minimumFractionDigits: 2 })}
-Overpayment Total Interest: £${result.totalInterestWithOverpayment.toLocaleString('en-GB', { minimumFractionDigits: 2 })}
+Standard Total Interest: ${formatGBP(result.totalInterestStandard)}
+Overpayment Total Interest: ${formatGBP(result.totalInterestWithOverpayment)}
 Calculated via PayWise UK (https://paywiseuk.vercel.app/mortgage-overpayment-calculator) - Estimate Only.`;
 
   return (
@@ -59,7 +60,7 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/mortgage-overpayment-cal
         <div className="space-y-4">
           {/* Current Mortgage Balance */}
           <div>
-            <label htmlFor="overpay-balance" className="block text-xs font-bold uppercase tracking-wider text-[#525252] dark:text-[#A3A3A3] mb-1.5">
+            <label htmlFor="overpay-balance" className="block text-xs font-bold uppercase tracking-wider text-[#262626] dark:text-[#D4D4D4] mb-1.5">
               Outstanding Mortgage Balance (£)
             </label>
             <div className="relative">
@@ -87,7 +88,7 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/mortgage-overpayment-cal
                   className={`text-2xs font-semibold px-2.5 py-1 rounded-lg border transition-colors ${
                     input.currentBalance === preset
                       ? 'bg-[#059669] text-white border-[#059669]'
-                      : 'bg-[#FAFAFA] dark:bg-[#151515] text-[#525252] dark:text-[#A3A3A3] border-[#E5E5E5] dark:border-[#2A2A2A] hover:border-[#059669]'
+                      : 'bg-[#FAFAFA] dark:bg-[#151515] text-[#262626] dark:text-[#D4D4D4] border-[#E5E5E5] dark:border-[#2A2A2A] hover:border-[#059669]'
                   }`}
                 >
                   £{(preset / 1000).toLocaleString()}k
@@ -99,7 +100,7 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/mortgage-overpayment-cal
           {/* Interest Rate & Remaining Term Row */}
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div>
-              <label htmlFor="overpay-rate" className="block text-xs font-bold uppercase tracking-wider text-[#525252] dark:text-[#A3A3A3] mb-1.5">
+              <label htmlFor="overpay-rate" className="block text-xs font-bold uppercase tracking-wider text-[#262626] dark:text-[#D4D4D4] mb-1.5">
                 Interest Rate (% APR)
               </label>
               <div className="relative">
@@ -121,7 +122,7 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/mortgage-overpayment-cal
             </div>
 
             <div>
-              <label htmlFor="overpay-term" className="block text-xs font-bold uppercase tracking-wider text-[#525252] dark:text-[#A3A3A3] mb-1.5">
+              <label htmlFor="overpay-term" className="block text-xs font-bold uppercase tracking-wider text-[#262626] dark:text-[#D4D4D4] mb-1.5">
                 Remaining Term (Years)
               </label>
               <select
@@ -141,7 +142,7 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/mortgage-overpayment-cal
 
           {/* Regular Monthly Overpayment */}
           <div className="pt-2 border-t border-[#E5E5E5] dark:border-[#2A2A2A]">
-            <label htmlFor="overpay-monthly" className="block text-xs font-bold uppercase tracking-wider text-[#525252] dark:text-[#A3A3A3] mb-1.5">
+            <label htmlFor="overpay-monthly" className="block text-xs font-bold uppercase tracking-wider text-[#262626] dark:text-[#D4D4D4] mb-1.5">
               Regular Monthly Overpayment (£/month)
             </label>
             <div className="relative">
@@ -169,7 +170,7 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/mortgage-overpayment-cal
                   className={`text-2xs font-semibold px-2.5 py-1 rounded-lg border transition-colors ${
                     input.monthlyOverpayment === preset
                       ? 'bg-[#059669] text-white border-[#059669]'
-                      : 'bg-[#FAFAFA] dark:bg-[#151515] text-[#525252] dark:text-[#A3A3A3] border-[#E5E5E5] dark:border-[#2A2A2A] hover:border-[#059669]'
+                      : 'bg-[#FAFAFA] dark:bg-[#151515] text-[#262626] dark:text-[#D4D4D4] border-[#E5E5E5] dark:border-[#2A2A2A] hover:border-[#059669]'
                   }`}
                 >
                   +£{preset}/mo
@@ -180,7 +181,7 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/mortgage-overpayment-cal
 
           {/* Optional Lump Sum Overpayment */}
           <div className="pt-2 border-t border-[#E5E5E5] dark:border-[#2A2A2A]">
-            <label htmlFor="overpay-lump" className="block text-xs font-bold uppercase tracking-wider text-[#525252] dark:text-[#A3A3A3] mb-1.5">
+            <label htmlFor="overpay-lump" className="block text-xs font-bold uppercase tracking-wider text-[#262626] dark:text-[#D4D4D4] mb-1.5">
               One-Off Lump Sum Overpayment (Optional)
             </label>
             <div className="relative">
@@ -215,7 +216,7 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/mortgage-overpayment-cal
         <div className="rounded-3xl bg-white dark:bg-[#171717] border border-[#E5E5E5] dark:border-[#2A2A2A] p-6 sm:p-8 shadow-[0_8px_30px_rgba(0,0,0,0.06)] dark:shadow-[0_10px_35px_rgba(0,0,0,0.35)] space-y-6">
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 border-b border-[#E5E5E5] dark:border-[#2A2A2A]">
             <div>
-              <span className="text-xs font-bold uppercase tracking-wider text-[#525252] dark:text-[#A3A3A3] block mb-1">
+              <span className="text-xs font-bold uppercase tracking-wider text-[#262626] dark:text-[#D4D4D4] block mb-1">
                 Estimated Total Interest Saved
               </span>
               <div className="text-3xl sm:text-5xl font-black text-[#059669] dark:text-[#10B981] tracking-tight">
@@ -223,7 +224,7 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/mortgage-overpayment-cal
               </div>
             </div>
             <div className="sm:text-right">
-              <span className="text-xs font-bold uppercase tracking-wider text-[#525252] dark:text-[#A3A3A3] block mb-1">
+              <span className="text-xs font-bold uppercase tracking-wider text-[#262626] dark:text-[#D4D4D4] block mb-1">
                 Term Shortened By
               </span>
               <div className="text-2xl sm:text-3xl font-black text-[#111111] dark:text-[#F5F5F5]">
@@ -240,23 +241,23 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/mortgage-overpayment-cal
               </span>
               <div className="space-y-1 text-xs">
                 <div className="flex justify-between">
-                  <span className="text-[#525252] dark:text-[#A3A3A3]">Monthly Payment:</span>
+                  <span className="text-[#262626] dark:text-[#D4D4D4]">Monthly Payment:</span>
                   <span className="font-bold text-[#111111] dark:text-[#F5F5F5]">
                     £{result.monthlyPaymentStandard.toLocaleString('en-GB', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
                   </span>
                 </div>
                 <div className="flex justify-between">
-                  <span className="text-[#525252] dark:text-[#A3A3A3]">Total Repayment Term:</span>
+                  <span className="text-[#262626] dark:text-[#D4D4D4]">Total Repayment Term:</span>
                   <span className="font-bold text-[#111111] dark:text-[#F5F5F5]">{result.originalTermYears} years</span>
                 </div>
                 <div className="flex justify-between">
-                  <span className="text-[#525252] dark:text-[#A3A3A3]">Total Interest:</span>
+                  <span className="text-[#262626] dark:text-[#D4D4D4]">Total Interest:</span>
                   <span className="font-bold text-[#111111] dark:text-[#F5F5F5]">
                     £{result.totalInterestStandard.toLocaleString('en-GB', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
                   </span>
                 </div>
                 <div className="flex justify-between pt-1 border-t border-[#E5E5E5] dark:border-[#2A2A2A]">
-                  <span className="text-[#525252] dark:text-[#A3A3A3]">Total Cost:</span>
+                  <span className="text-[#262626] dark:text-[#D4D4D4]">Total Cost:</span>
                   <span className="font-bold text-[#111111] dark:text-[#F5F5F5]">
                     £{result.totalCostStandard.toLocaleString('en-GB', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
                   </span>
@@ -271,25 +272,25 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/mortgage-overpayment-cal
               </span>
               <div className="space-y-1 text-xs">
                 <div className="flex justify-between">
-                  <span className="text-[#525252] dark:text-[#A3A3A3]">Total Monthly Paid:</span>
+                  <span className="text-[#262626] dark:text-[#D4D4D4]">Total Monthly Paid:</span>
                   <span className="font-bold text-[#059669] dark:text-[#10B981]">
                     £{result.totalPaymentMonthlyWithOverpayment.toLocaleString('en-GB', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
                   </span>
                 </div>
                 <div className="flex justify-between">
-                  <span className="text-[#525252] dark:text-[#A3A3A3]">New Repayment Term:</span>
+                  <span className="text-[#262626] dark:text-[#D4D4D4]">New Repayment Term:</span>
                   <span className="font-bold text-[#059669] dark:text-[#10B981]">
                     {result.newTermYears} yrs {result.newTermMonths} mos
                   </span>
                 </div>
                 <div className="flex justify-between">
-                  <span className="text-[#525252] dark:text-[#A3A3A3]">Total Interest:</span>
+                  <span className="text-[#262626] dark:text-[#D4D4D4]">Total Interest:</span>
                   <span className="font-bold text-[#059669] dark:text-[#10B981]">
                     £{result.totalInterestWithOverpayment.toLocaleString('en-GB', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
                   </span>
                 </div>
                 <div className="flex justify-between pt-1 border-t border-emerald-500/20">
-                  <span className="text-[#525252] dark:text-[#A3A3A3]">Total Cost:</span>
+                  <span className="text-[#262626] dark:text-[#D4D4D4]">Total Cost:</span>
                   <span className="font-bold text-[#059669] dark:text-[#10B981]">
                     £{result.totalCostWithOverpayment.toLocaleString('en-GB', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
                   </span>
@@ -300,13 +301,13 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/mortgage-overpayment-cal
 
           {/* Schedule Snapshot Table */}
           <div className="space-y-3 pt-2">
-            <h3 className="text-xs font-bold uppercase tracking-wider text-[#525252] dark:text-[#A3A3A3]">
+            <h3 className="text-xs font-bold uppercase tracking-wider text-[#262626] dark:text-[#D4D4D4]">
               Annual Balance Comparison (Years 1 to 10)
             </h3>
             <div className="overflow-x-auto rounded-2xl border border-[#E5E5E5] dark:border-[#2A2A2A]">
               <table className="w-full text-left text-xs">
                 <thead>
-                  <tr className="bg-[#FAFAFA] dark:bg-[#151515] border-b border-[#E5E5E5] dark:border-[#2A2A2A] text-[#525252] dark:text-[#A3A3A3] font-bold">
+                  <tr className="bg-[#FAFAFA] dark:bg-[#151515] border-b border-[#E5E5E5] dark:border-[#2A2A2A] text-[#262626] dark:text-[#D4D4D4] font-bold">
                     <th className="py-2.5 px-3">Year</th>
                     <th className="py-2.5 px-3">Standard Balance</th>
                     <th className="py-2.5 px-3 text-[#059669] dark:text-[#10B981]">Overpayment Balance</th>
@@ -319,7 +320,7 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/mortgage-overpayment-cal
                       <td className="py-2.5 px-3 font-semibold text-[#111111] dark:text-[#F5F5F5]">
                         Year {row.year}
                       </td>
-                      <td className="py-2.5 px-3 text-[#525252] dark:text-[#A3A3A3]">
+                      <td className="py-2.5 px-3 text-[#262626] dark:text-[#D4D4D4]">
                         £{row.standardBalance.toLocaleString('en-GB', { maximumFractionDigits: 0 })}
                       </td>
                       <td className="py-2.5 px-3 font-bold text-[#059669] dark:text-[#10B981]">

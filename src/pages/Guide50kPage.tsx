@@ -1,3 +1,4 @@
+import { formatGBP } from '../utils/format';
 import React, { useMemo } from 'react';
 import { Link } from 'react-router-dom';
 import { SEO } from '../components/seo/SEO';
@@ -19,7 +20,7 @@ export const Guide50kPage: React.FC = () => {
     return calculateTakeHomePay({
       grossSalary: 50000,
       payFrequency: 'annual',
-      taxYear: '2025_26',
+      taxYear: '2026_27',
       region: 'england_ni',
       taxCode: '1257L',
       pensionPercentage: 5,
@@ -53,7 +54,7 @@ export const Guide50kPage: React.FC = () => {
     },
     {
       question: 'How much student loan do you repay on a £50,000 salary?',
-      answer: 'On Plan 2 (threshold £27,295), you repay 9% of income above the threshold: 9% of £22,705 = £2,043.45 per year (approx. £170.29 per month). On Plan 1, annual repayments are approx. £2,250.90 (£187.58 per month).',
+      answer: 'On Plan 2 (threshold £29,385), you repay 9% of income above the threshold: 9% of £20,615 = £1,855.35 per year (approx. £154.61 per month). On Plan 1, annual repayments are approx. £2,079.00 (£173.25 per month).',
     },
     {
       question: 'Is £50,000 considered a good salary in the UK?',
@@ -72,7 +73,7 @@ export const Guide50kPage: React.FC = () => {
   return (
     <article className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-8">
       <SEO
-        title="£50,000 Salary After Tax UK (2025/26) | Monthly Take-Home Pay"
+        title="£50,000 Salary After Tax UK (2026/27) | Monthly Take-Home Pay"
         description="Find out what a £50,000 salary looks like after tax in the UK. See monthly take-home pay, Income Tax, National Insurance, pension and student loan breakdowns."
         keywords={[
           '50000 salary after tax UK',
@@ -101,7 +102,7 @@ export const Guide50kPage: React.FC = () => {
         <h1 className="text-2xl sm:text-4xl font-black text-[#111111] dark:text-[#F5F5F5] tracking-tight">
           £50,000 Salary After Tax in the UK
         </h1>
-        <p className="text-xs sm:text-sm text-[#525252] dark:text-[#A3A3A3] leading-relaxed">
+        <p className="text-xs sm:text-sm text-[#262626] dark:text-[#D4D4D4] leading-relaxed">
           Earning £50,000 puts you comfortably into the top quartile of UK individual earners. Below is the exact statutory breakdown of what you take home each month after Income Tax, 8% Class 1 National Insurance, and standard auto-enrolment workplace pension deductions.
         </p>
       </header>
@@ -113,25 +114,25 @@ export const Guide50kPage: React.FC = () => {
         </span>
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 mt-4 pt-4 border-t border-[#2A2A2A]">
           <div>
-            <span className="text-2xs uppercase text-[#A3A3A3] font-semibold">Monthly Net Pay</span>
+            <span className="text-2xs uppercase text-[#D4D4D4] font-semibold">Monthly Net Pay</span>
             <p className="text-xl sm:text-2xl font-black text-[#10B981] mt-0.5 tabular-nums">
               £{Math.round(calculation.netMonthly).toLocaleString()}
             </p>
           </div>
           <div>
-            <span className="text-2xs uppercase text-[#A3A3A3] font-semibold">Annual Income Tax</span>
+            <span className="text-2xs uppercase text-[#D4D4D4] font-semibold">Annual Income Tax</span>
             <p className="text-xl sm:text-2xl font-bold text-[#F87171] mt-0.5 tabular-nums">
               £{Math.round(calculation.incomeTaxAnnual).toLocaleString()}
             </p>
           </div>
           <div>
-            <span className="text-2xs uppercase text-[#A3A3A3] font-semibold">National Insurance</span>
+            <span className="text-2xs uppercase text-[#D4D4D4] font-semibold">National Insurance</span>
             <p className="text-xl sm:text-2xl font-bold text-[#F87171] mt-0.5 tabular-nums">
               £{Math.round(calculation.employeeNiAnnual).toLocaleString()}
             </p>
           </div>
           <div>
-            <span className="text-2xs uppercase text-[#A3A3A3] font-semibold">Effective Tax Rate</span>
+            <span className="text-2xs uppercase text-[#D4D4D4] font-semibold">Effective Tax Rate</span>
             <p className="text-xl sm:text-2xl font-bold text-[#FBBF24] mt-0.5 tabular-nums">
               {calculation.effectiveTaxRate.toFixed(1)}%
             </p>
@@ -140,7 +141,7 @@ export const Guide50kPage: React.FC = () => {
       </div>
 
       {/* Detailed Breakdown Table */}
-      <div className="space-y-4 text-xs sm:text-sm text-[#525252] dark:text-[#A3A3A3]">
+      <div className="space-y-4 text-xs sm:text-sm text-[#262626] dark:text-[#D4D4D4]">
         <h2 className="text-lg sm:text-xl font-bold text-[#111111] dark:text-[#F5F5F5]">
           Complete Payslip Breakdown on £50,000
         </h2>
@@ -163,27 +164,27 @@ export const Guide50kPage: React.FC = () => {
               </tr>
               <tr>
                 <td className="p-3 text-[#DC2626] dark:text-[#F87171]">Income Tax (PAYE)</td>
-                <td className="p-3 text-[#DC2626] dark:text-[#F87171] tabular-nums">-£{calculation.incomeTaxAnnual.toFixed(2)}</td>
-                <td className="p-3 text-[#DC2626] dark:text-[#F87171] tabular-nums">-£{calculation.incomeTaxMonthly.toFixed(2)}</td>
-                <td className="p-3 text-[#DC2626] dark:text-[#F87171] tabular-nums">-£{calculation.incomeTaxWeekly.toFixed(2)}</td>
+                <td className="p-3 text-[#DC2626] dark:text-[#F87171] tabular-nums">-{formatGBP(calculation.incomeTaxAnnual)}</td>
+                <td className="p-3 text-[#DC2626] dark:text-[#F87171] tabular-nums">-{formatGBP(calculation.incomeTaxMonthly)}</td>
+                <td className="p-3 text-[#DC2626] dark:text-[#F87171] tabular-nums">-{formatGBP(calculation.incomeTaxWeekly)}</td>
               </tr>
               <tr>
                 <td className="p-3 text-[#DC2626] dark:text-[#F87171]">National Insurance (8%)</td>
-                <td className="p-3 text-[#DC2626] dark:text-[#F87171] tabular-nums">-£{calculation.employeeNiAnnual.toFixed(2)}</td>
-                <td className="p-3 text-[#DC2626] dark:text-[#F87171] tabular-nums">-£{calculation.employeeNiMonthly.toFixed(2)}</td>
-                <td className="p-3 text-[#DC2626] dark:text-[#F87171] tabular-nums">-£{calculation.employeeNiWeekly.toFixed(2)}</td>
+                <td className="p-3 text-[#DC2626] dark:text-[#F87171] tabular-nums">-{formatGBP(calculation.employeeNiAnnual)}</td>
+                <td className="p-3 text-[#DC2626] dark:text-[#F87171] tabular-nums">-{formatGBP(calculation.employeeNiMonthly)}</td>
+                <td className="p-3 text-[#DC2626] dark:text-[#F87171] tabular-nums">-{formatGBP(calculation.employeeNiWeekly)}</td>
               </tr>
               <tr>
                 <td className="p-3 text-[#D97706] dark:text-[#FBBF24]">Pension (5% Employee)</td>
-                <td className="p-3 text-[#D97706] dark:text-[#FBBF24] tabular-nums">-£{calculation.pensionAnnual.toFixed(2)}</td>
-                <td className="p-3 text-[#D97706] dark:text-[#FBBF24] tabular-nums">-£{calculation.pensionMonthly.toFixed(2)}</td>
-                <td className="p-3 text-[#D97706] dark:text-[#FBBF24] tabular-nums">-£{(calculation.pensionAnnual / 52).toFixed(2)}</td>
+                <td className="p-3 text-[#D97706] dark:text-[#FBBF24] tabular-nums">-{formatGBP(calculation.pensionAnnual)}</td>
+                <td className="p-3 text-[#D97706] dark:text-[#FBBF24] tabular-nums">-{formatGBP(calculation.pensionMonthly)}</td>
+                <td className="p-3 text-[#D97706] dark:text-[#FBBF24] tabular-nums">-{formatGBP((calculation.pensionAnnual / 52))}</td>
               </tr>
               <tr className="bg-[#F5F5F5] dark:bg-[#222222] font-bold">
                 <td className="p-3 text-[#059669] dark:text-[#10B981]">Net Take-Home Pay</td>
-                <td className="p-3 text-[#059669] dark:text-[#10B981] tabular-nums">£{calculation.netAnnual.toFixed(2)}</td>
-                <td className="p-3 text-[#059669] dark:text-[#10B981] tabular-nums">£{calculation.netMonthly.toFixed(2)}</td>
-                <td className="p-3 text-[#059669] dark:text-[#10B981] tabular-nums">£{calculation.netWeekly.toFixed(2)}</td>
+                <td className="p-3 text-[#059669] dark:text-[#10B981] tabular-nums">{formatGBP(calculation.netAnnual)}</td>
+                <td className="p-3 text-[#059669] dark:text-[#10B981] tabular-nums">{formatGBP(calculation.netMonthly)}</td>
+                <td className="p-3 text-[#059669] dark:text-[#10B981] tabular-nums">{formatGBP(calculation.netWeekly)}</td>
               </tr>
             </tbody>
           </table>
@@ -191,7 +192,7 @@ export const Guide50kPage: React.FC = () => {
       </div>
 
       {/* Narrative Section */}
-      <section className="space-y-4 text-xs sm:text-sm text-[#525252] dark:text-[#A3A3A3] leading-relaxed">
+      <section className="space-y-4 text-xs sm:text-sm text-[#262626] dark:text-[#D4D4D4] leading-relaxed">
         <h2 className="text-lg sm:text-xl font-bold text-[#111111] dark:text-[#F5F5F5]">
           Understanding the 40% Higher Rate Threshold Buffer
         </h2>
@@ -209,7 +210,7 @@ export const Guide50kPage: React.FC = () => {
           <h2 className="text-base font-bold text-[#111111] dark:text-[#F5F5F5]">
             Customise with your own deductions
           </h2>
-          <p className="text-xs text-[#525252] dark:text-[#A3A3A3] mt-1">
+          <p className="text-xs text-[#262626] dark:text-[#D4D4D4] mt-1">
             Calculate your exact take-home pay with student loans, Scottish tax rates, or salary sacrifice.
           </p>
         </div>
@@ -223,7 +224,7 @@ export const Guide50kPage: React.FC = () => {
       </div>
 
       {/* FAQs */}
-      <FaqAccordion items={faqs50k} />
+      <FaqAccordion items={faqs50k} badge="Salary Guide Knowledge Base" subtitle="Clear answers to common questions about a £50,000 UK salary after tax." />
 
       {/* Disclaimer */}
       <DisclaimerNotice />

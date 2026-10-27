@@ -50,7 +50,7 @@ export const BonusTaxCalculatorPage: React.FC = () => {
         <h1 className="text-2xl sm:text-4xl font-black text-[#111111] dark:text-[#F5F5F5] tracking-tight">
           Bonus Tax Calculator UK
         </h1>
-        <p className="text-xs sm:text-sm text-[#525252] dark:text-[#A3A3A3] leading-relaxed">
+        <p className="text-xs sm:text-sm text-[#262626] dark:text-[#D4D4D4] leading-relaxed">
           Find out exactly how much tax, National Insurance, pension, and student loan you will pay on your UK work bonus, and see your net cash bonus take-home pay.
         </p>
       </div>
@@ -62,7 +62,7 @@ export const BonusTaxCalculatorPage: React.FC = () => {
           <h2 className="text-lg sm:text-xl font-bold text-[#111111] dark:text-[#F5F5F5] mb-2">
             Why Bonuses Are Taxed at Your Marginal Rate, Not a Flat Rate
           </h2>
-          <p className="text-xs sm:text-sm text-[#525252] dark:text-[#A3A3A3] leading-relaxed">
+          <p className="text-xs sm:text-sm text-[#262626] dark:text-[#D4D4D4] leading-relaxed">
             In the United Kingdom, HM Revenue and Customs (HMRC) does not have a separate "bonus tax". Instead, any bonus you receive is treated as ordinary taxable employment earnings and added on top of your existing salary.
           </p>
         </div>
@@ -70,21 +70,21 @@ export const BonusTaxCalculatorPage: React.FC = () => {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs sm:text-sm">
           <div className="p-4 rounded-xl bg-[#FAFAFA] dark:bg-[#151515] border border-[#E5E5E5] dark:border-[#2A2A2A] space-y-1.5">
             <h3 className="font-bold text-[#111111] dark:text-[#F5F5F5]">Basic Rate (Under £50.2k)</h3>
-            <p className="text-[#525252] dark:text-[#A3A3A3] text-xs leading-relaxed">
+            <p className="text-[#262626] dark:text-[#D4D4D4] text-xs leading-relaxed">
               If your salary plus bonus stays below £50,270, the bonus is taxed at 20% Income Tax + 8% Class 1 NI, leaving ~72% take-home (or ~67% if 5% pension applies).
             </p>
           </div>
 
           <div className="p-4 rounded-xl bg-[#FAFAFA] dark:bg-[#151515] border border-[#E5E5E5] dark:border-[#2A2A2A] space-y-1.5">
             <h3 className="font-bold text-[#111111] dark:text-[#F5F5F5]">Higher Rate (£50.2k–£100k)</h3>
-            <p className="text-[#525252] dark:text-[#A3A3A3] text-xs leading-relaxed">
+            <p className="text-[#262626] dark:text-[#D4D4D4] text-xs leading-relaxed">
               If your bonus falls in or crosses above £50,270, the excess is taxed at 40% Income Tax (42% in Scotland) and 2% NI, retaining ~58p of every £1.
             </p>
           </div>
 
           <div className="p-4 rounded-xl bg-[#FAFAFA] dark:bg-[#151515] border border-[#E5E5E5] dark:border-[#2A2A2A] space-y-1.5">
             <h3 className="font-bold text-[#111111] dark:text-[#F5F5F5]">£100k Taper Trap</h3>
-            <p className="text-[#525252] dark:text-[#A3A3A3] text-xs leading-relaxed">
+            <p className="text-[#262626] dark:text-[#D4D4D4] text-xs leading-relaxed">
               If your bonus takes total income into the £100,000–£125,140 bracket, each £2 of bonus loses £1 of Personal Allowance, creating a 60% effective income tax rate (62% with NI).
             </p>
           </div>
@@ -94,7 +94,7 @@ export const BonusTaxCalculatorPage: React.FC = () => {
           <h2 className="text-lg sm:text-xl font-bold text-[#111111] dark:text-[#F5F5F5] mb-2">
             Why Your Bonus Might Look Like It's Taxed at Emergency Rate
           </h2>
-          <p className="text-xs sm:text-sm text-[#525252] dark:text-[#A3A3A3] leading-relaxed mb-3">
+          <p className="text-xs sm:text-sm text-[#262626] dark:text-[#D4D4D4] leading-relaxed mb-3">
             When you receive a large lump sum bonus, your payslip take-home may appear much lower than expected. Here is why this happens:
           </p>
           <div className="p-4 rounded-xl bg-[#FAFAFA] dark:bg-[#151515] border border-[#E5E5E5] dark:border-[#2A2A2A] space-y-3 text-xs">
@@ -102,7 +102,7 @@ export const BonusTaxCalculatorPage: React.FC = () => {
               <strong className="text-[#111111] dark:text-[#F5F5F5] block">
                 1. Monthly Pay Period Annualisation:
               </strong>
-              <p className="text-[#525252] dark:text-[#A3A3A3] leading-relaxed">
+              <p className="text-[#262626] dark:text-[#D4D4D4] leading-relaxed">
                 UK payroll software multiplies that month's earnings by 12 to project your annual tax liability. A £5,000 bonus added to a £3,000 monthly salary makes the system temporarily assume you earn £96,000 per year (£8,000 × 12), withholding higher-rate tax for that month.
               </p>
             </div>
@@ -110,7 +110,7 @@ export const BonusTaxCalculatorPage: React.FC = () => {
               <strong className="text-[#111111] dark:text-[#F5F5F5] block">
                 2. Cumulative PAYE Automatic Smoothing:
               </strong>
-              <p className="text-[#525252] dark:text-[#A3A3A3] leading-relaxed">
+              <p className="text-[#262626] dark:text-[#D4D4D4] leading-relaxed">
                 Because UK tax codes (like 1257L) are cumulative, subsequent monthly pay runs adjust your tax automatically by looking at your cumulative year-to-date income. Any initial excess withholding in your bonus month gets refunded across your remaining monthly payslips.
               </p>
             </div>
@@ -121,17 +121,17 @@ export const BonusTaxCalculatorPage: React.FC = () => {
           <h2 className="text-lg sm:text-xl font-bold text-[#111111] dark:text-[#F5F5F5] mb-2">
             Reducing Bonus Tax with Salary Sacrifice
           </h2>
-          <p className="text-xs sm:text-sm text-[#525252] dark:text-[#A3A3A3] leading-relaxed mb-3">
+          <p className="text-xs sm:text-sm text-[#262626] dark:text-[#D4D4D4] leading-relaxed mb-3">
             One of the most tax-efficient strategies in the UK is <strong>bonus sacrifice</strong>. Rather than taking your full bonus in cash and losing 32%, 42%, or 62% in tax and NI:
           </p>
           <div className="p-4 rounded-xl bg-[#FAFAFA] dark:bg-[#151515] border border-[#E5E5E5] dark:border-[#2A2A2A] space-y-2 text-xs">
-            <p className="text-[#525252] dark:text-[#A3A3A3] leading-relaxed">
+            <p className="text-[#262626] dark:text-[#D4D4D4] leading-relaxed">
               • <strong>100% Tax Relief:</strong> Directing the bonus into your workplace pension means 100% of the gross bonus enters your retirement fund without any Income Tax or National Insurance deduction.
             </p>
-            <p className="text-[#525252] dark:text-[#A3A3A3] leading-relaxed">
+            <p className="text-[#262626] dark:text-[#D4D4D4] leading-relaxed">
               • <strong>Employer NI Pass-Through:</strong> Many UK employers pass on part or all of their 13.8% (or 15.0%) Employer NI savings into your pension pot, boosting your bonus even further.
             </p>
-            <p className="text-[#525252] dark:text-[#A3A3A3] leading-relaxed">
+            <p className="text-[#262626] dark:text-[#D4D4D4] leading-relaxed">
               • <strong>Protect Allowances &amp; Benefits:</strong> Bonus sacrifice reduces your Adjusted Net Income, helping you retain your £12,570 Personal Allowance and avoid the High Income Child Benefit Charge.
             </p>
           </div>
@@ -167,7 +167,7 @@ export const BonusTaxCalculatorPage: React.FC = () => {
         </div>
       </div>
 
-      <FaqAccordion items={BONUS_TAX_FAQS} />
+      <FaqAccordion items={BONUS_TAX_FAQS} badge="Bonus Tax Knowledge Base" subtitle="Clear answers to common questions about UK bonus tax." />
       <DisclaimerNotice />
     </div>
   );

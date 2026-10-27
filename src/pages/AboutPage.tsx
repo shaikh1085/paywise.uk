@@ -36,7 +36,7 @@ export const AboutPage: React.FC = () => {
         <h1 className="text-2xl sm:text-4xl font-black text-[#111111] dark:text-[#F5F5F5] tracking-tight">
           About PayWise UK
         </h1>
-        <p className="text-xs sm:text-sm text-[#525252] dark:text-[#A3A3A3] leading-relaxed">
+        <p className="text-xs sm:text-sm text-[#262626] dark:text-[#D4D4D4] leading-relaxed">
           PayWise UK is an independent, free financial calculation platform engineered to bring clarity, precision, and privacy to UK payroll and tax calculations.
         </p>
       </header>
@@ -46,7 +46,7 @@ export const AboutPage: React.FC = () => {
           <h2 className="text-lg sm:text-xl font-bold text-[#111111] dark:text-[#F5F5F5] mb-2">
             Why We Built PayWise UK
           </h2>
-          <p className="text-xs sm:text-sm text-[#525252] dark:text-[#A3A3A3] leading-relaxed">
+          <p className="text-xs sm:text-sm text-[#262626] dark:text-[#D4D4D4] leading-relaxed">
             Understanding your take-home pay in the UK has become increasingly complex due to progressive tax bands, devolved Scottish income tax rates, varying student loan repayment plans, workplace pension relief methods, and salary sacrifice mechanics. PayWise UK was built to provide transparent, accurate, and completely private salary calculation tools with zero ads and zero data harvesting.
           </p>
         </div>
@@ -57,7 +57,7 @@ export const AboutPage: React.FC = () => {
               <Target className="w-4 h-4" />
             </div>
             <h3 className="font-bold text-[#111111] dark:text-[#F5F5F5]">Mathematical Precision</h3>
-            <p className="text-[#525252] dark:text-[#A3A3A3] text-xs">
+            <p className="text-[#262626] dark:text-[#D4D4D4] text-xs">
               Every formula is benchmarked against official HMRC guidelines, statutory tax thresholds, and pension regulations.
             </p>
           </div>
@@ -67,7 +67,7 @@ export const AboutPage: React.FC = () => {
               <Lock className="w-4 h-4" />
             </div>
             <h3 className="font-bold text-[#111111] dark:text-[#F5F5F5]">100% Client-Side Privacy</h3>
-            <p className="text-[#525252] dark:text-[#A3A3A3] text-xs">
+            <p className="text-[#262626] dark:text-[#D4D4D4] text-xs">
               Calculations run entirely inside your browser. Your salary and financial details are never transmitted to our servers.
             </p>
           </div>
@@ -77,7 +77,7 @@ export const AboutPage: React.FC = () => {
               <ShieldCheck className="w-4 h-4" />
             </div>
             <h3 className="font-bold text-[#111111] dark:text-[#F5F5F5]">Updated Annually</h3>
-            <p className="text-[#525252] dark:text-[#A3A3A3] text-xs">
+            <p className="text-[#262626] dark:text-[#D4D4D4] text-xs">
               Configured for the {TAX_CONFIG_METADATA.currentTaxYearLabel} UK tax year, including the latest National Insurance rates and Scottish tax tiers.
             </p>
           </div>
@@ -87,7 +87,7 @@ export const AboutPage: React.FC = () => {
           <h2 className="text-base sm:text-lg font-bold text-[#111111] dark:text-[#F5F5F5] mb-2">
             Explore Our Calculator Suite
           </h2>
-          <p className="text-xs text-[#525252] dark:text-[#A3A3A3] leading-relaxed">
+          <p className="text-xs text-[#262626] dark:text-[#D4D4D4] leading-relaxed">
             Whether you are evaluating a permanent job offer, negotiating an IT contractor day rate, estimating NHS agenda for change step progression, or planning pension salary sacrifice, our calculators provide instant estimates.
           </p>
           <div className="mt-4">

@@ -1,3 +1,4 @@
+import { formatGBP } from '../../utils/format';
 import React, { useState, useMemo } from 'react';
 import { InsideIr35Input } from '../../types';
 import { calculateInsideIr35 } from '../../utils/calculations';
@@ -19,8 +20,8 @@ export const InsideIr35Calculator: React.FC = () => {
 
   const copyText = `PayWise UK Inside IR35 Calculation:
 Contract Day Rate: £${input.dayRate} | Days/Year: ${input.workingDaysPerYear}
-Total Contract Value: £${result.contractGrossAnnual.toLocaleString('en-GB')}
-Umbrella Fees: -£${result.umbrellaFeesAnnual.toLocaleString('en-GB')}
+Total Contract Value: ${formatGBP(result.contractGrossAnnual)}
+Umbrella Fees: -${formatGBP(result.umbrellaFeesAnnual)}
 Employer NI (15%): -£${result.employerNiAnnual.toLocaleString('en-GB', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
 Apprenticeship Levy (0.5%): -£${result.apprenticeshipLevyAnnual.toLocaleString('en-GB', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
 Gross Pay to Worker: £${result.grossPayToWorkerAnnual.toLocaleString('en-GB', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
@@ -117,8 +118,8 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/inside-ir35-calculator)`
               <span className="w-2 h-2 rounded-full bg-[#059669] dark:bg-[#10B981]" />
               Inside IR35 Net Monthly Take-Home
             </span>
-            <span className="text-xs text-[#525252] dark:text-[#A3A3A3] tabular-nums">
-              Contract: £{result.contractGrossAnnual.toLocaleString('en-GB')}/yr
+            <span className="text-xs text-[#262626] dark:text-[#D4D4D4] tabular-nums">
+              Contract: {formatGBP(result.contractGrossAnnual)}/yr
             </span>
           </div>
 
@@ -132,7 +133,7 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/inside-ir35-calculator)`
                   className="text-[#111111] dark:text-[#F5F5F5]"
                 />
               </div>
-              <p className="text-xs sm:text-sm font-medium text-[#525252] dark:text-[#A3A3A3] flex items-center gap-1.5">
+              <p className="text-xs sm:text-sm font-medium text-[#262626] dark:text-[#D4D4D4] flex items-center gap-1.5">
                 <ArrowUpRight className="w-4 h-4 text-[#059669] dark:text-[#10B981] shrink-0" />
                 <span>
                   Net monthly after employer NI (15%), Apprenticeship levy, PAYE & employee NI
@@ -152,21 +153,21 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/inside-ir35-calculator)`
 
           <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 pt-5 border-t border-[#E5E5E5] dark:border-[#2A2A2A]">
             <div className="bg-white dark:bg-[#111111] p-3 rounded-xl border border-[#E5E5E5] dark:border-[#2A2A2A] shadow-2xs">
-              <span className="text-2xs uppercase text-[#525252] dark:text-[#A3A3A3] font-bold block truncate">Annual Net Pay</span>
+              <span className="text-2xs uppercase text-[#262626] dark:text-[#D4D4D4] font-bold block truncate">Annual Net Pay</span>
               <p className="text-base sm:text-lg font-black text-[#059669] dark:text-[#10B981] mt-0.5 tabular-nums">
                 £{result.netTakeHomeAnnual.toLocaleString('en-GB', { minimumFractionDigits: 0, maximumFractionDigits: 0 })}
               </p>
             </div>
 
             <div className="bg-white dark:bg-[#111111] p-3 rounded-xl border border-[#E5E5E5] dark:border-[#2A2A2A] shadow-2xs">
-              <span className="text-2xs uppercase text-[#525252] dark:text-[#A3A3A3] font-bold block truncate">Employer NI (15%)</span>
+              <span className="text-2xs uppercase text-[#262626] dark:text-[#D4D4D4] font-bold block truncate">Employer NI (15%)</span>
               <p className="text-base sm:text-lg font-black text-[#DC2626] dark:text-[#F87171] mt-0.5 tabular-nums">
                 -£{result.employerNiAnnual.toLocaleString('en-GB', { minimumFractionDigits: 0, maximumFractionDigits: 0 })}
               </p>
             </div>
 
             <div className="bg-white dark:bg-[#111111] p-3 rounded-xl border border-[#E5E5E5] dark:border-[#2A2A2A] shadow-2xs col-span-2 sm:col-span-1">
-              <span className="text-2xs uppercase text-[#525252] dark:text-[#A3A3A3] font-bold block truncate">Retention Rate</span>
+              <span className="text-2xs uppercase text-[#262626] dark:text-[#D4D4D4] font-bold block truncate">Retention Rate</span>
               <p className="text-base sm:text-lg font-black text-[#111111] dark:text-[#F5F5F5] mt-0.5 tabular-nums">
                 {result.takeHomePercentage.toFixed(1)}%
               </p>

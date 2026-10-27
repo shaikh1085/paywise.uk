@@ -1,3 +1,4 @@
+import { formatGBP } from '../../utils/format';
 import React, { useState, useMemo } from 'react';
 import { VatInput, VatMode, VatRate } from '../../types';
 import { calculateVat } from '../../utils/calculations';
@@ -33,7 +34,7 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/vat-calculator)`;
   ];
 
   const fmt = (n: number | undefined | null) =>
-    '£' + (typeof n === 'number' && !isNaN(n) ? n : 0).toLocaleString('en-GB', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+    formatGBP((typeof n === 'number' && !isNaN(n) ? n : 0));
 
   return (
     <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
@@ -47,7 +48,7 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/vat-calculator)`;
           <button
             type="button"
             onClick={handleReset}
-            className="inline-flex items-center gap-1 text-xs font-semibold text-[#525252] hover:text-[#111111] dark:text-[#A3A3A3] dark:hover:text-[#F5F5F5] transition-colors p-1.5 rounded-lg hover:bg-[#F5F5F5] dark:hover:bg-[#222222]"
+            className="inline-flex items-center gap-1 text-xs font-semibold text-[#262626] hover:text-[#111111] dark:text-[#D4D4D4] dark:hover:text-[#F5F5F5] transition-colors p-1.5 rounded-lg hover:bg-[#F5F5F5] dark:hover:bg-[#222222]"
             title="Reset to defaults"
           >
             <RotateCcw className="w-3.5 h-3.5" />
@@ -93,7 +94,7 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/vat-calculator)`;
               {input.mode === 'add' ? 'Net Amount (Ex-VAT)' : 'Gross Amount (Inc-VAT)'}
             </label>
             <div className="relative">
-              <span className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3.5 text-[#525252] dark:text-[#A3A3A3] font-bold text-base">£</span>
+              <span className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3.5 text-[#262626] dark:text-[#D4D4D4] font-bold text-base">£</span>
               <input
                 type="number"
                 min="0"
@@ -149,7 +150,7 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/vat-calculator)`;
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-6">
             {/* Net */}
             <div className={`rounded-xl p-4 border ${input.mode === 'add' ? 'border-[#059669] dark:border-[#10B981] bg-[#F0FDF4] dark:bg-[#052e16]' : 'border-[#E5E5E5] dark:border-[#2A2A2A] bg-[#FAFAFA] dark:bg-[#151515]'}`}>
-              <p className="text-2xs font-bold uppercase tracking-wider text-[#525252] dark:text-[#A3A3A3] mb-1">Net (Ex-VAT)</p>
+              <p className="text-2xs font-bold uppercase tracking-wider text-[#262626] dark:text-[#D4D4D4] mb-1">Net (Ex-VAT)</p>
               <p className="text-xl font-black text-[#111111] dark:text-[#F5F5F5] tabular-nums">
                 <AnimatedNumber value={result.netAmount} prefix="£" decimals={2} />
               </p>
@@ -158,7 +159,7 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/vat-calculator)`;
 
             {/* VAT */}
             <div className="rounded-xl p-4 border border-[#E5E5E5] dark:border-[#2A2A2A] bg-[#FAFAFA] dark:bg-[#151515]">
-              <p className="text-2xs font-bold uppercase tracking-wider text-[#525252] dark:text-[#A3A3A3] mb-1">VAT ({result.vatRatePercent}%)</p>
+              <p className="text-2xs font-bold uppercase tracking-wider text-[#262626] dark:text-[#D4D4D4] mb-1">VAT ({result.vatRatePercent}%)</p>
               <p className="text-xl font-black text-[#111111] dark:text-[#F5F5F5] tabular-nums">
                 <AnimatedNumber value={result.vatAmount} prefix="£" decimals={2} />
               </p>
@@ -166,7 +167,7 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/vat-calculator)`;
 
             {/* Gross */}
             <div className={`rounded-xl p-4 border ${input.mode === 'remove' ? 'border-[#059669] dark:border-[#10B981] bg-[#F0FDF4] dark:bg-[#052e16]' : 'border-[#E5E5E5] dark:border-[#2A2A2A] bg-[#FAFAFA] dark:bg-[#151515]'}`}>
-              <p className="text-2xs font-bold uppercase tracking-wider text-[#525252] dark:text-[#A3A3A3] mb-1">Gross (Inc-VAT)</p>
+              <p className="text-2xs font-bold uppercase tracking-wider text-[#262626] dark:text-[#D4D4D4] mb-1">Gross (Inc-VAT)</p>
               <p className="text-xl font-black text-[#111111] dark:text-[#F5F5F5] tabular-nums">
                 <AnimatedNumber value={result.grossAmount} prefix="£" decimals={2} />
               </p>
@@ -175,7 +176,7 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/vat-calculator)`;
           </div>
 
           {/* Summary row */}
-          <div className="rounded-xl bg-[#F5F5F5] dark:bg-[#111111] border border-[#E5E5E5] dark:border-[#2A2A2A] p-4 text-xs text-[#525252] dark:text-[#A3A3A3] flex flex-wrap gap-x-6 gap-y-1">
+          <div className="rounded-xl bg-[#F5F5F5] dark:bg-[#111111] border border-[#E5E5E5] dark:border-[#2A2A2A] p-4 text-xs text-[#262626] dark:text-[#D4D4D4] flex flex-wrap gap-x-6 gap-y-1">
             <span>Net: <strong className="text-[#111111] dark:text-[#F5F5F5]">{fmt(result.netAmount)}</strong></span>
             <span>+ VAT ({result.vatRatePercent}%): <strong className="text-[#111111] dark:text-[#F5F5F5]">{fmt(result.vatAmount)}</strong></span>
             <span>= Gross: <strong className="text-[#059669] dark:text-[#10B981]">{fmt(result.grossAmount)}</strong></span>
@@ -200,7 +201,7 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/vat-calculator)`;
             ].map((row) => (
               <div key={row.rate} className="flex gap-3 p-2.5 rounded-lg bg-[#FAFAFA] dark:bg-[#151515] border border-[#E5E5E5] dark:border-[#2A2A2A]">
                 <span className="font-black text-[#059669] dark:text-[#10B981] whitespace-nowrap w-24 shrink-0">{row.rate}</span>
-                <span className="text-[#525252] dark:text-[#A3A3A3] leading-relaxed">{row.items}</span>
+                <span className="text-[#262626] dark:text-[#D4D4D4] leading-relaxed">{row.items}</span>
               </div>
             ))}
           </div>

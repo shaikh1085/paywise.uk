@@ -1,3 +1,4 @@
+import { formatGBP } from '../../utils/format';
 import React, { useState, useMemo, useEffect, Suspense } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { useTaxToast } from '../../context/ToastContext';
@@ -37,7 +38,7 @@ interface TakeHomeCalculatorProps {
 
 export const TakeHomeCalculator: React.FC<TakeHomeCalculatorProps> = ({
   initialSalary = 45000,
-  initialTaxYear = '2025_26',
+  initialTaxYear = '2026_27',
   initialRegion = 'england_ni',
   showQuickPills = true,
 }) => {
@@ -54,7 +55,7 @@ export const TakeHomeCalculator: React.FC<TakeHomeCalculatorProps> = ({
   const defaultValues: TakeHomeInput = {
     grossSalary: initialSalary,
     payFrequency: 'annual',
-    taxYear: (initialTaxYear || '2025_26') as TaxYear,
+    taxYear: (initialTaxYear || '2026_27') as TaxYear,
     region: (initialRegion || 'england_ni') as TaxRegion,
     taxCode: '1257L',
     pensionPercentage: 5,
@@ -158,14 +159,14 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app)`;
                 <Sliders className="w-4 h-4 text-[#059669] dark:text-[#10B981]" />
                 Salary & Tax Details
               </h2>
-              <p className="text-xs text-[#525252] dark:text-[#A3A3A3] mt-0.5">
+              <p className="text-xs text-[#262626] dark:text-[#D4D4D4] mt-0.5">
                 Tax Year {TAX_CONFIG_METADATA.currentTaxYearLabel}
               </p>
             </div>
             <button
               type="button"
               onClick={handleReset}
-              className="inline-flex items-center gap-1 text-xs font-semibold text-[#525252] hover:text-[#111111] dark:text-[#A3A3A3] dark:hover:text-[#F5F5F5] transition-colors p-1.5 rounded-lg hover:bg-[#F5F5F5] dark:hover:bg-[#222222] btn-press"
+              className="inline-flex items-center gap-1 text-xs font-semibold text-[#262626] hover:text-[#111111] dark:text-[#D4D4D4] dark:hover:text-[#F5F5F5] transition-colors p-1.5 rounded-lg hover:bg-[#F5F5F5] dark:hover:bg-[#222222] btn-press"
               title="Reset all fields to standard defaults"
             >
               <RotateCcw className="w-3.5 h-3.5" />
@@ -182,11 +183,11 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app)`;
                   Gross Pay ({input.payFrequency === 'annual' ? 'Annual' : input.payFrequency === 'monthly' ? 'Monthly' : 'Weekly'})
                 </label>
                 <span className="text-xs font-semibold text-[#059669] dark:text-[#10B981] tabular-nums">
-                  £{(input.grossSalary || 0).toLocaleString('en-GB')}
+                  {formatGBP((input.grossSalary || 0))}
                 </span>
               </div>
               <div className="relative">
-                <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3.5 text-[#525252] dark:text-[#A3A3A3] font-bold text-base">
+                <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3.5 text-[#262626] dark:text-[#D4D4D4] font-bold text-base">
                   £
                 </div>
                 <input
@@ -213,7 +214,7 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app)`;
                       className={`px-2.5 py-1 rounded-lg text-xs font-bold transition-all ${
                         input.grossSalary === val && input.payFrequency === 'annual'
                           ? 'bg-[#059669] dark:bg-[#10B981] text-white shadow-xs'
-                          : 'bg-[#F5F5F5] dark:bg-[#222222] text-[#525252] dark:text-[#A3A3A3] hover:text-[#111111] dark:hover:text-[#F5F5F5] border border-[#E5E5E5] dark:border-[#2A2A2A]'
+                          : 'bg-[#F5F5F5] dark:bg-[#222222] text-[#262626] dark:text-[#D4D4D4] hover:text-[#111111] dark:hover:text-[#F5F5F5] border border-[#E5E5E5] dark:border-[#2A2A2A]'
                       }`}
                     >
                       £{(val / 1000).toFixed(0)}k
@@ -237,7 +238,7 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app)`;
                     className={`py-1.5 px-3 text-xs font-bold rounded-lg capitalize transition-all duration-150 ${
                       input.payFrequency === freq
                         ? 'bg-white dark:bg-[#222222] text-[#059669] dark:text-[#10B981] shadow-xs'
-                        : 'text-[#525252] dark:text-[#A3A3A3] hover:text-[#111111] dark:hover:text-[#F5F5F5]'
+                        : 'text-[#262626] dark:text-[#D4D4D4] hover:text-[#111111] dark:hover:text-[#F5F5F5]'
                     }`}
                   >
                     {freq}
@@ -280,9 +281,9 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app)`;
                   onChange={(e) => handleUpdate({ taxYear: e.target.value as TaxYear })}
                   className="block w-full rounded-xl border border-[#E5E5E5] dark:border-[#303030] bg-white dark:bg-[#151515] px-3 py-2 text-xs sm:text-sm font-semibold text-[#111111] dark:text-[#F5F5F5] focus:border-[#059669] dark:focus:border-[#10B981] focus:outline-none"
                 >
-                  <option value="2025_26">2025 / 2026 (Current)</option>
+                  <option value="2025_26">2025 / 2026</option>
                   <option value="2024_25">2024 / 2025</option>
-                  <option value="2026_27">2026 / 2027 (Forecast)</option>
+                  <option value="2026_27">2026 / 2027 (Current)</option>
                 </select>
               </div>
             </div>
@@ -328,7 +329,7 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app)`;
                   Student Loan Plan
                 </label>
                 <Tooltip
-                  content="Plan 1 (£24,990), Plan 2 (£27,295), Plan 4 Scotland (£31,395), Plan 5 (£25,000) at 9% over threshold. Postgraduate loans at 6% over £21,000."
+                  content="Plan 1 (£26,900), Plan 2 (£29,385), Plan 4 Scotland (£33,795), Plan 5 (£25,000) at 9% over threshold. Postgraduate loans at 6% over £21,000."
                   title="Student Loan Thresholds"
                 />
               </div>
@@ -339,9 +340,9 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app)`;
                 className="block w-full rounded-xl border border-[#E5E5E5] dark:border-[#303030] bg-white dark:bg-[#151515] px-3 py-2 text-xs sm:text-sm font-semibold text-[#111111] dark:text-[#F5F5F5] focus:border-[#059669] dark:focus:border-[#10B981] focus:outline-none"
               >
                 <option value="none">No Student Loan</option>
-                <option value="plan1">Plan 1 (Threshold £24,990)</option>
-                <option value="plan2">Plan 2 (Threshold £27,295)</option>
-                <option value="plan4">Plan 4 Scotland (Threshold £31,395)</option>
+                <option value="plan1">Plan 1 (Threshold £26,900)</option>
+                <option value="plan2">Plan 2 (Threshold £29,385)</option>
+                <option value="plan4">Plan 4 Scotland (Threshold £33,795)</option>
                 <option value="plan5">Plan 5 (Threshold £25,000)</option>
                 <option value="postgrad">Postgraduate Loan (Threshold £21,000)</option>
                 <option value="plan1_and_postgrad">Plan 1 + Postgraduate Loan</option>
@@ -421,7 +422,7 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app)`;
                     Other Monthly Salary Sacrifice (£)
                   </label>
                   <div className="relative">
-                    <span className="absolute inset-y-0 left-0 pl-3 flex items-center text-[#525252] dark:text-[#A3A3A3] font-semibold">£</span>
+                    <span className="absolute inset-y-0 left-0 pl-3 flex items-center text-[#262626] dark:text-[#D4D4D4] font-semibold">£</span>
                     <input
                       type="number"
                       id="salary-sacrifice-input"
@@ -520,8 +521,8 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app)`;
                   <span className="w-2 h-2 rounded-full bg-[#059669] dark:bg-[#10B981]" />
                   Estimated Take-Home
                 </span>
-                <span className="text-xs text-[#525252] dark:text-[#A3A3A3] hidden sm:inline tabular-nums">
-                  Gross: £{results.grossAnnual.toLocaleString('en-GB')}/yr
+                <span className="text-xs text-[#262626] dark:text-[#D4D4D4] hidden sm:inline tabular-nums">
+                  Gross: {formatGBP(results.grossAnnual)}/yr
                 </span>
               </div>
 
@@ -535,7 +536,7 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app)`;
                     className={`px-3 py-1 text-xs font-bold capitalize rounded-lg transition-all duration-150 ${
                       activeFrequencyView === period
                         ? 'bg-white dark:bg-[#222222] text-[#059669] dark:text-[#10B981] shadow-xs'
-                        : 'text-[#525252] dark:text-[#A3A3A3] hover:text-[#111111] dark:hover:text-[#F5F5F5]'
+                        : 'text-[#262626] dark:text-[#D4D4D4] hover:text-[#111111] dark:hover:text-[#F5F5F5]'
                     }`}
                   >
                     {period}
@@ -555,7 +556,7 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app)`;
                     className="text-[#111111] dark:text-[#F5F5F5]"
                   />
                 </div>
-                <p className="text-xs sm:text-sm font-medium text-[#525252] dark:text-[#A3A3A3] flex items-center gap-1.5">
+                <p className="text-xs sm:text-sm font-medium text-[#262626] dark:text-[#D4D4D4] flex items-center gap-1.5">
                   <ArrowUpRight className="w-4 h-4 text-[#059669] dark:text-[#10B981] shrink-0" />
                   <span>
                     deposited in your bank account per{' '}
@@ -579,28 +580,28 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app)`;
             {/* 4 Restrained Metric Cards */}
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5 pt-5 border-t border-[#E5E5E5] dark:border-[#2A2A2A]">
               <div className="bg-white dark:bg-[#111111] p-3 rounded-xl border border-[#E5E5E5] dark:border-[#2A2A2A] shadow-2xs">
-                <span className="text-2xs uppercase tracking-wider text-[#525252] dark:text-[#A3A3A3] font-bold block truncate">Total Deductions</span>
+                <span className="text-2xs uppercase tracking-wider text-[#262626] dark:text-[#D4D4D4] font-bold block truncate">Total Deductions</span>
                 <p className="text-sm sm:text-base font-black text-[#DC2626] dark:text-[#F87171] mt-0.5 tabular-nums">
                   -£{results.totalDeductionsMonthly.toLocaleString('en-GB', { minimumFractionDigits: 0, maximumFractionDigits: 0 })}/mo
                 </p>
               </div>
 
               <div className="bg-white dark:bg-[#111111] p-3 rounded-xl border border-[#E5E5E5] dark:border-[#2A2A2A] shadow-2xs">
-                <span className="text-2xs uppercase tracking-wider text-[#525252] dark:text-[#A3A3A3] font-bold block truncate">Effective Tax</span>
+                <span className="text-2xs uppercase tracking-wider text-[#262626] dark:text-[#D4D4D4] font-bold block truncate">Effective Tax</span>
                 <p className="text-sm sm:text-base font-black text-[#111111] dark:text-[#F5F5F5] mt-0.5 tabular-nums">
                   {results.effectiveTaxRate.toFixed(1)}%
                 </p>
               </div>
 
               <div className="bg-white dark:bg-[#111111] p-3 rounded-xl border border-[#E5E5E5] dark:border-[#2A2A2A] shadow-2xs">
-                <span className="text-2xs uppercase tracking-wider text-[#525252] dark:text-[#A3A3A3] font-bold block truncate">Marginal Rate</span>
+                <span className="text-2xs uppercase tracking-wider text-[#262626] dark:text-[#D4D4D4] font-bold block truncate">Marginal Rate</span>
                 <p className="text-sm sm:text-base font-black text-[#111111] dark:text-[#F5F5F5] mt-0.5 tabular-nums">
                   {results.marginalTaxRate.toFixed(0)}%
                 </p>
               </div>
 
               <div className="bg-white dark:bg-[#111111] p-3 rounded-xl border border-[#E5E5E5] dark:border-[#2A2A2A] shadow-2xs">
-                <span className="text-2xs uppercase tracking-wider text-[#525252] dark:text-[#A3A3A3] font-bold block truncate">Retention</span>
+                <span className="text-2xs uppercase tracking-wider text-[#262626] dark:text-[#D4D4D4] font-bold block truncate">Retention</span>
                 <p className="text-sm sm:text-base font-black text-[#111111] dark:text-[#F5F5F5] mt-0.5 tabular-nums">
                   {retentionPercentage.toFixed(1)}%
                 </p>
@@ -613,13 +614,13 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app)`;
           <div className="bg-white dark:bg-[#171717] border border-[#E5E5E5] dark:border-[#2A2A2A] rounded-2xl p-6 sm:p-7 shadow-[0_8px_30px_rgba(0,0,0,0.06)] dark:shadow-[0_10px_35px_rgba(0,0,0,0.35)]">
             <h3 className="text-sm sm:text-base font-bold text-[#111111] dark:text-[#F5F5F5] mb-4 flex items-center justify-between">
               <span>Itemised Deductions Breakdown</span>
-              <span className="text-xs font-semibold text-[#525252] dark:text-[#A3A3A3]">Tax Year {TAX_CONFIG_METADATA.currentTaxYearLabel}</span>
+              <span className="text-xs font-semibold text-[#262626] dark:text-[#D4D4D4]">Tax Year {TAX_CONFIG_METADATA.currentTaxYearLabel}</span>
             </h3>
 
             <div className="overflow-x-auto">
               <table className="w-full text-left text-xs sm:text-sm">
                 <thead>
-                  <tr className="border-b border-[#E5E5E5] dark:border-[#2A2A2A] text-2xs sm:text-xs font-bold text-[#525252] dark:text-[#A3A3A3] uppercase tracking-wider">
+                  <tr className="border-b border-[#E5E5E5] dark:border-[#2A2A2A] text-2xs sm:text-xs font-bold text-[#262626] dark:text-[#D4D4D4] uppercase tracking-wider">
                     <th className="pb-3 pr-4">Category</th>
                     <th className="pb-3 px-3 text-right">Annual</th>
                     <th className="pb-3 px-3 text-right">Monthly</th>
@@ -640,7 +641,7 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app)`;
                     </td>
                   </tr>
 
-                  <tr className="text-[#525252] dark:text-[#A3A3A3] hover:bg-[#F5F5F5] dark:hover:bg-[#222222] transition-colors">
+                  <tr className="text-[#262626] dark:text-[#D4D4D4] hover:bg-[#F5F5F5] dark:hover:bg-[#222222] transition-colors">
                     <td className="py-3 pr-4">
                       <div className="flex items-center gap-1.5">
                         <span className="text-[#111111] dark:text-[#F5F5F5] font-medium">Income Tax (PAYE)</span>
@@ -662,7 +663,7 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app)`;
                     </td>
                   </tr>
 
-                  <tr className="text-[#525252] dark:text-[#A3A3A3] hover:bg-[#F5F5F5] dark:hover:bg-[#222222] transition-colors">
+                  <tr className="text-[#262626] dark:text-[#D4D4D4] hover:bg-[#F5F5F5] dark:hover:bg-[#222222] transition-colors">
                     <td className="py-3 pr-4 text-[#111111] dark:text-[#F5F5F5] font-medium">Class 1 National Insurance</td>
                     <td className="py-3 px-3 text-right text-[#DC2626] dark:text-[#F87171] font-medium tabular-nums">
                       -£{results.employeeNiAnnual.toLocaleString('en-GB', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
@@ -676,7 +677,7 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app)`;
                   </tr>
 
                   {results.pensionAnnual > 0 && (
-                    <tr className="text-[#525252] dark:text-[#A3A3A3] hover:bg-[#F5F5F5] dark:hover:bg-[#222222] transition-colors">
+                    <tr className="text-[#262626] dark:text-[#D4D4D4] hover:bg-[#F5F5F5] dark:hover:bg-[#222222] transition-colors">
                       <td className="py-3 pr-4 text-[#111111] dark:text-[#F5F5F5] font-medium">Workplace Pension ({input.pensionPercentage}%)</td>
                       <td className="py-3 px-3 text-right text-[#DC2626] dark:text-[#F87171] font-medium tabular-nums">
                         -£{results.pensionAnnual.toLocaleString('en-GB', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
@@ -691,7 +692,7 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app)`;
                   )}
 
                   {(results.studentLoanAnnual > 0 || results.postgradLoanAnnual > 0) && (
-                    <tr className="text-[#525252] dark:text-[#A3A3A3] hover:bg-[#F5F5F5] dark:hover:bg-[#222222] transition-colors">
+                    <tr className="text-[#262626] dark:text-[#D4D4D4] hover:bg-[#F5F5F5] dark:hover:bg-[#222222] transition-colors">
                       <td className="py-3 pr-4 text-[#111111] dark:text-[#F5F5F5] font-medium">Student Loan Repayments</td>
                       <td className="py-3 px-3 text-right text-[#DC2626] dark:text-[#F87171] font-medium tabular-nums">
                         -£{(results.studentLoanAnnual + results.postgradLoanAnnual).toLocaleString('en-GB', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
@@ -706,7 +707,7 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app)`;
                   )}
 
                   {results.salarySacrificeAnnual > 0 && (
-                    <tr className="text-[#525252] dark:text-[#A3A3A3] hover:bg-[#F5F5F5] dark:hover:bg-[#222222] transition-colors">
+                    <tr className="text-[#262626] dark:text-[#D4D4D4] hover:bg-[#F5F5F5] dark:hover:bg-[#222222] transition-colors">
                       <td className="py-3 pr-4 text-[#111111] dark:text-[#F5F5F5] font-medium">Salary Sacrifice Deduction</td>
                       <td className="py-3 px-3 text-right text-[#DC2626] dark:text-[#F87171] font-medium tabular-nums">
                         -£{results.salarySacrificeAnnual.toLocaleString('en-GB', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
@@ -738,7 +739,7 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app)`;
             </div>
 
             {/* Marginal Rate Callout */}
-            <div className="mt-5 p-4 rounded-xl bg-[#F5F5F5] dark:bg-[#111111] border border-[#E5E5E5] dark:border-[#2A2A2A] text-xs text-[#525252] dark:text-[#A3A3A3]">
+            <div className="mt-5 p-4 rounded-xl bg-[#F5F5F5] dark:bg-[#111111] border border-[#E5E5E5] dark:border-[#2A2A2A] text-xs text-[#262626] dark:text-[#D4D4D4]">
               <span className="font-bold text-[#111111] dark:text-[#F5F5F5] block mb-1">
                 Marginal Tax Rate ({results.marginalTaxRate.toFixed(0)}%):
               </span>
@@ -746,7 +747,7 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app)`;
             </div>
 
             {/* Employer Cost Callout */}
-            <div className="mt-4 pt-4 border-t border-[#E5E5E5] dark:border-[#2A2A2A] flex flex-col sm:flex-row items-start sm:items-center justify-between text-xs text-[#525252] dark:text-[#A3A3A3] gap-2">
+            <div className="mt-4 pt-4 border-t border-[#E5E5E5] dark:border-[#2A2A2A] flex flex-col sm:flex-row items-start sm:items-center justify-between text-xs text-[#262626] dark:text-[#D4D4D4] gap-2">
               <span>
                 Employer NI: £{results.employerNiAnnual.toLocaleString('en-GB', { minimumFractionDigits: 0, maximumFractionDigits: 0 })}/yr
                 {results.employerPensionAnnual > 0 && ` + Employer Pension: £${results.employerPensionAnnual.toLocaleString('en-GB', { minimumFractionDigits: 0, maximumFractionDigits: 0 })}/yr`}

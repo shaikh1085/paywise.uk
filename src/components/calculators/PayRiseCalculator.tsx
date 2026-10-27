@@ -1,3 +1,4 @@
+import { formatGBP } from '../../utils/format';
 import React, { useState, useMemo } from 'react';
 import { PayRiseInput, TaxYear, TaxRegion, StudentLoanPlan, PensionType } from '../../types';
 import { calculatePayRise } from '../../utils/calculations';
@@ -25,7 +26,7 @@ export const PayRiseCalculator: React.FC = () => {
     increaseMode: 'percentage',
     percentageIncrease: 10,
     flatIncreaseAmount: 7000,
-    taxYear: '2025_26',
+    taxYear: '2026_27',
     region: 'england_ni',
     taxCode: '1257L',
     pensionPercentage: 5,
@@ -44,7 +45,7 @@ After Net Take-Home Pay: £${result.after.netAnnual.toLocaleString('en-GB', { mi
 ---
 Extra Take-Home in Your Pocket: +£${result.extraTakeHomeAnnual.toLocaleString('en-GB', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}/yr (+£${result.extraTakeHomeMonthly.toLocaleString('en-GB', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}/mo)
 Net Retention of Pay Rise: ${result.takeHomeRetentionPercent.toFixed(1)}% kept
-Extra Annual Deductions: Income Tax +£${result.extraTaxAnnual.toFixed(2)}, National Insurance +£${result.extraNiAnnual.toFixed(2)}, Pension +£${result.extraPensionAnnual.toFixed(2)}${result.extraStudentLoanAnnual > 0 ? `, Student Loan +£${result.extraStudentLoanAnnual.toFixed(2)}` : ''}
+Extra Annual Deductions: Income Tax +${formatGBP(result.extraTaxAnnual)}, National Insurance +${formatGBP(result.extraNiAnnual)}, Pension +${formatGBP(result.extraPensionAnnual)}${result.extraStudentLoanAnnual > 0 ? `, Student Loan +${formatGBP(result.extraStudentLoanAnnual)}` : ''}
 New Marginal Tax Rate: ${result.newMarginalTaxRate.toFixed(1)}%
 ${result.crossesHigherRateTax ? '⚠️ Warning: This pay rise pushes you into the Higher Rate tax band.\n' : ''}${result.crossesPersonalAllowanceTaper ? '⚠️ Warning: This pay rise falls within or enters the £100k Personal Allowance taper zone (60% effective income tax trap).\n' : ''}${result.crossesChildBenefitCharge ? '⚠️ Warning: This pay rise enters or affects the High Income Child Benefit Charge zone (£60k–£80k).\n' : ''}
 Calculated via PayWise UK (https://paywiseuk.vercel.app/pay-rise-calculator)`;
@@ -101,11 +102,11 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/pay-rise-calculator)`;
                 Current Annual Salary (£)
               </label>
               <span className="text-xs font-semibold text-[#059669] dark:text-[#10B981] tabular-nums">
-                £{(input.currentSalary || 0).toLocaleString('en-GB')}
+                {formatGBP((input.currentSalary || 0))}
               </span>
             </div>
             <div className="relative">
-              <span className="absolute inset-y-0 left-0 pl-3.5 flex items-center text-[#525252] dark:text-[#A3A3A3] font-bold text-base">£</span>
+              <span className="absolute inset-y-0 left-0 pl-3.5 flex items-center text-[#262626] dark:text-[#D4D4D4] font-bold text-base">£</span>
               <input
                 type="number"
                 id="current-salary-input"
@@ -137,7 +138,7 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/pay-rise-calculator)`;
                 className={`py-1.5 px-3 rounded-lg text-xs font-bold transition-all ${
                   input.increaseMode === 'percentage'
                     ? 'bg-white dark:bg-[#262626] text-[#059669] dark:text-[#10B981] shadow-xs'
-                    : 'text-[#525252] dark:text-[#A3A3A3] hover:text-[#111111] dark:hover:text-[#F5F5F5]'
+                    : 'text-[#262626] dark:text-[#D4D4D4] hover:text-[#111111] dark:hover:text-[#F5F5F5]'
                 }`}
               >
                 Percentage Increase (%)
@@ -148,7 +149,7 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/pay-rise-calculator)`;
                 className={`py-1.5 px-3 rounded-lg text-xs font-bold transition-all ${
                   input.increaseMode === 'amount'
                     ? 'bg-white dark:bg-[#262626] text-[#059669] dark:text-[#10B981] shadow-xs'
-                    : 'text-[#525252] dark:text-[#A3A3A3] hover:text-[#111111] dark:hover:text-[#F5F5F5]'
+                    : 'text-[#262626] dark:text-[#D4D4D4] hover:text-[#111111] dark:hover:text-[#F5F5F5]'
                 }`}
               >
                 New Total Salary (£)
@@ -164,7 +165,7 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/pay-rise-calculator)`;
                   Percentage Increase (%)
                 </label>
                 <span className="text-xs font-semibold text-[#059669] dark:text-[#10B981] tabular-nums">
-                  +{input.percentageIncrease}% (+£{result.grossIncreaseAnnual.toLocaleString('en-GB')}/yr)
+                  +{input.percentageIncrease}% (+{formatGBP(result.grossIncreaseAnnual)}/yr)
                 </span>
               </div>
               <div className="relative">
@@ -179,7 +180,7 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/pay-rise-calculator)`;
                   className="block w-full rounded-xl border border-[#E5E5E5] dark:border-[#303030] bg-white dark:bg-[#151515] pl-4 pr-9 py-2.5 text-[#111111] dark:text-[#F5F5F5] font-extrabold text-lg focus:border-[#059669] dark:focus:border-[#10B981] focus:ring-2 focus:ring-[#059669]/20 focus:outline-none"
                   placeholder="e.g. 10"
                 />
-                <span className="absolute inset-y-0 right-0 pr-3.5 flex items-center text-[#525252] dark:text-[#A3A3A3] font-bold text-base">%</span>
+                <span className="absolute inset-y-0 right-0 pr-3.5 flex items-center text-[#262626] dark:text-[#D4D4D4] font-bold text-base">%</span>
               </div>
               {/* Preset percentage pills */}
               <div className="flex flex-wrap gap-1.5 mt-2">
@@ -191,7 +192,7 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/pay-rise-calculator)`;
                     className={`px-2 py-0.5 rounded-md text-2xs font-bold transition-colors ${
                       input.percentageIncrease === pct
                         ? 'bg-[#059669] text-white'
-                        : 'bg-[#FAFAFA] dark:bg-[#151515] border border-[#E5E5E5] dark:border-[#2A2A2A] text-[#525252] dark:text-[#A3A3A3]'
+                        : 'bg-[#FAFAFA] dark:bg-[#151515] border border-[#E5E5E5] dark:border-[#2A2A2A] text-[#262626] dark:text-[#D4D4D4]'
                     }`}
                   >
                     +{pct}%
@@ -206,11 +207,11 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/pay-rise-calculator)`;
                   New Annual Gross Salary (£)
                 </label>
                 <span className="text-xs font-semibold text-[#059669] dark:text-[#10B981] tabular-nums">
-                  +£{result.grossIncreaseAnnual.toLocaleString('en-GB')} (+{result.grossIncreasePercentage.toFixed(1)}%)
+                  +{formatGBP(result.grossIncreaseAnnual)} (+{result.grossIncreasePercentage.toFixed(1)}%)
                 </span>
               </div>
               <div className="relative">
-                <span className="absolute inset-y-0 left-0 pl-3.5 flex items-center text-[#525252] dark:text-[#A3A3A3] font-bold text-base">£</span>
+                <span className="absolute inset-y-0 left-0 pl-3.5 flex items-center text-[#262626] dark:text-[#D4D4D4] font-bold text-base">£</span>
                 <input
                   type="number"
                   id="new-salary-input"
@@ -282,7 +283,7 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/pay-rise-calculator)`;
                   className="block w-full rounded-xl border border-[#E5E5E5] dark:border-[#303030] bg-white dark:bg-[#151515] pl-3 pr-7 py-2 text-xs sm:text-sm font-semibold text-[#111111] dark:text-[#F5F5F5] focus:border-[#059669] dark:focus:border-[#10B981] focus:outline-none"
                   placeholder="5"
                 />
-                <span className="absolute inset-y-0 right-0 pr-2.5 flex items-center text-[#525252] dark:text-[#A3A3A3] text-xs font-bold">%</span>
+                <span className="absolute inset-y-0 right-0 pr-2.5 flex items-center text-[#262626] dark:text-[#D4D4D4] text-xs font-bold">%</span>
               </div>
             </div>
 
@@ -317,7 +318,7 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/pay-rise-calculator)`;
               <span className="w-2 h-2 rounded-full bg-[#059669] dark:bg-[#10B981]" />
               Extra Take-Home In Your Pocket
             </span>
-            <span className="text-xs text-[#525252] dark:text-[#A3A3A3]">
+            <span className="text-xs text-[#262626] dark:text-[#D4D4D4]">
               Pay Rise Retention: <strong className="text-[#111111] dark:text-[#F5F5F5]">{result.takeHomeRetentionPercent.toFixed(1)}%</strong>
             </span>
           </div>
@@ -331,9 +332,9 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/pay-rise-calculator)`;
                   decimals={2}
                   className="text-[#111111] dark:text-[#F5F5F5]"
                 />
-                <span className="text-sm sm:text-base font-normal text-[#525252] dark:text-[#A3A3A3] ml-2">/ month</span>
+                <span className="text-sm sm:text-base font-normal text-[#262626] dark:text-[#D4D4D4] ml-2">/ month</span>
               </div>
-              <div className="flex items-center gap-4 pt-1 text-xs text-[#525252] dark:text-[#A3A3A3]">
+              <div className="flex items-center gap-4 pt-1 text-xs text-[#262626] dark:text-[#D4D4D4]">
                 <span>
                   <strong className="text-[#111111] dark:text-[#F5F5F5]">
                     +£{result.extraTakeHomeAnnual.toLocaleString('en-GB', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
@@ -363,25 +364,25 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/pay-rise-calculator)`;
           {/* Quick Metrics Bar */}
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5 pt-5 border-t border-[#E5E5E5] dark:border-[#2A2A2A] text-xs">
             <div className="bg-white dark:bg-[#111111] p-3 rounded-xl border border-[#E5E5E5] dark:border-[#2A2A2A] shadow-2xs">
-              <span className="text-[#525252] dark:text-[#A3A3A3] block text-2xs uppercase font-bold">Gross Pay Rise</span>
+              <span className="text-[#262626] dark:text-[#D4D4D4] block text-2xs uppercase font-bold">Gross Pay Rise</span>
               <span className="font-bold text-[#111111] dark:text-[#F5F5F5] tabular-nums mt-0.5 block">
-                +£{result.grossIncreaseAnnual.toLocaleString('en-GB')}
+                +{formatGBP(result.grossIncreaseAnnual)}
               </span>
             </div>
             <div className="bg-white dark:bg-[#111111] p-3 rounded-xl border border-[#E5E5E5] dark:border-[#2A2A2A] shadow-2xs">
-              <span className="text-[#525252] dark:text-[#A3A3A3] block text-2xs uppercase font-bold">Extra Deductions</span>
+              <span className="text-[#262626] dark:text-[#D4D4D4] block text-2xs uppercase font-bold">Extra Deductions</span>
               <span className="font-bold text-[#DC2626] dark:text-[#F87171] tabular-nums mt-0.5 block">
                 -£{result.totalExtraDeductionsAnnual.toLocaleString('en-GB', { minimumFractionDigits: 0, maximumFractionDigits: 0 })}
               </span>
             </div>
             <div className="bg-white dark:bg-[#111111] p-3 rounded-xl border border-[#E5E5E5] dark:border-[#2A2A2A] shadow-2xs">
-              <span className="text-[#525252] dark:text-[#A3A3A3] block text-2xs uppercase font-bold">New Marginal Rate</span>
+              <span className="text-[#262626] dark:text-[#D4D4D4] block text-2xs uppercase font-bold">New Marginal Rate</span>
               <span className="font-bold text-[#059669] dark:text-[#10B981] tabular-nums mt-0.5 block">
                 {result.newMarginalTaxRate.toFixed(1)}%
               </span>
             </div>
             <div className="bg-white dark:bg-[#111111] p-3 rounded-xl border border-[#E5E5E5] dark:border-[#2A2A2A] shadow-2xs">
-              <span className="text-[#525252] dark:text-[#A3A3A3] block text-2xs uppercase font-bold">Effective Tax Rate</span>
+              <span className="text-[#262626] dark:text-[#D4D4D4] block text-2xs uppercase font-bold">Effective Tax Rate</span>
               <span className="font-bold text-[#111111] dark:text-[#F5F5F5] tabular-nums mt-0.5 block">
                 {result.effectiveTaxRateAfter.toFixed(1)}%
               </span>
@@ -397,10 +398,10 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/pay-rise-calculator)`;
                 <AlertTriangle className="w-5 h-5 text-amber-600 dark:text-amber-400 shrink-0 mt-0.5" />
                 <div className="text-xs space-y-1">
                   <strong className="text-amber-900 dark:text-amber-200 font-bold block">
-                    Higher Rate Tax Band Threshold Crossed (£{result.higherRateThreshold.toLocaleString('en-GB')})
+                    Higher Rate Tax Band Threshold Crossed ({formatGBP(result.higherRateThreshold)})
                   </strong>
                   <p className="text-amber-800/80 dark:text-amber-300/80">
-                    This salary increase moves part of your earnings above the £{result.higherRateThreshold.toLocaleString('en-GB')} threshold. Earnings in this band are taxed at {input.region === 'scotland' ? '42% Scottish Higher Rate' : '40% Higher Rate'} (plus 2% National Insurance). Remember that only income <em>above</em> the threshold is taxed at the higher rate, not your entire salary.
+                    This salary increase moves part of your earnings above the {formatGBP(result.higherRateThreshold)} threshold. Earnings in this band are taxed at {input.region === 'scotland' ? '42% Scottish Higher Rate' : '40% Higher Rate'} (plus 2% National Insurance). Remember that only income <em>above</em> the threshold is taxed at the higher rate, not your entire salary.
                   </p>
                 </div>
               </div>
@@ -465,7 +466,7 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/pay-rise-calculator)`;
           <div className="overflow-x-auto">
             <table className="w-full text-xs">
               <thead>
-                <tr className="border-b border-[#E5E5E5] dark:border-[#2A2A2A] text-[#525252] dark:text-[#A3A3A3]">
+                <tr className="border-b border-[#E5E5E5] dark:border-[#2A2A2A] text-[#262626] dark:text-[#D4D4D4]">
                   <th className="text-left py-2 font-bold uppercase tracking-wider text-2xs">Metric</th>
                   <th className="text-right py-2 font-bold uppercase tracking-wider text-2xs">Current Salary</th>
                   <th className="text-right py-2 font-bold uppercase tracking-wider text-2xs">New Salary</th>
@@ -476,7 +477,7 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/pay-rise-calculator)`;
                 {/* Gross Annual */}
                 <tr>
                   <td className="py-2.5 font-bold text-[#111111] dark:text-[#F5F5F5]">Gross Salary (Annual)</td>
-                  <td className="py-2.5 text-right font-medium text-[#525252] dark:text-[#A3A3A3] tabular-nums">
+                  <td className="py-2.5 text-right font-medium text-[#262626] dark:text-[#D4D4D4] tabular-nums">
                     £{result.currentSalary.toLocaleString('en-GB', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
                   </td>
                   <td className="py-2.5 text-right font-bold text-[#111111] dark:text-[#F5F5F5] tabular-nums">
@@ -489,8 +490,8 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/pay-rise-calculator)`;
 
                 {/* Gross Monthly */}
                 <tr>
-                  <td className="py-2.5 font-medium text-[#525252] dark:text-[#A3A3A3]">Gross Salary (Monthly)</td>
-                  <td className="py-2.5 text-right font-medium text-[#525252] dark:text-[#A3A3A3] tabular-nums">
+                  <td className="py-2.5 font-medium text-[#262626] dark:text-[#D4D4D4]">Gross Salary (Monthly)</td>
+                  <td className="py-2.5 text-right font-medium text-[#262626] dark:text-[#D4D4D4] tabular-nums">
                     £{(result.currentSalary / 12).toLocaleString('en-GB', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
                   </td>
                   <td className="py-2.5 text-right font-semibold text-[#111111] dark:text-[#F5F5F5] tabular-nums">
@@ -503,8 +504,8 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/pay-rise-calculator)`;
 
                 {/* Income Tax */}
                 <tr>
-                  <td className="py-2.5 font-medium text-[#525252] dark:text-[#A3A3A3]">Income Tax (Annual)</td>
-                  <td className="py-2.5 text-right font-medium text-[#525252] dark:text-[#A3A3A3] tabular-nums">
+                  <td className="py-2.5 font-medium text-[#262626] dark:text-[#D4D4D4]">Income Tax (Annual)</td>
+                  <td className="py-2.5 text-right font-medium text-[#262626] dark:text-[#D4D4D4] tabular-nums">
                     -£{result.before.incomeTaxAnnual.toLocaleString('en-GB', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
                   </td>
                   <td className="py-2.5 text-right font-medium text-[#EF4444] tabular-nums">
@@ -517,8 +518,8 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/pay-rise-calculator)`;
 
                 {/* National Insurance */}
                 <tr>
-                  <td className="py-2.5 font-medium text-[#525252] dark:text-[#A3A3A3]">National Insurance (Annual)</td>
-                  <td className="py-2.5 text-right font-medium text-[#525252] dark:text-[#A3A3A3] tabular-nums">
+                  <td className="py-2.5 font-medium text-[#262626] dark:text-[#D4D4D4]">National Insurance (Annual)</td>
+                  <td className="py-2.5 text-right font-medium text-[#262626] dark:text-[#D4D4D4] tabular-nums">
                     -£{result.before.employeeNiAnnual.toLocaleString('en-GB', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
                   </td>
                   <td className="py-2.5 text-right font-medium text-[#EF4444] tabular-nums">
@@ -532,14 +533,14 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/pay-rise-calculator)`;
                 {/* Pension */}
                 {input.pensionPercentage > 0 && (
                   <tr>
-                    <td className="py-2.5 font-medium text-[#525252] dark:text-[#A3A3A3]">Pension ({input.pensionPercentage}%)</td>
-                    <td className="py-2.5 text-right font-medium text-[#525252] dark:text-[#A3A3A3] tabular-nums">
+                    <td className="py-2.5 font-medium text-[#262626] dark:text-[#D4D4D4]">Pension ({input.pensionPercentage}%)</td>
+                    <td className="py-2.5 text-right font-medium text-[#262626] dark:text-[#D4D4D4] tabular-nums">
                       -£{result.before.pensionAnnual.toLocaleString('en-GB', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
                     </td>
-                    <td className="py-2.5 text-right font-medium text-[#525252] dark:text-[#A3A3A3] tabular-nums">
+                    <td className="py-2.5 text-right font-medium text-[#262626] dark:text-[#D4D4D4] tabular-nums">
                       -£{result.after.pensionAnnual.toLocaleString('en-GB', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
                     </td>
-                    <td className="py-2.5 text-right font-bold text-[#525252] dark:text-[#A3A3A3] tabular-nums">
+                    <td className="py-2.5 text-right font-bold text-[#262626] dark:text-[#D4D4D4] tabular-nums">
                       +£{result.extraPensionAnnual.toLocaleString('en-GB', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
                     </td>
                   </tr>
@@ -548,8 +549,8 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/pay-rise-calculator)`;
                 {/* Student Loan */}
                 {result.extraStudentLoanAnnual > 0 && (
                   <tr>
-                    <td className="py-2.5 font-medium text-[#525252] dark:text-[#A3A3A3]">Student Loan Repayment</td>
-                    <td className="py-2.5 text-right font-medium text-[#525252] dark:text-[#A3A3A3] tabular-nums">
+                    <td className="py-2.5 font-medium text-[#262626] dark:text-[#D4D4D4]">Student Loan Repayment</td>
+                    <td className="py-2.5 text-right font-medium text-[#262626] dark:text-[#D4D4D4] tabular-nums">
                       -£{(result.before.studentLoanAnnual + result.before.postgradLoanAnnual).toLocaleString('en-GB', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
                     </td>
                     <td className="py-2.5 text-right font-medium text-[#EF4444] tabular-nums">
@@ -564,7 +565,7 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/pay-rise-calculator)`;
                 {/* Net Annual Highlight Row */}
                 <tr className="bg-[#FAFAFA] dark:bg-[#151515] font-bold">
                   <td className="py-3 px-2 rounded-l-lg text-[#111111] dark:text-[#F5F5F5]">Net Take-Home (Annual)</td>
-                  <td className="py-3 text-right text-[#525252] dark:text-[#A3A3A3] tabular-nums">
+                  <td className="py-3 text-right text-[#262626] dark:text-[#D4D4D4] tabular-nums">
                     £{result.before.netAnnual.toLocaleString('en-GB', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
                   </td>
                   <td className="py-3 text-right text-[#111111] dark:text-[#F5F5F5] tabular-nums">
@@ -578,7 +579,7 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/pay-rise-calculator)`;
                 {/* Net Monthly Highlight Row */}
                 <tr className="bg-[#059669]/5 dark:bg-[#10B981]/5 font-bold">
                   <td className="py-3 px-2 rounded-l-lg text-[#059669] dark:text-[#10B981]">Net Take-Home (Monthly)</td>
-                  <td className="py-3 text-right text-[#525252] dark:text-[#A3A3A3] tabular-nums">
+                  <td className="py-3 text-right text-[#262626] dark:text-[#D4D4D4] tabular-nums">
                     £{result.before.netMonthly.toLocaleString('en-GB', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
                   </td>
                   <td className="py-3 text-right text-[#111111] dark:text-[#F5F5F5] tabular-nums">
@@ -597,19 +598,19 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/pay-rise-calculator)`;
         <ExportActions
           textToCopy={copyText}
           csvData={[
-            { Metric: 'Current Gross Salary', Value: `£${result.currentSalary.toFixed(2)}` },
-            { Metric: 'New Gross Salary', Value: `£${result.newSalary.toFixed(2)}` },
-            { Metric: 'Gross Pay Rise Annual', Value: `£${result.grossIncreaseAnnual.toFixed(2)}` },
+            { Metric: 'Current Gross Salary', Value: `${formatGBP(result.currentSalary)}` },
+            { Metric: 'New Gross Salary', Value: `${formatGBP(result.newSalary)}` },
+            { Metric: 'Gross Pay Rise Annual', Value: `${formatGBP(result.grossIncreaseAnnual)}` },
             { Metric: 'Gross Pay Rise Percentage', Value: `${result.grossIncreasePercentage.toFixed(2)}%` },
-            { Metric: 'Before Net Take-Home (Annual)', Value: `£${result.before.netAnnual.toFixed(2)}` },
-            { Metric: 'Before Net Take-Home (Monthly)', Value: `£${result.before.netMonthly.toFixed(2)}` },
-            { Metric: 'After Net Take-Home (Annual)', Value: `£${result.after.netAnnual.toFixed(2)}` },
-            { Metric: 'After Net Take-Home (Monthly)', Value: `£${result.after.netMonthly.toFixed(2)}` },
-            { Metric: 'Extra Take-Home Annual', Value: `£${result.extraTakeHomeAnnual.toFixed(2)}` },
-            { Metric: 'Extra Take-Home Monthly', Value: `£${result.extraTakeHomeMonthly.toFixed(2)}` },
+            { Metric: 'Before Net Take-Home (Annual)', Value: `${formatGBP(result.before.netAnnual)}` },
+            { Metric: 'Before Net Take-Home (Monthly)', Value: `${formatGBP(result.before.netMonthly)}` },
+            { Metric: 'After Net Take-Home (Annual)', Value: `${formatGBP(result.after.netAnnual)}` },
+            { Metric: 'After Net Take-Home (Monthly)', Value: `${formatGBP(result.after.netMonthly)}` },
+            { Metric: 'Extra Take-Home Annual', Value: `${formatGBP(result.extraTakeHomeAnnual)}` },
+            { Metric: 'Extra Take-Home Monthly', Value: `${formatGBP(result.extraTakeHomeMonthly)}` },
             { Metric: 'Pay Rise Retention Rate', Value: `${result.takeHomeRetentionPercent.toFixed(2)}%` },
-            { Metric: 'Extra Annual Income Tax', Value: `£${result.extraTaxAnnual.toFixed(2)}` },
-            { Metric: 'Extra Annual National Insurance', Value: `£${result.extraNiAnnual.toFixed(2)}` },
+            { Metric: 'Extra Annual Income Tax', Value: `${formatGBP(result.extraTaxAnnual)}` },
+            { Metric: 'Extra Annual National Insurance', Value: `${formatGBP(result.extraNiAnnual)}` },
             { Metric: 'New Marginal Tax Rate', Value: `${result.newMarginalTaxRate.toFixed(2)}%` },
           ]}
           fileName={`paywise-pay-rise-from-${result.currentSalary}-to-${result.newSalary}`}

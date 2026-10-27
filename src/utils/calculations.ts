@@ -5,6 +5,7 @@
  * National Insurance schedules, pension compound math, and public sector calculators.
  */
 
+import { formatGBP } from './format';
 import {
   DEFAULT_TAX_YEAR,
   UK_TAX_CONFIGS,
@@ -206,7 +207,7 @@ export function calculateScottishIncomeTax(
   const basicWidth = (scotlandTaxBands[2]?.thresholdMax || 27491) - (scotlandTaxBands[2]?.thresholdMin || 15397);
   const interWidth = (scotlandTaxBands[3]?.thresholdMax || 43662) - (scotlandTaxBands[3]?.thresholdMin || 27491);
   const higherWidth = (scotlandTaxBands[4]?.thresholdMax || 75000) - (scotlandTaxBands[4]?.thresholdMin || 43662);
-  const advancedTaxableLimit = 125140 - 12570;
+  const advancedTaxableLimit = 125140; // taxable-income limit; PA is already excluded from taxablePay
   const priorWidths = starterWidth + basicWidth + interWidth + higherWidth;
   const advancedWidth = Math.max(0, advancedTaxableLimit - priorWidths);
 
@@ -243,7 +244,7 @@ export function calculateRukIncomeTax(
   rUKTaxBands: Array<{ name: string; thresholdMin: number; thresholdMax: number; rate: number }>
 ): { totalTax: number; bands: TaxBandBreakdown[] } {
   const basicWidth = (rUKTaxBands[1]?.thresholdMax || 50270) - (rUKTaxBands[1]?.thresholdMin || 12570);
-  const higherWidth = (rUKTaxBands[2]?.thresholdMax || 125140) - (rUKTaxBands[2]?.thresholdMin || 50270);
+  const higherWidth = (rUKTaxBands[2]?.thresholdMax || 125140) - basicWidth; // taxable widths: basic £37,700, higher £87,440 (to £125,140 taxable)
 
   const rukBands = [
     { name: rUKTaxBands[1]?.name || 'Basic Rate (20%)', width: basicWidth, rate: rUKTaxBands[1]?.rate ?? 0.20 },
@@ -400,7 +401,7 @@ export function calculateTakeHomePay(input: TakeHomeInput): TakeHomeResult {
       // Welsh Rates of Income Tax (WRIT)
       const bands = config.walesTaxBands || config.rUKTaxBands;
       const basicWidth = (bands[1]?.thresholdMax || 50270) - (bands[1]?.thresholdMin || 12570);
-      const higherWidth = (bands[2]?.thresholdMax || 125140) - (bands[2]?.thresholdMin || 50270);
+      const higherWidth = (bands[2]?.thresholdMax || 125140) - basicWidth; // taxable widths, as in rUK branch
 
       const welshBands = [
         { name: bands[1]?.name || 'Basic Rate (20%)', width: basicWidth, rate: bands[1]?.rate ?? 0.20 },
@@ -874,27 +875,27 @@ export function calculateStudentLoan(input: StudentLoanInput): StudentLoanResult
     planName = 'Plan 1';
     threshold = config.studentLoans.plan1.threshold;
     repaymentRatePercent = 9;
-    explanation = `Plan 1 repayments are 9% of your gross earnings above £${threshold.toLocaleString('en-GB')}/year.`;
+    explanation = `Plan 1 repayments are 9% of your gross earnings above ${formatGBP(threshold)}/year.`;
   } else if (input.plan === 'plan2') {
     planName = 'Plan 2';
     threshold = config.studentLoans.plan2.threshold;
     repaymentRatePercent = 9;
-    explanation = `Plan 2 repayments are 9% of your gross earnings above £${threshold.toLocaleString('en-GB')}/year.`;
+    explanation = `Plan 2 repayments are 9% of your gross earnings above ${formatGBP(threshold)}/year.`;
   } else if (input.plan === 'plan4') {
     planName = 'Plan 4 (Scotland)';
     threshold = config.studentLoans.plan4.threshold;
     repaymentRatePercent = 9;
-    explanation = `Plan 4 Scottish repayments are 9% of gross earnings above £${threshold.toLocaleString('en-GB')}/year.`;
+    explanation = `Plan 4 Scottish repayments are 9% of gross earnings above ${formatGBP(threshold)}/year.`;
   } else if (input.plan === 'plan5') {
     planName = 'Plan 5 (New Scheme)';
     threshold = config.studentLoans.plan5.threshold;
     repaymentRatePercent = 9;
-    explanation = `Plan 5 repayments are 9% of gross earnings above £${threshold.toLocaleString('en-GB')}/year.`;
+    explanation = `Plan 5 repayments are 9% of gross earnings above ${formatGBP(threshold)}/year.`;
   } else if (input.plan === 'postgrad') {
     planName = 'Postgraduate Loan';
     threshold = config.studentLoans.postgrad.threshold;
     repaymentRatePercent = 6;
-    explanation = `Postgraduate loan repayments are 6% of gross earnings above £${threshold.toLocaleString('en-GB')}/year.`;
+    explanation = `Postgraduate loan repayments are 6% of gross earnings above ${formatGBP(threshold)}/year.`;
   } else if (input.plan.includes('and_postgrad')) {
     planName = 'Undergraduate + Postgraduate Loan';
     repaymentRatePercent = 15;
@@ -1312,13 +1313,14 @@ export function calculateSelfEmployedTax(input: SelfEmployedInput): SelfEmployed
   }
 
   // 3. Class 2 National Insurance
-  // Small Profits Threshold (SPT) = £6,725
-  // Weekly rate = £3.45 -> £179.40 per year
-  // From 2024/25 onwards: If profits >= £6,725, Class 2 is treated as paid (£0 payable).
-  // If profits < £6,725, £0 payable unless paying voluntary Class 2 to maintain State Pension credits.
-  const smallProfitsThreshold = 6725;
-  const class2WeeklyRate = 3.45;
-  const class2AnnualVoluntary = class2WeeklyRate * 52; // £179.40
+  // Small Profits Threshold and voluntary Class 2 rate by tax year:
+  // 2026/27: SPT £7,105, voluntary £3.65/wk (£189.80/yr). Earlier years: £6,725 / £3.45.
+  // If profits >= SPT, Class 2 is treated as paid (£0 payable).
+  // If profits < SPT, £0 payable unless paying voluntary Class 2 to maintain State Pension credits.
+  const is2026_27Class2 = input.taxYear === '2026_27';
+  const smallProfitsThreshold = is2026_27Class2 ? 7105 : 6725;
+  const class2WeeklyRate = is2026_27Class2 ? 3.65 : 3.45;
+  const class2AnnualVoluntary = class2WeeklyRate * 52;
   let class2NiAnnual = 0;
   let class2StatusText = '';
 
@@ -1327,10 +1329,10 @@ export function calculateSelfEmployedTax(input: SelfEmployedInput): SelfEmployed
     class2StatusText = 'Treated as paid (£0.00) — State Pension credit secured';
   } else if (input.payVoluntaryClass2IfUnderThreshold) {
     class2NiAnnual = class2AnnualVoluntary;
-    class2StatusText = 'Voluntary contribution (£3.45/wk) — protects State Pension';
+    class2StatusText = `Voluntary contribution (£${class2WeeklyRate.toFixed(2)}/wk) — protects State Pension`;
   } else {
     class2NiAnnual = 0;
-    class2StatusText = 'Exempt (£0.00) — profits below £6,725 Small Profits Threshold';
+    class2StatusText = `Exempt (£0.00) — profits below £${smallProfitsThreshold.toLocaleString('en-GB')} Small Profits Threshold`;
   }
 
   // 4. Class 4 National Insurance
@@ -1723,7 +1725,7 @@ export function calculateRedundancyPay(input: RedundancyPayInput): RedundancyPay
   const yearsOfService = Math.min(20, rawYears);
   
   const actualWeeklyPay = Math.max(0, input.weeklyPay || 0);
-  const statutoryWeeklyCap = input.statutoryWeeklyCap || 700;
+  const statutoryWeeklyCap = input.statutoryWeeklyCap || 751; // 2026/27 cap (Employment Rights (Increase of Limits) Order 2026); £719 in 2025/26, £700 in 2024/25
   const effectiveWeeklyPay = input.useStatutoryWeeklyCap
     ? Math.min(actualWeeklyPay, statutoryWeeklyCap)
     : actualWeeklyPay;
@@ -2758,13 +2760,13 @@ export function calculateChildBenefit(input: ChildBenefitInput): ChildBenefitRes
     recommendationText = 'You are below the £60,000 threshold. Claim Child Benefit in full — there is no charge to pay.';
   } else if (isAboveTaperEnd) {
     recommendation = 'opt_out';
-    recommendationText = `Your income of £${income.toLocaleString('en-GB')} is above £${cb.hicbcTaperEnd.toLocaleString('en-GB')}. The full Child Benefit (£${totalAnnualBenefit.toFixed(2)}/yr) would be clawed back. Consider opting out of payments, but you may still want to claim to protect your State Pension National Insurance credits.`;
+    recommendationText = `Your income of ${formatGBP(income)} is above ${formatGBP(cb.hicbcTaperEnd)}. The full Child Benefit (${formatGBP(totalAnnualBenefit)}/yr) would be clawed back. Consider opting out of payments, but you may still want to claim to protect your State Pension National Insurance credits.`;
   } else if (chargePercent >= 50) {
     recommendation = 'opt_out_consider';
-    recommendationText = `${chargePercent.toFixed(0)}% of your Child Benefit (£${hicbcAnnual.toFixed(2)}/yr) will be taken back as a tax charge. You keep £${netAnnualBenefit.toFixed(2)}/yr net. Consider whether claiming is worthwhile — but keep claiming if you need the NI credits for State Pension.`;
+    recommendationText = `${chargePercent.toFixed(0)}% of your Child Benefit (${formatGBP(hicbcAnnual)}/yr) will be taken back as a tax charge. You keep ${formatGBP(netAnnualBenefit)}/yr net. Consider whether claiming is worthwhile — but keep claiming if you need the NI credits for State Pension.`;
   } else {
     recommendation = 'claim_aware';
-    recommendationText = `You will receive ${(100 - chargePercent).toFixed(0)}% of your Child Benefit net after the HICBC charge. You keep £${netAnnualBenefit.toFixed(2)}/yr. Continue claiming — you are still better off than opting out.`;
+    recommendationText = `You will receive ${(100 - chargePercent).toFixed(0)}% of your Child Benefit net after the HICBC charge. You keep ${formatGBP(netAnnualBenefit)}/yr. Continue claiming — you are still better off than opting out.`;
   }
 
   return {
@@ -2805,17 +2807,22 @@ export function calculateSickPay(input: SickPayInput): SickPayResult {
   const isLinkedPeriod = Boolean(input.isLinkedPeriod);
   const occupationalWeeklyPay = Math.max(0, input.occupationalWeeklyPay || 0);
 
-  const isEligible = awe >= sspConfig.lowerEarningsLimit;
+  // 2026/27 SSP rules changed on 6 April 2026 (Employment Rights Act 2025):
+  // no lower earnings limit, no waiting days, and SSP is the lower of the
+  // flat weekly rate or 80% of average weekly earnings. Earlier years keep
+  // the old rules (LEL gate + 3 waiting days, unless linked).
+  const is2026_27 = taxYear === '2026_27';
+  const isEligible = is2026_27 ? true : awe >= sspConfig.lowerEarningsLimit;
   let ineligibilityReason: string | undefined;
   if (!isEligible) {
-    ineligibilityReason = `Average weekly earnings (£${awe.toFixed(2)}) are below the statutory Lower Earnings Limit (£${sspConfig.lowerEarningsLimit.toFixed(2)}/wk). To qualify for SSP, your weekly earnings before tax must be at or above this threshold.`;
+    ineligibilityReason = `Average weekly earnings (${formatGBP(awe)}) are below the statutory Lower Earnings Limit (${formatGBP(sspConfig.lowerEarningsLimit)}/wk). To qualify for SSP, your weekly earnings before tax must be at or above this threshold.`;
   }
 
-  const weeklySspRate = sspConfig.weeklyRate;
+  const weeklySspRate = is2026_27 ? Math.min(sspConfig.weeklyRate, 0.8 * awe) : sspConfig.weeklyRate;
   const dailySspRate = weeklySspRate / qDaysPerWeek;
 
-  // Waiting days: 3 qualifying days unpaid, unless linked period within 8 weeks
-  const waitingDays = isLinkedPeriod ? 0 : Math.min(3, qDaysOff);
+  // Waiting days: 3 qualifying days unpaid, unless linked period within 8 weeks (pre-2026/27 only)
+  const waitingDays = is2026_27 ? 0 : (isLinkedPeriod ? 0 : Math.min(3, qDaysOff));
 
   const maxPayableDays = sspConfig.maxWeeks * qDaysPerWeek; // e.g. 28 * 5 = 140 days
   const unconstrainedPayableDays = Math.max(0, qDaysOff - waitingDays);
@@ -2987,13 +2994,13 @@ export function calculateMarriageAllowance(input: MarriageAllowanceInput): Marri
 
   if (lowerIncome > standardPA) {
     isEligible = false;
-    ineligibilityReason = `The lower earner's annual income (£${lowerIncome.toLocaleString('en-GB')}) exceeds the standard Personal Allowance (£${standardPA.toLocaleString('en-GB')}). Marriage Allowance can only be transferred if the lower-earning partner has an income of £${standardPA.toLocaleString('en-GB')} or less.`;
+    ineligibilityReason = `The lower earner's annual income (${formatGBP(lowerIncome)}) exceeds the standard Personal Allowance (${formatGBP(standardPA)}). Marriage Allowance can only be transferred if the lower-earning partner has an income of ${formatGBP(standardPA)} or less.`;
   } else if (isHigherRateTaxpayer) {
     isEligible = false;
-    ineligibilityReason = `The higher earner's annual income (£${higherIncome.toLocaleString('en-GB')}) exceeds the basic rate threshold of £${higherRateThreshold.toLocaleString('en-GB')} in ${isHigherScotland ? 'Scotland' : 'the UK'}. Marriage Allowance cannot be claimed if the recipient partner pays higher rate (40% / 42%) or additional rate tax.`;
+    ineligibilityReason = `The higher earner's annual income (${formatGBP(higherIncome)}) exceeds the basic rate threshold of ${formatGBP(higherRateThreshold)} in ${isHigherScotland ? 'Scotland' : 'the UK'}. Marriage Allowance cannot be claimed if the recipient partner pays higher rate (40% / 42%) or additional rate tax.`;
   } else if (higherIncome <= standardPA) {
     isEligible = false;
-    ineligibilityReason = `The higher earner's annual income (£${higherIncome.toLocaleString('en-GB')}) is below the Personal Allowance (£${standardPA.toLocaleString('en-GB')}). Since neither partner is paying Income Tax, transferring allowance provides no financial saving.`;
+    ineligibilityReason = `The higher earner's annual income (${formatGBP(higherIncome)}) is below the Personal Allowance (${formatGBP(standardPA)}). Since neither partner is paying Income Tax, transferring allowance provides no financial saving.`;
   } else if (netHouseholdSaving <= 0) {
     isEligible = false;
     ineligibilityReason = `Based on these income figures, transferring Personal Allowance would not produce a net tax saving for your household.`;
@@ -3758,8 +3765,8 @@ export function calculateTaxCodeInterpretation(input: TaxCodeInput): TaxCodeResu
     numericPart = !isNaN(num) ? num : 0;
     const negativeAmount = numericPart * 10;
     estimatedPersonalAllowance = -negativeAmount;
-    codeMeaning = `K Code (Negative Allowance) - Taxable company benefits or untaxed income from previous years exceed your Personal Allowance by £${negativeAmount.toLocaleString('en-GB')}.`;
-    allowanceExplanation = `An additional £${negativeAmount.toLocaleString('en-GB')} is added to your taxable income before Income Tax is calculated.`;
+    codeMeaning = `K Code (Negative Allowance) - Taxable company benefits or untaxed income from previous years exceed your Personal Allowance by ${formatGBP(negativeAmount)}.`;
+    allowanceExplanation = `An additional ${formatGBP(negativeAmount)} is added to your taxable income before Income Tax is calculated.`;
   } else {
     // Standard match
     const match = cleanCode.match(/^(\d+)([A-Z]?)(.*)$/);
@@ -3777,26 +3784,26 @@ export function calculateTaxCodeInterpretation(input: TaxCodeInput): TaxCodeResu
       if (suffix === 'L') {
         codeCategory = 'standard';
         estimatedPersonalAllowance = baseAllowance;
-        allowanceExplanation = `Standard tax code granting £${baseAllowance.toLocaleString('en-GB')} tax-free Personal Allowance across the tax year.`;
-        codeMeaning = `1257L is the standard UK PAYE tax code for an employee entitled to the £${baseAllowance.toLocaleString('en-GB')} Personal Allowance.`;
+        allowanceExplanation = `Standard tax code granting ${formatGBP(baseAllowance)} tax-free Personal Allowance across the tax year.`;
+        codeMeaning = `1257L is the standard UK PAYE tax code for an employee entitled to the ${formatGBP(baseAllowance)} Personal Allowance.`;
       } else if (suffix === 'M') {
         codeCategory = 'marriage';
         estimatedPersonalAllowance = baseAllowance;
-        allowanceExplanation = `Includes Marriage Allowance recipient transfer (+£1,260), providing £${baseAllowance.toLocaleString('en-GB')} total tax-free allowance.`;
+        allowanceExplanation = `Includes Marriage Allowance recipient transfer (+£1,260), providing ${formatGBP(baseAllowance)} total tax-free allowance.`;
         codeMeaning = 'You have received a transfer of Marriage Allowance from your spouse or civil partner, increasing your personal tax-free allowance.';
       } else if (suffix === 'N') {
         codeCategory = 'marriage';
         estimatedPersonalAllowance = baseAllowance;
-        allowanceExplanation = `Reflects Marriage Allowance transferor deduction (-£1,260), leaving £${baseAllowance.toLocaleString('en-GB')} tax-free allowance.`;
+        allowanceExplanation = `Reflects Marriage Allowance transferor deduction (-£1,260), leaving ${formatGBP(baseAllowance)} tax-free allowance.`;
         codeMeaning = 'You have transferred 10% of your Personal Allowance (£1,260) to your spouse or civil partner.';
       } else if (suffix === 'T') {
         codeCategory = 'other';
         estimatedPersonalAllowance = baseAllowance;
-        allowanceExplanation = `Personal allowance of £${baseAllowance.toLocaleString('en-GB')} subject to manual annual review by HMRC.`;
+        allowanceExplanation = `Personal allowance of ${formatGBP(baseAllowance)} subject to manual annual review by HMRC.`;
         codeMeaning = 'Your tax code includes other complex calculations or requires annual manual review by HMRC.';
       } else {
         estimatedPersonalAllowance = baseAllowance;
-        allowanceExplanation = `Estimated tax-free allowance of £${baseAllowance.toLocaleString('en-GB')}.`;
+        allowanceExplanation = `Estimated tax-free allowance of ${formatGBP(baseAllowance)}.`;
         codeMeaning = `PAYE tax code with numeric allowance factor ${numericPart}.`;
       }
     } else {
@@ -4760,36 +4767,39 @@ export function calculateCreditCardRepayment(input: CreditCardRepaymentInput): C
   }
 
   if (input.strategy !== 'minimum_only') {
-    // Check if fixed payment covers first month's interest
+    // Check if fixed payment covers first month's interest.
+    // If it does not, the balance can never fall: surface that state
+    // (isRepaymentTooLow) instead of silently bumping the payment, so the
+    // page and calculator show "Not repayable" at the payment the user chose.
     const initialInterest = balance * nominalMonthlyRate;
     if (fixedPayment <= initialInterest) {
       isRepaymentTooLow = true;
-      warningMessage = `Your monthly payment of £${fixedPayment.toFixed(2)} does not cover the initial monthly interest (£${initialInterest.toFixed(2)}). Increase payment to reduce debt.`;
-      fixedPayment = initialInterest + 10;
-    }
+      warningMessage = `Your monthly payment of ${formatGBP(fixedPayment)} does not cover the initial monthly interest (${formatGBP(initialInterest)}). The balance will not reduce at this payment, so it is not repayable at ${formatGBP(fixedPayment)}/month. Increase the payment above ${formatGBP(initialInterest)} to reduce debt.`;
+      // Totals intentionally stay at 0: there is no payoff date at this payment.
+    } else {
+      userBal = balance;
+      while (userBal > 0.01 && userTotalMonths < maxCapMonths) {
+        userTotalMonths++;
+        const interest = userBal * nominalMonthlyRate;
+        userTotalInterest += interest;
 
-    userBal = balance;
-    while (userBal > 0.01 && userTotalMonths < maxCapMonths) {
-      userTotalMonths++;
-      const interest = userBal * nominalMonthlyRate;
-      userTotalInterest += interest;
+        let payment = Math.min(userBal + interest, fixedPayment);
+        const principal = Math.max(0, payment - interest);
+        const endBal = Math.max(0, userBal - principal);
 
-      let payment = Math.min(userBal + interest, fixedPayment);
-      const principal = Math.max(0, payment - interest);
-      const endBal = Math.max(0, userBal - principal);
+        if (userTotalMonths <= 36 || userBal <= 0.01) {
+          schedule.push({
+            month: userTotalMonths,
+            startingBalance: userBal,
+            interestCharged: interest,
+            repaymentAmount: payment,
+            principalPaid: principal,
+            endingBalance: endBal,
+          });
+        }
 
-      if (userTotalMonths <= 36 || userBal <= 0.01) {
-        schedule.push({
-          month: userTotalMonths,
-          startingBalance: userBal,
-          interestCharged: interest,
-          repaymentAmount: payment,
-          principalPaid: principal,
-          endingBalance: endBal,
-        });
+        userBal = endBal;
       }
-
-      userBal = endBal;
     }
   }
 

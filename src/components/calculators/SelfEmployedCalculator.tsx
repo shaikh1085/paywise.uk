@@ -1,3 +1,4 @@
+import { formatGBP } from '../../utils/format';
 import React, { useState, useMemo } from 'react';
 import { SelfEmployedInput, TaxYear, TaxRegion, StudentLoanPlan } from '../../types';
 import { calculateSelfEmployedTax } from '../../utils/calculations';
@@ -20,7 +21,7 @@ export const SelfEmployedCalculator: React.FC = () => {
   const [input, setInput] = useState<SelfEmployedInput>({
     grossProfit: 45000,
     allowableExpenses: 3000,
-    taxYear: '2025_26',
+    taxYear: '2026_27',
     region: 'england_ni',
     studentLoanPlan: 'none',
     payVoluntaryClass2IfUnderThreshold: false,
@@ -43,7 +44,7 @@ Net Take-Home Pay (Annual): £${result.netTakeHomeAnnual.toLocaleString('en-GB',
 Net Take-Home Pay (Monthly): £${result.netTakeHomeMonthly.toLocaleString('en-GB', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
 Net Take-Home Pay (Weekly): £${result.netTakeHomeWeekly.toLocaleString('en-GB', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
 Effective Tax & NI Rate: ${result.effectiveTaxRate.toFixed(1)}%
-${result.requiresPaymentOnAccount ? `\nPayments on Account Notice:\n- 1st Payment on Account (due 31 Jan): £${result.firstPaymentOnAccount.toFixed(2)}\n- 2nd Payment on Account (due 31 Jul): £${result.secondPaymentOnAccount.toFixed(2)}\n- First Year Total Due 31 Jan (Balancing + 1st Advance): £${result.totalFirstYearPaymentDueJanuary.toFixed(2)}` : ''}
+${result.requiresPaymentOnAccount ? `\nPayments on Account Notice:\n- 1st Payment on Account (due 31 Jan): ${formatGBP(result.firstPaymentOnAccount)}\n- 2nd Payment on Account (due 31 Jul): ${formatGBP(result.secondPaymentOnAccount)}\n- First Year Total Due 31 Jan (Balancing + 1st Advance): ${formatGBP(result.totalFirstYearPaymentDueJanuary)}` : ''}
 Calculated via PayWise UK (https://paywiseuk.vercel.app/self-employed-tax-calculator)`;
 
   const retentionPercent = input.grossProfit > 0
@@ -67,11 +68,11 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/self-employed-tax-calcul
                 Annual Gross Profit / Turnover (£)
               </label>
               <span className="text-xs font-semibold text-[#059669] dark:text-[#10B981] tabular-nums">
-                £{(input.grossProfit || 0).toLocaleString('en-GB')}
+                {formatGBP((input.grossProfit || 0))}
               </span>
             </div>
             <div className="relative">
-              <span className="absolute inset-y-0 left-0 pl-3.5 flex items-center text-[#525252] dark:text-[#A3A3A3] font-bold text-base">£</span>
+              <span className="absolute inset-y-0 left-0 pl-3.5 flex items-center text-[#262626] dark:text-[#D4D4D4] font-bold text-base">£</span>
               <input
                 type="number"
                 id="se-profit-input"
@@ -97,12 +98,12 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/self-employed-tax-calcul
                   content="Costs wholly and exclusively incurred for business (equipment, software, phone, home office, travel, accountancy). Sole traders with expenses under £1,000 can claim the £1,000 statutory Trading Allowance instead."
                 />
               </div>
-              <span className="text-xs font-semibold text-[#525252] dark:text-[#A3A3A3] tabular-nums">
-                £{(input.allowableExpenses || 0).toLocaleString('en-GB')}
+              <span className="text-xs font-semibold text-[#262626] dark:text-[#D4D4D4] tabular-nums">
+                {formatGBP((input.allowableExpenses || 0))}
               </span>
             </div>
             <div className="relative">
-              <span className="absolute inset-y-0 left-0 pl-3.5 flex items-center text-[#525252] dark:text-[#A3A3A3] font-bold text-base">£</span>
+              <span className="absolute inset-y-0 left-0 pl-3.5 flex items-center text-[#262626] dark:text-[#D4D4D4] font-bold text-base">£</span>
               <input
                 type="number"
                 id="se-expenses-input"
@@ -114,7 +115,7 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/self-employed-tax-calcul
                 placeholder="e.g. 3000"
               />
             </div>
-            <div className="flex justify-between items-center mt-1 text-2xs text-[#525252] dark:text-[#A3A3A3]">
+            <div className="flex justify-between items-center mt-1 text-2xs text-[#262626] dark:text-[#D4D4D4]">
               <span>Taxable Net Profit:</span>
               <span className="font-bold text-[#111111] dark:text-[#F5F5F5]">
                 £{result.taxableProfit.toLocaleString('en-GB', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
@@ -134,9 +135,9 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/self-employed-tax-calcul
                 onChange={(e) => setInput({ ...input, taxYear: e.target.value as TaxYear })}
                 className="block w-full rounded-xl border border-[#E5E5E5] dark:border-[#303030] bg-white dark:bg-[#151515] px-3 py-2 text-xs sm:text-sm font-semibold text-[#111111] dark:text-[#F5F5F5] focus:border-[#059669] dark:focus:border-[#10B981] focus:outline-none"
               >
-                <option value="2025_26">2025 / 2026 (Current)</option>
+                <option value="2025_26">2025 / 2026</option>
                 <option value="2024_25">2024 / 2025</option>
-                <option value="2026_27">2026 / 2027 (Forecast)</option>
+                <option value="2026_27">2026 / 2027 (Current)</option>
               </select>
             </div>
 
@@ -195,7 +196,7 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/self-employed-tax-calcul
                   Pay voluntary Class 2 NI (£3.45/week, £179.40/yr) to protect State Pension credits
                 </span>
               </label>
-              <p className="text-2xs text-[#525252] dark:text-[#A3A3A3] pl-6">
+              <p className="text-2xs text-[#262626] dark:text-[#D4D4D4] pl-6">
                 Because your taxable profit is below £6,725, no Class 2 is due, but voluntary contributions help maintain qualifying years towards your UK State Pension.
               </p>
             </div>
@@ -203,7 +204,7 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/self-employed-tax-calcul
 
           {/* Quick presets */}
           <div>
-            <span className="block text-2xs font-bold uppercase tracking-wider text-[#525252] dark:text-[#A3A3A3] mb-2">
+            <span className="block text-2xs font-bold uppercase tracking-wider text-[#262626] dark:text-[#D4D4D4] mb-2">
               Common Sole Trader Profit Presets:
             </span>
             <div className="flex flex-wrap gap-2">
@@ -215,7 +216,7 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/self-employed-tax-calcul
                   className={`px-2.5 py-1 rounded-lg text-xs font-bold transition-colors ${
                     input.grossProfit === amount
                       ? 'bg-[#059669] text-white'
-                      : 'bg-[#FAFAFA] dark:bg-[#151515] border border-[#E5E5E5] dark:border-[#2A2A2A] text-[#525252] dark:text-[#A3A3A3] hover:text-[#111111] dark:hover:text-[#F5F5F5]'
+                      : 'bg-[#FAFAFA] dark:bg-[#151515] border border-[#E5E5E5] dark:border-[#2A2A2A] text-[#262626] dark:text-[#D4D4D4] hover:text-[#111111] dark:hover:text-[#F5F5F5]'
                   }`}
                 >
                   £{(amount / 1000).toFixed(0)}k
@@ -235,7 +236,7 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/self-employed-tax-calcul
               <span className="w-2 h-2 rounded-full bg-[#059669] dark:bg-[#10B981]" />
               Estimated Net Take-Home Pay
             </span>
-            <span className="text-xs text-[#525252] dark:text-[#A3A3A3] tabular-nums">
+            <span className="text-xs text-[#262626] dark:text-[#D4D4D4] tabular-nums">
               Effective Rate: {result.effectiveTaxRate.toFixed(1)}%
             </span>
           </div>
@@ -249,9 +250,9 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/self-employed-tax-calcul
                   decimals={2}
                   className="text-[#111111] dark:text-[#F5F5F5]"
                 />
-                <span className="text-sm sm:text-base font-normal text-[#525252] dark:text-[#A3A3A3] ml-2">/ year</span>
+                <span className="text-sm sm:text-base font-normal text-[#262626] dark:text-[#D4D4D4] ml-2">/ year</span>
               </div>
-              <div className="flex items-center gap-4 pt-1 text-xs text-[#525252] dark:text-[#A3A3A3]">
+              <div className="flex items-center gap-4 pt-1 text-xs text-[#262626] dark:text-[#D4D4D4]">
                 <span>
                   <strong className="text-[#111111] dark:text-[#F5F5F5]">
                     £{result.netTakeHomeMonthly.toLocaleString('en-GB', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
@@ -281,25 +282,25 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/self-employed-tax-calcul
           {/* Quick Stats Grid */}
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5 pt-5 border-t border-[#E5E5E5] dark:border-[#2A2A2A] text-xs">
             <div className="bg-white dark:bg-[#111111] p-3 rounded-xl border border-[#E5E5E5] dark:border-[#2A2A2A] shadow-2xs">
-              <span className="text-[#525252] dark:text-[#A3A3A3] block text-2xs uppercase font-bold">Gross Turnover</span>
+              <span className="text-[#262626] dark:text-[#D4D4D4] block text-2xs uppercase font-bold">Gross Turnover</span>
               <span className="font-bold text-[#111111] dark:text-[#F5F5F5] tabular-nums mt-0.5 block">
-                £{result.grossProfit.toLocaleString('en-GB')}
+                {formatGBP(result.grossProfit)}
               </span>
             </div>
             <div className="bg-white dark:bg-[#111111] p-3 rounded-xl border border-[#E5E5E5] dark:border-[#2A2A2A] shadow-2xs">
-              <span className="text-[#525252] dark:text-[#A3A3A3] block text-2xs uppercase font-bold">Allowable Expenses</span>
+              <span className="text-[#262626] dark:text-[#D4D4D4] block text-2xs uppercase font-bold">Allowable Expenses</span>
               <span className="font-bold text-[#111111] dark:text-[#F5F5F5] tabular-nums mt-0.5 block">
-                £{result.allowableExpenses.toLocaleString('en-GB')}
+                {formatGBP(result.allowableExpenses)}
               </span>
             </div>
             <div className="bg-white dark:bg-[#111111] p-3 rounded-xl border border-[#E5E5E5] dark:border-[#2A2A2A] shadow-2xs">
-              <span className="text-[#525252] dark:text-[#A3A3A3] block text-2xs uppercase font-bold">Taxable Profit</span>
+              <span className="text-[#262626] dark:text-[#D4D4D4] block text-2xs uppercase font-bold">Taxable Profit</span>
               <span className="font-bold text-[#059669] dark:text-[#10B981] tabular-nums mt-0.5 block">
-                £{result.taxableProfit.toLocaleString('en-GB')}
+                {formatGBP(result.taxableProfit)}
               </span>
             </div>
             <div className="bg-white dark:bg-[#111111] p-3 rounded-xl border border-[#E5E5E5] dark:border-[#2A2A2A] shadow-2xs">
-              <span className="text-[#525252] dark:text-[#A3A3A3] block text-2xs uppercase font-bold">Total Tax & NI</span>
+              <span className="text-[#262626] dark:text-[#D4D4D4] block text-2xs uppercase font-bold">Total Tax & NI</span>
               <span className="font-bold text-[#DC2626] dark:text-[#F87171] tabular-nums mt-0.5 block">
                 -£{result.totalDeductionsAnnual.toLocaleString('en-GB', { minimumFractionDigits: 0, maximumFractionDigits: 0 })}
               </span>
@@ -314,8 +315,8 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/self-employed-tax-calcul
               <Receipt className="w-4 h-4 text-[#059669] dark:text-[#10B981]" />
               Self-Employed Tax & National Insurance Breakdown
             </h3>
-            <span className="text-xs font-semibold text-[#525252] dark:text-[#A3A3A3]">
-              Personal Allowance: £{result.personalAllowanceApplied.toLocaleString('en-GB')}
+            <span className="text-xs font-semibold text-[#262626] dark:text-[#D4D4D4]">
+              Personal Allowance: {formatGBP(result.personalAllowanceApplied)}
             </span>
           </div>
 
@@ -325,7 +326,7 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/self-employed-tax-calcul
               <div className="flex justify-between items-center text-xs">
                 <span className="font-bold text-[#111111] dark:text-[#F5F5F5] flex items-center gap-1.5">
                   <span>Income Tax</span>
-                  <span className="text-2xs text-[#525252] dark:text-[#A3A3A3] font-normal">
+                  <span className="text-2xs text-[#262626] dark:text-[#D4D4D4] font-normal">
                     ({input.region === 'scotland' ? 'Scottish rates' : 'England/Wales/NI rates'})
                   </span>
                 </span>
@@ -336,7 +337,7 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/self-employed-tax-calcul
               {result.taxBands.length > 0 && (
                 <div className="space-y-1 pt-1 border-t border-[#E5E5E5] dark:border-[#2A2A2A]">
                   {result.taxBands.map((band, i) => (
-                    <div key={i} className="flex justify-between text-2xs text-[#525252] dark:text-[#A3A3A3]">
+                    <div key={i} className="flex justify-between text-2xs text-[#262626] dark:text-[#D4D4D4]">
                       <span>{band.name} on £{band.taxableAmount.toLocaleString('en-GB', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</span>
                       <span className="font-semibold tabular-nums text-[#111111] dark:text-[#F5F5F5]">
                         £{band.taxPaid.toLocaleString('en-GB', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
@@ -364,7 +365,7 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/self-employed-tax-calcul
               {result.class4Bands.length > 0 ? (
                 <div className="space-y-1 pt-1 border-t border-[#E5E5E5] dark:border-[#2A2A2A]">
                   {result.class4Bands.map((band, i) => (
-                    <div key={i} className="flex justify-between text-2xs text-[#525252] dark:text-[#A3A3A3]">
+                    <div key={i} className="flex justify-between text-2xs text-[#262626] dark:text-[#D4D4D4]">
                       <span>{band.name} on £{band.profitsInBand.toLocaleString('en-GB', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</span>
                       <span className="font-semibold tabular-nums text-[#111111] dark:text-[#F5F5F5]">
                         £{band.niPaid.toLocaleString('en-GB', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
@@ -373,7 +374,7 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/self-employed-tax-calcul
                   ))}
                 </div>
               ) : (
-                <p className="text-2xs text-[#525252] dark:text-[#A3A3A3]">
+                <p className="text-2xs text-[#262626] dark:text-[#D4D4D4]">
                   £0.00 — profits do not exceed the Class 4 Lower Profits Limit (£12,570).
                 </p>
               )}
@@ -393,7 +394,7 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/self-employed-tax-calcul
                   £{result.class2NiAnnual.toLocaleString('en-GB', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
                 </span>
               </div>
-              <p className="text-2xs text-[#525252] dark:text-[#A3A3A3] mt-1">
+              <p className="text-2xs text-[#262626] dark:text-[#D4D4D4] mt-1">
                 {result.class2StatusText}
               </p>
             </div>
@@ -432,7 +433,7 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/self-employed-tax-calcul
                 <span className="text-base font-extrabold text-amber-700 dark:text-amber-400 tabular-nums block mt-0.5">
                   £{result.firstPaymentOnAccount.toLocaleString('en-GB', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
                 </span>
-                <span className="text-2xs text-[#525252] dark:text-[#A3A3A3] block mt-0.5">
+                <span className="text-2xs text-[#262626] dark:text-[#D4D4D4] block mt-0.5">
                   Due 31 January (alongside previous year balancing payment)
                 </span>
               </div>
@@ -443,7 +444,7 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/self-employed-tax-calcul
                 <span className="text-base font-extrabold text-amber-700 dark:text-amber-400 tabular-nums block mt-0.5">
                   £{result.secondPaymentOnAccount.toLocaleString('en-GB', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
                 </span>
-                <span className="text-2xs text-[#525252] dark:text-[#A3A3A3] block mt-0.5">
+                <span className="text-2xs text-[#262626] dark:text-[#D4D4D4] block mt-0.5">
                   Due 31 July
                 </span>
               </div>
@@ -453,7 +454,7 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/self-employed-tax-calcul
             </p>
           </div>
         ) : (
-          <div className="rounded-2xl bg-[#FAFAFA] dark:bg-[#151515] border border-[#E5E5E5] dark:border-[#2A2A2A] p-4 text-xs text-[#525252] dark:text-[#A3A3A3] flex items-center gap-2">
+          <div className="rounded-2xl bg-[#FAFAFA] dark:bg-[#151515] border border-[#E5E5E5] dark:border-[#2A2A2A] p-4 text-xs text-[#262626] dark:text-[#D4D4D4] flex items-center gap-2">
             <Info className="w-4 h-4 text-[#059669] dark:text-[#10B981] shrink-0" />
             <span>
               <strong>No Payments on Account needed:</strong> Your annual tax and Class 4 NI bill is below £1,000, so you only pay your balancing payment on 31 January.
@@ -465,18 +466,18 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/self-employed-tax-calcul
         <ExportActions
           textToCopy={copyText}
           csvData={[
-            { Metric: 'Gross Turnover / Profit', Value: `£${result.grossProfit.toFixed(2)}` },
-            { Metric: 'Allowable Business Expenses', Value: `£${result.allowableExpenses.toFixed(2)}` },
-            { Metric: 'Taxable Net Profit', Value: `£${result.taxableProfit.toFixed(2)}` },
-            { Metric: 'Personal Allowance Applied', Value: `£${result.personalAllowanceApplied.toFixed(2)}` },
-            { Metric: 'Income Tax Annual', Value: `£${result.incomeTaxAnnual.toFixed(2)}` },
-            { Metric: 'Class 4 NI Annual', Value: `£${result.class4NiAnnual.toFixed(2)}` },
-            { Metric: 'Class 2 NI Annual', Value: `£${result.class2NiAnnual.toFixed(2)}` },
-            { Metric: 'Student Loan Annual', Value: `£${result.studentLoanAnnual.toFixed(2)}` },
-            { Metric: 'Total Annual Deductions', Value: `£${result.totalDeductionsAnnual.toFixed(2)}` },
-            { Metric: 'Net Take-Home Annual', Value: `£${result.netTakeHomeAnnual.toFixed(2)}` },
-            { Metric: 'Net Take-Home Monthly', Value: `£${result.netTakeHomeMonthly.toFixed(2)}` },
-            { Metric: 'Net Take-Home Weekly', Value: `£${result.netTakeHomeWeekly.toFixed(2)}` },
+            { Metric: 'Gross Turnover / Profit', Value: `${formatGBP(result.grossProfit)}` },
+            { Metric: 'Allowable Business Expenses', Value: `${formatGBP(result.allowableExpenses)}` },
+            { Metric: 'Taxable Net Profit', Value: `${formatGBP(result.taxableProfit)}` },
+            { Metric: 'Personal Allowance Applied', Value: `${formatGBP(result.personalAllowanceApplied)}` },
+            { Metric: 'Income Tax Annual', Value: `${formatGBP(result.incomeTaxAnnual)}` },
+            { Metric: 'Class 4 NI Annual', Value: `${formatGBP(result.class4NiAnnual)}` },
+            { Metric: 'Class 2 NI Annual', Value: `${formatGBP(result.class2NiAnnual)}` },
+            { Metric: 'Student Loan Annual', Value: `${formatGBP(result.studentLoanAnnual)}` },
+            { Metric: 'Total Annual Deductions', Value: `${formatGBP(result.totalDeductionsAnnual)}` },
+            { Metric: 'Net Take-Home Annual', Value: `${formatGBP(result.netTakeHomeAnnual)}` },
+            { Metric: 'Net Take-Home Monthly', Value: `${formatGBP(result.netTakeHomeMonthly)}` },
+            { Metric: 'Net Take-Home Weekly', Value: `${formatGBP(result.netTakeHomeWeekly)}` },
             { Metric: 'Effective Tax Rate', Value: `${result.effectiveTaxRate.toFixed(2)}%` },
           ]}
           fileName={`paywise-self-employed-tax-${input.grossProfit}`}

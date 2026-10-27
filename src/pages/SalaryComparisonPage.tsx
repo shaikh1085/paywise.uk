@@ -49,7 +49,7 @@ export const SalaryComparisonPage: React.FC = () => {
         <h1 className="text-2xl sm:text-4xl font-black text-[#111111] dark:text-[#F5F5F5] tracking-tight">
           Salary Comparison Calculator UK
         </h1>
-        <p className="text-xs sm:text-sm text-[#525252] dark:text-[#A3A3A3] leading-relaxed">
+        <p className="text-xs sm:text-sm text-[#262626] dark:text-[#D4D4D4] leading-relaxed">
           Compare up to 6 job offers or salary increments side-by-side. Evaluate real take-home pay, monthly net deltas, effective tax burdens, and retention rates across UK tax brackets.
         </p>
       </div>
@@ -62,7 +62,7 @@ export const SalaryComparisonPage: React.FC = () => {
           <h2 className="text-lg sm:text-xl font-bold text-[#111111] dark:text-[#F5F5F5] mb-2">
             Why Comparing Headline Gross Salary Is Misleading
           </h2>
-          <p className="text-xs sm:text-sm text-[#525252] dark:text-[#A3A3A3] leading-relaxed">
+          <p className="text-xs sm:text-sm text-[#262626] dark:text-[#D4D4D4] leading-relaxed">
             The UK tax system is highly progressive. Moving into higher tax brackets means you keep progressively less of each additional pound earned. When deciding between job offers or counter-offers, understanding your net take-home increase and marginal retention rate is essential.
           </p>
         </div>
@@ -73,7 +73,7 @@ export const SalaryComparisonPage: React.FC = () => {
               <TrendingUp className="w-4 h-4 text-[#059669] dark:text-[#10B981]" />
               <h3>The 40% Higher Rate Cliff</h3>
             </div>
-            <p className="text-[#525252] dark:text-[#A3A3A3] text-xs leading-relaxed">
+            <p className="text-[#262626] dark:text-[#D4D4D4] text-xs leading-relaxed">
               Earnings above £50,270 are subject to 40% Income Tax + 2% National Insurance. When pension (5%) and student loan (9%) are included, marginal deductions hit 56%, leaving 44% in net cash.
             </p>
           </div>
@@ -83,7 +83,7 @@ export const SalaryComparisonPage: React.FC = () => {
               <Scale className="w-4 h-4 text-[#059669] dark:text-[#10B981]" />
               <h3>The £100k 60% Taper Trap</h3>
             </div>
-            <p className="text-[#525252] dark:text-[#A3A3A3] text-xs leading-relaxed">
+            <p className="text-[#262626] dark:text-[#D4D4D4] text-xs leading-relaxed">
               Between £100,000 and £125,140, losing £1 of Personal Allowance for every £2 earned creates an effective 60% income tax rate (plus 2% NI and 9% loan), taking total deductions up to 71%.
             </p>
           </div>
@@ -93,7 +93,7 @@ export const SalaryComparisonPage: React.FC = () => {
               <GitCompare className="w-4 h-4 text-[#059669] dark:text-[#10B981]" />
               <h3>Pension Salary Sacrifice</h3>
             </div>
-            <p className="text-[#525252] dark:text-[#A3A3A3] text-xs leading-relaxed">
+            <p className="text-[#262626] dark:text-[#D4D4D4] text-xs leading-relaxed">
               Comparing salaries with higher pension percentages helps evaluate whether sacrificing income above tax thresholds saves more in tax relief and employer National Insurance.
             </p>
           </div>
@@ -101,7 +101,7 @@ export const SalaryComparisonPage: React.FC = () => {
 
         {/* Related Calculators Links */}
         <div className="pt-4 border-t border-[#E5E5E5] dark:border-[#2A2A2A]">
-          <h3 className="text-xs font-bold uppercase tracking-wider text-[#737373] dark:text-[#A3A3A3] mb-3">
+          <h3 className="text-xs font-bold uppercase tracking-wider text-[#737373] dark:text-[#D4D4D4] mb-3">
             Related UK Tax Calculators
           </h3>
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-3">
@@ -110,34 +110,34 @@ export const SalaryComparisonPage: React.FC = () => {
               className="flex items-center justify-between p-3 rounded-xl border border-[#E5E5E5] dark:border-[#2A2A2A] hover:border-[#059669] dark:hover:border-[#10B981] bg-[#FAFAFA] dark:bg-[#151515] text-xs font-semibold text-[#111111] dark:text-[#F5F5F5] group"
             >
               <span>Take-Home Pay Calculator</span>
-              <ArrowRight className="w-3.5 h-3.5 text-[#A3A3A3] group-hover:text-[#059669] group-hover:translate-x-0.5 transition-all" />
+              <ArrowRight className="w-3.5 h-3.5 text-[#D4D4D4] group-hover:text-[#059669] group-hover:translate-x-0.5 transition-all" />
             </Link>
             <Link
               to="/pay-rise-calculator"
               className="flex items-center justify-between p-3 rounded-xl border border-[#E5E5E5] dark:border-[#2A2A2A] hover:border-[#059669] dark:hover:border-[#10B981] bg-[#FAFAFA] dark:bg-[#151515] text-xs font-semibold text-[#111111] dark:text-[#F5F5F5] group"
             >
               <span>Pay Rise Calculator</span>
-              <ArrowRight className="w-3.5 h-3.5 text-[#A3A3A3] group-hover:text-[#059669] group-hover:translate-x-0.5 transition-all" />
+              <ArrowRight className="w-3.5 h-3.5 text-[#D4D4D4] group-hover:text-[#059669] group-hover:translate-x-0.5 transition-all" />
             </Link>
             <Link
               to="/salary-sacrifice-calculator"
               className="flex items-center justify-between p-3 rounded-xl border border-[#E5E5E5] dark:border-[#2A2A2A] hover:border-[#059669] dark:hover:border-[#10B981] bg-[#FAFAFA] dark:bg-[#151515] text-xs font-semibold text-[#111111] dark:text-[#F5F5F5] group"
             >
               <span>Salary Sacrifice Calculator</span>
-              <ArrowRight className="w-3.5 h-3.5 text-[#A3A3A3] group-hover:text-[#059669] group-hover:translate-x-0.5 transition-all" />
+              <ArrowRight className="w-3.5 h-3.5 text-[#D4D4D4] group-hover:text-[#059669] group-hover:translate-x-0.5 transition-all" />
             </Link>
             <Link
               to="/pay-frequency-converter"
               className="flex items-center justify-between p-3 rounded-xl border border-[#E5E5E5] dark:border-[#2A2A2A] hover:border-[#059669] dark:hover:border-[#10B981] bg-[#FAFAFA] dark:bg-[#151515] text-xs font-semibold text-[#111111] dark:text-[#F5F5F5] group"
             >
               <span>Pay Frequency Converter</span>
-              <ArrowRight className="w-3.5 h-3.5 text-[#A3A3A3] group-hover:text-[#059669] group-hover:translate-x-0.5 transition-all" />
+              <ArrowRight className="w-3.5 h-3.5 text-[#D4D4D4] group-hover:text-[#059669] group-hover:translate-x-0.5 transition-all" />
             </Link>
           </div>
         </div>
       </div>
 
-      <FaqAccordion items={SALARY_COMPARISON_FAQS} />
+      <FaqAccordion items={SALARY_COMPARISON_FAQS} badge="Salary Comparison Knowledge Base" subtitle="Clear answers to common questions about UK salary comparisons." />
       <DisclaimerNotice />
     </div>
   );

@@ -8,8 +8,11 @@
  * Government legislation. Verify with official HMRC/payroll guidance before production launch.
  */
 
+// lastUpdated is NOT a second source: it mirrors SITE_CONFIG.lastUpdated.
+// (Kept as a literal here to avoid a config import cycle in tests; update
+// SITE_CONFIG.lastUpdated and this value together — they must match.)
 export const TAX_CONFIG_METADATA = {
-  lastUpdated: 'April 2026',
+  lastUpdated: '26 October 2026',
   currentTaxYearLabel: '2026 / 2027 (Current)',
   disclaimerShort: 'Calculations are estimates for illustration only and do not constitute financial, tax, or legal advice.',
   version: '2.6.0',
@@ -116,7 +119,7 @@ export interface TaxYearConfig {
 
   // Statutory Sick Pay (SSP)
   statutorySickPay: {
-    weeklyRate: number;            // Statutory Sick Pay weekly rate (£116.75)
+    weeklyRate: number;            // Statutory Sick Pay weekly rate (per-year value in UK_TAX_CONFIGS)
     lowerEarningsLimit: number;    // Average Weekly Earnings floor to qualify
     waitingDays: number;           // Standard unpaid waiting days (3)
     maxWeeks: number;              // Maximum duration (28 weeks)
@@ -294,6 +297,9 @@ export const UK_TAX_CONFIGS: Record<string, TaxYearConfig> = {
       maxWeeks: 28,
     },
   },
+  // 2026/27 figures ported from the first-bundle reference copy (paywise-corrected).
+  // Minimum wage from 1 April 2026; statutory pay and Child Benefit from 6 April 2026.
+  // Source URLs were not present in the reference copy and were not re-fetched live in this pass.
   '2026_27': {
     yearLabel: '2026 / 2027 (Current)',
     standardPersonalAllowance: 12570,
@@ -336,9 +342,9 @@ export const UK_TAX_CONFIGS: Record<string, TaxYearConfig> = {
       apprenticeshipLevyRate: 0.005,
     },
     studentLoans: {
-      plan1: { name: 'Plan 1', threshold: 26065, rate: 0.09, desc: 'Courses starting 1998–2011 (England/Wales) or Northern Ireland' },
-      plan2: { name: 'Plan 2', threshold: 28470, rate: 0.09, desc: 'Courses starting Sept 2012–July 2023 (England/Wales)' },
-      plan4: { name: 'Plan 4 (Scotland)', threshold: 32745, rate: 0.09, desc: 'Scottish students via SAAS' },
+      plan1: { name: 'Plan 1', threshold: 26900, rate: 0.09, desc: 'Courses starting 1998–2011 (England/Wales) or Northern Ireland' },
+      plan2: { name: 'Plan 2', threshold: 29385, rate: 0.09, desc: 'Courses starting Sept 2012–July 2023 (England/Wales)' },
+      plan4: { name: 'Plan 4 (Scotland)', threshold: 33795, rate: 0.09, desc: 'Scottish students via SAAS' },
       plan5: { name: 'Plan 5', threshold: 25000, rate: 0.09, desc: 'New England courses from Aug 2023' },
       postgrad: { name: 'Postgraduate Loan', threshold: 21000, rate: 0.06, desc: 'England & Wales Master’s/PhD' },
     },
@@ -349,17 +355,17 @@ export const UK_TAX_CONFIGS: Record<string, TaxYearConfig> = {
       defaultEmployerMin: 0.03,
     },
     minimumWage: {
-      nlw: 12.21,
-      age18to20: 10.00,
-      age16to17: 7.55,
-      apprentice: 7.55,
-      accommodationOffset: 10.66,
+      nlw: 12.71,
+      age18to20: 10.85,
+      age16to17: 8.00,
+      apprentice: 8.00,
+      accommodationOffset: 11.10,
     },
     statutoryPay: {
-      smpWeeklyRate: 187.18,
-      sppWeeklyRate: 187.18,
-      sapWeeklyRate: 187.18,
-      shppWeeklyRate: 187.18,
+      smpWeeklyRate: 194.32,
+      sppWeeklyRate: 194.32,
+      sapWeeklyRate: 194.32,
+      shppWeeklyRate: 194.32,
       smpHigherRatePercent: 0.90,
       lowerEarningsLimit: 129,
       smpDurationWeeksHigher: 6,
@@ -367,13 +373,13 @@ export const UK_TAX_CONFIGS: Record<string, TaxYearConfig> = {
       sppDurationWeeks: 2,
     },
     childBenefit: {
-      firstChildWeekly: 26.05,
-      additionalChildWeekly: 17.25,
+      firstChildWeekly: 27.05,
+      additionalChildWeekly: 17.90,
       hicbcThreshold: 60000,
       hicbcTaperEnd: 80000,
     },
     statutorySickPay: {
-      weeklyRate: 116.75,
+      weeklyRate: 123.25,
       lowerEarningsLimit: 129,
       waitingDays: 3,
       maxWeeks: 28,
@@ -396,97 +402,53 @@ export interface NhsBandDefinition {
 }
 
 export const NHS_PAY_BANDS: NhsBandDefinition[] = [
-  {
-    band: 'band_2',
-    name: 'Band 2 (e.g. Healthcare Assistant, Support Worker)',
-    points: [
-      { point: 1, step: 'Entry / Less than 2 years', salary: 22383 },
-      { point: 2, step: '2+ years experience', salary: 22383 },
-    ],
-  },
-  {
-    band: 'band_3',
-    name: 'Band 3 (e.g. Senior Healthcare Assistant, Admin Team Leader)',
-    points: [
-      { point: 1, step: 'Entry / Less than 2 years', salary: 22816 },
-      { point: 2, step: '2+ years experience', salary: 24336 },
-    ],
-  },
-  {
-    band: 'band_4',
-    name: 'Band 4 (e.g. Pharmacy Tech, Assistant Practitioner)',
-    points: [
-      { point: 1, step: 'Entry / Less than 3 years', salary: 25147 },
-      { point: 2, step: '3+ years experience', salary: 27596 },
-    ],
-  },
-  {
-    band: 'band_5',
-    name: 'Band 5 (e.g. Newly Qualified Staff Nurse, Physiotherapist, Radiographer)',
-    points: [
-      { point: 1, step: 'Entry / Less than 2 years', salary: 28407 },
-      { point: 2, step: '2–4 years experience', salary: 30639 },
-      { point: 3, step: '4+ years experience (Top of band)', salary: 34581 },
-    ],
-  },
-  {
-    band: 'band_6',
-    name: 'Band 6 (e.g. Junior Sister, Specialist Nurse, Specialist Allied Health)',
-    points: [
-      { point: 1, step: 'Entry / Less than 2 years', salary: 35392 },
-      { point: 2, step: '2–5 years experience', salary: 37350 },
-      { point: 3, step: '5+ years experience (Top of band)', salary: 42618 },
-    ],
-  },
-  {
-    band: 'band_7',
-    name: 'Band 7 (e.g. Ward Manager, Advanced Clinical Practitioner, Clinical Team Leader)',
-    points: [
-      { point: 1, step: 'Entry / Less than 2 years', salary: 43742 },
-      { point: 2, step: '2–5 years experience', salary: 45996 },
-      { point: 3, step: '5+ years experience (Top of band)', salary: 50056 },
-    ],
-  },
-  {
-    band: 'band_8a',
-    name: 'Band 8a (e.g. Matron, Principal Clinical Specialist, Service Manager)',
-    points: [
-      { point: 1, step: 'Entry / Less than 5 years', salary: 50952 },
-      { point: 2, step: '5+ years experience (Top of band)', salary: 57349 },
-    ],
-  },
-  {
-    band: 'band_8b',
-    name: 'Band 8b (e.g. Senior Matron, Consultant Pharmacist, Senior Lead)',
-    points: [
-      { point: 1, step: 'Entry / Less than 5 years', salary: 58972 },
-      { point: 2, step: '5+ years experience (Top of band)', salary: 68525 },
-    ],
-  },
-  {
-    band: 'band_8c',
-    name: 'Band 8c (e.g. Head of Nursing, Associate Director)',
-    points: [
-      { point: 1, step: 'Entry / Less than 5 years', salary: 70417 },
-      { point: 2, step: '5+ years experience (Top of band)', salary: 81138 },
-    ],
-  },
-  {
-    band: 'band_8d',
-    name: 'Band 8d (e.g. Deputy Director of Operations / Nursing)',
-    points: [
-      { point: 1, step: 'Entry / Less than 5 years', salary: 83571 },
-      { point: 2, step: '5+ years experience (Top of band)', salary: 96376 },
-    ],
-  },
-  {
-    band: 'band_9',
-    name: 'Band 9 (e.g. Director, Chief Nurse, Executive Consultant)',
-    points: [
-      { point: 1, step: 'Entry / Less than 5 years', salary: 99895 },
-      { point: 2, step: '5+ years experience (Top of band)', salary: 114949 },
-    ],
-  },
+  { band: 'band_2', name: 'Band 2 (e.g. Healthcare Assistant, Support Worker)', points: [
+      { point: 1, step: 'Entry / Less than 2 years', salary: 25272 },
+      { point: 2, step: '2+ years experience', salary: 25272 },
+  ] },
+  { band: 'band_3', name: 'Band 3 (e.g. Senior Healthcare Assistant, Admin Team Leader)', points: [
+      { point: 1, step: 'Entry / Less than 2 years', salary: 25760 },
+      { point: 2, step: '2+ years experience', salary: 27476 },
+  ] },
+  { band: 'band_4', name: 'Band 4 (e.g. Pharmacy Tech, Assistant Practitioner)', points: [
+      { point: 1, step: 'Entry / Less than 3 years', salary: 28392 },
+      { point: 2, step: '3+ years experience', salary: 31157 },
+  ] },
+  { band: 'band_5', name: 'Band 5 (e.g. Newly Qualified Staff Nurse, Physiotherapist, Radiographer)', points: [
+      { point: 1, step: 'Entry / Less than 2 years', salary: 32073 },
+      { point: 2, step: '2–4 years experience', salary: 34592 },
+      { point: 3, step: '4+ years experience (Top of band)', salary: 39043 },
+  ] },
+  { band: 'band_6', name: 'Band 6 (e.g. Junior Sister, Specialist Nurse, Specialist Allied Health)', points: [
+      { point: 1, step: 'Entry / Less than 2 years', salary: 39959 },
+      { point: 2, step: '2–5 years experience', salary: 42170 },
+      { point: 3, step: '5+ years experience (Top of band)', salary: 48117 },
+  ] },
+  { band: 'band_7', name: 'Band 7 (e.g. Ward Manager, Advanced Clinical Practitioner, Clinical Team Leader)', points: [
+      { point: 1, step: 'Entry / Less than 2 years', salary: 49387 },
+      { point: 2, step: '2–5 years experience', salary: 51932 },
+      { point: 3, step: '5+ years experience (Top of band)', salary: 56515 },
+  ] },
+  { band: 'band_8a', name: 'Band 8a (e.g. Matron, Principal Clinical Specialist, Service Manager)', points: [
+      { point: 1, step: 'Entry / Less than 5 years', salary: 57528 },
+      { point: 2, step: '5+ years experience (Top of band)', salary: 64750 },
+  ] },
+  { band: 'band_8b', name: 'Band 8b (e.g. Senior Matron, Consultant Pharmacist, Senior Lead)', points: [
+      { point: 1, step: 'Entry / Less than 5 years', salary: 66582 },
+      { point: 2, step: '5+ years experience (Top of band)', salary: 77368 },
+  ] },
+  { band: 'band_8c', name: 'Band 8c (e.g. Head of Nursing, Associate Director)', points: [
+      { point: 1, step: 'Entry / Less than 5 years', salary: 79504 },
+      { point: 2, step: '5+ years experience (Top of band)', salary: 91609 },
+  ] },
+  { band: 'band_8d', name: 'Band 8d (e.g. Deputy Director of Operations / Nursing)', points: [
+      { point: 1, step: 'Entry / Less than 5 years', salary: 94356 },
+      { point: 2, step: '5+ years experience (Top of band)', salary: 108814 },
+  ] },
+  { band: 'band_9', name: 'Band 9 (e.g. Director, Chief Nurse, Executive Consultant)', points: [
+      { point: 1, step: 'Entry / Less than 5 years', salary: 112782 },
+      { point: 2, step: '5+ years experience (Top of band)', salary: 129783 },
+  ] },
 ];
 
 /**

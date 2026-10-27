@@ -49,7 +49,7 @@ export const VatCalculatorPage: React.FC = () => {
         <h1 className="text-2xl sm:text-4xl font-black text-[#111111] dark:text-[#F5F5F5] tracking-tight">
           VAT Calculator UK
         </h1>
-        <p className="text-xs sm:text-sm text-[#525252] dark:text-[#A3A3A3] leading-relaxed">
+        <p className="text-xs sm:text-sm text-[#262626] dark:text-[#D4D4D4] leading-relaxed">
           Add VAT to a net (ex-VAT) price or remove VAT from a gross (inc-VAT) price at the UK standard rate of 20%, the reduced rate of 5%, or the zero rate of 0%. Instant results with a full net, VAT, and gross breakdown.
         </p>
       </div>
@@ -62,41 +62,41 @@ export const VatCalculatorPage: React.FC = () => {
           <h2 className="text-lg sm:text-xl font-bold text-[#111111] dark:text-[#F5F5F5]">
             How to calculate VAT in the UK
           </h2>
-          <p className="text-xs sm:text-sm text-[#525252] dark:text-[#A3A3A3] leading-relaxed">
+          <p className="text-xs sm:text-sm text-[#262626] dark:text-[#D4D4D4] leading-relaxed">
             UK VAT (Value Added Tax) is charged at three rates depending on the type of goods or service. Here is how to calculate each:
           </p>
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 text-xs">
             <div className="p-4 rounded-xl bg-[#FAFAFA] dark:bg-[#151515] border border-[#E5E5E5] dark:border-[#2A2A2A] space-y-2">
               <h3 className="font-bold text-[#111111] dark:text-[#F5F5F5]">Adding 20% VAT</h3>
-              <p className="text-[#525252] dark:text-[#A3A3A3] leading-relaxed">Multiply the net price by <strong>1.20</strong>. Example: £500 net × 1.20 = £600 gross. VAT amount = £100.</p>
+              <p className="text-[#262626] dark:text-[#D4D4D4] leading-relaxed">Multiply the net price by <strong>1.20</strong>. Example: £500 net × 1.20 = £600 gross. VAT amount = £100.</p>
             </div>
             <div className="p-4 rounded-xl bg-[#FAFAFA] dark:bg-[#151515] border border-[#E5E5E5] dark:border-[#2A2A2A] space-y-2">
               <h3 className="font-bold text-[#111111] dark:text-[#F5F5F5]">Removing 20% VAT</h3>
-              <p className="text-[#525252] dark:text-[#A3A3A3] leading-relaxed">Divide the gross price by <strong>1.20</strong>. Example: £600 gross ÷ 1.20 = £500 net. Do not subtract 20% directly — that gives the wrong answer.</p>
+              <p className="text-[#262626] dark:text-[#D4D4D4] leading-relaxed">Divide the gross price by <strong>1.20</strong>. Example: £600 gross ÷ 1.20 = £500 net. Do not subtract 20% directly — that gives the wrong answer.</p>
             </div>
             <div className="p-4 rounded-xl bg-[#FAFAFA] dark:bg-[#151515] border border-[#E5E5E5] dark:border-[#2A2A2A] space-y-2">
               <h3 className="font-bold text-[#111111] dark:text-[#F5F5F5]">Adding 5% Reduced VAT</h3>
-              <p className="text-[#525252] dark:text-[#A3A3A3] leading-relaxed">Multiply the net price by <strong>1.05</strong>. To remove 5% VAT from a gross price, divide by <strong>1.05</strong>.</p>
+              <p className="text-[#262626] dark:text-[#D4D4D4] leading-relaxed">Multiply the net price by <strong>1.05</strong>. To remove 5% VAT from a gross price, divide by <strong>1.05</strong>.</p>
             </div>
           </div>
         </section>
 
         <section className="space-y-3">
           <h2 className="text-lg sm:text-xl font-bold text-[#111111] dark:text-[#F5F5F5]">
-            UK VAT rates explained (2025/26)
+            UK VAT rates explained (2026/27)
           </h2>
           <div className="space-y-3 text-xs sm:text-sm">
             <div className="p-4 rounded-xl bg-[#FAFAFA] dark:bg-[#151515] border border-[#E5E5E5] dark:border-[#2A2A2A]">
               <h3 className="font-bold text-[#111111] dark:text-[#F5F5F5] mb-1">Standard Rate — 20%</h3>
-              <p className="text-[#525252] dark:text-[#A3A3A3] leading-relaxed">The standard rate of 20% applies to most goods and services sold in the UK, including electronics, adult clothing, alcohol, tobacco, most professional services, software, and restaurant meals.</p>
+              <p className="text-[#262626] dark:text-[#D4D4D4] leading-relaxed">The standard rate of 20% applies to most goods and services sold in the UK, including electronics, adult clothing, alcohol, tobacco, most professional services, software, and restaurant meals.</p>
             </div>
             <div className="p-4 rounded-xl bg-[#FAFAFA] dark:bg-[#151515] border border-[#E5E5E5] dark:border-[#2A2A2A]">
               <h3 className="font-bold text-[#111111] dark:text-[#F5F5F5] mb-1">Reduced Rate — 5%</h3>
-              <p className="text-[#525252] dark:text-[#A3A3A3] leading-relaxed">The 5% reduced rate applies to domestic gas and electricity, children's car seats, mobility aids for elderly people, some health products and maternity pads, and certain residential property renovation work.</p>
+              <p className="text-[#262626] dark:text-[#D4D4D4] leading-relaxed">The 5% reduced rate applies to domestic gas and electricity, children's car seats, mobility aids for elderly people, some health products and maternity pads, and certain residential property renovation work.</p>
             </div>
             <div className="p-4 rounded-xl bg-[#FAFAFA] dark:bg-[#151515] border border-[#E5E5E5] dark:border-[#2A2A2A]">
               <h3 className="font-bold text-[#111111] dark:text-[#F5F5F5] mb-1">Zero Rate — 0%</h3>
-              <p className="text-[#525252] dark:text-[#A3A3A3] leading-relaxed">Zero-rated goods are still VAT-taxable, but the rate is 0%. This includes most food and drink for human consumption, children's clothing and shoes, books, newspapers and magazines, public transport fares, and prescription medicines.</p>
+              <p className="text-[#262626] dark:text-[#D4D4D4] leading-relaxed">Zero-rated goods are still VAT-taxable, but the rate is 0%. This includes most food and drink for human consumption, children's clothing and shoes, books, newspapers and magazines, public transport fares, and prescription medicines.</p>
             </div>
           </div>
         </section>
@@ -124,7 +124,7 @@ export const VatCalculatorPage: React.FC = () => {
         </section>
       </div>
 
-      <FaqAccordion items={VAT_FAQS} />
+      <FaqAccordion items={VAT_FAQS} badge="VAT Knowledge Base" subtitle="Clear answers to common questions about UK VAT." />
       <DisclaimerNotice />
     </div>
   );

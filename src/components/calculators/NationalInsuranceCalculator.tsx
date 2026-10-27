@@ -1,3 +1,4 @@
+import { formatGBP } from '../../utils/format';
 import React, { useState, useMemo } from 'react';
 import { NationalInsuranceInput, PayFrequency, TaxYear } from '../../types';
 import { calculateNationalInsuranceContributions } from '../../utils/calculations';
@@ -10,7 +11,7 @@ export const NationalInsuranceCalculator: React.FC = () => {
   const [input, setInput] = useState<NationalInsuranceInput>({
     grossPay: 36000,
     payFrequency: 'annual',
-    taxYear: '2025_26',
+    taxYear: '2026_27',
     salarySacrifice: 0,
     niCategory: 'A',
   });
@@ -20,10 +21,10 @@ export const NationalInsuranceCalculator: React.FC = () => {
   const copyText = `PayWise UK National Insurance Calculation:
 Tax Year: ${result.taxYearLabel}
 Category: ${result.categoryLabel}
-Gross Annual Pay: £${result.grossPayAnnual.toLocaleString('en-GB', { minimumFractionDigits: 2 })}
-Estimated Annual Employee NI: £${result.employeeNiAnnual.toLocaleString('en-GB', { minimumFractionDigits: 2 })}
-Estimated Monthly Employee NI: £${result.employeeNiMonthly.toLocaleString('en-GB', { minimumFractionDigits: 2 })}
-Estimated Weekly Employee NI: £${result.employeeNiWeekly.toLocaleString('en-GB', { minimumFractionDigits: 2 })}
+Gross Annual Pay: ${formatGBP(result.grossPayAnnual)}
+Estimated Annual Employee NI: ${formatGBP(result.employeeNiAnnual)}
+Estimated Monthly Employee NI: ${formatGBP(result.employeeNiMonthly)}
+Estimated Weekly Employee NI: ${formatGBP(result.employeeNiWeekly)}
 Effective Employee NI Rate: ${result.effectiveNiRate.toFixed(2)}%
 Calculated via PayWise UK (https://paywiseuk.vercel.app/national-insurance-calculator)`;
 
@@ -44,7 +45,7 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/national-insurance-calcu
         <div className="space-y-4">
           {/* Tax Year Select */}
           <div>
-            <label htmlFor="ni-tax-year" className="block text-xs font-bold uppercase tracking-wider text-[#525252] dark:text-[#A3A3A3] mb-1.5">
+            <label htmlFor="ni-tax-year" className="block text-xs font-bold uppercase tracking-wider text-[#262626] dark:text-[#D4D4D4] mb-1.5">
               Tax Year
             </label>
             <select
@@ -53,15 +54,15 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/national-insurance-calcu
               onChange={(e) => setInput({ ...input, taxYear: e.target.value as TaxYear })}
               className="block w-full rounded-xl border border-[#E5E5E5] dark:border-[#333333] bg-[#FAFAFA] dark:bg-[#121212] px-3.5 py-2.5 text-sm font-semibold text-[#111111] dark:text-[#F5F5F5] focus:outline-none focus:ring-2 focus:ring-[#059669]"
             >
-              <option value="2025_26">2025 / 2026 (Current - 8% Main Rate)</option>
+              <option value="2025_26">2025 / 2026 (8% Main Rate)</option>
               <option value="2024_25">2024 / 2025 (8% Main Rate)</option>
-              <option value="2026_27">2026 / 2027 (Forecast)</option>
+              <option value="2026_27">2026 / 2027 (Current)</option>
             </select>
           </div>
 
           {/* Pay Frequency Toggle */}
           <div>
-            <label className="block text-xs font-bold uppercase tracking-wider text-[#525252] dark:text-[#A3A3A3] mb-1.5">
+            <label className="block text-xs font-bold uppercase tracking-wider text-[#262626] dark:text-[#D4D4D4] mb-1.5">
               Pay Frequency
             </label>
             <div className="grid grid-cols-3 gap-2">
@@ -73,7 +74,7 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/national-insurance-calcu
                   className={`py-2 px-3 rounded-xl text-xs font-bold capitalize transition-colors ${
                     input.payFrequency === freq
                       ? 'bg-[#111111] dark:bg-[#F5F5F5] text-white dark:text-[#111111]'
-                      : 'border border-[#E5E5E5] dark:border-[#333333] bg-[#FAFAFA] dark:bg-[#121212] text-[#525252] dark:text-[#A3A3A3]'
+                      : 'border border-[#E5E5E5] dark:border-[#333333] bg-[#FAFAFA] dark:bg-[#121212] text-[#262626] dark:text-[#D4D4D4]'
                   }`}
                 >
                   {freq}
@@ -85,11 +86,11 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/national-insurance-calcu
           {/* Gross Pay Input */}
           <div>
             <div className="flex items-center justify-between mb-1.5">
-              <label htmlFor="ni-gross-pay" className="block text-xs font-bold uppercase tracking-wider text-[#525252] dark:text-[#A3A3A3]">
+              <label htmlFor="ni-gross-pay" className="block text-xs font-bold uppercase tracking-wider text-[#262626] dark:text-[#D4D4D4]">
                 Gross Pay ({input.payFrequency})
               </label>
               <span className="text-xs font-extrabold text-[#059669] dark:text-[#10B981]">
-                £{(input.grossPay || 0).toLocaleString('en-GB')}
+                {formatGBP((input.grossPay || 0))}
               </span>
             </div>
             <div className="relative">
@@ -108,7 +109,7 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/national-insurance-calcu
 
           {/* NI Category Letter */}
           <div>
-            <label htmlFor="ni-category-select" className="block text-xs font-bold uppercase tracking-wider text-[#525252] dark:text-[#A3A3A3] mb-1.5">
+            <label htmlFor="ni-category-select" className="block text-xs font-bold uppercase tracking-wider text-[#262626] dark:text-[#D4D4D4] mb-1.5">
               National Insurance Category
             </label>
             <select
@@ -129,11 +130,11 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/national-insurance-calcu
           {/* Salary Sacrifice deduction */}
           <div className="pt-2 border-t border-[#E5E5E5] dark:border-[#2A2A2A]">
             <div className="flex items-center justify-between mb-1.5">
-              <label htmlFor="ni-salary-sacrifice" className="block text-xs font-bold uppercase tracking-wider text-[#525252] dark:text-[#A3A3A3]">
+              <label htmlFor="ni-salary-sacrifice" className="block text-xs font-bold uppercase tracking-wider text-[#262626] dark:text-[#D4D4D4]">
                 Annual Salary Sacrifice (£)
               </label>
-              <span className="text-xs font-bold text-[#525252] dark:text-[#A3A3A3]">
-                £{(input.salarySacrifice || 0).toLocaleString('en-GB')}
+              <span className="text-xs font-bold text-[#262626] dark:text-[#D4D4D4]">
+                {formatGBP((input.salarySacrifice || 0))}
               </span>
             </div>
             <div className="relative">
@@ -164,19 +165,19 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/national-insurance-calcu
               <span className="w-2 h-2 rounded-full bg-[#059669] dark:bg-[#10B981]" />
               Employee Class 1 NI Due
             </span>
-            <span className="text-xs text-[#525252] dark:text-[#A3A3A3] font-semibold tabular-nums">{result.categoryLabel}</span>
+            <span className="text-xs text-[#262626] dark:text-[#D4D4D4] font-semibold tabular-nums">{result.categoryLabel}</span>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-12 gap-6 items-center mb-6">
             <div className="sm:col-span-8 space-y-1">
               <div className="text-3xl sm:text-5xl font-black text-[#111111] dark:text-[#F5F5F5] flex items-baseline gap-1 tracking-tight">
                 <AnimatedNumber value={result.employeeNiAnnual} prefix="£" decimals={2} className="text-[#111111] dark:text-[#F5F5F5]" />
-                <span className="text-base font-semibold text-[#525252] dark:text-[#A3A3A3] ml-2">/ year</span>
+                <span className="text-base font-semibold text-[#262626] dark:text-[#D4D4D4] ml-2">/ year</span>
               </div>
-              <p className="text-xs sm:text-sm text-[#525252] dark:text-[#A3A3A3] flex items-center gap-1.5 pt-1">
+              <p className="text-xs sm:text-sm text-[#262626] dark:text-[#D4D4D4] flex items-center gap-1.5 pt-1">
                 <TrendingDown className="w-4 h-4 text-[#059669] dark:text-[#10B981] shrink-0" />
                 <span>
-                  Deducted as <strong className="text-[#111111] dark:text-[#F5F5F5]">£{result.employeeNiMonthly.toFixed(2)}/month</strong> or £{result.employeeNiWeekly.toFixed(2)}/week
+                  Deducted as <strong className="text-[#111111] dark:text-[#F5F5F5]">{formatGBP(result.employeeNiMonthly)}/month</strong> or {formatGBP(result.employeeNiWeekly)}/week
                 </span>
               </p>
             </div>
@@ -194,21 +195,21 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/national-insurance-calcu
           {/* Quick Metrics Grid */}
           <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 pt-5 border-t border-[#E5E5E5] dark:border-[#2A2A2A]">
             <div className="bg-white dark:bg-[#111111] p-3 rounded-xl border border-[#E5E5E5] dark:border-[#2A2A2A] shadow-2xs">
-              <span className="text-2xs uppercase text-[#525252] dark:text-[#A3A3A3] font-bold block truncate">Monthly Deduction</span>
+              <span className="text-2xs uppercase text-[#262626] dark:text-[#D4D4D4] font-bold block truncate">Monthly Deduction</span>
               <p className="text-base sm:text-lg font-black text-[#111111] dark:text-[#F5F5F5] mt-0.5 tabular-nums">
                 £{result.employeeNiMonthly.toLocaleString('en-GB', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
               </p>
             </div>
 
             <div className="bg-white dark:bg-[#111111] p-3 rounded-xl border border-[#E5E5E5] dark:border-[#2A2A2A] shadow-2xs">
-              <span className="text-2xs uppercase text-[#525252] dark:text-[#A3A3A3] font-bold block truncate">Weekly Deduction</span>
+              <span className="text-2xs uppercase text-[#262626] dark:text-[#D4D4D4] font-bold block truncate">Weekly Deduction</span>
               <p className="text-base sm:text-lg font-black text-[#111111] dark:text-[#F5F5F5] mt-0.5 tabular-nums">
                 £{result.employeeNiWeekly.toLocaleString('en-GB', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
               </p>
             </div>
 
             <div className="bg-white dark:bg-[#111111] p-3 rounded-xl border border-[#E5E5E5] dark:border-[#2A2A2A] shadow-2xs col-span-2 sm:col-span-1">
-              <span className="text-2xs uppercase text-[#525252] dark:text-[#A3A3A3] font-bold block truncate">Effective NI Rate</span>
+              <span className="text-2xs uppercase text-[#262626] dark:text-[#D4D4D4] font-bold block truncate">Effective NI Rate</span>
               <p className="text-base sm:text-lg font-black text-[#059669] dark:text-[#10B981] mt-0.5 tabular-nums">
                 {result.effectiveNiRate.toFixed(2)}%
               </p>
@@ -223,7 +224,7 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/national-insurance-calcu
               <Layers className="w-4 h-4 text-[#059669] dark:text-[#10B981]" />
               National Insurance Threshold Breakdown
             </h3>
-            <span className="text-xs text-[#525252] dark:text-[#A3A3A3]">
+            <span className="text-xs text-[#262626] dark:text-[#D4D4D4]">
               Class 1 Employee Schedule
             </span>
           </div>
@@ -231,7 +232,7 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/national-insurance-calcu
           <div className="overflow-x-auto">
             <table className="w-full text-left text-xs sm:text-sm">
               <thead>
-                <tr className="border-b border-[#E5E5E5] dark:border-[#2A2A2A] text-2xs uppercase tracking-wider text-[#525252] dark:text-[#A3A3A3]">
+                <tr className="border-b border-[#E5E5E5] dark:border-[#2A2A2A] text-2xs uppercase tracking-wider text-[#262626] dark:text-[#D4D4D4]">
                   <th className="py-2.5 font-bold">Earnings Band</th>
                   <th className="py-2.5 font-bold">Rate</th>
                   <th className="py-2.5 font-bold text-right">Annual Earnings</th>
@@ -242,10 +243,10 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/national-insurance-calcu
                 {result.niBands.map((band, idx) => (
                   <tr key={idx} className="text-[#111111] dark:text-[#F5F5F5]">
                     <td className="py-2.5 font-medium">{band.name}</td>
-                    <td className="py-2.5 text-[#525252] dark:text-[#A3A3A3]">{(band.rate * 100).toFixed(1)}%</td>
-                    <td className="py-2.5 text-right font-medium">£{band.earningsInBand.toLocaleString('en-GB', { minimumFractionDigits: 2 })}</td>
+                    <td className="py-2.5 text-[#262626] dark:text-[#D4D4D4]">{(band.rate * 100).toFixed(1)}%</td>
+                    <td className="py-2.5 text-right font-medium">{formatGBP(band.earningsInBand)}</td>
                     <td className="py-2.5 text-right font-bold text-[#111111] dark:text-[#F5F5F5]">
-                      £{band.niPaid.toLocaleString('en-GB', { minimumFractionDigits: 2 })}
+                      {formatGBP(band.niPaid)}
                     </td>
                   </tr>
                 ))}
@@ -254,7 +255,7 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/national-insurance-calcu
                 <tr className="border-t-2 border-[#E5E5E5] dark:border-[#2A2A2A] font-bold text-[#111111] dark:text-[#F5F5F5]">
                   <td colSpan={3} className="py-3 text-right">Total Employee National Insurance:</td>
                   <td className="py-3 text-right text-base text-[#059669] dark:text-[#10B981]">
-                    £{result.employeeNiAnnual.toLocaleString('en-GB', { minimumFractionDigits: 2 })}
+                    {formatGBP(result.employeeNiAnnual)}
                   </td>
                 </tr>
               </tfoot>

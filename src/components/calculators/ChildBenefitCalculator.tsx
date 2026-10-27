@@ -1,3 +1,4 @@
+import { formatGBP } from '../../utils/format';
 import React, { useState, useMemo } from 'react';
 import { ChildBenefitInput, TaxYear } from '../../types';
 import { calculateChildBenefit } from '../../utils/calculations';
@@ -10,7 +11,7 @@ export const ChildBenefitCalculator: React.FC = () => {
   const [input, setInput] = useState<ChildBenefitInput>({
     numberOfChildren: 2,
     higherEarnerIncome: 55000,
-    taxYear: '2025_26',
+    taxYear: '2026_27',
     claimingBenefit: true,
   });
 
@@ -23,16 +24,16 @@ export const ChildBenefitCalculator: React.FC = () => {
     setInput({
       numberOfChildren: 2,
       higherEarnerIncome: 55000,
-      taxYear: '2025_26',
+      taxYear: '2026_27',
       claimingBenefit: true,
     });
   };
 
   const fmt = (n: number) =>
-    '£' + n.toLocaleString('en-GB', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+    formatGBP(n);
 
   const fmtInt = (n: number) =>
-    '£' + Math.round(n).toLocaleString('en-GB');
+    formatGBP(Math.round(n), 0);
 
   const taxYears: { value: TaxYear; label: string }[] = [
     { value: '2025_26', label: '2025/26' },
@@ -80,7 +81,7 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/child-benefit-calculator
           <button
             type="button"
             onClick={handleReset}
-            className="inline-flex items-center gap-1 text-xs font-semibold text-[#525252] hover:text-[#111111] dark:text-[#A3A3A3] dark:hover:text-[#F5F5F5] transition-colors p-1.5 rounded-lg hover:bg-[#F5F5F5] dark:hover:bg-[#222222]"
+            className="inline-flex items-center gap-1 text-xs font-semibold text-[#262626] hover:text-[#111111] dark:text-[#D4D4D4] dark:hover:text-[#F5F5F5] transition-colors p-1.5 rounded-lg hover:bg-[#F5F5F5] dark:hover:bg-[#222222]"
           >
             <RotateCcw className="w-3.5 h-3.5" />
             Reset
@@ -106,7 +107,7 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/child-benefit-calculator
               </button>
               <div className="flex-1 text-center">
                 <span className="text-3xl font-black text-[#111111] dark:text-[#F5F5F5]">{input.numberOfChildren}</span>
-                <span className="text-sm text-[#525252] dark:text-[#A3A3A3] ml-1">{input.numberOfChildren === 1 ? 'child' : 'children'}</span>
+                <span className="text-sm text-[#262626] dark:text-[#D4D4D4] ml-1">{input.numberOfChildren === 1 ? 'child' : 'children'}</span>
               </div>
               <button
                 type="button"
@@ -125,7 +126,7 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/child-benefit-calculator
                   className={`w-9 h-9 rounded-xl text-xs font-bold border transition-all ${
                     input.numberOfChildren === n
                       ? 'bg-[#059669] text-white border-[#059669]'
-                      : 'bg-white dark:bg-[#151515] border-[#E5E5E5] dark:border-[#303030] text-[#525252] dark:text-[#A3A3A3] hover:border-[#059669]/50'
+                      : 'bg-white dark:bg-[#151515] border-[#E5E5E5] dark:border-[#303030] text-[#262626] dark:text-[#D4D4D4] hover:border-[#059669]/50'
                   }`}
                 >
                   {n}
@@ -143,7 +144,7 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/child-benefit-calculator
               <Tooltip content="Adjusted Net Income is your gross income minus pension contributions and Gift Aid donations. It is the figure HMRC uses to calculate the HICBC. If you make pension contributions, your adjusted net income will be lower than your gross salary." title="Adjusted Net Income" />
             </div>
             <div className="relative">
-              <span className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3.5 text-[#525252] dark:text-[#A3A3A3] font-bold text-base">£</span>
+              <span className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3.5 text-[#262626] dark:text-[#D4D4D4] font-bold text-base">£</span>
               <input
                 type="number"
                 min="0"
@@ -167,7 +168,7 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/child-benefit-calculator
                   className={`px-2.5 py-1 rounded-lg text-2xs font-bold border transition-all ${
                     input.higherEarnerIncome === v
                       ? 'bg-[#059669] text-white border-[#059669]'
-                      : 'bg-white dark:bg-[#151515] border-[#E5E5E5] dark:border-[#303030] text-[#525252] dark:text-[#A3A3A3] hover:border-[#059669]/50'
+                      : 'bg-white dark:bg-[#151515] border-[#E5E5E5] dark:border-[#303030] text-[#262626] dark:text-[#D4D4D4] hover:border-[#059669]/50'
                   }`}
                 >
                   {v >= 1000 ? `£${v / 1000}k` : `£${v}`}
@@ -210,7 +211,7 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/child-benefit-calculator
               {/* Key figures */}
               <div className="grid grid-cols-3 gap-3 mb-6">
                 <div className="rounded-xl p-4 border border-[#E5E5E5] dark:border-[#2A2A2A] bg-[#FAFAFA] dark:bg-[#151515] text-center">
-                  <p className="text-2xs font-bold uppercase tracking-wider text-[#525252] dark:text-[#A3A3A3] mb-1">Gross Annual</p>
+                  <p className="text-2xs font-bold uppercase tracking-wider text-[#262626] dark:text-[#D4D4D4] mb-1">Gross Annual</p>
                   <p className="text-base font-black text-[#111111] dark:text-[#F5F5F5] tabular-nums">
                     <AnimatedNumber value={result.totalAnnualBenefit} prefix="£" decimals={2} />
                   </p>
@@ -231,7 +232,7 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/child-benefit-calculator
 
               {/* Detailed breakdown */}
               <div className="space-y-2 mb-5">
-                <p className="text-xs font-bold uppercase tracking-wider text-[#525252] dark:text-[#A3A3A3] mb-2">Full Breakdown</p>
+                <p className="text-xs font-bold uppercase tracking-wider text-[#262626] dark:text-[#D4D4D4] mb-2">Full Breakdown</p>
                 {[
                   { label: `First child (${fmt(result.firstChildWeeklyRate)}/wk × 52)`, value: result.firstChildWeeklyRate * 52, positive: true },
                   ...(result.numberOfChildren > 1 ? [{
@@ -240,12 +241,12 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/child-benefit-calculator
                     positive: true
                   }] : []),
                   { label: 'Total Gross Child Benefit (annual)', value: result.totalAnnualBenefit, positive: true, bold: true },
-                  ...(result.isAboveThreshold ? [{ label: `HICBC — ${result.chargePercent.toFixed(0)}% clawback (income £${result.higherEarnerIncome.toLocaleString('en-GB')})`, value: result.hicbcAnnual, positive: false, bold: false }] : []),
+                  ...(result.isAboveThreshold ? [{ label: `HICBC — ${result.chargePercent.toFixed(0)}% clawback (income ${formatGBP(result.higherEarnerIncome)})`, value: result.hicbcAnnual, positive: false, bold: false }] : []),
                   { label: 'Net Child Benefit (annual)', value: result.netAnnualBenefit, positive: true, bold: true, green: true },
                   { label: 'Net Child Benefit (monthly)', value: result.netMonthlyBenefit, positive: true, bold: false, green: true },
                 ].map((item, i) => (
                   <div key={i} className={`flex items-center justify-between py-2 px-3 rounded-lg border text-xs ${item.bold ? 'bg-[#F5F5F5] dark:bg-[#111111] border-[#E5E5E5] dark:border-[#2A2A2A] font-bold' : 'bg-white dark:bg-[#171717] border-[#F0F0F0] dark:border-[#222222]'}`}>
-                    <span className="text-[#525252] dark:text-[#A3A3A3]">{item.label}</span>
+                    <span className="text-[#262626] dark:text-[#D4D4D4]">{item.label}</span>
                     <span className={`font-black tabular-nums ${item.green ? 'text-[#059669] dark:text-[#10B981]' : !item.positive ? 'text-rose-600 dark:text-rose-400' : 'text-[#111111] dark:text-[#F5F5F5]'}`}>
                       {!item.positive ? '-' : ''}{fmt(item.value)}
                     </span>
@@ -256,7 +257,7 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/child-benefit-calculator
               {/* HICBC taper visualiser */}
               {result.isAboveThreshold && (
                 <div className="rounded-xl bg-[#FAFAFA] dark:bg-[#111111] border border-[#E5E5E5] dark:border-[#2A2A2A] p-4 mb-5">
-                  <div className="flex justify-between text-2xs text-[#525252] dark:text-[#A3A3A3] mb-2">
+                  <div className="flex justify-between text-2xs text-[#262626] dark:text-[#D4D4D4] mb-2">
                     <span>£60,000 threshold</span>
                     <span>{result.chargePercent.toFixed(0)}% charged back</span>
                     <span>£80,000 full charge</span>
@@ -268,7 +269,7 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/child-benefit-calculator
                     />
                   </div>
                   <p className="text-2xs text-[#737373] dark:text-[#666666] mt-2 text-center">
-                    Your income is £{(result.higherEarnerIncome - result.hicbcThreshold).toLocaleString('en-GB')} above the threshold
+                    Your income is {formatGBP((result.higherEarnerIncome - result.hicbcThreshold))} above the threshold
                   </p>
                 </div>
               )}
@@ -285,7 +286,7 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/child-benefit-calculator
                   { label: 'Each additional child', weekly: result.additionalChildWeeklyRate, annual: result.additionalChildWeeklyRate * 52 },
                 ].map((row) => (
                   <div key={row.label} className="flex items-center justify-between p-2.5 rounded-lg bg-[#FAFAFA] dark:bg-[#151515] border border-[#E5E5E5] dark:border-[#2A2A2A]">
-                    <span className="text-[#525252] dark:text-[#A3A3A3]">{row.label}</span>
+                    <span className="text-[#262626] dark:text-[#D4D4D4]">{row.label}</span>
                     <div className="text-right">
                       <span className="font-black text-[#059669] dark:text-[#10B981]">{fmt(row.weekly)}/wk</span>
                       <span className="text-[#737373] dark:text-[#666666] ml-2">({fmt(row.annual)}/yr)</span>
@@ -298,7 +299,7 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/child-benefit-calculator
         ) : (
           <div className="rounded-2xl bg-white dark:bg-[#171717] border border-[#E5E5E5] dark:border-[#2A2A2A] p-8 text-center shadow-[0_8px_30px_rgba(0,0,0,0.06)] dark:shadow-[0_10px_35px_rgba(0,0,0,0.35)]">
             <Heart className="w-8 h-8 text-[#E5E5E5] dark:text-[#2A2A2A] mx-auto mb-3" />
-            <p className="text-sm font-semibold text-[#525252] dark:text-[#A3A3A3]">Enter the number of children and household income to calculate Child Benefit.</p>
+            <p className="text-sm font-semibold text-[#262626] dark:text-[#D4D4D4]">Enter the number of children and household income to calculate Child Benefit.</p>
           </div>
         )}
       </div>

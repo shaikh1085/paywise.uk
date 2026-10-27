@@ -70,7 +70,7 @@ export const TaxYearUpdateBanner: React.FC = () => {
       aria-label="Tax Year Update Notice"
       className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-3 pb-1"
     >
-      <div className="flex items-start justify-between gap-3 p-3.5 sm:p-4 rounded-2xl bg-[#F5F5F5] dark:bg-[#171717] border border-[#E5E5E5] dark:border-[#2A2A2A] text-xs sm:text-sm text-[#525252] dark:text-[#A3A3A3] shadow-xs">
+      <div className="flex items-start justify-between gap-3 p-3.5 sm:p-4 rounded-2xl bg-[#F5F5F5] dark:bg-[#171717] border border-[#E5E5E5] dark:border-[#2A2A2A] text-xs sm:text-sm text-[#262626] dark:text-[#D4D4D4] shadow-xs">
         <div className="flex items-start gap-3 min-w-0">
           <div className="p-2 rounded-xl bg-white dark:bg-[#222222] border border-[#E5E5E5] dark:border-[#2A2A2A] text-[#B45309] dark:text-[#FBBF24] shrink-0">
             {isNowActive ? (
@@ -88,7 +88,7 @@ export const TaxYearUpdateBanner: React.FC = () => {
                 {forecastInfo.formattedYear}
               </span>
             </div>
-            <p className="text-xs text-[#525252] dark:text-[#A3A3A3] leading-relaxed">
+            <p className="text-xs text-[#262626] dark:text-[#D4D4D4] leading-relaxed">
               {isNowActive ? (
                 <>
                   The <strong className="text-[#111111] dark:text-[#F5F5F5]">{forecastInfo.formattedYear}</strong> tax year is now active. Please verify all tax rates and thresholds against official HMRC sources before relying on &apos;Current&apos; figures for that year.
@@ -106,7 +106,7 @@ export const TaxYearUpdateBanner: React.FC = () => {
           type="button"
           onClick={handleDismiss}
           aria-label="Dismiss tax year reminder banner"
-          className="p-1.5 rounded-lg text-[#737373] hover:text-[#111111] dark:text-[#A3A3A3] dark:hover:text-[#F5F5F5] hover:bg-white dark:hover:bg-[#222222] border border-transparent hover:border-[#E5E5E5] dark:hover:border-[#2A2A2A] transition-colors shrink-0"
+          className="p-1.5 rounded-lg text-[#737373] hover:text-[#111111] dark:text-[#D4D4D4] dark:hover:text-[#F5F5F5] hover:bg-white dark:hover:bg-[#222222] border border-transparent hover:border-[#E5E5E5] dark:hover:border-[#2A2A2A] transition-colors shrink-0"
         >
           <X className="w-4 h-4" />
         </button>

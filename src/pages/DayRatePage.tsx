@@ -45,7 +45,7 @@ export const DayRatePage: React.FC = () => {
         <h1 className="text-2xl sm:text-4xl font-black text-[#111111] dark:text-[#F5F5F5] tracking-tight">
           Day Rate to Salary Calculator UK
         </h1>
-        <p className="text-xs sm:text-sm text-[#525252] dark:text-[#A3A3A3] leading-relaxed">
+        <p className="text-xs sm:text-sm text-[#262626] dark:text-[#D4D4D4] leading-relaxed">
           Convert your contractor daily rate into an equivalent permanent gross salary and net monthly take-home pay, taking into account billable working days, annual leave, bank holidays, and business expenses.
         </p>
       </div>
@@ -58,7 +58,7 @@ export const DayRatePage: React.FC = () => {
           <h2 className="text-lg sm:text-xl font-bold text-[#111111] dark:text-[#F5F5F5] mb-2">
             How Contractor Day Rates Compare to Permanent UK Salaries
           </h2>
-          <p className="text-xs sm:text-sm text-[#525252] dark:text-[#A3A3A3] leading-relaxed">
+          <p className="text-xs sm:text-sm text-[#262626] dark:text-[#D4D4D4] leading-relaxed">
             When transitioning from permanent employment to contracting in the UK, daily contract rates appear substantially higher at first glance. However, contractors do not receive statutory benefits such as paid annual leave, paid bank holidays, sick pay, or employer pension contributions.
           </p>
         </div>
@@ -66,21 +66,21 @@ export const DayRatePage: React.FC = () => {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs sm:text-sm">
           <div className="p-4 rounded-xl bg-[#FAFAFA] dark:bg-[#151515] border border-[#E5E5E5] dark:border-[#2A2A2A] space-y-1.5">
             <h3 className="font-bold text-[#111111] dark:text-[#F5F5F5]">Billable Days in a Year</h3>
-            <p className="text-[#525252] dark:text-[#A3A3A3] text-xs leading-relaxed">
+            <p className="text-[#262626] dark:text-[#D4D4D4] text-xs leading-relaxed">
               A standard working year has 260 weekdays (52 weeks x 5 days). After deducting 8 UK bank holidays and 25–30 days of annual leave and bench time, full-time contractors typically bill 220 to 230 days per year.
             </p>
           </div>
 
           <div className="p-4 rounded-xl bg-[#FAFAFA] dark:bg-[#151515] border border-[#E5E5E5] dark:border-[#2A2A2A] space-y-1.5">
             <h3 className="font-bold text-[#111111] dark:text-[#F5F5F5]">Business Expenses & Overheads</h3>
-            <p className="text-[#525252] dark:text-[#A3A3A3] text-xs leading-relaxed">
+            <p className="text-[#262626] dark:text-[#D4D4D4] text-xs leading-relaxed">
               Operating as a contractor involves costs for professional indemnity insurance, accountancy fees, software licenses, equipment, and self-funded training.
             </p>
           </div>
 
           <div className="p-4 rounded-xl bg-[#FAFAFA] dark:bg-[#151515] border border-[#E5E5E5] dark:border-[#2A2A2A] space-y-1.5">
             <h3 className="font-bold text-[#111111] dark:text-[#F5F5F5]">Pensions & Sick Leave</h3>
-            <p className="text-[#525252] dark:text-[#A3A3A3] text-xs leading-relaxed">
+            <p className="text-[#262626] dark:text-[#D4D4D4] text-xs leading-relaxed">
               Without employer auto-enrolment contributions (minimum 3%), contractors must self-fund private pension contributions and emergency cash buffers for unpaid sick leave.
             </p>
           </div>
@@ -116,7 +116,7 @@ export const DayRatePage: React.FC = () => {
         </div>
       </div>
 
-      <FaqAccordion items={DAY_RATE_FAQS} />
+      <FaqAccordion items={DAY_RATE_FAQS} badge="Day Rate Knowledge Base" subtitle="Clear answers to common questions about UK day rates and take-home pay." />
       <DisclaimerNotice />
     </div>
   );

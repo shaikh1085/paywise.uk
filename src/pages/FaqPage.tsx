@@ -60,7 +60,7 @@ export const FaqPage: React.FC = () => {
         <h1 className="text-2xl sm:text-4xl font-black text-[#111111] dark:text-[#F5F5F5] tracking-tight">
           UK Salary Calculator FAQs
         </h1>
-        <p className="text-xs sm:text-sm text-[#525252] dark:text-[#A3A3A3] leading-relaxed">
+        <p className="text-xs sm:text-sm text-[#262626] dark:text-[#D4D4D4] leading-relaxed">
           Find clear answers to UK salary calculator questions about take-home pay, Income Tax, National Insurance, pensions and student loans.
         </p>
       </div>
@@ -84,7 +84,7 @@ export const FaqPage: React.FC = () => {
           className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-colors ${
             activeCategory === 'all'
               ? 'bg-[#111111] dark:bg-white text-white dark:text-[#111111]'
-              : 'bg-[#F5F5F5] dark:bg-[#1A1A1A] text-[#525252] dark:text-[#A3A3A3] hover:bg-[#E5E5E5] dark:hover:bg-[#2A2A2A]'
+              : 'bg-[#F5F5F5] dark:bg-[#1A1A1A] text-[#262626] dark:text-[#D4D4D4] hover:bg-[#E5E5E5] dark:hover:bg-[#2A2A2A]'
           }`}
         >
           All Questions ({allFaqs.length})
@@ -96,7 +96,7 @@ export const FaqPage: React.FC = () => {
             className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-colors ${
               activeCategory === group.category
                 ? 'bg-[#111111] dark:bg-white text-white dark:text-[#111111]'
-                : 'bg-[#F5F5F5] dark:bg-[#1A1A1A] text-[#525252] dark:text-[#A3A3A3] hover:bg-[#E5E5E5] dark:hover:bg-[#2A2A2A]'
+                : 'bg-[#F5F5F5] dark:bg-[#1A1A1A] text-[#262626] dark:text-[#D4D4D4] hover:bg-[#E5E5E5] dark:hover:bg-[#2A2A2A]'
             }`}
           >
             {group.title}
@@ -107,7 +107,7 @@ export const FaqPage: React.FC = () => {
       {/* FAQ Groups List */}
       <div className="space-y-8">
         {displayedGroups.length === 0 ? (
-          <div className="p-8 text-center rounded-2xl border border-[#E5E5E5] dark:border-[#2A2A2A] bg-white dark:bg-[#171717] text-xs sm:text-sm text-[#525252] dark:text-[#A3A3A3]">
+          <div className="p-8 text-center rounded-2xl border border-[#E5E5E5] dark:border-[#2A2A2A] bg-white dark:bg-[#171717] text-xs sm:text-sm text-[#262626] dark:text-[#D4D4D4]">
             No matching questions found for "{searchQuery}". Try searching for terms like "Tax", "Pension", "Threshold", or "Plan 2".
           </div>
         ) : (
@@ -116,7 +116,7 @@ export const FaqPage: React.FC = () => {
               <h2 className="text-lg sm:text-xl font-bold text-[#111111] dark:text-[#F5F5F5] tracking-tight">
                 {group.title}
               </h2>
-              <FaqAccordion items={group.items} />
+              <FaqAccordion items={group.items} title={`Frequently Asked Questions about ${group.title}`} badge={`${group.title} Knowledge Base`} subtitle={`Clear answers to common questions about ${group.title.toLowerCase()}.`} />
             </div>
           ))
         )}

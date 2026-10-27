@@ -1,3 +1,4 @@
+import { formatGBP } from '../../utils/format';
 import React, { useState, useMemo } from 'react';
 import {
   NetToGrossInput,
@@ -27,7 +28,7 @@ export const NetToGrossCalculator: React.FC = () => {
   const [input, setInput] = useState<NetToGrossInput>({
     desiredNet: 3000,
     netFrequency: 'monthly',
-    taxYear: '2025_26',
+    taxYear: '2026_27',
     region: 'england_ni',
     taxCode: '1257L',
     pensionPercentage: 0,
@@ -46,7 +47,7 @@ export const NetToGrossCalculator: React.FC = () => {
     setInput({
       desiredNet: 3000,
       netFrequency: 'monthly',
-      taxYear: '2025_26',
+      taxYear: '2026_27',
       region: 'england_ni',
       taxCode: '1257L',
       pensionPercentage: 0,
@@ -63,7 +64,7 @@ export const NetToGrossCalculator: React.FC = () => {
     });
 
   const fmtWhole = (n: number | undefined | null) =>
-    '£' + Math.round(typeof n === 'number' && !isNaN(n) ? n : 0).toLocaleString('en-GB');
+    formatGBP(typeof n === 'number' && !isNaN(n) ? Math.round(n) : 0, 0);
 
   const copyText = result
     ? `PayWise UK Net to Gross Salary Calculator:
@@ -144,7 +145,7 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/net-to-gross-calculator)
           <button
             type="button"
             onClick={handleReset}
-            className="inline-flex items-center gap-1 text-xs font-semibold text-[#525252] hover:text-[#111111] dark:text-[#A3A3A3] dark:hover:text-[#F5F5F5] transition-colors p-1.5 rounded-lg hover:bg-[#F5F5F5] dark:hover:bg-[#222222]"
+            className="inline-flex items-center gap-1 text-xs font-semibold text-[#262626] hover:text-[#111111] dark:text-[#D4D4D4] dark:hover:text-[#F5F5F5] transition-colors p-1.5 rounded-lg hover:bg-[#F5F5F5] dark:hover:bg-[#222222]"
             title="Reset to defaults"
           >
             <RotateCcw className="w-3.5 h-3.5" />
@@ -165,7 +166,7 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/net-to-gross-calculator)
               />
             </div>
             <div className="relative">
-              <span className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3.5 text-[#525252] dark:text-[#A3A3A3] font-bold text-base">
+              <span className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3.5 text-[#262626] dark:text-[#D4D4D4] font-bold text-base">
                 £
               </span>
               <input
@@ -197,7 +198,7 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/net-to-gross-calculator)
                   className={`text-2xs font-semibold px-2.5 py-1 rounded-md border transition-all ${
                     input.desiredNet === preset.amount && input.netFrequency === preset.freq
                       ? 'bg-[#059669] text-white border-[#059669]'
-                      : 'bg-[#FAFAFA] dark:bg-[#1C1C1C] border-[#E5E5E5] dark:border-[#303030] text-[#525252] dark:text-[#A3A3A3] hover:border-[#059669]/50 hover:text-[#111111] dark:hover:text-[#F5F5F5]'
+                      : 'bg-[#FAFAFA] dark:bg-[#1C1C1C] border-[#E5E5E5] dark:border-[#303030] text-[#262626] dark:text-[#D4D4D4] hover:border-[#059669]/50 hover:text-[#111111] dark:hover:text-[#F5F5F5]'
                   }`}
                 >
                   {preset.label}
@@ -286,7 +287,7 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/net-to-gross-calculator)
             <button
               type="button"
               onClick={() => setShowAdvanced(!showAdvanced)}
-              className="w-full flex items-center justify-between py-2 text-xs font-bold text-[#525252] hover:text-[#111111] dark:text-[#A3A3A3] dark:hover:text-[#F5F5F5] transition-colors"
+              className="w-full flex items-center justify-between py-2 text-xs font-bold text-[#262626] hover:text-[#111111] dark:text-[#D4D4D4] dark:hover:text-[#F5F5F5] transition-colors"
             >
               <span className="flex items-center gap-1.5">
                 <Sliders className="w-3.5 h-3.5 text-[#059669] dark:text-[#10B981]" />
@@ -377,7 +378,7 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/net-to-gross-calculator)
                           className={`py-1.5 px-2 rounded-lg text-2xs font-bold border text-center ${
                             input.pensionType === pt.value
                               ? 'bg-[#059669] text-white border-[#059669]'
-                              : 'bg-white dark:bg-[#151515] border-[#E5E5E5] dark:border-[#303030] text-[#525252] dark:text-[#A3A3A3]'
+                              : 'bg-white dark:bg-[#151515] border-[#E5E5E5] dark:border-[#303030] text-[#262626] dark:text-[#D4D4D4]'
                           }`}
                         >
                           {pt.label}
@@ -428,7 +429,7 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/net-to-gross-calculator)
                   <CheckCircle2 className="w-3.5 h-3.5" />
                   Required Gross Salary
                 </span>
-                <span className="text-2xs text-[#525252] dark:text-[#A3A3A3]">
+                <span className="text-2xs text-[#262626] dark:text-[#D4D4D4]">
                   To take home <strong>{fmt(input.desiredNet)}</strong> {input.netFrequency}
                 </span>
               </div>
@@ -438,7 +439,7 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/net-to-gross-calculator)
                 <p className="text-3xl sm:text-5xl font-black text-[#111111] dark:text-[#F5F5F5] tracking-tight tabular-nums">
                   <AnimatedNumber value={result.grossAnnual} prefix="£" decimals={2} />
                 </p>
-                <p className="text-xs text-[#525252] dark:text-[#A3A3A3] mt-1 font-medium">
+                <p className="text-xs text-[#262626] dark:text-[#D4D4D4] mt-1 font-medium">
                   Annual Gross Salary ({fmt(result.grossMonthly)}/month · {fmt(result.grossWeekly)}/week)
                 </p>
               </div>
@@ -446,7 +447,7 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/net-to-gross-calculator)
               {/* Quick Period Cards */}
               <div className="grid grid-cols-3 gap-3 mb-6">
                 <div className="p-3.5 rounded-xl bg-[#FAFAFA] dark:bg-[#151515] border border-[#E5E5E5] dark:border-[#2A2A2A]">
-                  <p className="text-2xs font-bold uppercase tracking-wider text-[#525252] dark:text-[#A3A3A3] mb-0.5">
+                  <p className="text-2xs font-bold uppercase tracking-wider text-[#262626] dark:text-[#D4D4D4] mb-0.5">
                     Gross Monthly
                   </p>
                   <p className="text-sm sm:text-base font-extrabold text-[#111111] dark:text-[#F5F5F5] tabular-nums">
@@ -454,7 +455,7 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/net-to-gross-calculator)
                   </p>
                 </div>
                 <div className="p-3.5 rounded-xl bg-[#FAFAFA] dark:bg-[#151515] border border-[#E5E5E5] dark:border-[#2A2A2A]">
-                  <p className="text-2xs font-bold uppercase tracking-wider text-[#525252] dark:text-[#A3A3A3] mb-0.5">
+                  <p className="text-2xs font-bold uppercase tracking-wider text-[#262626] dark:text-[#D4D4D4] mb-0.5">
                     Total Deductions
                   </p>
                   <p className="text-sm sm:text-base font-extrabold text-[#DC2626] dark:text-[#F87171] tabular-nums">
@@ -484,30 +485,30 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/net-to-gross-calculator)
                       {fmt(result.grossAnnual)}
                     </span>
                   </div>
-                  <div className="px-4 py-2 flex justify-between text-[#525252] dark:text-[#A3A3A3] bg-white dark:bg-[#171717]">
+                  <div className="px-4 py-2 flex justify-between text-[#262626] dark:text-[#D4D4D4] bg-white dark:bg-[#171717]">
                     <span>Income Tax (PAYE)</span>
                     <span className="tabular-nums font-semibold text-[#DC2626] dark:text-[#F87171]">
                       -{fmt(result.incomeTaxAnnual)}
                     </span>
                   </div>
-                  <div className="px-4 py-2 flex justify-between text-[#525252] dark:text-[#A3A3A3] bg-white dark:bg-[#171717]">
+                  <div className="px-4 py-2 flex justify-between text-[#262626] dark:text-[#D4D4D4] bg-white dark:bg-[#171717]">
                     <span>National Insurance (Class 1)</span>
                     <span className="tabular-nums font-semibold text-[#DC2626] dark:text-[#F87171]">
                       -{fmt(result.employeeNiAnnual)}
                     </span>
                   </div>
                   {result.pensionAnnual > 0 && (
-                    <div className="px-4 py-2 flex justify-between text-[#525252] dark:text-[#A3A3A3] bg-white dark:bg-[#171717]">
+                    <div className="px-4 py-2 flex justify-between text-[#262626] dark:text-[#D4D4D4] bg-white dark:bg-[#171717]">
                       <span>Pension Contribution ({input.pensionPercentage}%)</span>
-                      <span className="tabular-nums font-semibold text-[#525252] dark:text-[#A3A3A3]">
+                      <span className="tabular-nums font-semibold text-[#262626] dark:text-[#D4D4D4]">
                         -{fmt(result.pensionAnnual)}
                       </span>
                     </div>
                   )}
                   {result.studentLoanAnnual > 0 && (
-                    <div className="px-4 py-2 flex justify-between text-[#525252] dark:text-[#A3A3A3] bg-white dark:bg-[#171717]">
+                    <div className="px-4 py-2 flex justify-between text-[#262626] dark:text-[#D4D4D4] bg-white dark:bg-[#171717]">
                       <span>Student Loan Repayment</span>
-                      <span className="tabular-nums font-semibold text-[#525252] dark:text-[#A3A3A3]">
+                      <span className="tabular-nums font-semibold text-[#262626] dark:text-[#D4D4D4]">
                         -{fmt(result.studentLoanAnnual)}
                       </span>
                     </div>
@@ -520,7 +521,7 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/net-to-gross-calculator)
               </div>
 
               {/* Effective Rate Footer */}
-              <div className="rounded-xl bg-[#F5F5F5] dark:bg-[#111111] border border-[#E5E5E5] dark:border-[#2A2A2A] p-4 text-xs text-[#525252] dark:text-[#A3A3A3] flex flex-wrap justify-between items-center gap-2">
+              <div className="rounded-xl bg-[#F5F5F5] dark:bg-[#111111] border border-[#E5E5E5] dark:border-[#2A2A2A] p-4 text-xs text-[#262626] dark:text-[#D4D4D4] flex flex-wrap justify-between items-center gap-2">
                 <span>
                   Effective Deductions Rate:{' '}
                   <strong className="text-[#111111] dark:text-[#F5F5F5]">
@@ -571,15 +572,15 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/net-to-gross-calculator)
                           }
                         >
                           <td className="py-2 pr-3 whitespace-nowrap">
-                            £{row.targetMonthly.toLocaleString('en-GB')}/mo (£{row.targetAnnual.toLocaleString('en-GB')}/yr)
+                            {formatGBP(row.targetMonthly)}/mo ({formatGBP(row.targetAnnual)}/yr)
                           </td>
                           <td className="py-2 px-3 text-right tabular-nums whitespace-nowrap font-bold">
                             {fmtWhole(row.grossAnnual)}
                           </td>
-                          <td className="py-2 px-3 text-right tabular-nums whitespace-nowrap text-[#525252] dark:text-[#A3A3A3]">
+                          <td className="py-2 px-3 text-right tabular-nums whitespace-nowrap text-[#262626] dark:text-[#D4D4D4]">
                             {fmtWhole(row.grossMonthly)}
                           </td>
-                          <td className="py-2 pl-3 text-right tabular-nums whitespace-nowrap text-[#525252] dark:text-[#A3A3A3]">
+                          <td className="py-2 pl-3 text-right tabular-nums whitespace-nowrap text-[#262626] dark:text-[#D4D4D4]">
                             {row.effectiveRate.toFixed(1)}%
                           </td>
                         </tr>
@@ -591,7 +592,7 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/net-to-gross-calculator)
             </div>
           </>
         ) : (
-          <div className="rounded-2xl bg-white dark:bg-[#171717] border border-[#E5E5E5] dark:border-[#2A2A2A] p-8 text-center text-[#525252] dark:text-[#A3A3A3]">
+          <div className="rounded-2xl bg-white dark:bg-[#171717] border border-[#E5E5E5] dark:border-[#2A2A2A] p-8 text-center text-[#262626] dark:text-[#D4D4D4]">
             <Wallet className="w-8 h-8 mx-auto mb-2 text-[#737373]" />
             <p className="text-sm font-semibold">Enter a desired take-home pay amount to calculate required gross salary.</p>
           </div>
