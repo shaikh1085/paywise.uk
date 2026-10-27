@@ -28,7 +28,7 @@ export const RedundancyCalculator: React.FC = () => {
     yearsOfService: 8,
     weeklyPay: 850,
     useStatutoryWeeklyCap: true,
-    statutoryWeeklyCap: 700,
+    statutoryWeeklyCap: 751,
     enhancedRedundancyPay: 10000,
     annualSalary: 44200,
     region: 'england_ni',
@@ -179,7 +179,7 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/redundancy-pay-calculato
               </label>
               <Tooltip
                 title="Statutory Weekly Cap"
-                content="Under UK law, statutory weekly pay is capped at £700 per week. Employers can choose to pay more under enhanced redundancy policies."
+                content="Under UK law, statutory weekly pay is capped at £751 per week from 6 April 2026. Employers can choose to pay more under enhanced redundancy policies."
               />
             </div>
             {input.useStatutoryWeeklyCap && input.weeklyPay > input.statutoryWeeklyCap && (

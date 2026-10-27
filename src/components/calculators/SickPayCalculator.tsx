@@ -54,11 +54,11 @@ export const SickPayCalculator: React.FC = () => {
 
   const copyText = `PayWise UK — Statutory Sick Pay (SSP) Calculation:
 Tax Year: ${result.taxYearLabel}
-Average Weekly Earnings: ${fmt(result.averageWeeklyEarnings)} (LEL: ${fmt(result.lowerEarningsLimit)}/wk)
+Average Weekly Earnings: ${fmt(result.averageWeeklyEarnings)}${input.taxYear === '2026_27' ? ' (no LEL from 6 April 2026)' : ` (LEL: ${fmt(result.lowerEarningsLimit)}/wk)`}
 Eligibility: ${result.isEligible ? 'Eligible for SSP' : 'Ineligible (Earnings below LEL)'}
 ---
 Qualifying Working Days Off: ${result.qualifyingDaysOff} days (${result.qualifyingDaysPerWeek} days/wk contract)
-Unpaid Waiting Days: ${result.waitingDays} days (${result.isLinkedPeriod ? '0 waiting days — Linked sickness within 8 weeks' : 'First 3 qualifying days unpaid'})
+Unpaid Waiting Days: ${result.waitingDays} days (${input.taxYear === '2026_27' ? 'No waiting days from 6 April 2026' : result.isLinkedPeriod ? '0 waiting days — Linked sickness within 8 weeks' : 'First 3 qualifying days unpaid'})
 Payable SSP Days: ${result.payableDays} days (${result.payableWeeks.toFixed(1)} weeks)
 Daily SSP Rate: ${fmt(result.dailySspRate)}/day (${fmt(result.weeklySspRate)}/week)
 Total Statutory Sick Pay: ${fmt(result.totalSspAmount)}
@@ -348,7 +348,9 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/statutory-sick-pay-calcu
               </p>
               <p className="font-normal opacity-90 leading-relaxed">
                 {result.isEligible
-                  ? `Your average weekly earnings of ${fmt(result.averageWeeklyEarnings)} meet the ${fmt(result.lowerEarningsLimit)}/week Lower Earnings Limit threshold.`
+                  ? input.taxYear === '2026_27'
+                  ? `From 6 April 2026 there is no lower earnings limit and no waiting days for SSP; your rate is the lower of £123.25/week or 80% of your average weekly earnings.`
+                  : `Your average weekly earnings of ${fmt(result.averageWeeklyEarnings)} meet the ${fmt(result.lowerEarningsLimit)}/week Lower Earnings Limit threshold.`
                   : result.ineligibilityReason}
               </p>
             </div>
@@ -388,7 +390,7 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/statutory-sick-pay-calcu
                 {result.waitingDays} <span className="text-xs font-semibold text-[#262626] dark:text-[#D4D4D4]">unpaid</span>
               </p>
               <p className="text-2xs text-[#737373] dark:text-[#888888] mt-1">
-                {result.isLinkedPeriod ? 'Linked: 0 waiting days' : 'First 3 days unpaid'}
+                {input.taxYear === '2026_27' ? 'No waiting days from 6 April 2026' : result.isLinkedPeriod ? 'Linked: 0 waiting days' : 'First 3 days unpaid'}
               </p>
             </div>
           </div>
