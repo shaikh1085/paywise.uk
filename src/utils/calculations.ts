@@ -1313,13 +1313,14 @@ export function calculateSelfEmployedTax(input: SelfEmployedInput): SelfEmployed
   }
 
   // 3. Class 2 National Insurance
-  // Small Profits Threshold (SPT) = £6,725
-  // Weekly rate = £3.45 -> £179.40 per year
-  // From 2024/25 onwards: If profits >= £6,725, Class 2 is treated as paid (£0 payable).
-  // If profits < £6,725, £0 payable unless paying voluntary Class 2 to maintain State Pension credits.
-  const smallProfitsThreshold = 6725;
-  const class2WeeklyRate = 3.45;
-  const class2AnnualVoluntary = class2WeeklyRate * 52; // £179.40
+  // Small Profits Threshold and voluntary Class 2 rate by tax year:
+  // 2026/27: SPT £7,105, voluntary £3.65/wk (£189.80/yr). Earlier years: £6,725 / £3.45.
+  // If profits >= SPT, Class 2 is treated as paid (£0 payable).
+  // If profits < SPT, £0 payable unless paying voluntary Class 2 to maintain State Pension credits.
+  const is2026_27Class2 = input.taxYear === '2026_27';
+  const smallProfitsThreshold = is2026_27Class2 ? 7105 : 6725;
+  const class2WeeklyRate = is2026_27Class2 ? 3.65 : 3.45;
+  const class2AnnualVoluntary = class2WeeklyRate * 52;
   let class2NiAnnual = 0;
   let class2StatusText = '';
 
@@ -1328,10 +1329,10 @@ export function calculateSelfEmployedTax(input: SelfEmployedInput): SelfEmployed
     class2StatusText = 'Treated as paid (£0.00) — State Pension credit secured';
   } else if (input.payVoluntaryClass2IfUnderThreshold) {
     class2NiAnnual = class2AnnualVoluntary;
-    class2StatusText = 'Voluntary contribution (£3.45/wk) — protects State Pension';
+    class2StatusText = `Voluntary contribution (£${class2WeeklyRate.toFixed(2)}/wk) — protects State Pension`;
   } else {
     class2NiAnnual = 0;
-    class2StatusText = 'Exempt (£0.00) — profits below £6,725 Small Profits Threshold';
+    class2StatusText = `Exempt (£0.00) — profits below £${smallProfitsThreshold.toLocaleString('en-GB')} Small Profits Threshold`;
   }
 
   // 4. Class 4 National Insurance
@@ -1724,7 +1725,7 @@ export function calculateRedundancyPay(input: RedundancyPayInput): RedundancyPay
   const yearsOfService = Math.min(20, rawYears);
   
   const actualWeeklyPay = Math.max(0, input.weeklyPay || 0);
-  const statutoryWeeklyCap = input.statutoryWeeklyCap || 700;
+  const statutoryWeeklyCap = input.statutoryWeeklyCap || 751; // 2026/27 cap (Employment Rights (Increase of Limits) Order 2026); £719 in 2025/26, £700 in 2024/25
   const effectiveWeeklyPay = input.useStatutoryWeeklyCap
     ? Math.min(actualWeeklyPay, statutoryWeeklyCap)
     : actualWeeklyPay;
@@ -2806,17 +2807,22 @@ export function calculateSickPay(input: SickPayInput): SickPayResult {
   const isLinkedPeriod = Boolean(input.isLinkedPeriod);
   const occupationalWeeklyPay = Math.max(0, input.occupationalWeeklyPay || 0);
 
-  const isEligible = awe >= sspConfig.lowerEarningsLimit;
+  // 2026/27 SSP rules changed on 6 April 2026 (Employment Rights Act 2025):
+  // no lower earnings limit, no waiting days, and SSP is the lower of the
+  // flat weekly rate or 80% of average weekly earnings. Earlier years keep
+  // the old rules (LEL gate + 3 waiting days, unless linked).
+  const is2026_27 = taxYear === '2026_27';
+  const isEligible = is2026_27 ? true : awe >= sspConfig.lowerEarningsLimit;
   let ineligibilityReason: string | undefined;
   if (!isEligible) {
     ineligibilityReason = `Average weekly earnings (${formatGBP(awe)}) are below the statutory Lower Earnings Limit (${formatGBP(sspConfig.lowerEarningsLimit)}/wk). To qualify for SSP, your weekly earnings before tax must be at or above this threshold.`;
   }
 
-  const weeklySspRate = sspConfig.weeklyRate;
+  const weeklySspRate = is2026_27 ? Math.min(sspConfig.weeklyRate, 0.8 * awe) : sspConfig.weeklyRate;
   const dailySspRate = weeklySspRate / qDaysPerWeek;
 
-  // Waiting days: 3 qualifying days unpaid, unless linked period within 8 weeks
-  const waitingDays = isLinkedPeriod ? 0 : Math.min(3, qDaysOff);
+  // Waiting days: 3 qualifying days unpaid, unless linked period within 8 weeks (pre-2026/27 only)
+  const waitingDays = is2026_27 ? 0 : (isLinkedPeriod ? 0 : Math.min(3, qDaysOff));
 
   const maxPayableDays = sspConfig.maxWeeks * qDaysPerWeek; // e.g. 28 * 5 = 140 days
   const unconstrainedPayableDays = Math.max(0, qDaysOff - waitingDays);

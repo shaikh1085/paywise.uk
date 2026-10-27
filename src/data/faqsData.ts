@@ -692,7 +692,7 @@ export const BONUS_TAX_FAQS: FaqItem[] = [
 export const REDUNDANCY_FAQS: FaqItem[] = [
   {
     question: 'How is UK statutory redundancy pay calculated?',
-    answer: 'Statutory redundancy pay in the UK is calculated using three variables: your age, full completed years of service (capped at 20 years), and your weekly pay (capped at £700 per week for 2024/25 and 2025/26). You receive: 0.5 week\'s pay for each full year of service under age 22; 1.0 week\'s pay for each full year aged 22 to 40; and 1.5 weeks\' pay for each full year aged 41 and older.',
+    answer: 'Statutory redundancy pay in the UK is calculated using three variables: your age, full completed years of service (capped at 20 years), and your weekly pay (capped at £751 per week from 6 April 2026; £719 in 2025/26, £700 in 2024/25). You receive: 0.5 week\'s pay for each full year of service under age 22; 1.0 week\'s pay for each full year aged 22 to 40; and 1.5 weeks\' pay for each full year aged 41 and older.',
   },
   {
     question: 'Is redundancy pay tax-free in the UK?',
@@ -700,7 +700,7 @@ export const REDUNDANCY_FAQS: FaqItem[] = [
   },
   {
     question: 'How much redundancy pay am I entitled to?',
-    answer: 'To qualify for statutory redundancy pay, you must be an employee with at least 2 continuous years of service with your employer. The statutory minimum is capped at 20 years of service and £700 per week, giving a statutory maximum of £21,000. However, if your contract of employment includes enhanced redundancy terms, your employer may pay significantly more.',
+    answer: 'To qualify for statutory redundancy pay, you must be an employee with at least 2 continuous years of service with your employer. The statutory minimum is capped at 20 years of service and £751 per week from 6 April 2026, giving a statutory maximum of £22,530. However, if your contract of employment includes enhanced redundancy terms, your employer may pay significantly more.',
   },
   {
     question: 'Is redundancy pay subject to National Insurance?',
@@ -979,7 +979,7 @@ export const SICK_PAY_FAQS: FaqItem[] = [
   },
   {
     question: 'Who is eligible for Statutory Sick Pay?',
-    answer: 'To qualify for SSP you must be classed as an employee/worker who has done work for an employer, earn an average of at least £129 per week (the Lower Earnings Limit for 2026/27) before tax, and have been sick for at least 4 consecutive days in a row (including non-working days). You must also tell your employer within their deadline or within 7 days.',
+    answer: 'From 6 April 2026 (Employment Rights Act 2025) there is no lower earnings limit for SSP and no waiting days: SSP is paid from the first qualifying day at the lower of £123.25 per week or 80% of your average weekly earnings. You must be classed as an employee/worker who has done work for an employer, and you must tell your employer within their deadline or within 7 days. (Before 6 April 2026, SSP required average earnings of at least the Lower Earnings Limit and 3 unpaid waiting days.)',
   },
   {
     question: 'What are SSP waiting days?',

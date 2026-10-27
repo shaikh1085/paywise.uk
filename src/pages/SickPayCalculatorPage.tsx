@@ -69,9 +69,9 @@ export const SickPayCalculatorPage: React.FC = () => {
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs sm:text-sm">
           <div className="p-4 rounded-xl bg-[#FAFAFA] dark:bg-[#151515] border border-[#E5E5E5] dark:border-[#2A2A2A] space-y-1.5">
-            <h3 className="font-bold text-[#111111] dark:text-[#F5F5F5]">Lower Earnings Limit (LEL)</h3>
+            <h3 className="font-bold text-[#111111] dark:text-[#F5F5F5]">No Earnings Limit From April 2026</h3>
             <p className="text-[#262626] dark:text-[#D4D4D4] text-xs leading-relaxed">
-              To qualify for SSP, your average gross weekly earnings (AWE) must be at least £129 per week before tax over the 8 weeks prior to your sickness absence.
+              From 6 April 2026 (Employment Rights Act 2025) there is no lower earnings limit for SSP and no waiting days: SSP is paid from the first qualifying day at the lower of £123.25 per week or 80% of your average weekly earnings over the 8 weeks prior to your sickness absence.
             </p>
           </div>
 

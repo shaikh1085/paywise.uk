@@ -126,7 +126,7 @@ export const RedundancyPayPage: React.FC = () => {
           </p>
           <div className="p-4 rounded-xl bg-[#FAFAFA] dark:bg-[#151515] border border-[#E5E5E5] dark:border-[#2A2A2A] space-y-2 text-xs">
             <p className="text-[#262626] dark:text-[#D4D4D4] leading-relaxed">
-              • <strong>Statutory Redundancy:</strong> The non-negotiable legal floor set by UK employment law, subject to the 20-year service cap and weekly pay cap (£700/week).
+              • <strong>Statutory Redundancy:</strong> The non-negotiable legal floor set by UK employment law, subject to the 20-year service cap and weekly pay cap (£751/week from 6 April 2026).
             </p>
             <p className="text-[#262626] dark:text-[#D4D4D4] leading-relaxed">
               • <strong>Enhanced Redundancy:</strong> Company schemes that may uncap weekly pay, offer higher multiples per year of service (e.g. 2–4 weeks per year), or pay an agreed ex-gratia settlement sum.

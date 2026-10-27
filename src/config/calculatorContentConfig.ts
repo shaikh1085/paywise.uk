@@ -1589,7 +1589,7 @@ export const CALCULATOR_CONTENT_CONFIG: Record<string, CalculatorPageContent> = 
       paragraphs: [
         'To qualify for statutory redundancy pay in the UK, you must be an employee who has worked continuously for your employer for at least 2 full years.',
         'Statutory redundancy is calculated based on age brackets for each completed full year of service: 0.5 week\'s pay for each year under 22; 1.0 week\'s pay for each year aged 22 to 40; and 1.5 weeks\' pay for each year aged 41 and older (capped at 20 years of service).',
-        'Weekly pay is subject to a statutory government cap (£700/week for 2024/25 and updated in 2025/26), setting the maximum statutory payout at £21,000. Redundancy payments up to £30,000 are completely free of Income Tax and National Insurance.',
+        'Weekly pay is subject to a statutory government cap (£751/week from 6 April 2026; £719 in 2025/26, £700 in 2024/25), setting the maximum statutory payout at £22,530. Redundancy payments up to £30,000 are completely free of Income Tax and National Insurance.',
       ],
       steps: [
         {
@@ -1612,21 +1612,21 @@ export const CALCULATOR_CONTENT_CONFIG: Record<string, CalculatorPageContent> = 
     assumptions: [
       'Applies UK statutory redundancy rules under the Employment Rights Act 1996.',
       'Requires a minimum of 2 continuous completed years of service with the same employer.',
-      'Applies statutory weekly pay cap (£700/week) and 20-year maximum service period.',
+      'Applies statutory weekly pay cap (£751/week from 6 April 2026) and 20-year maximum service period.',
       'Applies the statutory £30,000 tax-free exemption threshold for redundancy compensation.',
     ],
     practicalExample: {
       title: 'Practical Example: 45-Year-Old Employee with 10 Years Service',
-      scenario: 'An employee aged 45 with 10 completed years of service earns £800/week (statutory cap £700/week applies).',
+      scenario: 'An employee aged 45 with 10 completed years of service earns £800/week (statutory cap £751/week applies).',
       breakdown: [
         { label: 'Completed Years Aged 41–45 (5 years @ 1.5 wks)', value: '7.5 weeks' },
         { label: 'Completed Years Aged 36–40 (5 years @ 1.0 wk)', value: '5.0 weeks' },
         { label: 'Total Statutory Weeks Entitlement', value: '12.5 weeks' },
-        { label: 'Capped Weekly Pay', value: '£700.00' },
-        { label: 'Total Statutory Redundancy Pay', value: '£8,750.00' },
+        { label: 'Capped Weekly Pay', value: '£751.00' },
+        { label: 'Total Statutory Redundancy Pay', value: '£9,387.50' },
         { label: 'Tax & NI Due (Under £30,000 threshold)', value: '£0.00 (100% Tax-Free)' },
       ],
-      conclusion: 'The employee receives a statutory redundancy payout of £8,750 completely tax-free. Service years are counted ending at the current age: ages 41–45 at 1.5 weeks and ages 36–40 at 1.0 week.',
+      conclusion: 'The employee receives a statutory redundancy payout of £9,387.50 completely tax-free (12.5 weeks × £751 capped weekly pay). Service years are counted ending at the current age: ages 41–45 at 1.5 weeks and ages 36–40 at 1.0 week.',
     },
     faqs: [
       {
@@ -1635,7 +1635,7 @@ export const CALCULATOR_CONTENT_CONFIG: Record<string, CalculatorPageContent> = 
       },
       {
         question: 'What is the UK statutory weekly pay cap for redundancy in 2025/26?',
-        answer: 'The statutory weekly pay cap is set by the UK government (£700 per week for 2024/25 and updated annually each April). If your actual weekly pay is higher, calculations use the capped amount.',
+        answer: 'The statutory weekly pay cap is set by the UK government (£751 per week from 6 April 2026, updated annually each April; £719 in 2025/26). If your actual weekly pay is higher, calculations use the capped amount.',
       },
       {
         question: 'How much redundancy pay is tax-free in the UK?',
@@ -1651,7 +1651,7 @@ export const CALCULATOR_CONTENT_CONFIG: Record<string, CalculatorPageContent> = 
       },
       {
         question: 'What is the maximum statutory redundancy payment in the UK?',
-        answer: 'Because the calculation caps service at 20 years and maximum entitlement at 30 weeks of pay, the maximum statutory redundancy payout is 30 × £700 = £21,000.',
+        answer: 'Because the calculation caps service at 20 years and maximum entitlement at 30 weeks of pay, the maximum statutory redundancy payout is 30 × £751 = £22,530.',
       },
     ],
     relatedCalculators: [
