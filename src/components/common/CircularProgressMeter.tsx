@@ -59,7 +59,7 @@ export const CircularProgressMeter: React.FC<CircularProgressMeterProps> = ({
         <span className="text-base sm:text-lg font-black text-[#111111] dark:text-[#F5F5F5] tabular-nums tracking-tight">
           {safePercentage.toFixed(1)}%
         </span>
-        <span className="text-3xs font-bold uppercase tracking-wider text-[#525252] dark:text-[#A3A3A3]">
+        <span className="text-3xs font-bold uppercase tracking-wider text-[#262626] dark:text-[#D4D4D4]">
           {label}
         </span>
       </div>

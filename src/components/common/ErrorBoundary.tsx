@@ -49,7 +49,7 @@ export class ErrorBoundary extends React.Component<ErrorBoundaryProps, ErrorBoun
               <h2 className="text-lg font-bold text-[#111111] dark:text-[#F5F5F5]">
                 Something went wrong
               </h2>
-              <p className="text-xs text-[#525252] dark:text-[#A3A3A3] leading-relaxed">
+              <p className="text-xs text-[#262626] dark:text-[#D4D4D4] leading-relaxed">
                 An unexpected display issue occurred. You can refresh the calculator or return to the homepage.
               </p>
             </div>

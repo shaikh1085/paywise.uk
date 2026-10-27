@@ -12,7 +12,7 @@ export const Breadcrumbs: React.FC<BreadcrumbsProps> = ({ items }) => {
 
   return (
     <nav aria-label="Breadcrumb" className="mb-4">
-      <ol className="flex items-center flex-wrap gap-1.5 text-xs text-[#525252] dark:text-[#A3A3A3]">
+      <ol className="flex items-center flex-wrap gap-1.5 text-xs text-[#262626] dark:text-[#D4D4D4]">
         <li className="flex items-center">
           <Link
             to="/"

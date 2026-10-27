@@ -1,3 +1,4 @@
+import { formatGBP } from '../../utils/format';
 import React, { useState, useMemo } from 'react';
 import { TeacherInput, StudentLoanPlan } from '../../types';
 import { calculateTeacherSalary } from '../../utils/calculations';
@@ -23,7 +24,7 @@ export const TeacherCalculator: React.FC = () => {
 
   const copyText = `PayWise UK Teacher Pay Calculation:
 Scale: ${result.scaleTitle}
-Gross Annual Salary: £${result.grossSalary.toLocaleString('en-GB')}
+Gross Annual Salary: ${formatGBP(result.grossSalary)}
 Teachers’ Pension (${result.pensionTierRate.toFixed(1)}%): -£${result.pensionAnnual.toLocaleString('en-GB', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
 Income Tax: -£${result.incomeTaxAnnual.toLocaleString('en-GB', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
 National Insurance: -£${result.niAnnual.toLocaleString('en-GB', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
@@ -139,8 +140,8 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/teacher-salary-calculato
               <span className="w-2 h-2 rounded-full bg-[#059669] dark:bg-[#10B981]" />
               Teacher Net Monthly Pay
             </span>
-            <span className="text-xs text-[#525252] dark:text-[#A3A3A3] tabular-nums">
-              Gross: £{result.grossSalary.toLocaleString('en-GB')}/yr
+            <span className="text-xs text-[#262626] dark:text-[#D4D4D4] tabular-nums">
+              Gross: {formatGBP(result.grossSalary)}/yr
             </span>
           </div>
 
@@ -154,7 +155,7 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/teacher-salary-calculato
                   className="text-[#111111] dark:text-[#F5F5F5]"
                 />
               </div>
-              <p className="text-xs sm:text-sm font-medium text-[#525252] dark:text-[#A3A3A3] flex items-center gap-1.5">
+              <p className="text-xs sm:text-sm font-medium text-[#262626] dark:text-[#D4D4D4] flex items-center gap-1.5">
                 <ArrowUpRight className="w-4 h-4 text-[#059669] dark:text-[#10B981] shrink-0" />
                 <span>
                   Net monthly after TPS tier ({result.pensionTierRate.toFixed(1)}%), PAYE tax, & NI
@@ -174,21 +175,21 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/teacher-salary-calculato
 
           <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 pt-5 border-t border-[#E5E5E5] dark:border-[#2A2A2A]">
             <div className="bg-white dark:bg-[#111111] p-3 rounded-xl border border-[#E5E5E5] dark:border-[#2A2A2A] shadow-2xs">
-              <span className="text-2xs uppercase text-[#525252] dark:text-[#A3A3A3] font-bold block truncate">Annual Net Pay</span>
+              <span className="text-2xs uppercase text-[#262626] dark:text-[#D4D4D4] font-bold block truncate">Annual Net Pay</span>
               <p className="text-base sm:text-lg font-black text-[#059669] dark:text-[#10B981] mt-0.5 tabular-nums">
                 £{result.netAnnual.toLocaleString('en-GB', { minimumFractionDigits: 0, maximumFractionDigits: 0 })}
               </p>
             </div>
 
             <div className="bg-white dark:bg-[#111111] p-3 rounded-xl border border-[#E5E5E5] dark:border-[#2A2A2A] shadow-2xs">
-              <span className="text-2xs uppercase text-[#525252] dark:text-[#A3A3A3] font-bold block truncate">Pension Contribution</span>
+              <span className="text-2xs uppercase text-[#262626] dark:text-[#D4D4D4] font-bold block truncate">Pension Contribution</span>
               <p className="text-base sm:text-lg font-black text-[#111111] dark:text-[#F5F5F5] mt-0.5 tabular-nums">
                 -£{result.pensionAnnual.toLocaleString('en-GB', { minimumFractionDigits: 0, maximumFractionDigits: 0 })}/yr
               </p>
             </div>
 
             <div className="bg-white dark:bg-[#111111] p-3 rounded-xl border border-[#E5E5E5] dark:border-[#2A2A2A] shadow-2xs col-span-2 sm:col-span-1">
-              <span className="text-2xs uppercase text-[#525252] dark:text-[#A3A3A3] font-bold block truncate">Gross Scale Pay</span>
+              <span className="text-2xs uppercase text-[#262626] dark:text-[#D4D4D4] font-bold block truncate">Gross Scale Pay</span>
               <p className="text-base sm:text-lg font-black text-[#111111] dark:text-[#F5F5F5] mt-0.5 tabular-nums">
                 £{result.grossSalary.toLocaleString('en-GB', { minimumFractionDigits: 0, maximumFractionDigits: 0 })}
               </p>

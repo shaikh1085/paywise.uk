@@ -1,3 +1,4 @@
+import { formatGBP } from '../../utils/format';
 import React, { useState, useMemo } from 'react';
 import { PensionCompoundInput } from '../../types';
 import { calculatePensionCompound } from '../../utils/calculations';
@@ -25,12 +26,12 @@ export const PensionCalculator: React.FC = () => {
 
   const copyText = `PayWise UK Pension Projection:
 Current Age: ${input.currentAge} | Target Retirement Age: ${input.retirementAge} (${result.yearsToRetirement} years)
-Estimated Pot at Retirement (Nominal): £${result.finalPotNominal.toLocaleString('en-GB')}
-Estimated Pot at Retirement (Inflation-Adjusted Real): £${result.finalPotReal.toLocaleString('en-GB')}
-Estimated Annual Drawdown (4% Rule): £${result.estimatedAnnualDrawdownSafe4Percent.toLocaleString('en-GB')}/year (£${result.estimatedMonthlyDrawdown.toLocaleString('en-GB')}/month)
-Total Personal Contributions: £${result.totalPersonalContributions.toLocaleString('en-GB')}
-Total Employer Contributions: £${result.totalEmployerContributions.toLocaleString('en-GB')}
-Estimated Investment Growth: £${result.totalInvestmentGrowth.toLocaleString('en-GB')}
+Estimated Pot at Retirement (Nominal): ${formatGBP(result.finalPotNominal)}
+Estimated Pot at Retirement (Inflation-Adjusted Real): ${formatGBP(result.finalPotReal)}
+Estimated Annual Drawdown (4% Rule): ${formatGBP(result.estimatedAnnualDrawdownSafe4Percent)}/year (${formatGBP(result.estimatedMonthlyDrawdown)}/month)
+Total Personal Contributions: ${formatGBP(result.totalPersonalContributions)}
+Total Employer Contributions: ${formatGBP(result.totalEmployerContributions)}
+Estimated Investment Growth: ${formatGBP(result.totalInvestmentGrowth)}
 Calculated via PayWise UK (https://paywiseuk.vercel.app/pension-calculator)`;
 
   return (
@@ -82,7 +83,7 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/pension-calculator)`;
                   Current Pension Pot (£)
                 </label>
                 <span className="text-xs font-extrabold text-emerald-600 dark:text-emerald-400">
-                  £{(input.currentPot || 0).toLocaleString('en-GB')}
+                  {formatGBP((input.currentPot || 0))}
                 </span>
               </div>
               <div className="relative">
@@ -104,7 +105,7 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/pension-calculator)`;
                   Annual Gross Salary (£)
                 </label>
                 <span className="text-xs font-extrabold text-emerald-600 dark:text-emerald-400">
-                  £{(input.grossSalary || 0).toLocaleString('en-GB')}
+                  {formatGBP((input.grossSalary || 0))}
                 </span>
               </div>
               <div className="relative">
@@ -204,7 +205,7 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/pension-calculator)`;
                 <span className="w-2 h-2 rounded-full bg-[#059669] dark:bg-[#10B981]" />
                 Projected Pot at Age {input.retirementAge}
               </span>
-              <span className="text-xs text-[#525252] dark:text-[#A3A3A3] tabular-nums">
+              <span className="text-xs text-[#262626] dark:text-[#D4D4D4] tabular-nums">
                 {result.yearsToRetirement} Years Growth Horizon
               </span>
             </div>
@@ -218,7 +219,7 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/pension-calculator)`;
                   className="text-[#111111] dark:text-[#F5F5F5]"
                 />
               </div>
-              <p className="text-xs sm:text-sm font-medium text-[#525252] dark:text-[#A3A3A3] flex items-center gap-1.5">
+              <p className="text-xs sm:text-sm font-medium text-[#262626] dark:text-[#D4D4D4] flex items-center gap-1.5">
                 <ArrowUpRight className="w-4 h-4 text-[#059669] dark:text-[#10B981] shrink-0" />
                 <span>
                   Real purchasing power:{' '}
@@ -232,21 +233,21 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/pension-calculator)`;
 
             <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 pt-5 border-t border-[#E5E5E5] dark:border-[#2A2A2A]">
               <div className="bg-white dark:bg-[#111111] p-3.5 rounded-xl border border-[#E5E5E5] dark:border-[#2A2A2A] shadow-2xs">
-                <span className="text-2xs uppercase text-[#525252] dark:text-[#A3A3A3] font-bold block truncate">Safe 4% Drawdown</span>
+                <span className="text-2xs uppercase text-[#262626] dark:text-[#D4D4D4] font-bold block truncate">Safe 4% Drawdown</span>
                 <p className="text-base sm:text-lg font-black text-[#059669] dark:text-[#10B981] mt-0.5 tabular-nums">
                   £{result.estimatedAnnualDrawdownSafe4Percent.toLocaleString('en-GB', { minimumFractionDigits: 0, maximumFractionDigits: 0 })}/yr
                 </p>
               </div>
 
               <div className="bg-white dark:bg-[#111111] p-3.5 rounded-xl border border-[#E5E5E5] dark:border-[#2A2A2A] shadow-2xs">
-                <span className="text-2xs uppercase text-[#525252] dark:text-[#A3A3A3] font-bold block truncate">Monthly Pension Income</span>
+                <span className="text-2xs uppercase text-[#262626] dark:text-[#D4D4D4] font-bold block truncate">Monthly Pension Income</span>
                 <p className="text-base sm:text-lg font-black text-[#111111] dark:text-[#F5F5F5] mt-0.5 tabular-nums">
                   £{result.estimatedMonthlyDrawdown.toLocaleString('en-GB', { minimumFractionDigits: 0, maximumFractionDigits: 0 })}/mo
                 </p>
               </div>
 
               <div className="bg-white dark:bg-[#111111] p-3.5 rounded-xl border border-[#E5E5E5] dark:border-[#2A2A2A] shadow-2xs col-span-2 sm:col-span-1">
-                <span className="text-2xs uppercase text-[#525252] dark:text-[#A3A3A3] font-bold block truncate">Compound Growth Gain</span>
+                <span className="text-2xs uppercase text-[#262626] dark:text-[#D4D4D4] font-bold block truncate">Compound Growth Gain</span>
                 <p className="text-base sm:text-lg font-black text-[#111111] dark:text-[#F5F5F5] mt-0.5 tabular-nums">
                   £{result.totalInvestmentGrowth.toLocaleString('en-GB', { minimumFractionDigits: 0, maximumFractionDigits: 0 })}
                 </p>

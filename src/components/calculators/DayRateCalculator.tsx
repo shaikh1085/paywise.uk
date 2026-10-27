@@ -50,7 +50,7 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/day-rate-to-salary-calcu
               </span>
             </div>
             <div className="relative">
-              <span className="absolute inset-y-0 left-0 pl-3.5 flex items-center text-[#525252] dark:text-[#A3A3A3] font-bold text-base">£</span>
+              <span className="absolute inset-y-0 left-0 pl-3.5 flex items-center text-[#262626] dark:text-[#D4D4D4] font-bold text-base">£</span>
               <input
                 type="number"
                 id="day-rate-input"
@@ -152,7 +152,7 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/day-rate-to-salary-calcu
               <span className="w-2 h-2 rounded-full bg-[#059669] dark:bg-[#10B981]" />
               Estimated Net Income
             </span>
-            <span className="text-xs text-[#525252] dark:text-[#A3A3A3] tabular-nums">
+            <span className="text-xs text-[#262626] dark:text-[#D4D4D4] tabular-nums">
               Gross: £{result.grossAnnualEquivalent.toLocaleString('en-GB', { maximumFractionDigits: 0 })}/yr
             </span>
           </div>
@@ -167,7 +167,7 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/day-rate-to-salary-calcu
                   className="text-[#111111] dark:text-[#F5F5F5]"
                 />
               </div>
-              <p className="text-xs sm:text-sm font-medium text-[#525252] dark:text-[#A3A3A3] flex items-center gap-1.5">
+              <p className="text-xs sm:text-sm font-medium text-[#262626] dark:text-[#D4D4D4] flex items-center gap-1.5">
                 <ArrowUpRight className="w-4 h-4 text-[#059669] dark:text-[#10B981] shrink-0" />
                 <span>estimated monthly take-home earnings</span>
               </p>
@@ -185,28 +185,28 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/day-rate-to-salary-calcu
 
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5 pt-5 border-t border-[#E5E5E5] dark:border-[#2A2A2A]">
             <div className="bg-[#F5F5F5] dark:bg-[#111111] p-3 rounded-xl border border-[#E5E5E5] dark:border-[#2A2A2A]">
-              <span className="text-2xs uppercase tracking-wider text-[#525252] dark:text-[#A3A3A3] font-bold block truncate">Gross Annual</span>
+              <span className="text-2xs uppercase tracking-wider text-[#262626] dark:text-[#D4D4D4] font-bold block truncate">Gross Annual</span>
               <p className="text-sm sm:text-base font-black text-[#111111] dark:text-[#F5F5F5] mt-0.5 tabular-nums">
                 £{result.grossAnnualEquivalent.toLocaleString('en-GB', { maximumFractionDigits: 0 })}
               </p>
             </div>
 
             <div className="bg-[#F5F5F5] dark:bg-[#111111] p-3 rounded-xl border border-[#E5E5E5] dark:border-[#2A2A2A]">
-              <span className="text-2xs uppercase tracking-wider text-[#525252] dark:text-[#A3A3A3] font-bold block truncate">Net Annual</span>
+              <span className="text-2xs uppercase tracking-wider text-[#262626] dark:text-[#D4D4D4] font-bold block truncate">Net Annual</span>
               <p className="text-sm sm:text-base font-black text-[#059669] dark:text-[#10B981] mt-0.5 tabular-nums">
                 £{result.estimatedNetAnnual.toLocaleString('en-GB', { maximumFractionDigits: 0 })}
               </p>
             </div>
 
             <div className="bg-[#F5F5F5] dark:bg-[#111111] p-3 rounded-xl border border-[#E5E5E5] dark:border-[#2A2A2A]">
-              <span className="text-2xs uppercase tracking-wider text-[#525252] dark:text-[#A3A3A3] font-bold block truncate">Working Days</span>
+              <span className="text-2xs uppercase tracking-wider text-[#262626] dark:text-[#D4D4D4] font-bold block truncate">Working Days</span>
               <p className="text-sm sm:text-base font-black text-[#111111] dark:text-[#F5F5F5] mt-0.5 tabular-nums">
                 {result.totalWorkingDays} days
               </p>
             </div>
 
             <div className="bg-[#F5F5F5] dark:bg-[#111111] p-3 rounded-xl border border-[#E5E5E5] dark:border-[#2A2A2A]">
-              <span className="text-2xs uppercase tracking-wider text-[#525252] dark:text-[#A3A3A3] font-bold block truncate">Gross Equivalent</span>
+              <span className="text-2xs uppercase tracking-wider text-[#262626] dark:text-[#D4D4D4] font-bold block truncate">Gross Equivalent</span>
               <p className="text-sm sm:text-base font-black text-[#059669] dark:text-[#10B981] mt-0.5 tabular-nums">
                 £{result.grossAnnualEquivalent.toLocaleString('en-GB', { maximumFractionDigits: 0 })}
               </p>

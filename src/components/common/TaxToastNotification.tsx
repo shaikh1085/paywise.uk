@@ -139,7 +139,7 @@ export const TaxToastNotification: React.FC<TaxToastNotificationProps> = ({
       </div>
 
       {/* Description & Contextual Tip */}
-      <div className="space-y-2 text-xs text-[#525252] dark:text-[#A3A3A3] pl-1">
+      <div className="space-y-2 text-xs text-[#262626] dark:text-[#D4D4D4] pl-1">
         <p className="leading-relaxed">
           {tip.description}
         </p>

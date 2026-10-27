@@ -1,3 +1,4 @@
+import { formatGBP } from '../../utils/format';
 import React, { useState, useMemo } from 'react';
 import { SecondJobInput, TaxYear, TaxRegion } from '../../types';
 import { calculateSecondJobTax } from '../../utils/calculations';
@@ -23,7 +24,7 @@ export const SecondJobCalculator: React.FC = () => {
   const [input, setInput] = useState<SecondJobInput>({
     mainJobSalary: 35000,
     secondJobSalary: 12000,
-    taxYear: '2025_26',
+    taxYear: '2026_27',
     region: 'england_ni',
     personalAllowanceAppliedToMain: true,
   });
@@ -34,18 +35,18 @@ export const SecondJobCalculator: React.FC = () => {
     setInput({
       mainJobSalary: 35000,
       secondJobSalary: 12000,
-      taxYear: '2025_26',
+      taxYear: '2026_27',
       region: 'england_ni',
       personalAllowanceAppliedToMain: true,
     });
   };
 
   const fmt = (n: number) =>
-    '£' + n.toLocaleString('en-GB', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+    formatGBP(n);
 
   const taxYears: { value: TaxYear; label: string }[] = [
-    { value: '2025_26', label: '2025/26 (Current)' },
-    { value: '2026_27', label: '2026/27 (Forecast)' },
+    { value: '2025_26', label: '2025/26' },
+    { value: '2026_27', label: '2026/27 (Current)' },
     { value: '2024_25', label: '2024/25' },
   ];
 
@@ -107,7 +108,7 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/second-job-tax-calculato
         <div className="space-y-5">
           {/* Quick Presets */}
           <div>
-            <label className="block text-xs font-bold uppercase tracking-wider text-[#737373] dark:text-[#A3A3A3] mb-2 flex items-center gap-1.5">
+            <label className="block text-xs font-bold uppercase tracking-wider text-[#737373] dark:text-[#D4D4D4] mb-2 flex items-center gap-1.5">
               <Sparkles className="w-3.5 h-3.5 text-[#059669] dark:text-[#10B981]" />
               Quick Scenarios
             </label>
@@ -120,7 +121,7 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/second-job-tax-calculato
                   className={`text-xs px-2.5 py-1 rounded-lg border transition-all ${
                     input.mainJobSalary === p.main && input.secondJobSalary === p.second
                       ? 'bg-[#059669]/10 dark:bg-[#10B981]/20 border-[#059669] dark:border-[#10B981] text-[#059669] dark:text-[#10B981] font-bold'
-                      : 'bg-[#FAFAFA] dark:bg-[#151515] border-[#E5E5E5] dark:border-[#303030] text-[#525252] dark:text-[#A3A3A3] hover:border-[#059669]/40'
+                      : 'bg-[#FAFAFA] dark:bg-[#151515] border-[#E5E5E5] dark:border-[#303030] text-[#262626] dark:text-[#D4D4D4] hover:border-[#059669]/40'
                   }`}
                 >
                   {p.label}
@@ -132,7 +133,7 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/second-job-tax-calculato
           {/* Main Job Salary */}
           <div>
             <div className="flex items-center justify-between mb-1.5">
-              <label htmlFor="main-salary-input" className="text-xs font-bold uppercase tracking-wider text-[#737373] dark:text-[#A3A3A3]">
+              <label htmlFor="main-salary-input" className="text-xs font-bold uppercase tracking-wider text-[#737373] dark:text-[#D4D4D4]">
                 Main Job Annual Gross Salary
               </label>
               <span className="text-xs font-bold text-[#059669] dark:text-[#10B981]">
@@ -152,7 +153,7 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/second-job-tax-calculato
                 placeholder="e.g. 35000"
               />
             </div>
-            <p className="mt-1 text-[11px] text-[#737373] dark:text-[#A3A3A3]">
+            <p className="mt-1 text-[11px] text-[#737373] dark:text-[#D4D4D4]">
               Your primary or highest-earning PAYE employment
             </p>
           </div>
@@ -160,7 +161,7 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/second-job-tax-calculato
           {/* Second Job Salary */}
           <div>
             <div className="flex items-center justify-between mb-1.5">
-              <label htmlFor="second-salary-input" className="text-xs font-bold uppercase tracking-wider text-[#737373] dark:text-[#A3A3A3]">
+              <label htmlFor="second-salary-input" className="text-xs font-bold uppercase tracking-wider text-[#737373] dark:text-[#D4D4D4]">
                 Second Job Annual Gross Salary
               </label>
               <span className="text-xs font-bold text-[#059669] dark:text-[#10B981]">
@@ -180,7 +181,7 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/second-job-tax-calculato
                 placeholder="e.g. 12000"
               />
             </div>
-            <p className="mt-1 text-[11px] text-[#737373] dark:text-[#A3A3A3]">
+            <p className="mt-1 text-[11px] text-[#737373] dark:text-[#D4D4D4]">
               Secondary job, weekend shifts, or supplementary employment
             </p>
           </div>
@@ -188,7 +189,7 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/second-job-tax-calculato
           {/* Tax Region & Year */}
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div>
-              <label className="block text-xs font-bold uppercase tracking-wider text-[#737373] dark:text-[#A3A3A3] mb-1.5 flex items-center gap-1">
+              <label className="block text-xs font-bold uppercase tracking-wider text-[#737373] dark:text-[#D4D4D4] mb-1.5 flex items-center gap-1">
                 <span>Tax Region</span>
                 <Tooltip text="Scotland has distinct devolved Income Tax bands (Starter 19%, Intermediate 21%, Higher 42%, etc.). NI rates are uniform UK-wide." />
               </label>
@@ -205,7 +206,7 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/second-job-tax-calculato
                     className={`py-2 rounded-lg text-xs font-bold border transition-all ${
                       (input.region || 'england_ni') === r.key
                         ? 'bg-[#059669] text-white border-[#059669]'
-                        : 'bg-white dark:bg-[#151515] border-[#E5E5E5] dark:border-[#303030] text-[#525252] dark:text-[#A3A3A3] hover:border-[#059669]/50'
+                        : 'bg-white dark:bg-[#151515] border-[#E5E5E5] dark:border-[#303030] text-[#262626] dark:text-[#D4D4D4] hover:border-[#059669]/50'
                     }`}
                   >
                     {r.label}
@@ -215,13 +216,13 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/second-job-tax-calculato
             </div>
 
             <div>
-              <label htmlFor="tax-year-select" className="block text-xs font-bold uppercase tracking-wider text-[#737373] dark:text-[#A3A3A3] mb-1.5 flex items-center gap-1">
+              <label htmlFor="tax-year-select" className="block text-xs font-bold uppercase tracking-wider text-[#737373] dark:text-[#D4D4D4] mb-1.5 flex items-center gap-1">
                 <Calendar className="w-3.5 h-3.5" />
                 Tax Year
               </label>
               <select
                 id="tax-year-select"
-                value={input.taxYear || '2025_26'}
+                value={input.taxYear || '2026_27'}
                 onChange={(e) => setInput((p) => ({ ...p, taxYear: e.target.value as TaxYear }))}
                 className="block w-full rounded-xl border border-[#E5E5E5] dark:border-[#303030] bg-[#FAFAFA] dark:bg-[#151515] px-3 py-2 text-xs font-bold text-[#111111] dark:text-[#F5F5F5] focus:outline-none focus:border-[#059669]"
               >
@@ -242,7 +243,7 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/second-job-tax-calculato
                   <FileText className="w-3.5 h-3.5 text-[#059669] dark:text-[#10B981]" />
                   Apply Personal Allowance to Main Job
                 </label>
-                <p className="text-[11px] text-[#737373] dark:text-[#A3A3A3] leading-relaxed">
+                <p className="text-[11px] text-[#737373] dark:text-[#D4D4D4] leading-relaxed">
                   HMRC standard rule: £12,570 tax-free allowance is applied to Job 1 (tax code 1257L), with Job 2 taxed at flat basic rate (BR code).
                 </p>
               </div>
@@ -336,24 +337,24 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/second-job-tax-calculato
             <span className="text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight text-[#111111] dark:text-[#F5F5F5]">
               <AnimatedNumber value={result.combined.totalTakeHomePay} prefix="£" />
             </span>
-            <span className="text-sm font-semibold text-[#525252] dark:text-[#A3A3A3]">/ year</span>
+            <span className="text-sm font-semibold text-[#262626] dark:text-[#D4D4D4]">/ year</span>
           </div>
 
           <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 pt-5 mt-4 border-t border-[#E5E5E5] dark:border-[#2A2A2A] text-xs">
             <div className="bg-white dark:bg-[#111111] p-3 rounded-xl border border-[#E5E5E5] dark:border-[#2A2A2A] shadow-2xs">
-              <span className="text-[#525252] dark:text-[#A3A3A3] block text-[11px] uppercase font-bold">Monthly Take-Home</span>
+              <span className="text-[#262626] dark:text-[#D4D4D4] block text-[11px] uppercase font-bold">Monthly Take-Home</span>
               <span className="text-sm sm:text-base font-bold text-[#111111] dark:text-[#F5F5F5] tabular-nums mt-0.5 block">
                 {fmt(result.combined.monthlyTakeHome)}
               </span>
             </div>
             <div className="bg-white dark:bg-[#111111] p-3 rounded-xl border border-[#E5E5E5] dark:border-[#2A2A2A] shadow-2xs">
-              <span className="text-[#525252] dark:text-[#A3A3A3] block text-[11px] uppercase font-bold">Weekly Take-Home</span>
+              <span className="text-[#262626] dark:text-[#D4D4D4] block text-[11px] uppercase font-bold">Weekly Take-Home</span>
               <span className="text-sm sm:text-base font-bold text-[#111111] dark:text-[#F5F5F5] tabular-nums mt-0.5 block">
                 {fmt(result.combined.weeklyTakeHome)}
               </span>
             </div>
             <div className="bg-white dark:bg-[#111111] p-3 rounded-xl border border-[#E5E5E5] dark:border-[#2A2A2A] shadow-2xs col-span-2 sm:col-span-1">
-              <span className="text-[#525252] dark:text-[#A3A3A3] block text-[11px] uppercase font-bold">Effective Tax + NI</span>
+              <span className="text-[#262626] dark:text-[#D4D4D4] block text-[11px] uppercase font-bold">Effective Tax + NI</span>
               <span className="text-sm sm:text-base font-bold text-[#059669] dark:text-[#10B981] tabular-nums mt-0.5 block">
                 {result.combined.overallEffectiveTaxRate.toFixed(1)}% overall
               </span>
@@ -367,7 +368,7 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/second-job-tax-calculato
           <div className="rounded-2xl bg-white dark:bg-[#171717] border border-[#E5E5E5] dark:border-[#2A2A2A] p-5 shadow-[0_4px_20px_rgba(0,0,0,0.04)] dark:shadow-[0_4px_20px_rgba(0,0,0,0.2)] space-y-4">
             <div className="flex items-center justify-between pb-3 border-b border-[#E5E5E5] dark:border-[#2A2A2A]">
               <div>
-                <span className="text-xs font-bold uppercase tracking-wider text-[#737373] dark:text-[#A3A3A3] block">
+                <span className="text-xs font-bold uppercase tracking-wider text-[#737373] dark:text-[#D4D4D4] block">
                   Primary Employment
                 </span>
                 <h3 className="text-base font-black text-[#111111] dark:text-[#F5F5F5]">
@@ -381,32 +382,32 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/second-job-tax-calculato
 
             <div className="space-y-2 text-xs">
               <div className="flex justify-between py-1 border-b border-[#F0F0F0] dark:border-[#222222]">
-                <span className="text-[#737373] dark:text-[#A3A3A3]">Gross Salary</span>
+                <span className="text-[#737373] dark:text-[#D4D4D4]">Gross Salary</span>
                 <span className="font-bold text-[#111111] dark:text-[#F5F5F5]">{fmt(result.mainJob.salary)}</span>
               </div>
               <div className="flex justify-between py-1 border-b border-[#F0F0F0] dark:border-[#222222]">
-                <span className="text-[#737373] dark:text-[#A3A3A3]">Personal Allowance</span>
+                <span className="text-[#737373] dark:text-[#D4D4D4]">Personal Allowance</span>
                 <span className="font-bold text-[#059669] dark:text-[#10B981]">{fmt(result.mainJob.personalAllowance)}</span>
               </div>
               <div className="flex justify-between py-1 border-b border-[#F0F0F0] dark:border-[#222222]">
-                <span className="text-[#737373] dark:text-[#A3A3A3]">Income Tax</span>
+                <span className="text-[#737373] dark:text-[#D4D4D4]">Income Tax</span>
                 <span className="font-bold text-rose-600 dark:text-rose-400">-{fmt(result.mainJob.incomeTax)}</span>
               </div>
               <div className="flex justify-between py-1 border-b border-[#F0F0F0] dark:border-[#222222]">
-                <span className="text-[#737373] dark:text-[#A3A3A3]">National Insurance</span>
+                <span className="text-[#737373] dark:text-[#D4D4D4]">National Insurance</span>
                 <span className="font-bold text-rose-600 dark:text-rose-400">-{fmt(result.mainJob.nationalInsurance)}</span>
               </div>
             </div>
 
             <div className="pt-3 border-t border-[#E5E5E5] dark:border-[#2A2A2A] bg-[#FAFAFA] dark:bg-[#141414] -mx-5 -mb-5 p-4 rounded-b-2xl">
-              <span className="text-[11px] font-bold text-[#737373] dark:text-[#A3A3A3] block">
+              <span className="text-[11px] font-bold text-[#737373] dark:text-[#D4D4D4] block">
                 Main Job Net Take-Home
               </span>
               <div className="flex items-baseline justify-between">
                 <span className="text-lg font-black text-[#111111] dark:text-[#F5F5F5]">
                   {fmt(result.mainJob.takeHomePay)}
                 </span>
-                <span className="text-xs font-semibold text-[#737373] dark:text-[#A3A3A3]">
+                <span className="text-xs font-semibold text-[#737373] dark:text-[#D4D4D4]">
                   {fmt(result.mainJob.monthlyTakeHome)}/mo
                 </span>
               </div>
@@ -417,7 +418,7 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/second-job-tax-calculato
           <div className="rounded-2xl bg-white dark:bg-[#171717] border border-[#E5E5E5] dark:border-[#2A2A2A] p-5 shadow-[0_4px_20px_rgba(0,0,0,0.04)] dark:shadow-[0_4px_20px_rgba(0,0,0,0.2)] space-y-4">
             <div className="flex items-center justify-between pb-3 border-b border-[#E5E5E5] dark:border-[#2A2A2A]">
               <div>
-                <span className="text-xs font-bold uppercase tracking-wider text-[#737373] dark:text-[#A3A3A3] block">
+                <span className="text-xs font-bold uppercase tracking-wider text-[#737373] dark:text-[#D4D4D4] block">
                   Secondary Employment
                 </span>
                 <h3 className="text-base font-black text-[#111111] dark:text-[#F5F5F5]">
@@ -431,20 +432,20 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/second-job-tax-calculato
 
             <div className="space-y-2 text-xs">
               <div className="flex justify-between py-1 border-b border-[#F0F0F0] dark:border-[#222222]">
-                <span className="text-[#737373] dark:text-[#A3A3A3]">Gross Salary</span>
+                <span className="text-[#737373] dark:text-[#D4D4D4]">Gross Salary</span>
                 <span className="font-bold text-[#111111] dark:text-[#F5F5F5]">{fmt(result.secondJob.salary)}</span>
               </div>
               <div className="flex justify-between py-1 border-b border-[#F0F0F0] dark:border-[#222222]">
-                <span className="text-[#737373] dark:text-[#A3A3A3]">Personal Allowance</span>
+                <span className="text-[#737373] dark:text-[#D4D4D4]">Personal Allowance</span>
                 <span className="font-bold text-[#059669] dark:text-[#10B981]">{fmt(result.secondJob.personalAllowance)}</span>
               </div>
               <div className="flex justify-between py-1 border-b border-[#F0F0F0] dark:border-[#222222]">
-                <span className="text-[#737373] dark:text-[#A3A3A3]">Income Tax</span>
+                <span className="text-[#737373] dark:text-[#D4D4D4]">Income Tax</span>
                 <span className="font-bold text-rose-600 dark:text-rose-400">-{fmt(result.secondJob.incomeTax)}</span>
               </div>
               <div className="flex justify-between py-1 border-b border-[#F0F0F0] dark:border-[#222222]">
                 <div className="flex items-center gap-1">
-                  <span className="text-[#737373] dark:text-[#A3A3A3]">National Insurance</span>
+                  <span className="text-[#737373] dark:text-[#D4D4D4]">National Insurance</span>
                   <Tooltip text="Class 1 NI is calculated separately per employment. You receive a separate £12,570 Primary Threshold for this job." />
                 </div>
                 <span className="font-bold text-rose-600 dark:text-rose-400">
@@ -454,14 +455,14 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/second-job-tax-calculato
             </div>
 
             <div className="pt-3 border-t border-[#E5E5E5] dark:border-[#2A2A2A] bg-[#FAFAFA] dark:bg-[#141414] -mx-5 -mb-5 p-4 rounded-b-2xl">
-              <span className="text-[11px] font-bold text-[#737373] dark:text-[#A3A3A3] block">
+              <span className="text-[11px] font-bold text-[#737373] dark:text-[#D4D4D4] block">
                 Second Job Net Take-Home
               </span>
               <div className="flex items-baseline justify-between">
                 <span className="text-lg font-black text-[#059669] dark:text-[#10B981]">
                   +{fmt(result.secondJob.takeHomePay)}
                 </span>
-                <span className="text-xs font-semibold text-[#737373] dark:text-[#A3A3A3]">
+                <span className="text-xs font-semibold text-[#737373] dark:text-[#D4D4D4]">
                   +{fmt(result.secondJob.monthlyTakeHome)}/mo
                 </span>
               </div>
@@ -479,7 +480,7 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/second-job-tax-calculato
           <div className="overflow-x-auto">
             <table className="w-full text-xs">
               <thead>
-                <tr className="border-b border-[#E5E5E5] dark:border-[#2A2A2A] text-[#737373] dark:text-[#A3A3A3] font-bold text-left">
+                <tr className="border-b border-[#E5E5E5] dark:border-[#2A2A2A] text-[#737373] dark:text-[#D4D4D4] font-bold text-left">
                   <th className="pb-2">Deduction / Component</th>
                   <th className="pb-2 text-right">Main Job</th>
                   <th className="pb-2 text-right">Second Job</th>
@@ -488,31 +489,31 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/second-job-tax-calculato
               </thead>
               <tbody className="divide-y divide-[#F0F0F0] dark:divide-[#222222]">
                 <tr>
-                  <td className="py-2 text-[#525252] dark:text-[#A3A3A3]">Gross Salary</td>
+                  <td className="py-2 text-[#262626] dark:text-[#D4D4D4]">Gross Salary</td>
                   <td className="py-2 text-right font-semibold text-[#111111] dark:text-[#F5F5F5]">{fmt(result.mainJob.salary)}</td>
                   <td className="py-2 text-right font-semibold text-[#111111] dark:text-[#F5F5F5]">{fmt(result.secondJob.salary)}</td>
                   <td className="py-2 text-right font-bold text-[#111111] dark:text-[#F5F5F5]">{fmt(result.combined.totalGrossSalary)}</td>
                 </tr>
                 <tr>
-                  <td className="py-2 text-[#525252] dark:text-[#A3A3A3]">Personal Allowance</td>
+                  <td className="py-2 text-[#262626] dark:text-[#D4D4D4]">Personal Allowance</td>
                   <td className="py-2 text-right text-[#059669] dark:text-[#10B981]">{fmt(result.mainJob.personalAllowance)}</td>
                   <td className="py-2 text-right text-[#059669] dark:text-[#10B981]">{fmt(result.secondJob.personalAllowance)}</td>
                   <td className="py-2 text-right font-bold text-[#059669] dark:text-[#10B981]">{fmt(result.combined.totalPersonalAllowance)}</td>
                 </tr>
                 <tr>
-                  <td className="py-2 text-[#525252] dark:text-[#A3A3A3]">Taxable Income</td>
+                  <td className="py-2 text-[#262626] dark:text-[#D4D4D4]">Taxable Income</td>
                   <td className="py-2 text-right text-[#111111] dark:text-[#F5F5F5]">{fmt(result.mainJob.taxableIncome)}</td>
                   <td className="py-2 text-right text-[#111111] dark:text-[#F5F5F5]">{fmt(result.secondJob.taxableIncome)}</td>
                   <td className="py-2 text-right font-bold text-[#111111] dark:text-[#F5F5F5]">{fmt(result.combined.totalTaxableIncome)}</td>
                 </tr>
                 <tr>
-                  <td className="py-2 text-[#525252] dark:text-[#A3A3A3]">Income Tax Paid</td>
+                  <td className="py-2 text-[#262626] dark:text-[#D4D4D4]">Income Tax Paid</td>
                   <td className="py-2 text-right text-rose-600 dark:text-rose-400">-{fmt(result.mainJob.incomeTax)}</td>
                   <td className="py-2 text-right text-rose-600 dark:text-rose-400">-{fmt(result.secondJob.incomeTax)}</td>
                   <td className="py-2 text-right font-bold text-rose-600 dark:text-rose-400">-{fmt(result.combined.totalIncomeTax)}</td>
                 </tr>
                 <tr>
-                  <td className="py-2 text-[#525252] dark:text-[#A3A3A3]">National Insurance (Class 1)</td>
+                  <td className="py-2 text-[#262626] dark:text-[#D4D4D4]">National Insurance (Class 1)</td>
                   <td className="py-2 text-right text-rose-600 dark:text-rose-400">-{fmt(result.mainJob.nationalInsurance)}</td>
                   <td className="py-2 text-right text-rose-600 dark:text-rose-400">-{fmt(result.secondJob.nationalInsurance)}</td>
                   <td className="py-2 text-right font-bold text-rose-600 dark:text-rose-400">-{fmt(result.combined.totalNationalInsurance)}</td>
@@ -534,7 +535,7 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/second-job-tax-calculato
             <Percent className="w-4 h-4 text-[#059669] dark:text-[#10B981]" />
             Separate National Insurance Threshold Advantage
           </div>
-          <p className="text-[#525252] dark:text-[#A3A3A3] leading-relaxed">
+          <p className="text-[#262626] dark:text-[#D4D4D4] leading-relaxed">
             Because Class 1 Employee NI is calculated per employment in the UK, your second job benefits from its own £12,570 Primary Threshold (unless both employments are with the same or connected employers). Earnings under £12,570 in your second job incur 0% employee NI!
           </p>
         </div>

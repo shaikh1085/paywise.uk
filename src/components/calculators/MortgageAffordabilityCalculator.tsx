@@ -1,3 +1,4 @@
+import { formatGBP } from '../../utils/format';
 import React, { useState, useMemo } from 'react';
 import { MortgageAffordabilityInput } from '../../types';
 import { calculateMortgageAffordability } from '../../utils/calculations';
@@ -22,11 +23,11 @@ export const MortgageAffordabilityCalculator: React.FC = () => {
   const result = useMemo(() => calculateMortgageAffordability(input), [input]);
 
   const copyText = `PayWise UK Mortgage Affordability Calculation:
-Combined Gross Income: £${result.totalGrossIncome.toLocaleString('en-GB', { minimumFractionDigits: 2 })}
-Deposit Available: £${result.depositAmount.toLocaleString('en-GB')}
-Standard Max Borrowing (4.5x LTI): £${result.indicativeMaxBorrowing.toLocaleString('en-GB', { minimumFractionDigits: 2 })}
-Estimated Max Property Budget: £${result.indicativeMaxPropertyPrice.toLocaleString('en-GB', { minimumFractionDigits: 2 })}
-Estimated Monthly Repayment: £${result.estimatedMonthlyPayment.toLocaleString('en-GB', { minimumFractionDigits: 2 })}/mo (at ${input.interestRate || 4.5}%, ${input.termYears || 25} yrs)
+Combined Gross Income: ${formatGBP(result.totalGrossIncome)}
+Deposit Available: ${formatGBP(result.depositAmount)}
+Standard Max Borrowing (4.5x LTI): ${formatGBP(result.indicativeMaxBorrowing)}
+Estimated Max Property Budget: ${formatGBP(result.indicativeMaxPropertyPrice)}
+Estimated Monthly Repayment: ${formatGBP(result.estimatedMonthlyPayment)}/mo (at ${input.interestRate || 4.5}%, ${input.termYears || 25} yrs)
 Calculated via PayWise UK (https://paywiseuk.vercel.app/mortgage-affordability-calculator)`;
 
   return (
@@ -48,7 +49,7 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/mortgage-affordability-c
               className={`px-2.5 py-1 text-2xs font-bold rounded-lg ${
                 !isJoint
                   ? 'bg-[#111111] dark:bg-[#F5F5F5] text-white dark:text-[#111111]'
-                  : 'bg-[#F5F5F5] dark:bg-[#202020] text-[#525252] dark:text-[#A3A3A3]'
+                  : 'bg-[#F5F5F5] dark:bg-[#202020] text-[#262626] dark:text-[#D4D4D4]'
               }`}
             >
               Sole
@@ -62,7 +63,7 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/mortgage-affordability-c
               className={`px-2.5 py-1 text-2xs font-bold rounded-lg ${
                 isJoint
                   ? 'bg-[#111111] dark:bg-[#F5F5F5] text-white dark:text-[#111111]'
-                  : 'bg-[#F5F5F5] dark:bg-[#202020] text-[#525252] dark:text-[#A3A3A3]'
+                  : 'bg-[#F5F5F5] dark:bg-[#202020] text-[#262626] dark:text-[#D4D4D4]'
               }`}
             >
               Joint
@@ -74,11 +75,11 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/mortgage-affordability-c
           {/* Salary 1 */}
           <div>
             <div className="flex items-center justify-between mb-1.5">
-              <label htmlFor="afford-salary-1" className="block text-xs font-bold uppercase tracking-wider text-[#525252] dark:text-[#A3A3A3]">
+              <label htmlFor="afford-salary-1" className="block text-xs font-bold uppercase tracking-wider text-[#262626] dark:text-[#D4D4D4]">
                 {isJoint ? 'Applicant 1 Gross Annual Salary (£)' : 'Your Gross Annual Salary (£)'}
               </label>
               <span className="text-xs font-extrabold text-[#059669] dark:text-[#10B981]">
-                £{(input.applicant1Income || 0).toLocaleString('en-GB')}
+                {formatGBP((input.applicant1Income || 0))}
               </span>
             </div>
             <div className="relative">
@@ -99,11 +100,11 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/mortgage-affordability-c
           {isJoint && (
             <div>
               <div className="flex items-center justify-between mb-1.5">
-                <label htmlFor="afford-salary-2" className="block text-xs font-bold uppercase tracking-wider text-[#525252] dark:text-[#A3A3A3]">
+                <label htmlFor="afford-salary-2" className="block text-xs font-bold uppercase tracking-wider text-[#262626] dark:text-[#D4D4D4]">
                   Applicant 2 Gross Annual Salary (£)
                 </label>
                 <span className="text-xs font-extrabold text-[#059669] dark:text-[#10B981]">
-                  £{(input.applicant2Income || 0).toLocaleString('en-GB')}
+                  {formatGBP((input.applicant2Income || 0))}
                 </span>
               </div>
               <div className="relative">
@@ -124,11 +125,11 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/mortgage-affordability-c
           {/* Deposit Amount */}
           <div>
             <div className="flex items-center justify-between mb-1.5">
-              <label htmlFor="afford-deposit" className="block text-xs font-bold uppercase tracking-wider text-[#525252] dark:text-[#A3A3A3]">
+              <label htmlFor="afford-deposit" className="block text-xs font-bold uppercase tracking-wider text-[#262626] dark:text-[#D4D4D4]">
                 Deposit Available (£)
               </label>
-              <span className="text-xs font-bold text-[#525252] dark:text-[#A3A3A3]">
-                £{(input.depositAmount || 0).toLocaleString('en-GB')}
+              <span className="text-xs font-bold text-[#262626] dark:text-[#D4D4D4]">
+                {formatGBP((input.depositAmount || 0))}
               </span>
             </div>
             <div className="relative">
@@ -148,7 +149,7 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/mortgage-affordability-c
           {/* Monthly Debts & Commitments */}
           <div className="grid grid-cols-2 gap-3">
             <div>
-              <label htmlFor="afford-debts" className="block text-2xs font-bold uppercase tracking-wider text-[#525252] dark:text-[#A3A3A3] mb-1">
+              <label htmlFor="afford-debts" className="block text-2xs font-bold uppercase tracking-wider text-[#262626] dark:text-[#D4D4D4] mb-1">
                 Monthly Debts (£)
               </label>
               <input
@@ -163,7 +164,7 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/mortgage-affordability-c
             </div>
 
             <div>
-              <label htmlFor="afford-other" className="block text-2xs font-bold uppercase tracking-wider text-[#525252] dark:text-[#A3A3A3] mb-1">
+              <label htmlFor="afford-other" className="block text-2xs font-bold uppercase tracking-wider text-[#262626] dark:text-[#D4D4D4] mb-1">
                 Other Commitments (£)
               </label>
               <input
@@ -181,7 +182,7 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/mortgage-affordability-c
           {/* Term Years & Rate */}
           <div className="grid grid-cols-2 gap-3">
             <div>
-              <label htmlFor="afford-term" className="block text-2xs font-bold uppercase tracking-wider text-[#525252] dark:text-[#A3A3A3] mb-1">
+              <label htmlFor="afford-term" className="block text-2xs font-bold uppercase tracking-wider text-[#262626] dark:text-[#D4D4D4] mb-1">
                 Mortgage Term (Years)
               </label>
               <input
@@ -196,7 +197,7 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/mortgage-affordability-c
             </div>
 
             <div>
-              <label htmlFor="afford-rate" className="block text-2xs font-bold uppercase tracking-wider text-[#525252] dark:text-[#A3A3A3] mb-1">
+              <label htmlFor="afford-rate" className="block text-2xs font-bold uppercase tracking-wider text-[#262626] dark:text-[#D4D4D4] mb-1">
                 Interest Rate (%)
               </label>
               <input
@@ -271,7 +272,7 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/mortgage-affordability-c
           <div className="overflow-x-auto">
             <table className="w-full text-left text-xs sm:text-sm">
               <thead>
-                <tr className="border-b border-[#E5E5E5] dark:border-[#2A2A2A] text-2xs uppercase tracking-wider text-[#525252] dark:text-[#A3A3A3]">
+                <tr className="border-b border-[#E5E5E5] dark:border-[#2A2A2A] text-2xs uppercase tracking-wider text-[#262626] dark:text-[#D4D4D4]">
                   <th className="py-2.5 font-bold">Lender Scenario</th>
                   <th className="py-2.5 font-bold">Multiplier</th>
                   <th className="py-2.5 font-bold text-right">Max Mortgage Loan</th>
@@ -282,7 +283,7 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/mortgage-affordability-c
                 {result.borrowingEstimates.map((m, idx) => (
                   <tr key={idx} className="text-[#111111] dark:text-[#F5F5F5]">
                     <td className="py-2.5 font-medium">{m.label}</td>
-                    <td className="py-2.5 text-[#525252] dark:text-[#A3A3A3]">{m.multiple}x</td>
+                    <td className="py-2.5 text-[#262626] dark:text-[#D4D4D4]">{m.multiple}x</td>
                     <td className="py-2.5 text-right font-bold text-[#111111] dark:text-[#F5F5F5]">
                       £{m.maxBorrowing.toLocaleString('en-GB', { minimumFractionDigits: 0, maximumFractionDigits: 0 })}
                     </td>

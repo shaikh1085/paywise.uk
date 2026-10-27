@@ -84,7 +84,7 @@ export function App() {
                 <Route path="/take-home-pay-calculator" element={<TakeHomePayPage />} />
                 
                 {/* Calculators Hub & Aliases */}
-                <Route path="/calculators" element={<SalaryCalculatorsHubPage />} />
+                <Route path="/calculators" element={<Navigate to="/salary-calculators" replace />} />
                 <Route path="/salary-calculators" element={<SalaryCalculatorsHubPage />} />
 
                 {/* 10 Comprehensive UK Financial Calculators */}
@@ -98,10 +98,10 @@ export function App() {
                 <Route path="/mortgage-affordability-calculator" element={<MortgageAffordabilityPage />} />
                 <Route path="/stamp-duty-calculator" element={<StampDutyPage />} />
                 <Route path="/stamp-duty-land-tax-calculator" element={<Navigate to="/stamp-duty-calculator" replace />} />
-                <Route path="/first-time-buyer-stamp-duty-calculator" element={<StampDutyPage />} />
-                <Route path="/buy-to-let-stamp-duty-calculator" element={<StampDutyPage />} />
+                <Route path="/first-time-buyer-stamp-duty-calculator" element={<Navigate to="/stamp-duty-calculator" replace />} />
+                <Route path="/buy-to-let-stamp-duty-calculator" element={<Navigate to="/stamp-duty-calculator" replace />} />
                 <Route path="/mortgage-overpayment-calculator" element={<MortgageOverpaymentPage />} />
-                <Route path="/remortgage-calculator" element={<MortgageOverpaymentPage />} />
+                <Route path="/remortgage-calculator" element={<Navigate to="/mortgage-overpayment-calculator" replace />} />
                 <Route path="/credit-card-repayment-calculator" element={<CreditCardRepaymentPage />} />
                 <Route path="/credit-card-payoff-calculator" element={<Navigate to="/credit-card-repayment-calculator" replace />} />
                 <Route path="/credit-card-calculator" element={<Navigate to="/credit-card-repayment-calculator" replace />} />
@@ -129,12 +129,12 @@ export function App() {
                 <Route path="/council-tax-calculator" element={<CouncilTaxCalculatorPage />} />
                 <Route path="/vat-calculator" element={<VatCalculatorPage />} />
                 <Route path="/net-to-gross-calculator" element={<NetToGrossCalculatorPage />} />
-                <Route path="/net-to-gross-salary-calculator" element={<NetToGrossCalculatorPage />} />
-                <Route path="/reverse-salary-calculator" element={<NetToGrossCalculatorPage />} />
+                <Route path="/net-to-gross-salary-calculator" element={<Navigate to="/net-to-gross-calculator" replace />} />
+                <Route path="/reverse-salary-calculator" element={<Navigate to="/net-to-gross-calculator" replace />} />
                 <Route path="/salary-comparison-calculator" element={<SalaryComparisonPage />} />
-                <Route path="/salary-compare-calculator" element={<SalaryComparisonPage />} />
+                <Route path="/salary-compare-calculator" element={<Navigate to="/salary-comparison-calculator" replace />} />
                 <Route path="/pay-frequency-converter" element={<PayFrequencyConverterPage />} />
-                <Route path="/salary-frequency-converter" element={<PayFrequencyConverterPage />} />
+                <Route path="/salary-frequency-converter" element={<Navigate to="/pay-frequency-converter" replace />} />
                 <Route path="/minimum-wage-calculator" element={<Navigate to="/national-minimum-wage-checker" replace />} />
                 <Route path="/maternity-pay-calculator" element={<MaternityPayPage />} />
                 <Route path="/child-benefit-calculator" element={<ChildBenefitPage />} />
@@ -142,22 +142,22 @@ export function App() {
                 <Route path="/marriage-allowance-calculator" element={<MarriageAllowanceCalculatorPage />} />
                 <Route path="/second-job-tax-calculator" element={<SecondJobCalculatorPage />} />
                 <Route path="/national-minimum-wage-checker" element={<MinimumWageCheckerPage />} />
-                <Route path="/minimum-wage-checker" element={<MinimumWageCheckerPage />} />
+                <Route path="/minimum-wage-checker" element={<Navigate to="/national-minimum-wage-checker" replace />} />
                 <Route path="/inside-vs-outside-ir35-calculator" element={<Ir35ComparePage />} />
 
                 {/* Guides & Aliases */}
                 <Route path="/guides" element={<GuidesIndexPage />} />
-                <Route path="/guides/50k-salary-after-tax" element={<Guide50kPage />} />
+                <Route path="/guides/50k-salary-after-tax" element={<Navigate to="/guides/50000-salary-after-tax-uk" replace />} />
                 <Route path="/guides/50000-salary-after-tax-uk" element={<Guide50kPage />} />
-                <Route path="/guides/60k-salary-after-tax" element={<Guide60kPage />} />
+                <Route path="/guides/60k-salary-after-tax" element={<Navigate to="/guides/60000-salary-after-tax-uk" replace />} />
                 <Route path="/guides/60000-salary-after-tax-uk" element={<Guide60kPage />} />
                 <Route path="/guides/what-is-salary-sacrifice" element={<GuideSalarySacrificePage />} />
-                <Route path="/guides/salary-sacrifice-guide" element={<GuideSalarySacrificePage />} />
+                <Route path="/guides/salary-sacrifice-guide" element={<Navigate to="/guides/what-is-salary-sacrifice" replace />} />
                 <Route path="/guides/how-income-tax-works-uk" element={<GuideIncomeTaxPage />} />
-                <Route path="/guides/uk-income-tax-bands-explained" element={<GuideIncomeTaxPage />} />
+                <Route path="/guides/uk-income-tax-bands-explained" element={<Navigate to="/guides/how-income-tax-works-uk" replace />} />
 
                 {/* Info & Legal */}
-                <Route path="/faqs" element={<FaqPage />} />
+                <Route path="/faqs" element={<Navigate to="/faq" replace />} />
                 <Route path="/faq" element={<FaqPage />} />
                 <Route path="/about" element={<AboutPage />} />
                 <Route path="/contact" element={<ContactPage />} />

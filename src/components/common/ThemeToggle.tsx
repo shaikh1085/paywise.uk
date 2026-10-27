@@ -44,7 +44,7 @@ export const ThemeToggle: React.FC<ThemeToggleProps> = ({
         className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold transition-all duration-150 ${
           resolvedTheme === 'light'
             ? 'bg-white text-[#111111] shadow-xs font-bold'
-            : 'text-[#525252] dark:text-[#A3A3A3] hover:text-[#111111] dark:hover:text-white'
+            : 'text-[#262626] dark:text-[#D4D4D4] hover:text-[#111111] dark:hover:text-white'
         }`}
       >
         <Sun className={`w-3.5 h-3.5 ${resolvedTheme === 'light' ? 'text-[#059669]' : ''}`} />
@@ -58,7 +58,7 @@ export const ThemeToggle: React.FC<ThemeToggleProps> = ({
         className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold transition-all duration-150 ${
           resolvedTheme === 'dark'
             ? 'bg-[#1E1E1E] text-[#10B981] shadow-xs font-bold border border-[#2A2A2A]'
-            : 'text-[#525252] dark:text-[#A3A3A3] hover:text-[#111111] dark:hover:text-white'
+            : 'text-[#262626] dark:text-[#D4D4D4] hover:text-[#111111] dark:hover:text-white'
         }`}
       >
         <Moon className={`w-3.5 h-3.5 ${resolvedTheme === 'dark' ? 'text-[#10B981]' : ''}`} />

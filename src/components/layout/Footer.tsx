@@ -1,12 +1,13 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { TAX_CONFIG_METADATA } from '../../config/taxConfig';
+import { SITE_CONFIG } from '../../config/siteConfig';
 
 export const Footer: React.FC = () => {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="border-t border-[#E5E5E5] dark:border-[#2A2A2A] bg-white dark:bg-[#080808] text-[#525252] dark:text-[#A3A3A3] transition-colors duration-200">
+    <footer className="border-t border-[#E5E5E5] dark:border-[#2A2A2A] bg-white dark:bg-[#080808] text-[#262626] dark:text-[#D4D4D4] transition-colors duration-200">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-16">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 lg:gap-12">
           
@@ -23,12 +24,12 @@ export const Footer: React.FC = () => {
                 PayWise <span className="text-[#059669] dark:text-[#10B981]">UK</span>
               </span>
             </Link>
-            <p className="text-xs sm:text-sm leading-relaxed text-[#525252] dark:text-[#A3A3A3] max-w-sm">
-              PayWise UK delivers crystal-clear, transparent UK salary and payroll estimates. Built with privacy-first client execution and 2025/2026 tax engine precision.
+            <p className="text-xs sm:text-sm leading-relaxed text-[#262626] dark:text-[#D4D4D4] max-w-sm">
+              PayWise UK delivers crystal-clear, transparent UK salary and payroll estimates. Built with privacy-first client execution and 2026/2027 tax engine precision.
             </p>
             <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-[#F5F5F5] dark:bg-[#151515] border border-[#E5E5E5] dark:border-[#2A2A2A] text-xs font-semibold text-[#111111] dark:text-[#F5F5F5] shadow-xs">
               <span className="w-2 h-2 rounded-full bg-[#059669] dark:bg-[#10B981]" />
-              Tax Rates: {TAX_CONFIG_METADATA.currentTaxYearLabel} ({TAX_CONFIG_METADATA.lastUpdated})
+              Tax Rates: {TAX_CONFIG_METADATA.currentTaxYearLabel} (Last updated: {SITE_CONFIG.lastUpdated})
             </div>
           </div>
 
@@ -207,7 +208,7 @@ export const Footer: React.FC = () => {
         </div>
 
         {/* Disclaimer Banner Card */}
-        <div className="mt-10 p-5 rounded-xl bg-[#F5F5F5] dark:bg-[#151515] border border-[#E5E5E5] dark:border-[#2A2A2A] text-xs text-[#525252] dark:text-[#A3A3A3] space-y-1.5 shadow-xs">
+        <div className="mt-10 p-5 rounded-xl bg-[#F5F5F5] dark:bg-[#151515] border border-[#E5E5E5] dark:border-[#2A2A2A] text-xs text-[#262626] dark:text-[#D4D4D4] space-y-1.5 shadow-xs">
           <p className="font-bold text-[#111111] dark:text-[#F5F5F5]">
             Important Legal & Financial Disclaimer:
           </p>
@@ -217,9 +218,10 @@ export const Footer: React.FC = () => {
         </div>
 
         {/* Bottom Bar */}
-        <div className="mt-8 pt-6 border-t border-[#E5E5E5] dark:border-[#2A2A2A] flex flex-col sm:flex-row items-center justify-between text-xs text-[#737373] dark:text-[#888888] gap-4">
-          <p>© {currentYear} PayWise UK. Precision UK Payroll Tools.</p>
+        <div className="mt-8 pt-6 border-t border-[#E5E5E5] dark:border-[#2A2A2A] flex flex-col sm:flex-row items-center justify-between text-xs text-[#404040] dark:text-[#A3A3A3] gap-4">
+          <p>© {currentYear} PayWise UK. Precision UK Payroll Tools. Last updated: {SITE_CONFIG.lastUpdated}.</p>
           <div className="flex items-center gap-6">
+            <Link to="/about" className="hover:underline hover:text-[#111111] dark:hover:text-[#F5F5F5]">About</Link>
             <Link to="/privacy-policy" className="hover:underline hover:text-[#111111] dark:hover:text-[#F5F5F5]">Privacy</Link>
             <Link to="/terms-of-use" className="hover:underline hover:text-[#111111] dark:hover:text-[#F5F5F5]">Terms</Link>
             <Link to="/disclaimer" className="hover:underline hover:text-[#111111] dark:hover:text-[#F5F5F5]">Disclaimer</Link>

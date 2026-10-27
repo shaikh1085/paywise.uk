@@ -1,3 +1,4 @@
+import { formatGBP } from '../../utils/format';
 import React, { useState, useMemo } from 'react';
 import { StudentLoanPlan } from '../../types';
 import { calculateStudentLoan } from '../../utils/calculations';
@@ -13,17 +14,17 @@ export const StudentLoanCalculator: React.FC = () => {
   const result = useMemo(() => calculateStudentLoan({ annualSalary: salary, plan }), [salary, plan]);
 
   const copyText = `PayWise UK Student Loan Repayment Calculation:
-Annual Salary: £${salary.toLocaleString('en-GB')}
+Annual Salary: ${formatGBP(salary)}
 Plan: ${result.planName}
-Threshold: £${result.threshold.toLocaleString('en-GB')}/yr (${result.repaymentRatePercent}% rate)
-Monthly Repayment: £${result.totalStudentLoanMonthly.toFixed(2)}/mo
-Annual Repayment: £${result.totalStudentLoanAnnual.toFixed(2)}/yr
+Threshold: ${formatGBP(result.threshold)}/yr (${result.repaymentRatePercent}% rate)
+Monthly Repayment: ${formatGBP(result.totalStudentLoanMonthly)}/mo
+Annual Repayment: ${formatGBP(result.totalStudentLoanAnnual)}/yr
 Calculated via PayWise UK (https://paywiseuk.vercel.app/student-loan-repayment-calculator)`;
 
   const comparisonPlans: { id: StudentLoanPlan; label: string; threshold: string; rate: string }[] = [
-    { id: 'plan1', label: 'Plan 1 (Pre-2012 / NI)', threshold: '£24,990', rate: '9%' },
-    { id: 'plan2', label: 'Plan 2 (2012–2023 England/Wales)', threshold: '£27,295', rate: '9%' },
-    { id: 'plan4', label: 'Plan 4 (Scotland)', threshold: '£31,395', rate: '9%' },
+    { id: 'plan1', label: 'Plan 1 (Pre-2012 / NI)', threshold: '£26,900', rate: '9%' },
+    { id: 'plan2', label: 'Plan 2 (2012–2023 England/Wales)', threshold: '£29,385', rate: '9%' },
+    { id: 'plan4', label: 'Plan 4 (Scotland)', threshold: '£33,795', rate: '9%' },
     { id: 'plan5', label: 'Plan 5 (New Aug 2023+ England)', threshold: '£25,000', rate: '9%' },
     { id: 'postgrad', label: 'Postgraduate Loan', threshold: '£21,000', rate: '6%' },
   ];
@@ -44,7 +45,7 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/student-loan-repayment-c
                 Annual Gross Salary (£)
               </label>
               <span className="text-xs font-extrabold text-emerald-600 dark:text-emerald-400">
-                £{(salary || 0).toLocaleString('en-GB')}
+                {formatGBP((salary || 0))}
               </span>
             </div>
             <div className="relative">
@@ -111,30 +112,30 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/student-loan-repayment-c
                 decimals={2}
                 className="text-[#111111] dark:text-[#F5F5F5]"
               />
-              <span className="text-lg font-semibold text-[#525252] dark:text-[#A3A3A3]">/month</span>
+              <span className="text-lg font-semibold text-[#262626] dark:text-[#D4D4D4]">/month</span>
             </div>
-            <p className="text-xs sm:text-sm font-medium text-[#525252] dark:text-[#A3A3A3] flex items-center gap-1.5">
+            <p className="text-xs sm:text-sm font-medium text-[#262626] dark:text-[#D4D4D4] flex items-center gap-1.5">
               <ArrowUpRight className="w-4 h-4 text-[#059669] dark:text-[#10B981] shrink-0" />
               <span>
                 Total annual deduction:{' '}
                 <strong className="text-[#059669] dark:text-[#10B981] font-bold">
-                  £{result.totalStudentLoanAnnual.toFixed(2)}/year
+                  {formatGBP(result.totalStudentLoanAnnual)}/year
                 </strong>{' '}
-                (approx. £{result.weeklyRepayment.toFixed(2)}/week)
+                (approx. {formatGBP(result.weeklyRepayment)}/week)
               </span>
             </p>
           </div>
 
           <div className="grid grid-cols-2 gap-3 pt-5 border-t border-[#E5E5E5] dark:border-[#2A2A2A]">
             <div className="bg-white dark:bg-[#111111] p-3.5 rounded-xl border border-[#E5E5E5] dark:border-[#2A2A2A] shadow-2xs">
-              <span className="text-2xs uppercase text-[#525252] dark:text-[#A3A3A3] font-bold block">Repayment Threshold</span>
+              <span className="text-2xs uppercase text-[#262626] dark:text-[#D4D4D4] font-bold block">Repayment Threshold</span>
               <p className="text-base sm:text-lg font-black text-[#111111] dark:text-[#F5F5F5] mt-0.5 tabular-nums">
-                £{result.threshold.toLocaleString('en-GB')}/yr
+                {formatGBP(result.threshold)}/yr
               </p>
             </div>
 
             <div className="bg-white dark:bg-[#111111] p-3.5 rounded-xl border border-[#E5E5E5] dark:border-[#2A2A2A] shadow-2xs">
-              <span className="text-2xs uppercase text-[#525252] dark:text-[#A3A3A3] font-bold block">Rate Above Threshold</span>
+              <span className="text-2xs uppercase text-[#262626] dark:text-[#D4D4D4] font-bold block">Rate Above Threshold</span>
               <p className="text-base sm:text-lg font-black text-[#111111] dark:text-[#F5F5F5] mt-0.5 tabular-nums">
                 {result.repaymentRatePercent}%
               </p>

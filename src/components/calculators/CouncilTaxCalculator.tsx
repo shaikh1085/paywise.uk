@@ -1,3 +1,4 @@
+import { formatGBP } from '../../utils/format';
 import React, { useState, useMemo } from 'react';
 import { CouncilTaxBand, CouncilTaxCountry, CouncilTaxInput } from '../../types';
 import { calculateCouncilTax } from '../../utils/calculations';
@@ -39,7 +40,7 @@ export const CouncilTaxCalculator: React.FC = () => {
 Location: ${COUNCIL_TAX_BAND_D_AVERAGES[result?.country || 'england']?.label || 'England Average'}
 Selected Band: Band ${result.band} (${result.valuationBandRange})
 Household Adults: ${result.adultCount} ${result.adultCount === 1 ? '(25% Single Person Discount Applied)' : '(Full Charge)'}
-Band D Baseline Applied: £${result.effectiveBandD.toFixed(2)}${result.isCustomRate ? ' (Custom Local Rate)' : ' (National Average)'}
+Band D Baseline Applied: ${formatGBP(result.effectiveBandD)}${result.isCustomRate ? ' (Custom Local Rate)' : ' (National Average)'}
 ---
 Band Ratio: ${result.multiplierLabel}
 Gross Annual Council Tax: £${(result.grossAnnualCharge || 0).toLocaleString('en-GB', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
@@ -93,7 +94,7 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/council-tax-calculator)`
                 </button>
               ))}
             </div>
-            <p className="text-2xs text-[#525252] dark:text-[#A3A3A3] mt-1.5 leading-relaxed">
+            <p className="text-2xs text-[#262626] dark:text-[#D4D4D4] mt-1.5 leading-relaxed">
               {COUNCIL_TAX_BAND_D_AVERAGES[input.country].notes}
             </p>
           </div>
@@ -124,7 +125,7 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/council-tax-calculator)`
                     }`}
                   >
                     <span className="text-sm">Band {b.band}</span>
-                    <span className={`text-2xs font-normal ${isSelected ? 'text-[#D4D4D4] dark:text-[#525252]' : 'text-[#737373]'}`}>
+                    <span className={`text-2xs font-normal ${isSelected ? 'text-[#D4D4D4] dark:text-[#262626]' : 'text-[#737373]'}`}>
                       {input.country === 'scotland' ? b.ratioLabelScotland : b.ratioLabelEnglandWales}
                     </span>
                   </button>
@@ -174,7 +175,7 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/council-tax-calculator)`
                 <Users className={`w-4 h-4 mt-0.5 shrink-0 ${input.adultCount >= 2 ? 'text-[#059669] dark:text-[#10B981]' : 'text-[#737373]'}`} />
                 <div>
                   <div className="text-xs font-bold text-[#111111] dark:text-[#F5F5F5]">2+ Adults</div>
-                  <div className="text-2xs text-[#525252] dark:text-[#A3A3A3] mt-0.5">Standard Full Charge</div>
+                  <div className="text-2xs text-[#262626] dark:text-[#D4D4D4] mt-0.5">Standard Full Charge</div>
                 </div>
               </button>
             </div>
@@ -208,7 +209,7 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/council-tax-calculator)`
             {input.useCustomBandD ? (
               <div className="space-y-1.5 animate-fadeIn">
                 <div className="flex items-center justify-between">
-                  <span className="text-2xs text-[#525252] dark:text-[#A3A3A3]">Annual Band D (£)</span>
+                  <span className="text-2xs text-[#262626] dark:text-[#D4D4D4]">Annual Band D (£)</span>
                   <button
                     type="button"
                     onClick={() => setInput({ ...input, customBandD: COUNCIL_TAX_BAND_D_AVERAGES[input.country].averageBandD })}
@@ -218,7 +219,7 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/council-tax-calculator)`
                   </button>
                 </div>
                 <div className="relative">
-                  <span className="absolute inset-y-0 left-0 pl-3 flex items-center text-[#525252] dark:text-[#A3A3A3] font-bold text-sm">£</span>
+                  <span className="absolute inset-y-0 left-0 pl-3 flex items-center text-[#262626] dark:text-[#D4D4D4] font-bold text-sm">£</span>
                   <input
                     type="number"
                     min="500"
@@ -232,10 +233,10 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/council-tax-calculator)`
                 </div>
               </div>
             ) : (
-              <div className="p-2.5 rounded-xl bg-[#FAFAFA] dark:bg-[#151515] border border-[#E5E5E5] dark:border-[#2A2A2A] text-2xs text-[#525252] dark:text-[#A3A3A3] flex items-center justify-between">
+              <div className="p-2.5 rounded-xl bg-[#FAFAFA] dark:bg-[#151515] border border-[#E5E5E5] dark:border-[#2A2A2A] text-2xs text-[#262626] dark:text-[#D4D4D4] flex items-center justify-between">
                 <span>Using {COUNCIL_TAX_BAND_D_AVERAGES[input.country]?.label || 'National Average'} baseline:</span>
                 <strong className="text-[#111111] dark:text-[#F5F5F5] font-bold text-xs">
-                  £{(COUNCIL_TAX_BAND_D_AVERAGES[input.country]?.averageBandD || 2171).toLocaleString('en-GB')}/yr
+                  {formatGBP((COUNCIL_TAX_BAND_D_AVERAGES[input.country]?.averageBandD || 2171))}/yr
                 </strong>
               </div>
             )}
@@ -252,7 +253,7 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/council-tax-calculator)`
               <span className="w-2 h-2 rounded-full bg-[#059669] dark:bg-[#10B981]" />
               Estimated Council Tax (Band {result.band})
             </span>
-            <span className="text-xs text-[#525252] dark:text-[#A3A3A3]">
+            <span className="text-xs text-[#262626] dark:text-[#D4D4D4]">
               {result.isCustomRate ? 'Custom Council Rate' : (COUNCIL_TAX_BAND_D_AVERAGES[result.country]?.label || 'National Average')}
             </span>
           </div>
@@ -266,44 +267,44 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/council-tax-calculator)`
                   decimals={2}
                   className="text-[#111111] dark:text-[#F5F5F5]"
                 />
-                <span className="text-base sm:text-lg font-normal text-[#525252] dark:text-[#A3A3A3] ml-2">/ year</span>
+                <span className="text-base sm:text-lg font-normal text-[#262626] dark:text-[#D4D4D4] ml-2">/ year</span>
               </div>
-              <p className="text-xs text-[#525252] dark:text-[#A3A3A3] pt-1">
+              <p className="text-xs text-[#262626] dark:text-[#D4D4D4] pt-1">
                 Property Valuation: <strong className="text-[#111111] dark:text-[#F5F5F5]">{result.valuationBandRange}</strong> ({result.country === 'wales' ? '2003 list' : '1991 list'})
               </p>
             </div>
 
             <div className="sm:col-span-4 bg-[#FAFAFA] dark:bg-[#111111] rounded-xl p-3.5 border border-[#E5E5E5] dark:border-[#2A2A2A] shadow-2xs text-center space-y-1">
-              <span className="text-2xs text-[#525252] dark:text-[#A3A3A3] uppercase block font-bold">Standard 10-Month Bill</span>
+              <span className="text-2xs text-[#262626] dark:text-[#D4D4D4] uppercase block font-bold">Standard 10-Month Bill</span>
               <div className="text-xl sm:text-2xl font-black text-[#059669] dark:text-[#10B981] tabular-nums">
                 £{result.monthly10Months.toLocaleString('en-GB', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
               </div>
-              <span className="text-2xs text-[#525252] dark:text-[#A3A3A3] block">per month (Apr–Jan)</span>
+              <span className="text-2xs text-[#262626] dark:text-[#D4D4D4] block">per month (Apr–Jan)</span>
             </div>
           </div>
 
           {/* Quick Summary Breakdown */}
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5 pt-5 border-t border-[#E5E5E5] dark:border-[#2A2A2A] text-xs">
             <div className="bg-white dark:bg-[#111111] p-3 rounded-xl border border-[#E5E5E5] dark:border-[#2A2A2A] shadow-2xs">
-              <span className="text-[#525252] dark:text-[#A3A3A3] block text-2xs uppercase font-bold">Band Ratio</span>
+              <span className="text-[#262626] dark:text-[#D4D4D4] block text-2xs uppercase font-bold">Band Ratio</span>
               <span className="font-bold text-[#111111] dark:text-[#F5F5F5] tabular-nums mt-0.5 block">
                 {result.multiplierLabel}
               </span>
             </div>
             <div className="bg-white dark:bg-[#111111] p-3 rounded-xl border border-[#E5E5E5] dark:border-[#2A2A2A] shadow-2xs">
-              <span className="text-[#525252] dark:text-[#A3A3A3] block text-2xs uppercase font-bold">Gross Full Charge</span>
+              <span className="text-[#262626] dark:text-[#D4D4D4] block text-2xs uppercase font-bold">Gross Full Charge</span>
               <span className="font-bold text-[#111111] dark:text-[#F5F5F5] tabular-nums mt-0.5 block">
                 £{result.grossAnnualCharge.toLocaleString('en-GB', { minimumFractionDigits: 0, maximumFractionDigits: 0 })}
               </span>
             </div>
             <div className="bg-white dark:bg-[#111111] p-3 rounded-xl border border-[#E5E5E5] dark:border-[#2A2A2A] shadow-2xs">
-              <span className="text-[#525252] dark:text-[#A3A3A3] block text-2xs uppercase font-bold">Single Discount (25%)</span>
+              <span className="text-[#262626] dark:text-[#D4D4D4] block text-2xs uppercase font-bold">Single Discount (25%)</span>
               <span className={`font-bold tabular-nums mt-0.5 block ${result.singlePersonDiscountAmount > 0 ? 'text-[#059669] dark:text-[#10B981]' : 'text-[#737373]'}`}>
                 {result.singlePersonDiscountAmount > 0 ? `-£${result.singlePersonDiscountAmount.toLocaleString('en-GB', { minimumFractionDigits: 0, maximumFractionDigits: 0 })}` : '£0'}
               </span>
             </div>
             <div className="bg-white dark:bg-[#111111] p-3 rounded-xl border border-[#E5E5E5] dark:border-[#2A2A2A] shadow-2xs">
-              <span className="text-[#525252] dark:text-[#A3A3A3] block text-2xs uppercase font-bold">12-Month Spread</span>
+              <span className="text-[#262626] dark:text-[#D4D4D4] block text-2xs uppercase font-bold">12-Month Spread</span>
               <span className="font-bold text-[#111111] dark:text-[#F5F5F5] tabular-nums mt-0.5 block">
                 £{result.monthly12Months.toLocaleString('en-GB', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}/mo
               </span>
@@ -327,7 +328,7 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/council-tax-calculator)`
         {/* Payment Installment Comparison Cards */}
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
           <div className="rounded-xl p-4 bg-white dark:bg-[#171717] border border-[#E5E5E5] dark:border-[#2A2A2A] shadow-xs">
-            <span className="text-2xs font-bold text-[#525252] dark:text-[#A3A3A3] uppercase block">10 Monthly Payments</span>
+            <span className="text-2xs font-bold text-[#262626] dark:text-[#D4D4D4] uppercase block">10 Monthly Payments</span>
             <div className="text-lg font-black text-[#111111] dark:text-[#F5F5F5] mt-1 tabular-nums">
               £{result.monthly10Months.toLocaleString('en-GB', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
             </div>
@@ -335,7 +336,7 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/council-tax-calculator)`
           </div>
 
           <div className="rounded-xl p-4 bg-white dark:bg-[#171717] border border-[#E5E5E5] dark:border-[#2A2A2A] shadow-xs">
-            <span className="text-2xs font-bold text-[#525252] dark:text-[#A3A3A3] uppercase block">12 Monthly Payments</span>
+            <span className="text-2xs font-bold text-[#262626] dark:text-[#D4D4D4] uppercase block">12 Monthly Payments</span>
             <div className="text-lg font-black text-[#111111] dark:text-[#F5F5F5] mt-1 tabular-nums">
               £{result.monthly12Months.toLocaleString('en-GB', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
             </div>
@@ -343,7 +344,7 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/council-tax-calculator)`
           </div>
 
           <div className="rounded-xl p-4 bg-white dark:bg-[#171717] border border-[#E5E5E5] dark:border-[#2A2A2A] shadow-xs">
-            <span className="text-2xs font-bold text-[#525252] dark:text-[#A3A3A3] uppercase block">Weekly Equivalent</span>
+            <span className="text-2xs font-bold text-[#262626] dark:text-[#D4D4D4] uppercase block">Weekly Equivalent</span>
             <div className="text-lg font-black text-[#111111] dark:text-[#F5F5F5] mt-1 tabular-nums">
               £{result.weeklyEstimate.toLocaleString('en-GB', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
             </div>
@@ -358,7 +359,7 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/council-tax-calculator)`
               <Layers className="w-4 h-4 text-[#059669] dark:text-[#10B981]" />
               Comparison Across All Council Tax Bands (A–H)
             </h3>
-            <span className="text-2xs text-[#525252] dark:text-[#A3A3A3]">
+            <span className="text-2xs text-[#262626] dark:text-[#D4D4D4]">
               {result.adultCount === 1 ? 'Showing with 25% single discount' : 'Showing full annual charge'}
             </span>
           </div>
@@ -366,7 +367,7 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/council-tax-calculator)`
           <div className="overflow-x-auto">
             <table className="w-full text-xs">
               <thead>
-                <tr className="border-b border-[#E5E5E5] dark:border-[#2A2A2A] text-[#525252] dark:text-[#A3A3A3]">
+                <tr className="border-b border-[#E5E5E5] dark:border-[#2A2A2A] text-[#262626] dark:text-[#D4D4D4]">
                   <th className="text-left py-2 font-bold uppercase tracking-wider text-2xs">Band</th>
                   <th className="text-left py-2 font-bold uppercase tracking-wider text-2xs">Valuation Range</th>
                   <th className="text-right py-2 font-bold uppercase tracking-wider text-2xs">Annual Estimate</th>
@@ -391,11 +392,11 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/council-tax-calculator)`
                         )}
                       </span>
                     </td>
-                    <td className="py-2.5 text-[#525252] dark:text-[#A3A3A3]">{row.valuation}</td>
+                    <td className="py-2.5 text-[#262626] dark:text-[#D4D4D4]">{row.valuation}</td>
                     <td className="py-2.5 text-right font-extrabold text-[#111111] dark:text-[#F5F5F5] tabular-nums">
                       £{row.annualNet.toLocaleString('en-GB', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
                     </td>
-                    <td className="py-2.5 px-2 text-right font-semibold text-[#525252] dark:text-[#A3A3A3] tabular-nums">
+                    <td className="py-2.5 px-2 text-right font-semibold text-[#262626] dark:text-[#D4D4D4] tabular-nums">
                       £{row.monthly10.toLocaleString('en-GB', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
                     </td>
                   </tr>
@@ -413,7 +414,7 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/council-tax-calculator)`
               Local Authority Variance Disclaimer
             </h4>
           </div>
-          <p className="text-xs text-[#525252] dark:text-[#A3A3A3] leading-relaxed">
+          <p className="text-xs text-[#262626] dark:text-[#D4D4D4] leading-relaxed">
             Council tax rates are set individually by each of the 300+ local billing authorities across England, Scotland, and Wales. Rates also include precepts for adult social care, police authorities, fire and rescue services, and parish councils. This calculator provides estimates based on regional averages; check your official annual bill from your local council for your exact sum.
           </p>
         </div>
@@ -427,13 +428,13 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/council-tax-calculator)`
             { Metric: 'Valuation Range', Value: result.valuationBandRange },
             { Metric: 'Adult Count', Value: `${result.adultCount}` },
             { Metric: 'Single Person Discount', Value: `${result.singlePersonDiscountPercentage}%` },
-            { Metric: 'Band D Baseline Applied', Value: `£${result.effectiveBandD.toFixed(2)}` },
-            { Metric: 'Gross Annual Charge', Value: `£${result.grossAnnualCharge.toFixed(2)}` },
-            { Metric: 'Single Discount Amount', Value: `£${result.singlePersonDiscountAmount.toFixed(2)}` },
-            { Metric: 'Net Annual Council Tax', Value: `£${result.netAnnualCouncilTax.toFixed(2)}` },
-            { Metric: '10 Monthly Payments', Value: `£${result.monthly10Months.toFixed(2)}` },
-            { Metric: '12 Monthly Payments', Value: `£${result.monthly12Months.toFixed(2)}` },
-            { Metric: 'Weekly Cost', Value: `£${result.weeklyEstimate.toFixed(2)}` },
+            { Metric: 'Band D Baseline Applied', Value: `${formatGBP(result.effectiveBandD)}` },
+            { Metric: 'Gross Annual Charge', Value: `${formatGBP(result.grossAnnualCharge)}` },
+            { Metric: 'Single Discount Amount', Value: `${formatGBP(result.singlePersonDiscountAmount)}` },
+            { Metric: 'Net Annual Council Tax', Value: `${formatGBP(result.netAnnualCouncilTax)}` },
+            { Metric: '10 Monthly Payments', Value: `${formatGBP(result.monthly10Months)}` },
+            { Metric: '12 Monthly Payments', Value: `${formatGBP(result.monthly12Months)}` },
+            { Metric: 'Weekly Cost', Value: `${formatGBP(result.weeklyEstimate)}` },
           ]}
           fileName={`paywise-council-tax-band-${result.band}-${result.country}`}
           title="Council Tax Estimate"

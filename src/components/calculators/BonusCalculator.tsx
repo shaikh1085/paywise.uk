@@ -1,3 +1,4 @@
+import { formatGBP } from '../../utils/format';
 import React, { useState, useMemo } from 'react';
 import { BonusTaxInput, TaxRegion, StudentLoanPlan, PensionType } from '../../types';
 import { calculateBonusTax } from '../../utils/calculations';
@@ -24,7 +25,7 @@ export const BonusCalculator: React.FC = () => {
   const [input, setInput] = useState<BonusTaxInput>({
     baseSalary: 45000,
     bonusAmount: 5000,
-    taxYear: '2025_26',
+    taxYear: '2026_27',
     region: 'england_ni',
     taxCode: '1257L',
     pensionPercentage: 5,
@@ -77,11 +78,11 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/bonus-tax-calculator)`;
                 Annual Base Salary (£)
               </label>
               <span className="text-xs font-semibold text-[#059669] dark:text-[#10B981] tabular-nums">
-                £{(input.baseSalary || 0).toLocaleString('en-GB')}
+                {formatGBP((input.baseSalary || 0))}
               </span>
             </div>
             <div className="relative">
-              <span className="absolute inset-y-0 left-0 pl-3.5 flex items-center text-[#525252] dark:text-[#A3A3A3] font-bold text-base">£</span>
+              <span className="absolute inset-y-0 left-0 pl-3.5 flex items-center text-[#262626] dark:text-[#D4D4D4] font-bold text-base">£</span>
               <input
                 type="number"
                 id="base-salary-input"
@@ -102,11 +103,11 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/bonus-tax-calculator)`;
                 One-Off Gross Bonus (£)
               </label>
               <span className="text-xs font-semibold text-[#059669] dark:text-[#10B981] tabular-nums">
-                £{(input.bonusAmount || 0).toLocaleString('en-GB')}
+                {formatGBP((input.bonusAmount || 0))}
               </span>
             </div>
             <div className="relative">
-              <span className="absolute inset-y-0 left-0 pl-3.5 flex items-center text-[#525252] dark:text-[#A3A3A3] font-bold text-base">£</span>
+              <span className="absolute inset-y-0 left-0 pl-3.5 flex items-center text-[#262626] dark:text-[#D4D4D4] font-bold text-base">£</span>
               <input
                 type="number"
                 id="bonus-amount-input"
@@ -128,10 +129,10 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/bonus-tax-calculator)`;
                   className={`px-2 py-0.5 rounded-md text-2xs font-bold transition-colors ${
                     input.bonusAmount === amount
                       ? 'bg-[#059669] text-white'
-                      : 'bg-[#FAFAFA] dark:bg-[#151515] border border-[#E5E5E5] dark:border-[#2A2A2A] text-[#525252] dark:text-[#A3A3A3] hover:text-[#111111] dark:hover:text-[#F5F5F5]'
+                      : 'bg-[#FAFAFA] dark:bg-[#151515] border border-[#E5E5E5] dark:border-[#2A2A2A] text-[#262626] dark:text-[#D4D4D4] hover:text-[#111111] dark:hover:text-[#F5F5F5]'
                   }`}
                 >
-                  +£{amount.toLocaleString('en-GB')}
+                  +{formatGBP(amount)}
                 </button>
               ))}
             </div>
@@ -194,7 +195,7 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/bonus-tax-calculator)`;
                   className="block w-full rounded-xl border border-[#E5E5E5] dark:border-[#303030] bg-white dark:bg-[#151515] pl-3 pr-7 py-2 text-xs sm:text-sm font-semibold text-[#111111] dark:text-[#F5F5F5] focus:border-[#059669] dark:focus:border-[#10B981] focus:outline-none"
                   placeholder="5"
                 />
-                <span className="absolute inset-y-0 right-0 pr-2.5 flex items-center text-[#525252] dark:text-[#A3A3A3] text-xs font-bold">%</span>
+                <span className="absolute inset-y-0 right-0 pr-2.5 flex items-center text-[#262626] dark:text-[#D4D4D4] text-xs font-bold">%</span>
               </div>
             </div>
 
@@ -220,7 +221,7 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/bonus-tax-calculator)`;
 
           {/* Pension on Bonus Checkbox */}
           <div className="pt-1">
-            <label className="flex items-center gap-2 cursor-pointer select-none text-xs text-[#525252] dark:text-[#A3A3A3]">
+            <label className="flex items-center gap-2 cursor-pointer select-none text-xs text-[#262626] dark:text-[#D4D4D4]">
               <input
                 type="checkbox"
                 checked={input.pensionAppliesToBonus}
@@ -250,7 +251,7 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/bonus-tax-calculator)`;
                 className={`text-2xs font-bold px-2 py-0.5 rounded-full transition-colors ${
                   enableSacrificeSim
                     ? 'bg-[#059669] text-white'
-                    : 'bg-[#FAFAFA] dark:bg-[#151515] border border-[#E5E5E5] dark:border-[#2A2A2A] text-[#525252] dark:text-[#A3A3A3]'
+                    : 'bg-[#FAFAFA] dark:bg-[#151515] border border-[#E5E5E5] dark:border-[#2A2A2A] text-[#262626] dark:text-[#D4D4D4]'
                 }`}
               >
                 {enableSacrificeSim ? 'Active' : 'Simulate'}
@@ -262,7 +263,7 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/bonus-tax-calculator)`;
                 <div className="flex justify-between items-center text-xs">
                   <span className="font-semibold text-[#111111] dark:text-[#F5F5F5]">Amount to Sacrifice:</span>
                   <span className="font-bold text-[#059669] dark:text-[#10B981]">
-                    £{(input.salarySacrificeBonusAmount || 0).toLocaleString('en-GB')}
+                    {formatGBP((input.salarySacrificeBonusAmount || 0))}
                   </span>
                 </div>
                 <input
@@ -274,9 +275,9 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/bonus-tax-calculator)`;
                   onChange={(e) => setInput({ ...input, salarySacrificeBonusAmount: parseFloat(e.target.value) || 0 })}
                   className="w-full h-1.5 bg-[#E5E5E5] dark:bg-[#333333] rounded-lg appearance-none cursor-pointer accent-[#059669]"
                 />
-                <div className="flex justify-between text-2xs text-[#525252] dark:text-[#A3A3A3]">
+                <div className="flex justify-between text-2xs text-[#262626] dark:text-[#D4D4D4]">
                   <span>£0 (Take all cash)</span>
-                  <span>100% (£{(input.bonusAmount).toLocaleString('en-GB')})</span>
+                  <span>100% ({formatGBP((input.bonusAmount))})</span>
                 </div>
               </div>
             )}
@@ -293,7 +294,7 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/bonus-tax-calculator)`;
               <span className="w-2 h-2 rounded-full bg-[#059669] dark:bg-[#10B981]" />
               Net Bonus Payout In Your Pocket
             </span>
-            <span className="text-xs text-[#525252] dark:text-[#A3A3A3]">
+            <span className="text-xs text-[#262626] dark:text-[#D4D4D4]">
               Retention Rate: <strong className="text-[#111111] dark:text-[#F5F5F5]">{result.retentionPercentage.toFixed(1)}%</strong>
             </span>
           </div>
@@ -308,8 +309,8 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/bonus-tax-calculator)`;
                   className="text-[#111111] dark:text-[#F5F5F5]"
                 />
               </div>
-              <p className="text-xs text-[#525252] dark:text-[#A3A3A3] pt-1">
-                From a gross bonus of <strong className="text-[#111111] dark:text-[#F5F5F5]">£{result.bonusAmount.toLocaleString('en-GB')}</strong> (Total Deductions: £{result.totalDeductionsOnBonus.toLocaleString('en-GB', { minimumFractionDigits: 2, maximumFractionDigits: 2 })})
+              <p className="text-xs text-[#262626] dark:text-[#D4D4D4] pt-1">
+                From a gross bonus of <strong className="text-[#111111] dark:text-[#F5F5F5]">{formatGBP(result.bonusAmount)}</strong> (Total Deductions: £{result.totalDeductionsOnBonus.toLocaleString('en-GB', { minimumFractionDigits: 2, maximumFractionDigits: 2 })})
               </p>
             </div>
 
@@ -326,25 +327,25 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/bonus-tax-calculator)`;
           {/* Deductions Breakdown Pills */}
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5 pt-5 border-t border-[#E5E5E5] dark:border-[#2A2A2A] text-xs">
             <div className="bg-white dark:bg-[#111111] p-3 rounded-xl border border-[#E5E5E5] dark:border-[#2A2A2A] shadow-2xs">
-              <span className="text-[#525252] dark:text-[#A3A3A3] block text-2xs uppercase font-bold">Income Tax</span>
+              <span className="text-[#262626] dark:text-[#D4D4D4] block text-2xs uppercase font-bold">Income Tax</span>
               <span className="font-bold text-[#DC2626] dark:text-[#F87171] tabular-nums mt-0.5 block">
                 -£{result.taxOnBonus.toLocaleString('en-GB', { minimumFractionDigits: 0, maximumFractionDigits: 0 })}
               </span>
             </div>
             <div className="bg-white dark:bg-[#111111] p-3 rounded-xl border border-[#E5E5E5] dark:border-[#2A2A2A] shadow-2xs">
-              <span className="text-[#525252] dark:text-[#A3A3A3] block text-2xs uppercase font-bold">National Insurance</span>
+              <span className="text-[#262626] dark:text-[#D4D4D4] block text-2xs uppercase font-bold">National Insurance</span>
               <span className="font-bold text-[#DC2626] dark:text-[#F87171] tabular-nums mt-0.5 block">
                 -£{result.niOnBonus.toLocaleString('en-GB', { minimumFractionDigits: 0, maximumFractionDigits: 0 })}
               </span>
             </div>
             <div className="bg-white dark:bg-[#111111] p-3 rounded-xl border border-[#E5E5E5] dark:border-[#2A2A2A] shadow-2xs">
-              <span className="text-[#525252] dark:text-[#A3A3A3] block text-2xs uppercase font-bold">Pension Contrib.</span>
+              <span className="text-[#262626] dark:text-[#D4D4D4] block text-2xs uppercase font-bold">Pension Contrib.</span>
               <span className="font-bold text-[#111111] dark:text-[#F5F5F5] tabular-nums mt-0.5 block">
                 {result.pensionOnBonus > 0 ? `-£${result.pensionOnBonus.toLocaleString('en-GB', { minimumFractionDigits: 0, maximumFractionDigits: 0 })}` : '£0'}
               </span>
             </div>
             <div className="bg-white dark:bg-[#111111] p-3 rounded-xl border border-[#E5E5E5] dark:border-[#2A2A2A] shadow-2xs">
-              <span className="text-[#525252] dark:text-[#A3A3A3] block text-2xs uppercase font-bold">Student Loan</span>
+              <span className="text-[#262626] dark:text-[#D4D4D4] block text-2xs uppercase font-bold">Student Loan</span>
               <span className="font-bold text-[#111111] dark:text-[#F5F5F5] tabular-nums mt-0.5 block">
                 {result.studentLoanOnBonus > 0 ? `-£${result.studentLoanOnBonus.toLocaleString('en-GB', { minimumFractionDigits: 0, maximumFractionDigits: 0 })}` : '£0'}
               </span>
@@ -360,10 +361,10 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/bonus-tax-calculator)`;
                 <AlertTriangle className="w-5 h-5 text-amber-600 dark:text-amber-400 shrink-0 mt-0.5" />
                 <div className="text-xs space-y-1">
                   <strong className="text-amber-900 dark:text-amber-200 font-bold block">
-                    Higher Rate Threshold Crossed (£{result.higherRateThreshold.toLocaleString('en-GB')})
+                    Higher Rate Threshold Crossed ({formatGBP(result.higherRateThreshold)})
                   </strong>
                   <p className="text-amber-800/80 dark:text-amber-300/80">
-                    This bonus pushes your total earnings into the Higher Rate band. The portion of your bonus above £{result.higherRateThreshold.toLocaleString('en-GB')} is taxed at {input.region === 'scotland' ? '42%' : '40%'} Income Tax + 2% National Insurance.
+                    This bonus pushes your total earnings into the Higher Rate band. The portion of your bonus above {formatGBP(result.higherRateThreshold)} is taxed at {input.region === 'scotland' ? '42%' : '40%'} Income Tax + 2% National Insurance.
                   </p>
                 </div>
               </div>
@@ -410,26 +411,26 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/bonus-tax-calculator)`;
             </div>
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs">
               <div className="p-3 rounded-xl bg-white/80 dark:bg-[#151515] border border-emerald-200/60 dark:border-emerald-800/40">
-                <span className="text-[#525252] dark:text-[#A3A3A3] block text-2xs">Added to Pension Pot</span>
+                <span className="text-[#262626] dark:text-[#D4D4D4] block text-2xs">Added to Pension Pot</span>
                 <span className="text-sm font-extrabold text-[#059669] dark:text-[#10B981] tabular-nums">
-                  +£{result.salarySacrificeComparison.pensionPotAdded.toLocaleString('en-GB')}
+                  +{formatGBP(result.salarySacrificeComparison.pensionPotAdded)}
                 </span>
               </div>
               <div className="p-3 rounded-xl bg-white/80 dark:bg-[#151515] border border-emerald-200/60 dark:border-emerald-800/40">
-                <span className="text-[#525252] dark:text-[#A3A3A3] block text-2xs">Tax &amp; NI Saved</span>
+                <span className="text-[#262626] dark:text-[#D4D4D4] block text-2xs">Tax &amp; NI Saved</span>
                 <span className="text-sm font-extrabold text-emerald-700 dark:text-emerald-400 tabular-nums">
                   £{(result.salarySacrificeComparison.taxSaved + result.salarySacrificeComparison.niSaved).toLocaleString('en-GB', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
                 </span>
               </div>
               <div className="p-3 rounded-xl bg-white/80 dark:bg-[#151515] border border-emerald-200/60 dark:border-emerald-800/40">
-                <span className="text-[#525252] dark:text-[#A3A3A3] block text-2xs">Net Take-Home Sacrificed</span>
+                <span className="text-[#262626] dark:text-[#D4D4D4] block text-2xs">Net Take-Home Sacrificed</span>
                 <span className="text-sm font-extrabold text-[#111111] dark:text-[#F5F5F5] tabular-nums">
                   £{result.salarySacrificeComparison.netCashLost.toLocaleString('en-GB', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
                 </span>
               </div>
             </div>
             <p className="text-2xs text-emerald-800/90 dark:text-emerald-300/90 leading-relaxed">
-              By redirecting £{result.salarySacrificeComparison.sacrificedAmount.toLocaleString('en-GB')} of bonus into your pension, you boost your retirement savings by £{result.salarySacrificeComparison.pensionPotAdded.toLocaleString('en-GB')} at a real net take-home cost of only £{result.salarySacrificeComparison.netCashLost.toLocaleString('en-GB', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}.
+              By redirecting {formatGBP(result.salarySacrificeComparison.sacrificedAmount)} of bonus into your pension, you boost your retirement savings by {formatGBP(result.salarySacrificeComparison.pensionPotAdded)} at a real net take-home cost of only £{result.salarySacrificeComparison.netCashLost.toLocaleString('en-GB', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}.
             </p>
           </div>
         )}
@@ -449,7 +450,7 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/bonus-tax-calculator)`;
           <div className="overflow-x-auto">
             <table className="w-full text-xs">
               <thead>
-                <tr className="border-b border-[#E5E5E5] dark:border-[#2A2A2A] text-[#525252] dark:text-[#A3A3A3]">
+                <tr className="border-b border-[#E5E5E5] dark:border-[#2A2A2A] text-[#262626] dark:text-[#D4D4D4]">
                   <th className="text-left py-2 font-bold uppercase tracking-wider text-2xs">Payslip Item</th>
                   <th className="text-right py-2 font-bold uppercase tracking-wider text-2xs">Regular Month</th>
                   <th className="text-right py-2 font-bold uppercase tracking-wider text-2xs text-[#059669] dark:text-[#10B981]">Bonus Month</th>
@@ -459,7 +460,7 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/bonus-tax-calculator)`;
               <tbody className="divide-y divide-[#E5E5E5] dark:divide-[#2A2A2A]">
                 <tr>
                   <td className="py-2.5 font-bold text-[#111111] dark:text-[#F5F5F5]">Gross Pay</td>
-                  <td className="py-2.5 text-right font-medium text-[#525252] dark:text-[#A3A3A3] tabular-nums">
+                  <td className="py-2.5 text-right font-medium text-[#262626] dark:text-[#D4D4D4] tabular-nums">
                     £{(result.baseSalary / 12).toLocaleString('en-GB', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
                   </td>
                   <td className="py-2.5 text-right font-bold text-[#111111] dark:text-[#F5F5F5] tabular-nums">
@@ -471,8 +472,8 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/bonus-tax-calculator)`;
                 </tr>
 
                 <tr>
-                  <td className="py-2.5 font-medium text-[#525252] dark:text-[#A3A3A3]">Income Tax (PAYE)</td>
-                  <td className="py-2.5 text-right font-medium text-[#525252] dark:text-[#A3A3A3] tabular-nums">
+                  <td className="py-2.5 font-medium text-[#262626] dark:text-[#D4D4D4]">Income Tax (PAYE)</td>
+                  <td className="py-2.5 text-right font-medium text-[#262626] dark:text-[#D4D4D4] tabular-nums">
                     -£{(result.baseWithoutBonus.incomeTaxAnnual / 12).toLocaleString('en-GB', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
                   </td>
                   <td className="py-2.5 text-right font-medium text-[#EF4444] tabular-nums">
@@ -484,8 +485,8 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/bonus-tax-calculator)`;
                 </tr>
 
                 <tr>
-                  <td className="py-2.5 font-medium text-[#525252] dark:text-[#A3A3A3]">National Insurance</td>
-                  <td className="py-2.5 text-right font-medium text-[#525252] dark:text-[#A3A3A3] tabular-nums">
+                  <td className="py-2.5 font-medium text-[#262626] dark:text-[#D4D4D4]">National Insurance</td>
+                  <td className="py-2.5 text-right font-medium text-[#262626] dark:text-[#D4D4D4] tabular-nums">
                     -£{(result.baseWithoutBonus.employeeNiAnnual / 12).toLocaleString('en-GB', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
                   </td>
                   <td className="py-2.5 text-right font-medium text-[#EF4444] tabular-nums">
@@ -498,14 +499,14 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/bonus-tax-calculator)`;
 
                 {result.pensionOnBonus > 0 && (
                   <tr>
-                    <td className="py-2.5 font-medium text-[#525252] dark:text-[#A3A3A3]">Workplace Pension</td>
-                    <td className="py-2.5 text-right font-medium text-[#525252] dark:text-[#A3A3A3] tabular-nums">
+                    <td className="py-2.5 font-medium text-[#262626] dark:text-[#D4D4D4]">Workplace Pension</td>
+                    <td className="py-2.5 text-right font-medium text-[#262626] dark:text-[#D4D4D4] tabular-nums">
                       -£{(result.baseWithoutBonus.pensionAnnual / 12).toLocaleString('en-GB', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
                     </td>
-                    <td className="py-2.5 text-right font-medium text-[#525252] dark:text-[#A3A3A3] tabular-nums">
+                    <td className="py-2.5 text-right font-medium text-[#262626] dark:text-[#D4D4D4] tabular-nums">
                       -£{((result.baseWithoutBonus.pensionAnnual / 12) + result.pensionOnBonus).toLocaleString('en-GB', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
                     </td>
-                    <td className="py-2.5 text-right font-bold text-[#525252] dark:text-[#A3A3A3] tabular-nums">
+                    <td className="py-2.5 text-right font-bold text-[#262626] dark:text-[#D4D4D4] tabular-nums">
                       -£{result.pensionOnBonus.toLocaleString('en-GB', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
                     </td>
                   </tr>
@@ -513,8 +514,8 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/bonus-tax-calculator)`;
 
                 {result.studentLoanOnBonus > 0 && (
                   <tr>
-                    <td className="py-2.5 font-medium text-[#525252] dark:text-[#A3A3A3]">Student Loan</td>
-                    <td className="py-2.5 text-right font-medium text-[#525252] dark:text-[#A3A3A3] tabular-nums">
+                    <td className="py-2.5 font-medium text-[#262626] dark:text-[#D4D4D4]">Student Loan</td>
+                    <td className="py-2.5 text-right font-medium text-[#262626] dark:text-[#D4D4D4] tabular-nums">
                       -£{((result.baseWithoutBonus.studentLoanAnnual + result.baseWithoutBonus.postgradLoanAnnual) / 12).toLocaleString('en-GB', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
                     </td>
                     <td className="py-2.5 text-right font-medium text-[#EF4444] tabular-nums">
@@ -528,7 +529,7 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/bonus-tax-calculator)`;
 
                 <tr className="bg-[#059669]/5 dark:bg-[#10B981]/5 font-bold">
                   <td className="py-3 px-2 rounded-l-lg text-[#059669] dark:text-[#10B981]">Net Take-Home Payout</td>
-                  <td className="py-3 text-right text-[#525252] dark:text-[#A3A3A3] tabular-nums">
+                  <td className="py-3 text-right text-[#262626] dark:text-[#D4D4D4] tabular-nums">
                     £{result.normalMonthNet.toLocaleString('en-GB', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
                   </td>
                   <td className="py-3 text-right text-[#111111] dark:text-[#F5F5F5] font-extrabold tabular-nums">
@@ -551,10 +552,10 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/bonus-tax-calculator)`;
               Why Does My Bonus Payslip Look Like "Emergency Tax"?
             </h4>
           </div>
-          <p className="text-xs text-[#525252] dark:text-[#A3A3A3] leading-relaxed">
+          <p className="text-xs text-[#262626] dark:text-[#D4D4D4] leading-relaxed">
             UK PAYE software calculates tax per pay period by annualising that specific month's total gross income. When a lump sum bonus is added to your salary in a single month, the payroll system might temporarily calculate your tax as if you earn that higher amount every month of the year.
           </p>
-          <p className="text-xs text-[#525252] dark:text-[#A3A3A3] leading-relaxed">
+          <p className="text-xs text-[#262626] dark:text-[#D4D4D4] leading-relaxed">
             <strong>How it is resolved:</strong> Because standard UK tax codes operate on a <em>cumulative</em> basis, any excess tax deducted in your bonus month automatically adjusts downwards in subsequent payslips across the remainder of the tax year, or is refunded directly by HMRC via a P800 calculation after 5 April.
           </p>
         </div>
@@ -563,17 +564,17 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/bonus-tax-calculator)`;
         <ExportActions
           textToCopy={copyText}
           csvData={[
-            { Metric: 'Annual Base Salary', Value: `£${result.baseSalary.toFixed(2)}` },
-            { Metric: 'Gross Bonus Amount', Value: `£${result.bonusAmount.toFixed(2)}` },
-            { Metric: 'Total Gross Income', Value: `£${result.totalGrossIncome.toFixed(2)}` },
-            { Metric: 'Net Bonus in Pocket', Value: `£${result.netBonus.toFixed(2)}` },
+            { Metric: 'Annual Base Salary', Value: `${formatGBP(result.baseSalary)}` },
+            { Metric: 'Gross Bonus Amount', Value: `${formatGBP(result.bonusAmount)}` },
+            { Metric: 'Total Gross Income', Value: `${formatGBP(result.totalGrossIncome)}` },
+            { Metric: 'Net Bonus in Pocket', Value: `${formatGBP(result.netBonus)}` },
             { Metric: 'Bonus Retention Rate', Value: `${result.retentionPercentage.toFixed(2)}%` },
-            { Metric: 'Income Tax on Bonus', Value: `£${result.taxOnBonus.toFixed(2)}` },
-            { Metric: 'National Insurance on Bonus', Value: `£${result.niOnBonus.toFixed(2)}` },
-            { Metric: 'Pension Deducted from Bonus', Value: `£${result.pensionOnBonus.toFixed(2)}` },
-            { Metric: 'Student Loan Deducted from Bonus', Value: `£${result.studentLoanOnBonus.toFixed(2)}` },
-            { Metric: 'Regular Month Net Pay', Value: `£${result.normalMonthNet.toFixed(2)}` },
-            { Metric: 'Bonus Month Net Pay', Value: `£${result.bonusMonthNet.toFixed(2)}` },
+            { Metric: 'Income Tax on Bonus', Value: `${formatGBP(result.taxOnBonus)}` },
+            { Metric: 'National Insurance on Bonus', Value: `${formatGBP(result.niOnBonus)}` },
+            { Metric: 'Pension Deducted from Bonus', Value: `${formatGBP(result.pensionOnBonus)}` },
+            { Metric: 'Student Loan Deducted from Bonus', Value: `${formatGBP(result.studentLoanOnBonus)}` },
+            { Metric: 'Regular Month Net Pay', Value: `${formatGBP(result.normalMonthNet)}` },
+            { Metric: 'Bonus Month Net Pay', Value: `${formatGBP(result.bonusMonthNet)}` },
           ]}
           fileName={`paywise-bonus-tax-calculation-${result.bonusAmount}`}
           title="Bonus Tax & Take-Home Analysis"

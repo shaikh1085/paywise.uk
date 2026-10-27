@@ -1,3 +1,4 @@
+import { formatGBP } from '../../utils/format';
 import React, { useMemo } from 'react';
 import {
   SalaryComparisonInput,
@@ -69,7 +70,7 @@ export const SalaryComparisonCalculator: React.FC = () => {
     'salary_comparison_v1',
     {
       scenarios: DEFAULT_SCENARIOS,
-      taxYear: '2025_26',
+      taxYear: '2026_27',
       region: 'england_ni',
       taxCode: '1257L',
       pensionType: 'net_pay',
@@ -79,10 +80,10 @@ export const SalaryComparisonCalculator: React.FC = () => {
   const result = useMemo(() => calculateSalaryComparison(input), [input]);
 
   const fmt = (n: number) =>
-    '£' + n.toLocaleString('en-GB', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+    formatGBP(n);
 
   const fmtWhole = (n: number) =>
-    '£' + Math.round(n).toLocaleString('en-GB');
+    formatGBP(Math.round(n), 0);
 
   const handleScenarioChange = (
     index: number,
@@ -151,7 +152,7 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/salary-comparison-calcul
       {/* Top Controls Bar */}
       <div className="p-5 rounded-2xl bg-white dark:bg-[#171717] border border-[#E5E5E5] dark:border-[#2A2A2A] shadow-[0_4px_20px_rgba(0,0,0,0.04)] dark:shadow-[0_8px_25px_rgba(0,0,0,0.25)] flex flex-wrap items-center justify-between gap-4">
         <div className="flex flex-wrap items-center gap-2 sm:gap-3">
-          <span className="text-xs font-bold uppercase tracking-wider text-[#737373] dark:text-[#A3A3A3] flex items-center gap-1.5">
+          <span className="text-xs font-bold uppercase tracking-wider text-[#737373] dark:text-[#D4D4D4] flex items-center gap-1.5">
             <Sparkles className="w-3.5 h-3.5 text-[#059669] dark:text-[#10B981]" />
             Presets:
           </span>
@@ -160,7 +161,7 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/salary-comparison-calcul
               key={p.label}
               type="button"
               onClick={() => handleApplyPreset(p)}
-              className="text-xs px-3 py-1.5 rounded-lg border border-[#E5E5E5] dark:border-[#303030] bg-[#FAFAFA] dark:bg-[#151515] text-[#525252] dark:text-[#D4D4D4] hover:border-[#059669] dark:hover:border-[#10B981] hover:text-[#059669] font-medium transition-all"
+              className="text-xs px-3 py-1.5 rounded-lg border border-[#E5E5E5] dark:border-[#303030] bg-[#FAFAFA] dark:bg-[#151515] text-[#262626] dark:text-[#D4D4D4] hover:border-[#059669] dark:hover:border-[#10B981] hover:text-[#059669] font-medium transition-all"
             >
               {p.label}
             </button>
@@ -182,7 +183,7 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/salary-comparison-calcul
                 className={`text-xs px-2.5 py-1 rounded-md font-bold transition-all ${
                   (input.region || 'england_ni') === r.key
                     ? 'bg-[#059669] text-white'
-                    : 'text-[#737373] dark:text-[#A3A3A3] hover:text-[#111111]'
+                    : 'text-[#737373] dark:text-[#D4D4D4] hover:text-[#111111]'
                 }`}
               >
                 {r.label}
@@ -231,7 +232,7 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/salary-comparison-calcul
                     <button
                       type="button"
                       onClick={() => handleRemoveScenario(idx)}
-                      className="text-[#A3A3A3] hover:text-rose-600 transition-colors p-1"
+                      className="text-[#D4D4D4] hover:text-rose-600 transition-colors p-1"
                       aria-label="Remove scenario"
                     >
                       <Trash2 className="w-3.5 h-3.5" />
@@ -242,7 +243,7 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/salary-comparison-calcul
 
               <div className="space-y-3">
                 <div>
-                  <label className="block text-[11px] font-bold text-[#737373] dark:text-[#A3A3A3] mb-1">
+                  <label className="block text-[11px] font-bold text-[#737373] dark:text-[#D4D4D4] mb-1">
                     Gross Annual Salary
                   </label>
                   <div className="relative">
@@ -262,7 +263,7 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/salary-comparison-calcul
 
                 <div className="grid grid-cols-2 gap-2">
                   <div>
-                    <label className="block text-[10px] font-bold text-[#737373] dark:text-[#A3A3A3] mb-1">
+                    <label className="block text-[10px] font-bold text-[#737373] dark:text-[#D4D4D4] mb-1">
                       Pension %
                     </label>
                     <input
@@ -283,7 +284,7 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/salary-comparison-calcul
                   </div>
 
                   <div>
-                    <label className="block text-[10px] font-bold text-[#737373] dark:text-[#A3A3A3] mb-1">
+                    <label className="block text-[10px] font-bold text-[#737373] dark:text-[#D4D4D4] mb-1">
                       Student Loan
                     </label>
                     <select
@@ -311,11 +312,11 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/salary-comparison-calcul
           <button
             type="button"
             onClick={handleAddScenario}
-            className="flex flex-col items-center justify-center p-6 rounded-2xl border-2 border-dashed border-[#E5E5E5] dark:border-[#303030] hover:border-[#059669] dark:hover:border-[#10B981] text-[#737373] dark:text-[#A3A3A3] hover:text-[#059669] dark:hover:text-[#10B981] transition-all group min-h-[160px]"
+            className="flex flex-col items-center justify-center p-6 rounded-2xl border-2 border-dashed border-[#E5E5E5] dark:border-[#303030] hover:border-[#059669] dark:hover:border-[#10B981] text-[#737373] dark:text-[#D4D4D4] hover:text-[#059669] dark:hover:text-[#10B981] transition-all group min-h-[160px]"
           >
             <Plus className="w-6 h-6 mb-1 group-hover:scale-110 transition-transform" />
             <span className="text-xs font-bold">Add Another Scenario</span>
-            <span className="text-[10px] text-[#A3A3A3]">Compare up to 6 salaries</span>
+            <span className="text-[10px] text-[#D4D4D4]">Compare up to 6 salaries</span>
           </button>
         )}
       </div>
@@ -328,7 +329,7 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/salary-comparison-calcul
               <GitCompare className="w-5 h-5 text-[#059669] dark:text-[#10B981]" />
               Side-by-Side Take-Home Comparison Matrix
             </h2>
-            <p className="text-xs text-[#737373] dark:text-[#A3A3A3] mt-0.5">
+            <p className="text-xs text-[#737373] dark:text-[#D4D4D4] mt-0.5">
               Accurate for UK Tax Year {result.taxYearLabel} • All deductions and marginal thresholds factored
             </p>
           </div>
@@ -344,7 +345,7 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/salary-comparison-calcul
         <div className="overflow-x-auto">
           <table className="w-full text-xs">
             <thead>
-              <tr className="border-b border-[#E5E5E5] dark:border-[#2A2A2A] text-left text-[#737373] dark:text-[#A3A3A3]">
+              <tr className="border-b border-[#E5E5E5] dark:border-[#2A2A2A] text-left text-[#737373] dark:text-[#D4D4D4]">
                 <th className="pb-3 font-bold">Scenario / Metric</th>
                 {result.items.map((item, idx) => (
                   <th
@@ -380,7 +381,7 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/salary-comparison-calcul
               </tr>
 
               <tr>
-                <td className="py-2.5 px-2 text-[#525252] dark:text-[#A3A3A3] font-semibold">Net Take-Home (Monthly)</td>
+                <td className="py-2.5 px-2 text-[#262626] dark:text-[#D4D4D4] font-semibold">Net Take-Home (Monthly)</td>
                 {result.items.map((item) => (
                   <td key={item.id} className="py-2.5 text-right font-bold text-[#111111] dark:text-[#F5F5F5]">
                     {fmt(item.takeHomeMonthly)}
@@ -389,16 +390,16 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/salary-comparison-calcul
               </tr>
 
               <tr>
-                <td className="py-2 px-2 text-[#525252] dark:text-[#A3A3A3]">Net Take-Home (Weekly)</td>
+                <td className="py-2 px-2 text-[#262626] dark:text-[#D4D4D4]">Net Take-Home (Weekly)</td>
                 {result.items.map((item) => (
-                  <td key={item.id} className="py-2 text-right text-[#737373] dark:text-[#A3A3A3]">
+                  <td key={item.id} className="py-2 text-right text-[#737373] dark:text-[#D4D4D4]">
                     {fmt(item.takeHomeWeekly)}
                   </td>
                 ))}
               </tr>
 
               <tr>
-                <td className="py-2 px-2 text-[#525252] dark:text-[#A3A3A3]">Income Tax</td>
+                <td className="py-2 px-2 text-[#262626] dark:text-[#D4D4D4]">Income Tax</td>
                 {result.items.map((item) => (
                   <td key={item.id} className="py-2 text-right text-rose-600 dark:text-rose-400 font-semibold">
                     -{fmt(item.incomeTaxAnnual)}
@@ -407,7 +408,7 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/salary-comparison-calcul
               </tr>
 
               <tr>
-                <td className="py-2 px-2 text-[#525252] dark:text-[#A3A3A3]">National Insurance</td>
+                <td className="py-2 px-2 text-[#262626] dark:text-[#D4D4D4]">National Insurance</td>
                 {result.items.map((item) => (
                   <td key={item.id} className="py-2 text-right text-rose-600 dark:text-rose-400 font-semibold">
                     -{fmt(item.employeeNiAnnual)}
@@ -416,25 +417,25 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/salary-comparison-calcul
               </tr>
 
               <tr>
-                <td className="py-2 px-2 text-[#525252] dark:text-[#A3A3A3]">Pension Contribution</td>
+                <td className="py-2 px-2 text-[#262626] dark:text-[#D4D4D4]">Pension Contribution</td>
                 {result.items.map((item) => (
-                  <td key={item.id} className="py-2 text-right text-[#737373] dark:text-[#A3A3A3]">
+                  <td key={item.id} className="py-2 text-right text-[#737373] dark:text-[#D4D4D4]">
                     -{fmt(item.pensionAnnual)}
                   </td>
                 ))}
               </tr>
 
               <tr>
-                <td className="py-2 px-2 text-[#525252] dark:text-[#A3A3A3]">Student Loan Repayment</td>
+                <td className="py-2 px-2 text-[#262626] dark:text-[#D4D4D4]">Student Loan Repayment</td>
                 {result.items.map((item) => (
-                  <td key={item.id} className="py-2 text-right text-[#737373] dark:text-[#A3A3A3]">
+                  <td key={item.id} className="py-2 text-right text-[#737373] dark:text-[#D4D4D4]">
                     {item.studentLoanAnnual > 0 ? `-${fmt(item.studentLoanAnnual)}` : '£0.00'}
                   </td>
                 ))}
               </tr>
 
               <tr className="bg-[#FAFAFA] dark:bg-[#151515]">
-                <td className="py-2 px-2 text-[#525252] dark:text-[#A3A3A3] font-semibold">Effective Tax + NI Rate</td>
+                <td className="py-2 px-2 text-[#262626] dark:text-[#D4D4D4] font-semibold">Effective Tax + NI Rate</td>
                 {result.items.map((item) => (
                   <td key={item.id} className="py-2 text-right font-bold text-[#111111] dark:text-[#F5F5F5]">
                     {item.effectiveTaxRate.toFixed(1)}%
@@ -450,7 +451,7 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/salary-comparison-calcul
                 {result.items.map((item, idx) => (
                   <td key={item.id} className="py-2.5 text-right font-black text-xs">
                     {idx === 0 ? (
-                      <span className="text-[#A3A3A3]">—</span>
+                      <span className="text-[#D4D4D4]">—</span>
                     ) : (
                       <span className={item.diffAnnualFromBaseline >= 0 ? 'text-[#059669] dark:text-[#10B981]' : 'text-rose-600'}>
                         {item.diffAnnualFromBaseline >= 0 ? '+' : ''}
@@ -465,12 +466,12 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/salary-comparison-calcul
               </tr>
 
               <tr className="bg-amber-500/5 dark:bg-amber-500/10">
-                <td className="py-2 px-2 text-[#525252] dark:text-[#A3A3A3] font-semibold">
+                <td className="py-2 px-2 text-[#262626] dark:text-[#D4D4D4] font-semibold">
                   Retention Rate (% of extra gross kept)
                 </td>
                 {result.items.map((item, idx) => (
                   <td key={item.id} className="py-2 text-right font-bold text-[#111111] dark:text-[#F5F5F5]">
-                    {idx === 0 ? <span className="text-[#A3A3A3]">—</span> : `${item.retentionRateFromBaseline.toFixed(0)}% kept`}
+                    {idx === 0 ? <span className="text-[#D4D4D4]">—</span> : `${item.retentionRateFromBaseline.toFixed(0)}% kept`}
                   </td>
                 ))}
               </tr>
@@ -480,7 +481,7 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/salary-comparison-calcul
 
         {/* Visual Waterfall/Bar Breakdown Cards */}
         <div className="pt-4 border-t border-[#E5E5E5] dark:border-[#2A2A2A]">
-          <h3 className="text-xs font-bold uppercase tracking-wider text-[#737373] dark:text-[#A3A3A3] mb-4">
+          <h3 className="text-xs font-bold uppercase tracking-wider text-[#737373] dark:text-[#D4D4D4] mb-4">
             Gross Salary Allocation Breakdown
           </h3>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
@@ -526,7 +527,7 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/salary-comparison-calcul
                     />
                   </div>
 
-                  <div className="flex justify-between text-[10px] text-[#737373] dark:text-[#A3A3A3] pt-1">
+                  <div className="flex justify-between text-[10px] text-[#737373] dark:text-[#D4D4D4] pt-1">
                     <span>Take-home: {fmtWhole(item.takeHomeAnnual)}</span>
                     <span>Deductions: {fmtWhole(item.totalDeductionsAnnual)}</span>
                   </div>

@@ -61,7 +61,7 @@ export const ResultMetricCard: React.FC<ResultMetricCardProps> = ({
       className={`relative p-3 sm:p-4 rounded-xl ${style.bg} border ${style.border} shadow-[0_8px_30px_rgba(0,0,0,0.06)] dark:shadow-[0_10px_35px_rgba(0,0,0,0.35)] transition-all duration-150 hover:-translate-y-0.5 ${className}`}
     >
       <div className="flex items-center justify-between gap-1 mb-1">
-        <span className="text-2xs font-bold uppercase tracking-wider text-[#525252] dark:text-[#A3A3A3] truncate">
+        <span className="text-2xs font-bold uppercase tracking-wider text-[#262626] dark:text-[#D4D4D4] truncate">
           {label}
         </span>
         <div className="flex items-center gap-1">

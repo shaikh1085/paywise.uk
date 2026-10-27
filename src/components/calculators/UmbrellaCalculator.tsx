@@ -1,3 +1,4 @@
+import { formatGBP } from '../../utils/format';
 import React, { useState, useMemo } from 'react';
 import { UmbrellaInput } from '../../types';
 import { calculateUmbrella } from '../../utils/calculations';
@@ -18,12 +19,12 @@ export const UmbrellaCalculator: React.FC = () => {
   const result = useMemo(() => calculateUmbrella(input), [input]);
 
   const copyText = `PayWise UK Umbrella Pay Calculation:
-Monthly Invoiced Amount: £${result.invoiceGrossMonthly.toLocaleString('en-GB')}
-Umbrella Margin: -£${result.umbrellaMarginMonthly.toFixed(2)}
-Employer NI & Apprenticeship Levy: -£${(result.employerNiMonthly + result.apprenticeshipLevyMonthly).toFixed(2)}
-Gross Salary: £${result.grossSalaryMonthly.toFixed(2)}
-Income Tax & Employee NI: -£${(result.incomeTaxMonthly + result.employeeNiMonthly).toFixed(2)}
-Estimated Net Monthly Pay: £${result.netPayMonthly.toFixed(2)}
+Monthly Invoiced Amount: ${formatGBP(result.invoiceGrossMonthly)}
+Umbrella Margin: -${formatGBP(result.umbrellaMarginMonthly)}
+Employer NI & Apprenticeship Levy: -${formatGBP((result.employerNiMonthly + result.apprenticeshipLevyMonthly))}
+Gross Salary: ${formatGBP(result.grossSalaryMonthly)}
+Income Tax & Employee NI: -${formatGBP((result.incomeTaxMonthly + result.employeeNiMonthly))}
+Estimated Net Monthly Pay: ${formatGBP(result.netPayMonthly)}
 Retention Rate: ${result.retentionPercent.toFixed(1)}%
 Calculated via PayWise UK (https://paywiseuk.vercel.app/umbrella-company-calculator)`;
 
@@ -114,8 +115,8 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/umbrella-company-calcula
               <span className="w-2 h-2 rounded-full bg-[#059669] dark:bg-[#10B981]" />
               Net Umbrella Monthly Take-Home
             </span>
-            <span className="text-xs text-[#525252] dark:text-[#A3A3A3] tabular-nums">
-              Invoice: £{result.invoiceGrossMonthly.toLocaleString('en-GB')}/mo
+            <span className="text-xs text-[#262626] dark:text-[#D4D4D4] tabular-nums">
+              Invoice: {formatGBP(result.invoiceGrossMonthly)}/mo
             </span>
           </div>
 
@@ -129,7 +130,7 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/umbrella-company-calcula
                   className="text-[#111111] dark:text-[#F5F5F5]"
                 />
               </div>
-              <p className="text-xs sm:text-sm font-medium text-[#525252] dark:text-[#A3A3A3] flex items-center gap-1.5">
+              <p className="text-xs sm:text-sm font-medium text-[#262626] dark:text-[#D4D4D4] flex items-center gap-1.5">
                 <ArrowUpRight className="w-4 h-4 text-[#059669] dark:text-[#10B981] shrink-0" />
                 <span>
                   Net cash deposit into your bank account after all umbrella deductions
@@ -149,21 +150,21 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/umbrella-company-calcula
 
           <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 pt-5 border-t border-[#E5E5E5] dark:border-[#2A2A2A]">
             <div className="bg-white dark:bg-[#111111] p-3 rounded-xl border border-[#E5E5E5] dark:border-[#2A2A2A] shadow-2xs">
-              <span className="text-2xs uppercase text-[#525252] dark:text-[#A3A3A3] font-bold block truncate">Gross Pay on Slip</span>
+              <span className="text-2xs uppercase text-[#262626] dark:text-[#D4D4D4] font-bold block truncate">Gross Pay on Slip</span>
               <p className="text-base sm:text-lg font-black text-[#059669] dark:text-[#10B981] mt-0.5 tabular-nums">
                 £{result.grossSalaryMonthly.toLocaleString('en-GB', { minimumFractionDigits: 0, maximumFractionDigits: 0 })}/mo
               </p>
             </div>
 
             <div className="bg-white dark:bg-[#111111] p-3 rounded-xl border border-[#E5E5E5] dark:border-[#2A2A2A] shadow-2xs">
-              <span className="text-2xs uppercase text-[#525252] dark:text-[#A3A3A3] font-bold block truncate">Employer Deductions</span>
+              <span className="text-2xs uppercase text-[#262626] dark:text-[#D4D4D4] font-bold block truncate">Employer Deductions</span>
               <p className="text-base sm:text-lg font-black text-[#DC2626] dark:text-[#F87171] mt-0.5 tabular-nums">
                 -£{(result.employerNiMonthly + result.apprenticeshipLevyMonthly).toFixed(0)}/mo
               </p>
             </div>
 
             <div className="bg-white dark:bg-[#111111] p-3 rounded-xl border border-[#E5E5E5] dark:border-[#2A2A2A] shadow-2xs col-span-2 sm:col-span-1">
-              <span className="text-2xs uppercase text-[#525252] dark:text-[#A3A3A3] font-bold block truncate">Net Retention</span>
+              <span className="text-2xs uppercase text-[#262626] dark:text-[#D4D4D4] font-bold block truncate">Net Retention</span>
               <p className="text-base sm:text-lg font-black text-[#111111] dark:text-[#F5F5F5] mt-0.5 tabular-nums">
                 {result.retentionPercent.toFixed(1)}%
               </p>
@@ -188,14 +189,14 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/umbrella-company-calcula
             <div className="flex justify-between py-2 border-b border-slate-100 dark:border-slate-800 text-slate-700 dark:text-slate-300">
               <span>Umbrella Company Margin</span>
               <span className="font-semibold text-rose-600 dark:text-rose-400">
-                -£{result.umbrellaMarginMonthly.toFixed(2)}
+                -{formatGBP(result.umbrellaMarginMonthly)}
               </span>
             </div>
 
             <div className="flex justify-between py-2 border-b border-slate-100 dark:border-slate-800 text-slate-700 dark:text-slate-300">
               <span>Employer Costs (NI & Apprenticeship Levy)</span>
               <span className="font-semibold text-rose-600 dark:text-rose-400">
-                -£{(result.employerNiMonthly + result.apprenticeshipLevyMonthly).toFixed(2)}
+                -{formatGBP((result.employerNiMonthly + result.apprenticeshipLevyMonthly))}
               </span>
             </div>
 

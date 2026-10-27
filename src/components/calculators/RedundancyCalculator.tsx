@@ -1,3 +1,4 @@
+import { formatGBP } from '../../utils/format';
 import React, { useState, useMemo } from 'react';
 import { RedundancyPayInput, TaxRegion } from '../../types';
 import { calculateRedundancyPay } from '../../utils/calculations';
@@ -31,7 +32,7 @@ export const RedundancyCalculator: React.FC = () => {
     enhancedRedundancyPay: 10000,
     annualSalary: 44200,
     region: 'england_ni',
-    taxYear: '2025_26',
+    taxYear: '2026_27',
     taxCode: '1257L',
     studentLoanPlan: 'none',
   });
@@ -143,7 +144,7 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/redundancy-pay-calculato
               </span>
             </div>
             <div className="relative">
-              <span className="absolute inset-y-0 left-0 pl-3.5 flex items-center text-[#525252] dark:text-[#A3A3A3] font-bold text-base">£</span>
+              <span className="absolute inset-y-0 left-0 pl-3.5 flex items-center text-[#262626] dark:text-[#D4D4D4] font-bold text-base">£</span>
               <input
                 type="number"
                 id="rp-weekly-pay"
@@ -182,8 +183,8 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/redundancy-pay-calculato
               />
             </div>
             {input.useStatutoryWeeklyCap && input.weeklyPay > input.statutoryWeeklyCap && (
-              <p className="text-2xs text-[#525252] dark:text-[#A3A3A3] pl-6">
-                Your actual weekly pay of £{input.weeklyPay.toFixed(2)} will be capped at <strong>£{input.statutoryWeeklyCap}.00</strong> for the statutory entitlement.
+              <p className="text-2xs text-[#262626] dark:text-[#D4D4D4] pl-6">
+                Your actual weekly pay of {formatGBP(input.weeklyPay)} will be capped at <strong>£{input.statutoryWeeklyCap}.00</strong> for the statutory entitlement.
               </p>
             )}
           </div>
@@ -201,11 +202,11 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/redundancy-pay-calculato
                 />
               </div>
               <span className="text-xs font-semibold text-[#059669] dark:text-[#10B981] tabular-nums">
-                £{(input.enhancedRedundancyPay || 0).toLocaleString('en-GB')}
+                {formatGBP((input.enhancedRedundancyPay || 0))}
               </span>
             </div>
             <div className="relative">
-              <span className="absolute inset-y-0 left-0 pl-3.5 flex items-center text-[#525252] dark:text-[#A3A3A3] font-bold text-base">£</span>
+              <span className="absolute inset-y-0 left-0 pl-3.5 flex items-center text-[#262626] dark:text-[#D4D4D4] font-bold text-base">£</span>
               <input
                 type="number"
                 id="rp-enhanced"
@@ -271,7 +272,7 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/redundancy-pay-calculato
               <span className="w-2 h-2 rounded-full bg-[#059669] dark:bg-[#10B981]" />
               Net Redundancy Payout in Your Pocket
             </span>
-            <span className="text-xs text-[#525252] dark:text-[#A3A3A3]">
+            <span className="text-xs text-[#262626] dark:text-[#D4D4D4]">
               Retention Rate: <strong className="text-[#111111] dark:text-[#F5F5F5]">{result.retentionPercentage.toFixed(1)}%</strong>
             </span>
           </div>
@@ -286,7 +287,7 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/redundancy-pay-calculato
                   className="text-[#111111] dark:text-[#F5F5F5]"
                 />
               </div>
-              <p className="text-xs text-[#525252] dark:text-[#A3A3A3] pt-1">
+              <p className="text-xs text-[#262626] dark:text-[#D4D4D4] pt-1">
                 Total Gross Package: <strong className="text-[#111111] dark:text-[#F5F5F5]">£{result.totalGrossRedundancyPay.toLocaleString('en-GB', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</strong>
                 {result.taxableExcess > 0 ? ` (Deductions: £${result.totalDeductions.toLocaleString('en-GB', { minimumFractionDigits: 2, maximumFractionDigits: 2 })})` : ' (100% Tax-Free)'}
               </p>
@@ -305,25 +306,25 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/redundancy-pay-calculato
           {/* Quick Summary Cards */}
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5 pt-5 border-t border-[#E5E5E5] dark:border-[#2A2A2A] text-xs">
             <div className="bg-white dark:bg-[#111111] p-3 rounded-xl border border-[#E5E5E5] dark:border-[#2A2A2A] shadow-2xs">
-              <span className="text-[#525252] dark:text-[#A3A3A3] block text-2xs uppercase font-bold">Statutory Redundancy</span>
+              <span className="text-[#262626] dark:text-[#D4D4D4] block text-2xs uppercase font-bold">Statutory Redundancy</span>
               <span className="font-bold text-[#111111] dark:text-[#F5F5F5] tabular-nums mt-0.5 block">
                 £{result.statutoryRedundancyPay.toLocaleString('en-GB', { minimumFractionDigits: 0, maximumFractionDigits: 0 })}
               </span>
             </div>
             <div className="bg-white dark:bg-[#111111] p-3 rounded-xl border border-[#E5E5E5] dark:border-[#2A2A2A] shadow-2xs">
-              <span className="text-[#525252] dark:text-[#A3A3A3] block text-2xs uppercase font-bold">Enhanced Pay</span>
+              <span className="text-[#262626] dark:text-[#D4D4D4] block text-2xs uppercase font-bold">Enhanced Pay</span>
               <span className="font-bold text-[#111111] dark:text-[#F5F5F5] tabular-nums mt-0.5 block">
                 £{result.enhancedRedundancyPay.toLocaleString('en-GB', { minimumFractionDigits: 0, maximumFractionDigits: 0 })}
               </span>
             </div>
             <div className="bg-white dark:bg-[#111111] p-3 rounded-xl border border-[#E5E5E5] dark:border-[#2A2A2A] shadow-2xs">
-              <span className="text-[#525252] dark:text-[#A3A3A3] block text-2xs uppercase font-bold">Tax-Free Portion</span>
+              <span className="text-[#262626] dark:text-[#D4D4D4] block text-2xs uppercase font-bold">Tax-Free Portion</span>
               <span className="font-bold text-[#059669] dark:text-[#10B981] tabular-nums mt-0.5 block">
                 £{result.taxFreeAmount.toLocaleString('en-GB', { minimumFractionDigits: 0, maximumFractionDigits: 0 })}
               </span>
             </div>
             <div className="bg-white dark:bg-[#111111] p-3 rounded-xl border border-[#E5E5E5] dark:border-[#2A2A2A] shadow-2xs">
-              <span className="text-[#525252] dark:text-[#A3A3A3] block text-2xs uppercase font-bold">Income Tax Paid</span>
+              <span className="text-[#262626] dark:text-[#D4D4D4] block text-2xs uppercase font-bold">Income Tax Paid</span>
               <span className={`font-bold tabular-nums mt-0.5 block ${result.incomeTaxOnExcess > 0 ? 'text-[#DC2626] dark:text-[#F87171]' : 'text-[#111111] dark:text-[#F5F5F5]'}`}>
                 {result.incomeTaxOnExcess > 0 ? `-£${result.incomeTaxOnExcess.toLocaleString('en-GB', { minimumFractionDigits: 0, maximumFractionDigits: 0 })}` : '£0'}
               </span>
@@ -338,8 +339,8 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/redundancy-pay-calculato
               <ShieldCheck className="w-4 h-4 text-[#059669] dark:text-[#10B981]" />
               £30,000 HMRC Tax-Free Exemption Allowance
             </span>
-            <span className="text-xs font-semibold text-[#525252] dark:text-[#A3A3A3]">
-              £{result.taxFreeAmount.toLocaleString('en-GB')} used of £30,000
+            <span className="text-xs font-semibold text-[#262626] dark:text-[#D4D4D4]">
+              {formatGBP(result.taxFreeAmount)} used of £30,000
             </span>
           </div>
 
@@ -356,19 +357,19 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/redundancy-pay-calculato
             )}
           </div>
 
-          <div className="flex items-center justify-between text-2xs text-[#525252] dark:text-[#A3A3A3]">
+          <div className="flex items-center justify-between text-2xs text-[#262626] dark:text-[#D4D4D4]">
             <span className="flex items-center gap-1">
               <span className="w-2 h-2 rounded-full bg-[#059669] dark:bg-[#10B981]" />
-              Tax-Free: £{result.taxFreeAmount.toLocaleString('en-GB')}
+              Tax-Free: {formatGBP(result.taxFreeAmount)}
             </span>
             {result.taxableExcess > 0 ? (
               <span className="flex items-center gap-1 text-[#EF4444] font-semibold">
                 <span className="w-2 h-2 rounded-full bg-[#EF4444]" />
-                Taxable Excess: £{result.taxableExcess.toLocaleString('en-GB')} (Tax: £{result.incomeTaxOnExcess.toFixed(2)})
+                Taxable Excess: {formatGBP(result.taxableExcess)} (Tax: {formatGBP(result.incomeTaxOnExcess)})
               </span>
             ) : (
               <span className="text-[#059669] dark:text-[#10B981] font-semibold">
-                100% Tax-Free (£{(30000 - result.taxFreeAmount).toLocaleString('en-GB')} exemption remaining)
+                100% Tax-Free ({formatGBP((30000 - result.taxFreeAmount))} exemption remaining)
               </span>
             )}
           </div>
@@ -389,7 +390,7 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/redundancy-pay-calculato
           <div className="overflow-x-auto">
             <table className="w-full text-xs">
               <thead>
-                <tr className="border-b border-[#E5E5E5] dark:border-[#2A2A2A] text-[#525252] dark:text-[#A3A3A3]">
+                <tr className="border-b border-[#E5E5E5] dark:border-[#2A2A2A] text-[#262626] dark:text-[#D4D4D4]">
                   <th className="text-left py-2 font-bold uppercase tracking-wider text-2xs">Age Band</th>
                   <th className="text-center py-2 font-bold uppercase tracking-wider text-2xs">Service Years</th>
                   <th className="text-center py-2 font-bold uppercase tracking-wider text-2xs">Multiplier</th>
@@ -400,10 +401,10 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/redundancy-pay-calculato
               <tbody className="divide-y divide-[#E5E5E5] dark:divide-[#2A2A2A]">
                 <tr>
                   <td className="py-2.5 font-semibold text-[#111111] dark:text-[#F5F5F5]">Under Age 22</td>
-                  <td className="py-2.5 text-center text-[#525252] dark:text-[#A3A3A3] tabular-nums">
+                  <td className="py-2.5 text-center text-[#262626] dark:text-[#D4D4D4] tabular-nums">
                     {result.serviceBreakdown.yearsUnder22} yr{result.serviceBreakdown.yearsUnder22 !== 1 ? 's' : ''}
                   </td>
-                  <td className="py-2.5 text-center text-[#525252] dark:text-[#A3A3A3]">0.5 week / yr</td>
+                  <td className="py-2.5 text-center text-[#262626] dark:text-[#D4D4D4]">0.5 week / yr</td>
                   <td className="py-2.5 text-center font-bold text-[#111111] dark:text-[#F5F5F5] tabular-nums">
                     {result.serviceBreakdown.weeksUnder22} wks
                   </td>
@@ -414,10 +415,10 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/redundancy-pay-calculato
 
                 <tr>
                   <td className="py-2.5 font-semibold text-[#111111] dark:text-[#F5F5F5]">Aged 22 to 40</td>
-                  <td className="py-2.5 text-center text-[#525252] dark:text-[#A3A3A3] tabular-nums">
+                  <td className="py-2.5 text-center text-[#262626] dark:text-[#D4D4D4] tabular-nums">
                     {result.serviceBreakdown.yearsBetween22And40} yr{result.serviceBreakdown.yearsBetween22And40 !== 1 ? 's' : ''}
                   </td>
-                  <td className="py-2.5 text-center text-[#525252] dark:text-[#A3A3A3]">1.0 week / yr</td>
+                  <td className="py-2.5 text-center text-[#262626] dark:text-[#D4D4D4]">1.0 week / yr</td>
                   <td className="py-2.5 text-center font-bold text-[#111111] dark:text-[#F5F5F5] tabular-nums">
                     {result.serviceBreakdown.weeksBetween22And40} wks
                   </td>
@@ -428,10 +429,10 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/redundancy-pay-calculato
 
                 <tr>
                   <td className="py-2.5 font-semibold text-[#111111] dark:text-[#F5F5F5]">Aged 41 and Over</td>
-                  <td className="py-2.5 text-center text-[#525252] dark:text-[#A3A3A3] tabular-nums">
+                  <td className="py-2.5 text-center text-[#262626] dark:text-[#D4D4D4] tabular-nums">
                     {result.serviceBreakdown.yearsOver41} yr{result.serviceBreakdown.yearsOver41 !== 1 ? 's' : ''}
                   </td>
-                  <td className="py-2.5 text-center text-[#525252] dark:text-[#A3A3A3]">1.5 weeks / yr</td>
+                  <td className="py-2.5 text-center text-[#262626] dark:text-[#D4D4D4]">1.5 weeks / yr</td>
                   <td className="py-2.5 text-center font-bold text-[#111111] dark:text-[#F5F5F5] tabular-nums">
                     {result.serviceBreakdown.weeksOver41} wks
                   </td>
@@ -442,10 +443,10 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/redundancy-pay-calculato
 
                 <tr className="bg-[#059669]/5 dark:bg-[#10B981]/5 font-bold">
                   <td className="py-3 px-2 rounded-l-lg text-[#059669] dark:text-[#10B981]">Total Statutory Redundancy</td>
-                  <td className="py-3 text-center text-[#525252] dark:text-[#A3A3A3] tabular-nums">
+                  <td className="py-3 text-center text-[#262626] dark:text-[#D4D4D4] tabular-nums">
                     {result.yearsOfService} yrs (Capped at 20)
                   </td>
-                  <td className="py-3 text-center text-[#525252] dark:text-[#A3A3A3]">—</td>
+                  <td className="py-3 text-center text-[#262626] dark:text-[#D4D4D4]">—</td>
                   <td className="py-3 text-center font-extrabold text-[#111111] dark:text-[#F5F5F5] tabular-nums">
                     {result.serviceBreakdown.totalStatutoryWeeks} wks
                   </td>
@@ -456,7 +457,7 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/redundancy-pay-calculato
               </tbody>
             </table>
           </div>
-          <p className="text-2xs text-[#525252] dark:text-[#A3A3A3] leading-relaxed">
+          <p className="text-2xs text-[#262626] dark:text-[#D4D4D4] leading-relaxed">
             * Weekly pay applied: <strong>£{result.effectiveWeeklyPay.toLocaleString('en-GB', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</strong>
             {input.useStatutoryWeeklyCap && input.weeklyPay > input.statutoryWeeklyCap && ` (Statutory weekly pay cap of £${input.statutoryWeeklyCap} applied).`}
           </p>
@@ -470,11 +471,11 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/redundancy-pay-calculato
               National Insurance Rules on Redundancy Pay
             </h4>
           </div>
-          <p className="text-xs text-[#525252] dark:text-[#A3A3A3] leading-relaxed">
+          <p className="text-xs text-[#262626] dark:text-[#D4D4D4] leading-relaxed">
             • <strong>Employee National Insurance:</strong> Genuine statutory and enhanced redundancy payments are <strong>100% exempt from Employee National Insurance</strong>, even on amounts above £30,000.
           </p>
-          <p className="text-xs text-[#525252] dark:text-[#A3A3A3] leading-relaxed">
-            • <strong>Employer Class 1A NI:</strong> From April 2020, employers must pay Class 1A National Insurance ({input.taxYear === '2024_25' ? '13.8%' : '15.0%'}) on termination payments that exceed the £30,000 threshold{result.employerClass1aNiOnExcess > 0 ? ` (estimated £${result.employerClass1aNiOnExcess.toFixed(2)} paid by employer)` : ''}. This does not reduce your net pay.
+          <p className="text-xs text-[#262626] dark:text-[#D4D4D4] leading-relaxed">
+            • <strong>Employer Class 1A NI:</strong> From April 2020, employers must pay Class 1A National Insurance ({input.taxYear === '2024_25' ? '13.8%' : '15.0%'}) on termination payments that exceed the £30,000 threshold{result.employerClass1aNiOnExcess > 0 ? ` (estimated ${formatGBP(result.employerClass1aNiOnExcess)} paid by employer)` : ''}. This does not reduce your net pay.
           </p>
         </div>
 
@@ -484,16 +485,16 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/redundancy-pay-calculato
           csvData={[
             { Metric: 'Employee Age', Value: `${result.age}` },
             { Metric: 'Years of Continuous Service', Value: `${result.yearsOfService}` },
-            { Metric: 'Gross Weekly Pay', Value: `£${result.actualWeeklyPay.toFixed(2)}` },
-            { Metric: 'Effective Weekly Pay Applied', Value: `£${result.effectiveWeeklyPay.toFixed(2)}` },
+            { Metric: 'Gross Weekly Pay', Value: `${formatGBP(result.actualWeeklyPay)}` },
+            { Metric: 'Effective Weekly Pay Applied', Value: `${formatGBP(result.effectiveWeeklyPay)}` },
             { Metric: 'Statutory Redundancy Weeks', Value: `${result.serviceBreakdown.totalStatutoryWeeks}` },
-            { Metric: 'Statutory Redundancy Pay', Value: `£${result.statutoryRedundancyPay.toFixed(2)}` },
-            { Metric: 'Enhanced Redundancy Pay', Value: `£${result.enhancedRedundancyPay.toFixed(2)}` },
-            { Metric: 'Total Gross Redundancy Pay', Value: `£${result.totalGrossRedundancyPay.toFixed(2)}` },
-            { Metric: 'Tax-Free Exemption Amount', Value: `£${result.taxFreeAmount.toFixed(2)}` },
-            { Metric: 'Taxable Excess Over £30k', Value: `£${result.taxableExcess.toFixed(2)}` },
-            { Metric: 'Income Tax Deducted', Value: `£${result.incomeTaxOnExcess.toFixed(2)}` },
-            { Metric: 'Net Redundancy Payout', Value: `£${result.netRedundancyPay.toFixed(2)}` },
+            { Metric: 'Statutory Redundancy Pay', Value: `${formatGBP(result.statutoryRedundancyPay)}` },
+            { Metric: 'Enhanced Redundancy Pay', Value: `${formatGBP(result.enhancedRedundancyPay)}` },
+            { Metric: 'Total Gross Redundancy Pay', Value: `${formatGBP(result.totalGrossRedundancyPay)}` },
+            { Metric: 'Tax-Free Exemption Amount', Value: `${formatGBP(result.taxFreeAmount)}` },
+            { Metric: 'Taxable Excess Over £30k', Value: `${formatGBP(result.taxableExcess)}` },
+            { Metric: 'Income Tax Deducted', Value: `${formatGBP(result.incomeTaxOnExcess)}` },
+            { Metric: 'Net Redundancy Payout', Value: `${formatGBP(result.netRedundancyPay)}` },
             { Metric: 'Retention Percentage', Value: `${result.retentionPercentage.toFixed(2)}%` },
           ]}
           fileName={`paywise-redundancy-calculation-${result.yearsOfService}yrs`}

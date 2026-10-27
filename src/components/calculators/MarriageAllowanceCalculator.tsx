@@ -1,3 +1,4 @@
+import { formatGBP } from '../../utils/format';
 import React, { useState, useMemo } from 'react';
 import { MarriageAllowanceInput, TaxYear, TaxRegion } from '../../types';
 import { calculateMarriageAllowance } from '../../utils/calculations';
@@ -22,7 +23,7 @@ export const MarriageAllowanceCalculator: React.FC = () => {
     higherEarnerIncome: 35000,
     lowerEarnerRegion: 'england_ni',
     higherEarnerRegion: 'england_ni',
-    taxYear: '2025_26',
+    taxYear: '2026_27',
   });
 
   const [differentRegions, setDifferentRegions] = useState(false);
@@ -35,17 +36,17 @@ export const MarriageAllowanceCalculator: React.FC = () => {
       higherEarnerIncome: 35000,
       lowerEarnerRegion: 'england_ni',
       higherEarnerRegion: 'england_ni',
-      taxYear: '2025_26',
+      taxYear: '2026_27',
     });
     setDifferentRegions(false);
   };
 
   const fmt = (n: number) =>
-    '£' + n.toLocaleString('en-GB', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+    formatGBP(n);
 
   const taxYears: { value: TaxYear; label: string }[] = [
-    { value: '2025_26', label: '2025/26 (Current)' },
-    { value: '2026_27', label: '2026/27 (Forecast)' },
+    { value: '2025_26', label: '2025/26' },
+    { value: '2026_27', label: '2026/27 (Current)' },
     { value: '2024_25', label: '2024/25' },
   ];
 
@@ -60,7 +61,7 @@ export const MarriageAllowanceCalculator: React.FC = () => {
 Tax Year: ${result.taxYearLabel}
 Eligibility: ${result.isEligible ? 'Eligible for Marriage Allowance' : 'Not Eligible'}
 ${!result.isEligible ? `Reason: ${result.ineligibilityReason}\n` : ''}---
-Net Annual Household Saving: ${fmt(result.netHouseholdSaving)}/year (£${(result.netHouseholdSaving / 12).toFixed(2)}/month)
+Net Annual Household Saving: ${fmt(result.netHouseholdSaving)}/year (${formatGBP((result.netHouseholdSaving / 12))}/month)
 Maximum Standard Annual Saving: ${fmt(result.maxPotentialSaving)}
 Personal Allowance Transfer: £1,260 from lower earner to higher earner
 
@@ -90,7 +91,7 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/marriage-allowance-calcu
           <button
             type="button"
             onClick={handleReset}
-            className="inline-flex items-center gap-1 text-xs font-semibold text-[#525252] hover:text-[#111111] dark:text-[#A3A3A3] dark:hover:text-[#F5F5F5] transition-colors p-1.5 rounded-lg hover:bg-[#F5F5F5] dark:hover:bg-[#222222]"
+            className="inline-flex items-center gap-1 text-xs font-semibold text-[#262626] hover:text-[#111111] dark:text-[#D4D4D4] dark:hover:text-[#F5F5F5] transition-colors p-1.5 rounded-lg hover:bg-[#F5F5F5] dark:hover:bg-[#222222]"
           >
             <RotateCcw className="w-3.5 h-3.5" />
             Reset
@@ -99,7 +100,7 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/marriage-allowance-calcu
 
         {/* Quick Presets */}
         <div className="mb-5">
-          <label className="block text-2xs font-bold uppercase tracking-wider text-[#525252] dark:text-[#A3A3A3] mb-2">
+          <label className="block text-2xs font-bold uppercase tracking-wider text-[#262626] dark:text-[#D4D4D4] mb-2">
             Quick Couple Examples
           </label>
           <div className="grid grid-cols-2 gap-1.5">
@@ -108,7 +109,7 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/marriage-allowance-calcu
                 key={i}
                 type="button"
                 onClick={() => setInput((prev) => ({ ...prev, lowerEarnerIncome: p.lower, higherEarnerIncome: p.higher }))}
-                className="text-left px-2.5 py-1.5 rounded-lg text-2xs font-semibold border border-[#E5E5E5] dark:border-[#303030] bg-[#FAFAFA] dark:bg-[#151515] text-[#525252] dark:text-[#A3A3A3] hover:border-[#059669]/60 hover:text-[#111111] dark:hover:text-[#F5F5F5] transition-all truncate"
+                className="text-left px-2.5 py-1.5 rounded-lg text-2xs font-semibold border border-[#E5E5E5] dark:border-[#303030] bg-[#FAFAFA] dark:bg-[#151515] text-[#262626] dark:text-[#D4D4D4] hover:border-[#059669]/60 hover:text-[#111111] dark:hover:text-[#F5F5F5] transition-all truncate"
               >
                 {p.label}
               </button>
@@ -138,7 +139,7 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/marriage-allowance-calcu
               </span>
             </div>
             <div className="relative">
-              <span className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3.5 text-[#525252] dark:text-[#A3A3A3] font-bold text-base">£</span>
+              <span className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3.5 text-[#262626] dark:text-[#D4D4D4] font-bold text-base">£</span>
               <input
                 type="number"
                 min="0"
@@ -158,7 +159,7 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/marriage-allowance-calcu
                   className={`px-2 py-1 rounded-lg text-2xs font-bold border transition-all ${
                     input.lowerEarnerIncome === val
                       ? 'bg-[#059669] text-white border-[#059669]'
-                      : 'bg-white dark:bg-[#151515] border-[#E5E5E5] dark:border-[#303030] text-[#525252] dark:text-[#A3A3A3] hover:border-[#059669]/50'
+                      : 'bg-white dark:bg-[#151515] border-[#E5E5E5] dark:border-[#303030] text-[#262626] dark:text-[#D4D4D4] hover:border-[#059669]/50'
                   }`}
                 >
                   {val === 0 ? '£0 (Nil)' : `£${(val / 1000).toFixed(val % 1000 === 0 ? 0 : 1)}k`}
@@ -192,7 +193,7 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/marriage-allowance-calcu
               </span>
             </div>
             <div className="relative">
-              <span className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3.5 text-[#525252] dark:text-[#A3A3A3] font-bold text-base">£</span>
+              <span className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3.5 text-[#262626] dark:text-[#D4D4D4] font-bold text-base">£</span>
               <input
                 type="number"
                 min="0"
@@ -212,7 +213,7 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/marriage-allowance-calcu
                   className={`px-2 py-1 rounded-lg text-2xs font-bold border transition-all ${
                     input.higherEarnerIncome === val
                       ? 'bg-[#059669] text-white border-[#059669]'
-                      : 'bg-white dark:bg-[#151515] border-[#E5E5E5] dark:border-[#303030] text-[#525252] dark:text-[#A3A3A3] hover:border-[#059669]/50'
+                      : 'bg-white dark:bg-[#151515] border-[#E5E5E5] dark:border-[#303030] text-[#262626] dark:text-[#D4D4D4] hover:border-[#059669]/50'
                   }`}
                 >
                   £{(val / 1000).toFixed(0)}k
@@ -250,7 +251,7 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/marriage-allowance-calcu
                     className={`py-2 rounded-xl text-xs font-bold border transition-all ${
                       (input.higherEarnerRegion || 'england_ni') === r.key
                         ? 'bg-[#059669] text-white border-[#059669]'
-                        : 'bg-white dark:bg-[#151515] border-[#E5E5E5] dark:border-[#303030] text-[#525252] dark:text-[#A3A3A3] hover:border-[#059669]/50'
+                        : 'bg-white dark:bg-[#151515] border-[#E5E5E5] dark:border-[#303030] text-[#262626] dark:text-[#D4D4D4] hover:border-[#059669]/50'
                     }`}
                   >
                     {r.label}
@@ -260,7 +261,7 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/marriage-allowance-calcu
             ) : (
               <div className="grid grid-cols-2 gap-3 p-3 rounded-xl bg-[#FAFAFA] dark:bg-[#151515] border border-[#E5E5E5] dark:border-[#2A2A2A]">
                 <div>
-                  <label className="block text-2xs font-bold uppercase tracking-wider text-[#525252] dark:text-[#A3A3A3] mb-1">
+                  <label className="block text-2xs font-bold uppercase tracking-wider text-[#262626] dark:text-[#D4D4D4] mb-1">
                     Lower Earner Region
                   </label>
                   <select
@@ -274,7 +275,7 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/marriage-allowance-calcu
                   </select>
                 </div>
                 <div>
-                  <label className="block text-2xs font-bold uppercase tracking-wider text-[#525252] dark:text-[#A3A3A3] mb-1">
+                  <label className="block text-2xs font-bold uppercase tracking-wider text-[#262626] dark:text-[#D4D4D4] mb-1">
                     Higher Earner Region
                   </label>
                   <select
@@ -297,7 +298,7 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/marriage-allowance-calcu
               Tax Year
             </label>
             <select
-              value={input.taxYear || '2025_26'}
+              value={input.taxYear || '2026_27'}
               onChange={(e) => setInput((p) => ({ ...p, taxYear: e.target.value as TaxYear }))}
               className="block w-full rounded-xl border border-[#E5E5E5] dark:border-[#303030] bg-white dark:bg-[#151515] px-3 py-2.5 text-xs font-bold text-[#111111] dark:text-[#F5F5F5] focus:border-[#059669] dark:focus:border-[#10B981] focus:ring-2 focus:ring-[#059669]/20 focus:outline-none transition-all"
             >
@@ -335,7 +336,7 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/marriage-allowance-calcu
               </p>
               <p className="font-normal opacity-90 leading-relaxed">
                 {result.isEligible
-                  ? `Your household qualifies to transfer £${result.transferAmount.toLocaleString('en-GB')} of Personal Allowance, reducing your combined income tax.`
+                  ? `Your household qualifies to transfer ${formatGBP(result.transferAmount)} of Personal Allowance, reducing your combined income tax.`
                   : result.ineligibilityReason}
               </p>
             </div>
@@ -351,7 +352,7 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/marriage-allowance-calcu
                 <AnimatedNumber value={result.netHouseholdSaving} prefix="£" decimals={2} />
                 <span className="text-base font-bold text-[#059669]/80 dark:text-[#10B981]/80 ml-1.5">/ year</span>
               </p>
-              <p className="text-xs text-[#525252] dark:text-[#A3A3A3] mt-2 font-medium">
+              <p className="text-xs text-[#262626] dark:text-[#D4D4D4] mt-2 font-medium">
                 Saves <strong className="text-[#111111] dark:text-[#F5F5F5]">{fmt(result.netHouseholdSaving / 12)}</strong> per month in take-home pay
               </p>
             </div>
@@ -363,7 +364,7 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/marriage-allowance-calcu
               <p className="text-3xl font-black text-rose-700 dark:text-rose-400 tabular-nums">
                 £0.00
               </p>
-              <p className="text-xs text-[#525252] dark:text-[#A3A3A3] mt-1">
+              <p className="text-xs text-[#262626] dark:text-[#D4D4D4] mt-1">
                 No allowance transfer possible under HMRC statutory rules
               </p>
             </div>
@@ -375,29 +376,29 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/marriage-allowance-calcu
             <div className="rounded-xl p-4 border border-[#E5E5E5] dark:border-[#2A2A2A] bg-[#FAFAFA] dark:bg-[#151515] space-y-2.5">
               <div className="flex items-center justify-between pb-2 border-b border-[#E5E5E5] dark:border-[#2A2A2A]">
                 <p className="text-xs font-bold text-[#111111] dark:text-[#F5F5F5]">Lower Earner (Transferor)</p>
-                <span className="text-2xs font-bold px-2 py-0.5 rounded bg-[#E5E5E5] dark:bg-[#2A2A2A] text-[#525252] dark:text-[#A3A3A3]">
+                <span className="text-2xs font-bold px-2 py-0.5 rounded bg-[#E5E5E5] dark:bg-[#2A2A2A] text-[#262626] dark:text-[#D4D4D4]">
                   Code {result.lowerEarner.taxCodeAfter}
                 </span>
               </div>
               <div className="space-y-1.5 text-xs">
-                <div className="flex justify-between text-[#525252] dark:text-[#A3A3A3]">
+                <div className="flex justify-between text-[#262626] dark:text-[#D4D4D4]">
                   <span>Annual Gross Income</span>
                   <span className="font-bold text-[#111111] dark:text-[#F5F5F5]">{fmt(result.lowerEarner.income)}</span>
                 </div>
-                <div className="flex justify-between text-[#525252] dark:text-[#A3A3A3]">
+                <div className="flex justify-between text-[#262626] dark:text-[#D4D4D4]">
                   <span>Personal Allowance</span>
                   <span className="font-bold text-[#111111] dark:text-[#F5F5F5]">
                     {fmt(result.lowerEarner.personalAllowanceBefore)} → <span className="text-amber-600 dark:text-amber-400">{fmt(result.lowerEarner.personalAllowanceAfter)}</span>
                   </span>
                 </div>
-                <div className="flex justify-between text-[#525252] dark:text-[#A3A3A3]">
+                <div className="flex justify-between text-[#262626] dark:text-[#D4D4D4]">
                   <span>Tax Before / After</span>
                   <span className="font-bold text-[#111111] dark:text-[#F5F5F5]">
                     {fmt(result.lowerEarner.taxBefore)} → {fmt(result.lowerEarner.taxAfter)}
                   </span>
                 </div>
                 <div className="flex justify-between pt-1 border-t border-[#E5E5E5] dark:border-[#2A2A2A]">
-                  <span className="font-bold text-[#525252] dark:text-[#A3A3A3]">Extra Tax Paid</span>
+                  <span className="font-bold text-[#262626] dark:text-[#D4D4D4]">Extra Tax Paid</span>
                   <span className="font-black text-[#111111] dark:text-[#F5F5F5]">
                     {result.lowerEarnerExtraTax > 0 ? `+${fmt(result.lowerEarnerExtraTax)}` : '£0.00'}
                   </span>
@@ -409,22 +410,22 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/marriage-allowance-calcu
             <div className="rounded-xl p-4 border border-[#E5E5E5] dark:border-[#2A2A2A] bg-[#FAFAFA] dark:bg-[#151515] space-y-2.5">
               <div className="flex items-center justify-between pb-2 border-b border-[#E5E5E5] dark:border-[#2A2A2A]">
                 <p className="text-xs font-bold text-[#111111] dark:text-[#F5F5F5]">Higher Earner (Recipient)</p>
-                <span className="text-2xs font-bold px-2 py-0.5 rounded bg-[#E5E5E5] dark:bg-[#2A2A2A] text-[#525252] dark:text-[#A3A3A3]">
+                <span className="text-2xs font-bold px-2 py-0.5 rounded bg-[#E5E5E5] dark:bg-[#2A2A2A] text-[#262626] dark:text-[#D4D4D4]">
                   Code {result.higherEarner.taxCodeAfter}
                 </span>
               </div>
               <div className="space-y-1.5 text-xs">
-                <div className="flex justify-between text-[#525252] dark:text-[#A3A3A3]">
+                <div className="flex justify-between text-[#262626] dark:text-[#D4D4D4]">
                   <span>Annual Gross Income</span>
                   <span className="font-bold text-[#111111] dark:text-[#F5F5F5]">{fmt(result.higherEarner.income)}</span>
                 </div>
-                <div className="flex justify-between text-[#525252] dark:text-[#A3A3A3]">
+                <div className="flex justify-between text-[#262626] dark:text-[#D4D4D4]">
                   <span>Personal Allowance</span>
                   <span className="font-bold text-[#111111] dark:text-[#F5F5F5]">
                     {fmt(result.higherEarner.personalAllowanceBefore)} → <span className="text-[#059669] dark:text-[#10B981] font-black">{fmt(result.higherEarner.personalAllowanceAfter)}</span>
                   </span>
                 </div>
-                <div className="flex justify-between text-[#525252] dark:text-[#A3A3A3]">
+                <div className="flex justify-between text-[#262626] dark:text-[#D4D4D4]">
                   <span>Tax Before / After</span>
                   <span className="font-bold text-[#111111] dark:text-[#F5F5F5]">
                     {fmt(result.higherEarner.taxBefore)} → {fmt(result.higherEarner.taxAfter)}
@@ -442,7 +443,7 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/marriage-allowance-calcu
 
           {/* Breakdown Rows */}
           <div className="space-y-2 mb-6">
-            <p className="text-xs font-bold uppercase tracking-wider text-[#525252] dark:text-[#A3A3A3] mb-2">
+            <p className="text-xs font-bold uppercase tracking-wider text-[#262626] dark:text-[#D4D4D4] mb-2">
               Transfer & Savings Summary
             </p>
             {[
@@ -474,7 +475,7 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/marriage-allowance-calcu
                     : 'bg-white dark:bg-[#171717] border-[#F0F0F0] dark:border-[#222222]'
                 }`}
               >
-                <span className="text-[#525252] dark:text-[#A3A3A3]">{row.label}</span>
+                <span className="text-[#262626] dark:text-[#D4D4D4]">{row.label}</span>
                 <span
                   className={`font-black tabular-nums ${
                     row.green ? 'text-[#059669] dark:text-[#10B981]' : 'text-[#111111] dark:text-[#F5F5F5]'
@@ -498,7 +499,7 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/marriage-allowance-calcu
             </p>
           </div>
           <div className="p-3.5 rounded-xl bg-[#FAFAFA] dark:bg-[#151515] border border-[#E5E5E5] dark:border-[#2A2A2A] text-xs space-y-2">
-            <p className="text-[#525252] dark:text-[#A3A3A3] leading-relaxed">
+            <p className="text-[#262626] dark:text-[#D4D4D4] leading-relaxed">
               If you were married or in a civil partnership and eligible in previous tax years, you can backdate your Marriage Allowance claim by up to <strong>4 tax years</strong> (2021/22, 2022/23, 2023/24, and 2024/25).
             </p>
             {result.isEligible && (

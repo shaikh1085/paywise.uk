@@ -1,3 +1,4 @@
+import { formatGBP } from '../../utils/format';
 import React, { useState, useMemo } from 'react';
 import { Ir35CompareInput, TaxRegion } from '../../types';
 import { calculateIr35Compare } from '../../utils/calculations';
@@ -39,20 +40,20 @@ export const Ir35CompareCalculator: React.FC = () => {
 
   const copyText = `PayWise UK Inside vs Outside IR35 Comparison:
 Contract Day Rate: £${input.dayRate}/day | Days/Year: ${input.workingDaysPerYear}
-Total Gross Contract Value: £${result.contractGrossAnnual.toLocaleString('en-GB')}
+Total Gross Contract Value: ${formatGBP(result.contractGrossAnnual)}
 
 === OUTSIDE IR35 (Limited Company) ===
-- Company Turnover: £${result.outside.turnoverAnnual.toLocaleString('en-GB')}
-- Business Expenses: -£${result.outside.allowableExpenses.toLocaleString('en-GB')}
-- Director Salary: £${result.outside.directorSalary.toLocaleString('en-GB')}
+- Company Turnover: ${formatGBP(result.outside.turnoverAnnual)}
+- Business Expenses: -${formatGBP(result.outside.allowableExpenses)}
+- Director Salary: ${formatGBP(result.outside.directorSalary)}
 - Corporation Tax: -£${result.outside.corporationTaxAnnual.toLocaleString('en-GB', { minimumFractionDigits: 2, maximumFractionDigits: 2 })} (${result.outside.corporationTaxEffectiveRate.toFixed(1)}%)
 - Dividend Tax: -£${result.outside.dividendTaxTotal.toLocaleString('en-GB', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
 - Net Take-Home Pay: £${result.outside.netTakeHomeAnnual.toLocaleString('en-GB', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}/yr (£${result.outside.netTakeHomeMonthly.toLocaleString('en-GB', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}/mo)
 - Retention Rate: ${result.outside.effectiveRetentionRate.toFixed(1)}%
 
 === INSIDE IR35 (Deemed Employment / Umbrella) ===
-- Contract Assignment Value: £${result.inside.contractGrossAnnual.toLocaleString('en-GB')}
-- Umbrella Margin: -£${result.inside.umbrellaFeesAnnual.toLocaleString('en-GB')}
+- Contract Assignment Value: ${formatGBP(result.inside.contractGrossAnnual)}
+- Umbrella Margin: -${formatGBP(result.inside.umbrellaFeesAnnual)}
 - Employer NI (15%): -£${result.inside.employerNiAnnual.toLocaleString('en-GB', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
 - Apprenticeship Levy (0.5%): -£${result.inside.apprenticeshipLevyAnnual.toLocaleString('en-GB', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
 - PAYE Income Tax: -£${result.inside.incomeTaxAnnual.toLocaleString('en-GB', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
@@ -85,7 +86,7 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/inside-vs-outside-ir35-c
               </span>
             </div>
             <div className="relative">
-              <span className="absolute inset-y-0 left-0 pl-3 flex items-center text-[#525252] dark:text-[#A3A3A3] font-bold text-sm">£</span>
+              <span className="absolute inset-y-0 left-0 pl-3 flex items-center text-[#262626] dark:text-[#D4D4D4] font-bold text-sm">£</span>
               <input
                 id="day-rate-input"
                 type="number"
@@ -106,7 +107,7 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/inside-vs-outside-ir35-c
               <label htmlFor="working-days-input" className="block text-xs font-bold uppercase tracking-wider text-[#111111] dark:text-[#F5F5F5]">
                 Days Worked / Year
               </label>
-              <span className="text-xs font-semibold text-[#525252] dark:text-[#A3A3A3]">
+              <span className="text-xs font-semibold text-[#262626] dark:text-[#D4D4D4]">
                 ~{Math.round((input.workingDaysPerYear / 5) * 10) / 10} wks
               </span>
             </div>
@@ -167,11 +168,11 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/inside-vs-outside-ir35-c
 
           {/* Total Contract Annual Badge */}
           <div className="p-3 rounded-xl bg-[#FAFAFA] dark:bg-[#151515] border border-[#E5E5E5] dark:border-[#2A2A2A] flex flex-col justify-center">
-            <span className="text-2xs font-bold uppercase tracking-wider text-[#525252] dark:text-[#A3A3A3]">
+            <span className="text-2xs font-bold uppercase tracking-wider text-[#262626] dark:text-[#D4D4D4]">
               Gross Contract Turnover
             </span>
             <div className="text-lg sm:text-xl font-black text-[#111111] dark:text-[#F5F5F5] tabular-nums mt-0.5">
-              £{result.contractGrossAnnual.toLocaleString('en-GB')}
+              {formatGBP(result.contractGrossAnnual)}
               <span className="text-2xs text-[#737373] font-normal ml-1">/ year</span>
             </div>
           </div>
@@ -190,7 +191,7 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/inside-vs-outside-ir35-c
           {showAdvanced && (
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mt-3 pt-3 border-t border-dashed border-[#E5E5E5] dark:border-[#2A2A2A] animate-fadeIn text-xs">
               <div>
-                <label className="block text-2xs font-bold uppercase tracking-wider text-[#525252] dark:text-[#A3A3A3] mb-1">
+                <label className="block text-2xs font-bold uppercase tracking-wider text-[#262626] dark:text-[#D4D4D4] mb-1">
                   Umbrella Fee (£/wk)
                 </label>
                 <input
@@ -204,7 +205,7 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/inside-vs-outside-ir35-c
               </div>
 
               <div>
-                <label className="block text-2xs font-bold uppercase tracking-wider text-[#525252] dark:text-[#A3A3A3] mb-1">
+                <label className="block text-2xs font-bold uppercase tracking-wider text-[#262626] dark:text-[#D4D4D4] mb-1">
                   Ltd Annual Expenses (£)
                 </label>
                 <input
@@ -219,7 +220,7 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/inside-vs-outside-ir35-c
               </div>
 
               <div>
-                <label className="block text-2xs font-bold uppercase tracking-wider text-[#525252] dark:text-[#A3A3A3] mb-1">
+                <label className="block text-2xs font-bold uppercase tracking-wider text-[#262626] dark:text-[#D4D4D4] mb-1">
                   Director Salary (£/yr)
                 </label>
                 <input
@@ -255,7 +256,7 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/inside-vs-outside-ir35-c
 
           <div className="flex items-center gap-3 bg-white/5 dark:bg-white/5 px-4 py-3 rounded-xl border border-white/10 shrink-0">
             <div className="text-right">
-              <span className="text-2xs uppercase text-[#A3A3A3] block font-bold">Retention Delta</span>
+              <span className="text-2xs uppercase text-[#D4D4D4] block font-bold">Retention Delta</span>
               <span className="text-2xl font-black text-[#10B981] tabular-nums">
                 +{result.comparison.retentionDifferencePercent.toFixed(1)}%
               </span>
@@ -278,7 +279,7 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/inside-vs-outside-ir35-c
               <h3 className="text-base font-bold text-[#111111] dark:text-[#F5F5F5]">
                 Outside IR35 (Ltd Company)
               </h3>
-              <p className="text-2xs text-[#525252] dark:text-[#A3A3A3]">
+              <p className="text-2xs text-[#262626] dark:text-[#D4D4D4]">
                 Director salary + Corporation Tax + Dividend profit extraction
               </p>
             </div>
@@ -286,7 +287,7 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/inside-vs-outside-ir35-c
 
           {/* Hero Numbers */}
           <div className="p-4 rounded-xl bg-[#FAFAFA] dark:bg-[#151515] border border-[#E5E5E5] dark:border-[#2A2A2A] space-y-2">
-            <span className="text-2xs font-bold uppercase tracking-wider text-[#525252] dark:text-[#A3A3A3] block">
+            <span className="text-2xs font-bold uppercase tracking-wider text-[#262626] dark:text-[#D4D4D4] block">
               Estimated Net Annual Take-Home
             </span>
             <div className="text-3xl sm:text-4xl font-black text-[#059669] dark:text-[#10B981] tracking-tight tabular-nums">
@@ -296,7 +297,7 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/inside-vs-outside-ir35-c
                 decimals={2}
               />
             </div>
-            <div className="flex items-center justify-between text-xs pt-2 border-t border-[#E5E5E5] dark:border-[#2A2A2A] text-[#525252] dark:text-[#A3A3A3]">
+            <div className="flex items-center justify-between text-xs pt-2 border-t border-[#E5E5E5] dark:border-[#2A2A2A] text-[#262626] dark:text-[#D4D4D4]">
               <span>Monthly In Pocket: <strong className="text-[#111111] dark:text-[#F5F5F5]">£{result.outside.netTakeHomeMonthly.toLocaleString('en-GB', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</strong></span>
               <span className="font-extrabold text-[#059669] dark:text-[#10B981]">{result.outside.effectiveRetentionRate.toFixed(1)}% retained</span>
             </div>
@@ -304,33 +305,33 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/inside-vs-outside-ir35-c
 
           {/* Outside Deductions Breakdown */}
           <div className="space-y-2.5 text-xs">
-            <h4 className="font-bold text-2xs uppercase tracking-wider text-[#525252] dark:text-[#A3A3A3]">
+            <h4 className="font-bold text-2xs uppercase tracking-wider text-[#262626] dark:text-[#D4D4D4]">
               Ltd Company Tax &amp; Income Waterfall
             </h4>
 
             <div className="flex justify-between py-1.5 border-b border-[#E5E5E5] dark:border-[#2A2A2A]">
-              <span className="text-[#525252] dark:text-[#A3A3A3]">Gross Invoiced Turnover</span>
+              <span className="text-[#262626] dark:text-[#D4D4D4]">Gross Invoiced Turnover</span>
               <span className="font-bold text-[#111111] dark:text-[#F5F5F5] tabular-nums">
                 £{result.outside.turnoverAnnual.toLocaleString('en-GB', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
               </span>
             </div>
 
             <div className="flex justify-between py-1.5 border-b border-[#E5E5E5] dark:border-[#2A2A2A]">
-              <span className="text-[#525252] dark:text-[#A3A3A3]">Allowable Business Expenses</span>
-              <span className="font-medium text-[#525252] dark:text-[#A3A3A3] tabular-nums">
+              <span className="text-[#262626] dark:text-[#D4D4D4]">Allowable Business Expenses</span>
+              <span className="font-medium text-[#262626] dark:text-[#D4D4D4] tabular-nums">
                 -£{result.outside.allowableExpenses.toLocaleString('en-GB', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
               </span>
             </div>
 
             <div className="flex justify-between py-1.5 border-b border-[#E5E5E5] dark:border-[#2A2A2A]">
-              <span className="text-[#525252] dark:text-[#A3A3A3]">Tax-Efficient Director Salary</span>
+              <span className="text-[#262626] dark:text-[#D4D4D4]">Tax-Efficient Director Salary</span>
               <span className="font-bold text-[#111111] dark:text-[#F5F5F5] tabular-nums">
                 £{result.outside.directorSalary.toLocaleString('en-GB', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
               </span>
             </div>
 
             <div className="flex justify-between py-1.5 border-b border-[#E5E5E5] dark:border-[#2A2A2A]">
-              <span className="text-[#525252] dark:text-[#A3A3A3]">
+              <span className="text-[#262626] dark:text-[#D4D4D4]">
                 Corporation Tax ({result.outside.corporationTaxEffectiveRate.toFixed(1)}%)
               </span>
               <span className="font-bold text-rose-600 dark:text-rose-400 tabular-nums">
@@ -339,14 +340,14 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/inside-vs-outside-ir35-c
             </div>
 
             <div className="flex justify-between py-1.5 border-b border-[#E5E5E5] dark:border-[#2A2A2A]">
-              <span className="text-[#525252] dark:text-[#A3A3A3]">Available Post-CT Dividends</span>
+              <span className="text-[#262626] dark:text-[#D4D4D4]">Available Post-CT Dividends</span>
               <span className="font-bold text-[#111111] dark:text-[#F5F5F5] tabular-nums">
                 £{result.outside.postTaxProfitAvailableForDividends.toLocaleString('en-GB', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
               </span>
             </div>
 
             <div className="flex justify-between py-1.5 border-b border-[#E5E5E5] dark:border-[#2A2A2A]">
-              <span className="text-[#525252] dark:text-[#A3A3A3]">Personal Dividend Tax</span>
+              <span className="text-[#262626] dark:text-[#D4D4D4]">Personal Dividend Tax</span>
               <span className="font-bold text-rose-600 dark:text-rose-400 tabular-nums">
                 -£{result.outside.dividendTaxTotal.toLocaleString('en-GB', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
               </span>
@@ -354,7 +355,7 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/inside-vs-outside-ir35-c
 
             {result.outside.personalTaxOnSalary > 0 && (
               <div className="flex justify-between py-1.5 border-b border-[#E5E5E5] dark:border-[#2A2A2A]">
-                <span className="text-[#525252] dark:text-[#A3A3A3]">Tax on Salary (PA Taper)</span>
+                <span className="text-[#262626] dark:text-[#D4D4D4]">Tax on Salary (PA Taper)</span>
                 <span className="font-bold text-rose-600 dark:text-rose-400 tabular-nums">
                   -£{result.outside.personalTaxOnSalary.toLocaleString('en-GB', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
                 </span>
@@ -373,12 +374,12 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/inside-vs-outside-ir35-c
         {/* PANEL 2: INSIDE IR35 (DEEMED EMPLOYMENT / UMBRELLA) */}
         <div className="rounded-2xl bg-white dark:bg-[#171717] border border-[#E5E5E5] dark:border-[#2A2A2A] p-6 sm:p-7 shadow-[0_8px_30px_rgba(0,0,0,0.06)] dark:shadow-[0_10px_35px_rgba(0,0,0,0.35)] space-y-6 relative overflow-hidden">
           <div className="flex items-center gap-2.5 pb-3 border-b border-[#E5E5E5] dark:border-[#2A2A2A]">
-            <Briefcase className="w-5 h-5 text-[#525252] dark:text-[#A3A3A3]" />
+            <Briefcase className="w-5 h-5 text-[#262626] dark:text-[#D4D4D4]" />
             <div>
               <h3 className="text-base font-bold text-[#111111] dark:text-[#F5F5F5]">
                 Inside IR35 (Umbrella PAYE)
               </h3>
-              <p className="text-2xs text-[#525252] dark:text-[#A3A3A3]">
+              <p className="text-2xs text-[#262626] dark:text-[#D4D4D4]">
                 Deemed employment with Employer NI (15%), Apprenticeship Levy &amp; PAYE
               </p>
             </div>
@@ -386,7 +387,7 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/inside-vs-outside-ir35-c
 
           {/* Hero Numbers */}
           <div className="p-4 rounded-xl bg-[#FAFAFA] dark:bg-[#151515] border border-[#E5E5E5] dark:border-[#2A2A2A] space-y-2">
-            <span className="text-2xs font-bold uppercase tracking-wider text-[#525252] dark:text-[#A3A3A3] block">
+            <span className="text-2xs font-bold uppercase tracking-wider text-[#262626] dark:text-[#D4D4D4] block">
               Estimated Net Annual Take-Home
             </span>
             <div className="text-3xl sm:text-4xl font-black text-[#111111] dark:text-[#F5F5F5] tracking-tight tabular-nums">
@@ -396,7 +397,7 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/inside-vs-outside-ir35-c
                 decimals={2}
               />
             </div>
-            <div className="flex items-center justify-between text-xs pt-2 border-t border-[#E5E5E5] dark:border-[#2A2A2A] text-[#525252] dark:text-[#A3A3A3]">
+            <div className="flex items-center justify-between text-xs pt-2 border-t border-[#E5E5E5] dark:border-[#2A2A2A] text-[#262626] dark:text-[#D4D4D4]">
               <span>Monthly In Pocket: <strong className="text-[#111111] dark:text-[#F5F5F5]">£{result.inside.netTakeHomeMonthly.toLocaleString('en-GB', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</strong></span>
               <span className="font-extrabold text-[#737373]">{result.inside.takeHomePercentage.toFixed(1)}% retained</span>
             </div>
@@ -404,54 +405,54 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/inside-vs-outside-ir35-c
 
           {/* Inside Deductions Breakdown */}
           <div className="space-y-2.5 text-xs">
-            <h4 className="font-bold text-2xs uppercase tracking-wider text-[#525252] dark:text-[#A3A3A3]">
+            <h4 className="font-bold text-2xs uppercase tracking-wider text-[#262626] dark:text-[#D4D4D4]">
               Umbrella &amp; Employment Tax Deductions
             </h4>
 
             <div className="flex justify-between py-1.5 border-b border-[#E5E5E5] dark:border-[#2A2A2A]">
-              <span className="text-[#525252] dark:text-[#A3A3A3]">Contract Assignment Value</span>
+              <span className="text-[#262626] dark:text-[#D4D4D4]">Contract Assignment Value</span>
               <span className="font-bold text-[#111111] dark:text-[#F5F5F5] tabular-nums">
                 £{result.inside.contractGrossAnnual.toLocaleString('en-GB', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
               </span>
             </div>
 
             <div className="flex justify-between py-1.5 border-b border-[#E5E5E5] dark:border-[#2A2A2A]">
-              <span className="text-[#525252] dark:text-[#A3A3A3]">Umbrella Margin Fees</span>
+              <span className="text-[#262626] dark:text-[#D4D4D4]">Umbrella Margin Fees</span>
               <span className="font-medium text-rose-600 dark:text-rose-400 tabular-nums">
                 -£{result.inside.umbrellaFeesAnnual.toLocaleString('en-GB', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
               </span>
             </div>
 
             <div className="flex justify-between py-1.5 border-b border-[#E5E5E5] dark:border-[#2A2A2A]">
-              <span className="text-[#525252] dark:text-[#A3A3A3]">Employer NI (15% above £5k)</span>
+              <span className="text-[#262626] dark:text-[#D4D4D4]">Employer NI (15% above £5k)</span>
               <span className="font-bold text-rose-600 dark:text-rose-400 tabular-nums">
                 -£{result.inside.employerNiAnnual.toLocaleString('en-GB', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
               </span>
             </div>
 
             <div className="flex justify-between py-1.5 border-b border-[#E5E5E5] dark:border-[#2A2A2A]">
-              <span className="text-[#525252] dark:text-[#A3A3A3]">Apprenticeship Levy (0.5%)</span>
+              <span className="text-[#262626] dark:text-[#D4D4D4]">Apprenticeship Levy (0.5%)</span>
               <span className="font-medium text-rose-600 dark:text-rose-400 tabular-nums">
                 -£{result.inside.apprenticeshipLevyAnnual.toLocaleString('en-GB', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
               </span>
             </div>
 
             <div className="flex justify-between py-1.5 border-b border-[#E5E5E5] dark:border-[#2A2A2A]">
-              <span className="text-[#525252] dark:text-[#A3A3A3]">PAYE Income Tax</span>
+              <span className="text-[#262626] dark:text-[#D4D4D4]">PAYE Income Tax</span>
               <span className="font-bold text-rose-600 dark:text-rose-400 tabular-nums">
                 -£{result.inside.incomeTaxAnnual.toLocaleString('en-GB', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
               </span>
             </div>
 
             <div className="flex justify-between py-1.5 border-b border-[#E5E5E5] dark:border-[#2A2A2A]">
-              <span className="text-[#525252] dark:text-[#A3A3A3]">Employee National Insurance</span>
+              <span className="text-[#262626] dark:text-[#D4D4D4]">Employee National Insurance</span>
               <span className="font-bold text-rose-600 dark:text-rose-400 tabular-nums">
                 -£{result.inside.employeeNiAnnual.toLocaleString('en-GB', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
               </span>
             </div>
 
             <div className="flex justify-between py-2.5 bg-[#FAFAFA] dark:bg-[#151515] px-3 rounded-xl font-bold text-[#111111] dark:text-[#F5F5F5]">
-              <span className="text-[#525252] dark:text-[#A3A3A3]">Total Net In Pocket</span>
+              <span className="text-[#262626] dark:text-[#D4D4D4]">Total Net In Pocket</span>
               <span className="font-black text-sm tabular-nums">
                 £{result.inside.netTakeHomeAnnual.toLocaleString('en-GB', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
               </span>
@@ -470,7 +471,7 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/inside-vs-outside-ir35-c
         <div className="overflow-x-auto">
           <table className="w-full text-xs">
             <thead>
-              <tr className="border-b border-[#E5E5E5] dark:border-[#2A2A2A] text-[#525252] dark:text-[#A3A3A3]">
+              <tr className="border-b border-[#E5E5E5] dark:border-[#2A2A2A] text-[#262626] dark:text-[#D4D4D4]">
                 <th className="text-left py-2.5 font-bold uppercase tracking-wider text-2xs">Metric</th>
                 <th className="text-right py-2.5 font-bold uppercase tracking-wider text-2xs text-[#059669] dark:text-[#10B981]">Outside IR35 (Ltd)</th>
                 <th className="text-right py-2.5 font-bold uppercase tracking-wider text-2xs">Inside IR35 (PAYE)</th>
@@ -507,7 +508,7 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/inside-vs-outside-ir35-c
                 <td className="py-2.5 text-right font-semibold text-[#059669] dark:text-[#10B981] tabular-nums">
                   £{result.outside.netTakeHomeDaily.toLocaleString('en-GB', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
                 </td>
-                <td className="py-2.5 text-right font-semibold text-[#525252] dark:text-[#A3A3A3] tabular-nums">
+                <td className="py-2.5 text-right font-semibold text-[#262626] dark:text-[#D4D4D4] tabular-nums">
                   £{result.inside.netTakeHomeDaily.toLocaleString('en-GB', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
                 </td>
                 <td className="py-2.5 text-right font-bold text-[#059669] dark:text-[#10B981] tabular-nums">
@@ -519,7 +520,7 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/inside-vs-outside-ir35-c
                 <td className="py-2.5 text-right font-black text-[#059669] dark:text-[#10B981] tabular-nums">
                   {result.outside.effectiveRetentionRate.toFixed(1)}%
                 </td>
-                <td className="py-2.5 text-right font-bold text-[#525252] dark:text-[#A3A3A3] tabular-nums">
+                <td className="py-2.5 text-right font-bold text-[#262626] dark:text-[#D4D4D4] tabular-nums">
                   {result.inside.takeHomePercentage.toFixed(1)}%
                 </td>
                 <td className="py-2.5 text-right font-black text-[#059669] dark:text-[#10B981] tabular-nums">
@@ -549,15 +550,15 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/inside-vs-outside-ir35-c
         csvData={[
           { Metric: 'Day Rate', Value: `£${input.dayRate}` },
           { Metric: 'Working Days / Year', Value: `${input.workingDaysPerYear}` },
-          { Metric: 'Total Gross Contract Turnover', Value: `£${result.contractGrossAnnual.toFixed(2)}` },
-          { Metric: 'Outside IR35 Net Annual Take-Home', Value: `£${result.outside.netTakeHomeAnnual.toFixed(2)}` },
-          { Metric: 'Outside IR35 Net Monthly Take-Home', Value: `£${result.outside.netTakeHomeMonthly.toFixed(2)}` },
+          { Metric: 'Total Gross Contract Turnover', Value: `${formatGBP(result.contractGrossAnnual)}` },
+          { Metric: 'Outside IR35 Net Annual Take-Home', Value: `${formatGBP(result.outside.netTakeHomeAnnual)}` },
+          { Metric: 'Outside IR35 Net Monthly Take-Home', Value: `${formatGBP(result.outside.netTakeHomeMonthly)}` },
           { Metric: 'Outside IR35 Retention %', Value: `${result.outside.effectiveRetentionRate.toFixed(1)}%` },
-          { Metric: 'Inside IR35 Net Annual Take-Home', Value: `£${result.inside.netTakeHomeAnnual.toFixed(2)}` },
-          { Metric: 'Inside IR35 Net Monthly Take-Home', Value: `£${result.inside.netTakeHomeMonthly.toFixed(2)}` },
+          { Metric: 'Inside IR35 Net Annual Take-Home', Value: `${formatGBP(result.inside.netTakeHomeAnnual)}` },
+          { Metric: 'Inside IR35 Net Monthly Take-Home', Value: `${formatGBP(result.inside.netTakeHomeMonthly)}` },
           { Metric: 'Inside IR35 Retention %', Value: `${result.inside.takeHomePercentage.toFixed(1)}%` },
-          { Metric: 'Annual Difference (Outside - Inside)', Value: `£${result.comparison.annualDifference.toFixed(2)}` },
-          { Metric: 'Monthly Difference', Value: `£${result.comparison.monthlyDifference.toFixed(2)}` },
+          { Metric: 'Annual Difference (Outside - Inside)', Value: `${formatGBP(result.comparison.annualDifference)}` },
+          { Metric: 'Monthly Difference', Value: `${formatGBP(result.comparison.monthlyDifference)}` },
           { Metric: 'Retention Gain %', Value: `+${result.comparison.retentionDifferencePercent.toFixed(1)}%` },
         ]}
         fileName={`paywise-inside-vs-outside-ir35-${input.dayRate}day`}

@@ -1,3 +1,4 @@
+import { formatGBP } from '../../utils/format';
 import React, { useState, useMemo } from 'react';
 import { CreditCardRepaymentInput, RepaymentStrategy } from '../../types';
 import { calculateCreditCardRepayment } from '../../utils/calculations';
@@ -28,22 +29,22 @@ export const CreditCardRepaymentCalculator: React.FC = () => {
   };
 
   const copySummaryText = `PayWise UK Credit Card Repayment Calculation:
-Current Balance: £${result.currentBalance.toLocaleString('en-GB', { minimumFractionDigits: 2 })}
+Current Balance: ${formatGBP(result.currentBalance)}
 Interest Rate (APR): ${result.apr.toFixed(1)}%
 Strategy: ${
     result.strategy === 'minimum_only'
       ? 'Minimum Payment Only'
       : result.strategy === 'fixed_monthly'
-      ? `Fixed £${result.monthlyRepayment.toFixed(2)}/month`
+      ? `Fixed ${formatGBP(result.monthlyRepayment)}/month`
       : 'Target Payoff Months'
   }
-Monthly Repayment: £${result.monthlyRepayment.toLocaleString('en-GB', { minimumFractionDigits: 2 })}
+Monthly Repayment: ${formatGBP(result.monthlyRepayment)}
 Time to Debt-Free: ${result.totalMonthsToPayoff} months (${result.totalYearsToPayoff} years)
-Total Interest Paid: £${result.totalInterestPaid.toLocaleString('en-GB', { minimumFractionDigits: 2 })}
-Total Repayment Cost: £${result.totalRepaymentCost.toLocaleString('en-GB', { minimumFractionDigits: 2 })}
+Total Interest Paid: ${formatGBP(result.totalInterestPaid)}
+Total Repayment Cost: ${formatGBP(result.totalRepaymentCost)}
 ${
   result.minPaymentComparison
-    ? `Interest Saved vs Minimum Payment: £${result.minPaymentComparison.interestSaved.toLocaleString('en-GB', { minimumFractionDigits: 2 })}\nTime Saved vs Minimum Payment: ${result.minPaymentComparison.monthsSaved} months\n`
+    ? `Interest Saved vs Minimum Payment: ${formatGBP(result.minPaymentComparison.interestSaved)}\nTime Saved vs Minimum Payment: ${result.minPaymentComparison.monthsSaved} months\n`
     : ''
 }Calculated via PayWise UK (https://paywiseuk.vercel.app/credit-card-repayment-calculator) - Estimate Only.`;
 
@@ -64,7 +65,7 @@ ${
         <div className="space-y-5">
           {/* Outstanding Balance */}
           <div>
-            <label htmlFor="cc-balance" className="block text-xs font-bold uppercase tracking-wider text-[#525252] dark:text-[#A3A3A3] mb-1.5">
+            <label htmlFor="cc-balance" className="block text-xs font-bold uppercase tracking-wider text-[#262626] dark:text-[#D4D4D4] mb-1.5">
               Current Card Balance (£)
             </label>
             <div className="relative">
@@ -92,7 +93,7 @@ ${
                   className={`text-2xs font-semibold px-2.5 py-1 rounded-lg border transition-colors ${
                     input.currentBalance === preset
                       ? 'bg-[#059669] text-white border-[#059669]'
-                      : 'bg-[#FAFAFA] dark:bg-[#151515] text-[#525252] dark:text-[#A3A3A3] border-[#E5E5E5] dark:border-[#2A2A2A] hover:border-[#059669]'
+                      : 'bg-[#FAFAFA] dark:bg-[#151515] text-[#262626] dark:text-[#D4D4D4] border-[#E5E5E5] dark:border-[#2A2A2A] hover:border-[#059669]'
                   }`}
                 >
                   £{preset.toLocaleString()}
@@ -103,7 +104,7 @@ ${
 
           {/* Annual Interest Rate (APR %) */}
           <div>
-            <label htmlFor="cc-apr" className="block text-xs font-bold uppercase tracking-wider text-[#525252] dark:text-[#A3A3A3] mb-1.5">
+            <label htmlFor="cc-apr" className="block text-xs font-bold uppercase tracking-wider text-[#262626] dark:text-[#D4D4D4] mb-1.5">
               Annual Interest Rate (APR %)
             </label>
             <div className="relative">
@@ -132,7 +133,7 @@ ${
                   className={`text-2xs font-semibold px-2.5 py-1 rounded-lg border transition-colors ${
                     input.annualInterestRate === p.apr
                       ? 'bg-[#059669] text-white border-[#059669]'
-                      : 'bg-[#FAFAFA] dark:bg-[#151515] text-[#525252] dark:text-[#A3A3A3] border-[#E5E5E5] dark:border-[#2A2A2A] hover:border-[#059669]'
+                      : 'bg-[#FAFAFA] dark:bg-[#151515] text-[#262626] dark:text-[#D4D4D4] border-[#E5E5E5] dark:border-[#2A2A2A] hover:border-[#059669]'
                   }`}
                 >
                   {p.apr}% {p.apr === 24.9 ? '(Typical)' : ''}
@@ -143,7 +144,7 @@ ${
 
           {/* Strategy Tabs */}
           <div className="pt-2 border-t border-[#E5E5E5] dark:border-[#2A2A2A]">
-            <label className="block text-xs font-bold uppercase tracking-wider text-[#525252] dark:text-[#A3A3A3] mb-2">
+            <label className="block text-xs font-bold uppercase tracking-wider text-[#262626] dark:text-[#D4D4D4] mb-2">
               Repayment Strategy
             </label>
             <div className="grid grid-cols-3 gap-2">
@@ -153,7 +154,7 @@ ${
                 className={`px-2.5 py-2.5 rounded-xl text-xs font-bold transition-all text-center border ${
                   input.strategy === 'fixed_monthly'
                     ? 'bg-[#059669] text-white border-[#059669] shadow-sm'
-                    : 'bg-[#FAFAFA] dark:bg-[#151515] text-[#525252] dark:text-[#A3A3A3] border-[#E5E5E5] dark:border-[#2A2A2A] hover:border-[#059669]'
+                    : 'bg-[#FAFAFA] dark:bg-[#151515] text-[#262626] dark:text-[#D4D4D4] border-[#E5E5E5] dark:border-[#2A2A2A] hover:border-[#059669]'
                 }`}
               >
                 Fixed Amount
@@ -165,7 +166,7 @@ ${
                 className={`px-2.5 py-2.5 rounded-xl text-xs font-bold transition-all text-center border ${
                   input.strategy === 'target_months'
                     ? 'bg-[#059669] text-white border-[#059669] shadow-sm'
-                    : 'bg-[#FAFAFA] dark:bg-[#151515] text-[#525252] dark:text-[#A3A3A3] border-[#E5E5E5] dark:border-[#2A2A2A] hover:border-[#059669]'
+                    : 'bg-[#FAFAFA] dark:bg-[#151515] text-[#262626] dark:text-[#D4D4D4] border-[#E5E5E5] dark:border-[#2A2A2A] hover:border-[#059669]'
                 }`}
               >
                 Target Timeframe
@@ -177,7 +178,7 @@ ${
                 className={`px-2.5 py-2.5 rounded-xl text-xs font-bold transition-all text-center border ${
                   input.strategy === 'minimum_only'
                     ? 'bg-[#059669] text-white border-[#059669] shadow-sm'
-                    : 'bg-[#FAFAFA] dark:bg-[#151515] text-[#525252] dark:text-[#A3A3A3] border-[#E5E5E5] dark:border-[#2A2A2A] hover:border-[#059669]'
+                    : 'bg-[#FAFAFA] dark:bg-[#151515] text-[#262626] dark:text-[#D4D4D4] border-[#E5E5E5] dark:border-[#2A2A2A] hover:border-[#059669]'
                 }`}
               >
                 Minimum Only
@@ -188,7 +189,7 @@ ${
           {/* Strategy Specific Input Fields */}
           {input.strategy === 'fixed_monthly' && (
             <div>
-              <label htmlFor="cc-fixed-payment" className="block text-xs font-bold uppercase tracking-wider text-[#525252] dark:text-[#A3A3A3] mb-1.5">
+              <label htmlFor="cc-fixed-payment" className="block text-xs font-bold uppercase tracking-wider text-[#262626] dark:text-[#D4D4D4] mb-1.5">
                 Fixed Monthly Repayment (£/month)
               </label>
               <div className="relative">
@@ -215,7 +216,7 @@ ${
                     className={`text-2xs font-semibold px-2.5 py-1 rounded-lg border transition-colors ${
                       input.fixedMonthlyPayment === preset
                         ? 'bg-[#059669] text-white border-[#059669]'
-                        : 'bg-[#FAFAFA] dark:bg-[#151515] text-[#525252] dark:text-[#A3A3A3] border-[#E5E5E5] dark:border-[#2A2A2A] hover:border-[#059669]'
+                        : 'bg-[#FAFAFA] dark:bg-[#151515] text-[#262626] dark:text-[#D4D4D4] border-[#E5E5E5] dark:border-[#2A2A2A] hover:border-[#059669]'
                     }`}
                   >
                     £{preset}/mo
@@ -227,7 +228,7 @@ ${
 
           {input.strategy === 'target_months' && (
             <div>
-              <label htmlFor="cc-target-months" className="block text-xs font-bold uppercase tracking-wider text-[#525252] dark:text-[#A3A3A3] mb-1.5">
+              <label htmlFor="cc-target-months" className="block text-xs font-bold uppercase tracking-wider text-[#262626] dark:text-[#D4D4D4] mb-1.5">
                 Target Payoff Period
               </label>
               <select
@@ -273,7 +274,7 @@ ${
         <div className="rounded-3xl bg-white dark:bg-[#171717] border border-[#E5E5E5] dark:border-[#2A2A2A] p-6 sm:p-8 shadow-[0_8px_30px_rgba(0,0,0,0.06)] dark:shadow-[0_10px_35px_rgba(0,0,0,0.35)] space-y-6">
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 border-b border-[#E5E5E5] dark:border-[#2A2A2A]">
             <div>
-              <span className="text-xs font-bold uppercase tracking-wider text-[#525252] dark:text-[#A3A3A3] block mb-1">
+              <span className="text-xs font-bold uppercase tracking-wider text-[#262626] dark:text-[#D4D4D4] block mb-1">
                 Total Interest Payable
               </span>
               <div className="text-3xl sm:text-5xl font-black text-[#111111] dark:text-[#F5F5F5] tracking-tight">
@@ -281,7 +282,7 @@ ${
               </div>
             </div>
             <div className="sm:text-right">
-              <span className="text-xs font-bold uppercase tracking-wider text-[#525252] dark:text-[#A3A3A3] block mb-1">
+              <span className="text-xs font-bold uppercase tracking-wider text-[#262626] dark:text-[#D4D4D4] block mb-1">
                 Time to Debt-Free
               </span>
               <div className="text-2xl sm:text-3xl font-black text-[#059669] dark:text-[#10B981]">
@@ -291,6 +292,16 @@ ${
             </div>
           </div>
 
+          {result.isRepaymentTooLow && result.warningMessage && (
+            <div className="p-4 rounded-2xl bg-red-500/10 border border-red-500/20 text-red-900 dark:text-red-200 text-xs space-y-1">
+              <div className="flex items-center gap-2 font-bold text-sm text-[#DC2626] dark:text-[#F87171]">
+                <AlertTriangle className="w-4 h-4" />
+                <span>Not repayable at this monthly payment</span>
+              </div>
+              <p>{result.warningMessage}</p>
+            </div>
+          )}
+
           {/* Metric Highlights Grid */}
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
             <div className="p-3.5 rounded-2xl bg-[#FAFAFA] dark:bg-[#121212] border border-[#E5E5E5] dark:border-[#2A2A2A]">
@@ -298,7 +309,7 @@ ${
                 Monthly Repayment
               </span>
               <span className="text-base font-bold text-[#111111] dark:text-[#F5F5F5]">
-                £{result.monthlyRepayment.toFixed(2)}
+                {formatGBP(result.monthlyRepayment)}
               </span>
             </div>
 
@@ -307,7 +318,7 @@ ${
                 Principal Balance
               </span>
               <span className="text-base font-bold text-[#111111] dark:text-[#F5F5F5]">
-                £{result.currentBalance.toLocaleString('en-GB')}
+                {formatGBP(result.currentBalance)}
               </span>
             </div>
 
@@ -332,7 +343,7 @@ ${
                 <div className="flex items-center gap-2">
                   <CheckCircle2 className="w-4 h-4 text-[#059669] dark:text-[#10B981] shrink-0" />
                   <span>
-                    Save <strong>£{result.minPaymentComparison.interestSaved.toLocaleString('en-GB', { minimumFractionDigits: 2 })}</strong> in interest
+                    Save <strong>{formatGBP(result.minPaymentComparison.interestSaved)}</strong> in interest
                   </span>
                 </div>
                 <div className="flex items-center gap-2">
@@ -347,13 +358,13 @@ ${
 
           {/* First 12 Months Amortisation Schedule Table */}
           <div className="space-y-3 pt-2">
-            <h3 className="text-xs font-bold uppercase tracking-wider text-[#525252] dark:text-[#A3A3A3]">
+            <h3 className="text-xs font-bold uppercase tracking-wider text-[#262626] dark:text-[#D4D4D4]">
               Monthly Repayment Schedule (Months 1 to 12)
             </h3>
             <div className="overflow-x-auto rounded-2xl border border-[#E5E5E5] dark:border-[#2A2A2A]">
               <table className="w-full text-left text-xs">
                 <thead>
-                  <tr className="bg-[#FAFAFA] dark:bg-[#151515] border-b border-[#E5E5E5] dark:border-[#2A2A2A] text-[#525252] dark:text-[#A3A3A3] font-bold">
+                  <tr className="bg-[#FAFAFA] dark:bg-[#151515] border-b border-[#E5E5E5] dark:border-[#2A2A2A] text-[#262626] dark:text-[#D4D4D4] font-bold">
                     <th className="py-2.5 px-3">Month</th>
                     <th className="py-2.5 px-3">Starting Balance</th>
                     <th className="py-2.5 px-3">Interest Charged</th>
@@ -367,17 +378,17 @@ ${
                       <td className="py-2.5 px-3 font-semibold text-[#111111] dark:text-[#F5F5F5]">
                         Month {item.month}
                       </td>
-                      <td className="py-2.5 px-3 text-[#525252] dark:text-[#A3A3A3]">
-                        £{item.startingBalance.toFixed(2)}
+                      <td className="py-2.5 px-3 text-[#262626] dark:text-[#D4D4D4]">
+                        {formatGBP(item.startingBalance)}
                       </td>
                       <td className="py-2.5 px-3 text-amber-600 dark:text-amber-400 font-semibold">
-                        £{item.interestCharged.toFixed(2)}
+                        {formatGBP(item.interestCharged)}
                       </td>
                       <td className="py-2.5 px-3 font-bold text-[#059669] dark:text-[#10B981]">
-                        £{item.repaymentAmount.toFixed(2)}
+                        {formatGBP(item.repaymentAmount)}
                       </td>
                       <td className="py-2.5 px-3 text-right font-bold text-[#111111] dark:text-[#F5F5F5]">
-                        £{item.endingBalance.toFixed(2)}
+                        {formatGBP(item.endingBalance)}
                       </td>
                     </tr>
                   ))}

@@ -68,7 +68,7 @@ export const Tooltip: React.FC<TooltipProps> = ({
           className="absolute z-50 bottom-full left-1/2 -translate-x-1/2 mb-2 w-64 sm:w-72 p-3 text-xs leading-relaxed rounded-xl bg-[#111111] dark:bg-[#1E1E1E] text-[#F5F5F5] shadow-xl border border-[#2A2A2A] pointer-events-none animate-in fade-in zoom-in-95 duration-100"
         >
           {title && <p className="font-bold text-white mb-1">{title}</p>}
-          <div className="text-[#A3A3A3] text-2xs sm:text-xs">{displayContent}</div>
+          <div className="text-[#D4D4D4] text-2xs sm:text-xs">{displayContent}</div>
           {/* Arrow */}
           <div className="absolute top-full left-1/2 -translate-x-1/2 -mt-px border-4 border-transparent border-t-[#111111] dark:border-t-[#1E1E1E]" />
         </div>

@@ -1,3 +1,4 @@
+import { formatGBP } from '../../utils/format';
 import React, { useState, useMemo } from 'react';
 import {
   TaxYear,
@@ -36,7 +37,7 @@ export const PayFrequencyConverter: React.FC = () => {
       amount: 40000,
       inputFrequency: 'annual',
       region: 'england_ni',
-      taxYear: '2025_26',
+      taxYear: '2026_27',
       pensionPercentage: 5,
       studentLoanPlan: 'none',
     }
@@ -76,10 +77,10 @@ export const PayFrequencyConverter: React.FC = () => {
   }, [grossAnnual, state.region, state.taxYear, state.pensionPercentage, state.studentLoanPlan]);
 
   const fmt = (n: number) =>
-    '£' + n.toLocaleString('en-GB', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+    formatGBP(n);
 
   const fmtWhole = (n: number) =>
-    '£' + Math.round(n).toLocaleString('en-GB');
+    formatGBP(Math.round(n), 0);
 
   const copyText = `PayWise UK — Pay Frequency Conversion:
 Input: ${fmt(state.amount)} (${state.inputFrequency}) -> Annual Gross: ${fmt(grossAnnual)}
@@ -103,7 +104,7 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/pay-frequency-converter)
               <Clock className="w-5 h-5 text-[#059669] dark:text-[#10B981]" />
               Convert Your Pay Across All UK Frequencies
             </h2>
-            <p className="text-xs text-[#737373] dark:text-[#A3A3A3] mt-0.5">
+            <p className="text-xs text-[#737373] dark:text-[#D4D4D4] mt-0.5">
               Enter any wage to instantly see equivalent Annual, Monthly, 4-Weekly, Fortnightly, Weekly, Daily, and Hourly pay.
             </p>
           </div>
@@ -188,7 +189,7 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/pay-frequency-converter)
 
         {/* Quick Quick-Switch Pills */}
         <div className="pt-2 flex flex-wrap items-center gap-2">
-          <span className="text-xs font-bold text-[#737373] dark:text-[#A3A3A3]">Quick Salaries:</span>
+          <span className="text-xs font-bold text-[#737373] dark:text-[#D4D4D4]">Quick Salaries:</span>
           {[25000, 35000, 45000, 55000, 75000, 100000].map((sal) => (
             <button
               key={sal}
@@ -199,7 +200,7 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/pay-frequency-converter)
               className={`text-xs px-2.5 py-1 rounded-lg border font-semibold transition-all ${
                 state.inputFrequency === 'annual' && state.amount === sal
                   ? 'bg-[#059669] text-white border-[#059669]'
-                  : 'bg-[#FAFAFA] dark:bg-[#151515] border-[#E5E5E5] dark:border-[#303030] text-[#525252] dark:text-[#D4D4D4] hover:border-[#059669]'
+                  : 'bg-[#FAFAFA] dark:bg-[#151515] border-[#E5E5E5] dark:border-[#303030] text-[#262626] dark:text-[#D4D4D4] hover:border-[#059669]'
               }`}
             >
               £{sal / 1000}k
@@ -215,7 +216,7 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/pay-frequency-converter)
             <h3 className="text-base font-bold text-[#111111] dark:text-[#F5F5F5]">
               Equivalent Pay Rates (Gross vs Net Take-Home)
             </h3>
-            <p className="text-xs text-[#737373] dark:text-[#A3A3A3] mt-0.5">
+            <p className="text-xs text-[#737373] dark:text-[#D4D4D4] mt-0.5">
               Annual gross baseline: <strong className="text-[#111111] dark:text-[#F5F5F5]">{fmt(grossAnnual)}</strong> • Standard 37.5h work week / 260 working days
             </p>
           </div>
@@ -234,7 +235,7 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/pay-frequency-converter)
               key={it.frequency}
               className="p-4 rounded-xl border border-[#E5E5E5] dark:border-[#2A2A2A] bg-[#FAFAFA] dark:bg-[#151515] space-y-2"
             >
-              <span className="text-[11px] font-bold uppercase tracking-wider text-[#737373] dark:text-[#A3A3A3]">
+              <span className="text-[11px] font-bold uppercase tracking-wider text-[#737373] dark:text-[#D4D4D4]">
                 {it.label}
               </span>
               <div className="flex justify-between items-baseline">
@@ -258,7 +259,7 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/pay-frequency-converter)
         <div className="overflow-x-auto">
           <table className="w-full text-xs">
             <thead>
-              <tr className="border-b border-[#E5E5E5] dark:border-[#2A2A2A] text-left text-[#737373] dark:text-[#A3A3A3]">
+              <tr className="border-b border-[#E5E5E5] dark:border-[#2A2A2A] text-left text-[#737373] dark:text-[#D4D4D4]">
                 <th className="pb-3 font-bold">Pay Frequency</th>
                 <th className="pb-3 text-right font-bold">Gross Pay</th>
                 <th className="pb-3 text-right font-bold text-[#059669] dark:text-[#10B981]">Net Take-Home</th>
@@ -285,7 +286,7 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/pay-frequency-converter)
                   <td className="py-3 text-right text-rose-600 dark:text-rose-400 font-semibold">
                     -{fmt(it.nationalInsurance)}
                   </td>
-                  <td className="py-3 text-right text-[#737373] dark:text-[#A3A3A3]">
+                  <td className="py-3 text-right text-[#737373] dark:text-[#D4D4D4]">
                     -{fmt(it.pension)}
                   </td>
                 </tr>

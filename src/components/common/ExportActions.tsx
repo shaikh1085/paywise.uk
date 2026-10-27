@@ -103,7 +103,7 @@ export const ExportActions: React.FC<ExportActionsProps> = ({
           </>
         ) : (
           <>
-            <Copy className="w-3.5 h-3.5 text-[#525252] dark:text-[#A3A3A3]" />
+            <Copy className="w-3.5 h-3.5 text-[#262626] dark:text-[#D4D4D4]" />
             <span>Copy results</span>
           </>
         )}
@@ -116,7 +116,7 @@ export const ExportActions: React.FC<ExportActionsProps> = ({
           className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-bold bg-[#F5F5F5] dark:bg-[#222222] hover:bg-[#E5E5E5] dark:hover:bg-[#2A2A2A] text-[#111111] dark:text-[#F5F5F5] border border-[#E5E5E5] dark:border-[#2A2A2A] shadow-xs transition-colors btn-press cursor-pointer"
           title="Download calculation as CSV spreadsheet"
         >
-          <Download className="w-3.5 h-3.5 text-[#525252] dark:text-[#A3A3A3]" />
+          <Download className="w-3.5 h-3.5 text-[#262626] dark:text-[#D4D4D4]" />
           <span>Export CSV</span>
         </button>
       )}
@@ -127,7 +127,7 @@ export const ExportActions: React.FC<ExportActionsProps> = ({
         className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-bold bg-[#F5F5F5] dark:bg-[#222222] hover:bg-[#E5E5E5] dark:hover:bg-[#2A2A2A] text-[#111111] dark:text-[#F5F5F5] border border-[#E5E5E5] dark:border-[#2A2A2A] shadow-xs transition-colors btn-press cursor-pointer"
         title="Print this calculation"
       >
-        <Printer className="w-3.5 h-3.5 text-[#525252] dark:text-[#A3A3A3]" />
+        <Printer className="w-3.5 h-3.5 text-[#262626] dark:text-[#D4D4D4]" />
         <span>Print results</span>
       </button>
 
@@ -144,7 +144,7 @@ export const ExportActions: React.FC<ExportActionsProps> = ({
           </>
         ) : (
           <>
-            <Share2 className="w-3.5 h-3.5 text-[#525252] dark:text-[#A3A3A3]" />
+            <Share2 className="w-3.5 h-3.5 text-[#262626] dark:text-[#D4D4D4]" />
             <span>Share calculation</span>
           </>
         )}

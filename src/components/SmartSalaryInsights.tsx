@@ -129,7 +129,7 @@ export const SmartSalaryInsights: React.FC<SmartSalaryInsightsProps> = ({ input,
                 {isAiFallback ? 'Standard Analysis' : 'AI-Enhanced'}
               </span>
             </div>
-            <p className="text-xs text-[#525252] dark:text-[#A3A3A3] mt-0.5">
+            <p className="text-xs text-[#262626] dark:text-[#D4D4D4] mt-0.5">
               A simple explanation based on your estimated calculation.
             </p>
             {isAiFallback && (
@@ -155,7 +155,7 @@ export const SmartSalaryInsights: React.FC<SmartSalaryInsightsProps> = ({ input,
               </>
             ) : (
               <>
-                <Copy className="w-3.5 h-3.5 text-[#525252] dark:text-[#A3A3A3]" />
+                <Copy className="w-3.5 h-3.5 text-[#262626] dark:text-[#D4D4D4]" />
                 <span>Copy insights</span>
               </>
             )}
@@ -169,9 +169,9 @@ export const SmartSalaryInsights: React.FC<SmartSalaryInsightsProps> = ({ input,
           >
             <span>{isExpanded ? 'Show less' : 'Show more'}</span>
             {isExpanded ? (
-              <ChevronUp className="w-3.5 h-3.5 text-[#525252] dark:text-[#A3A3A3]" />
+              <ChevronUp className="w-3.5 h-3.5 text-[#262626] dark:text-[#D4D4D4]" />
             ) : (
-              <ChevronDown className="w-3.5 h-3.5 text-[#525252] dark:text-[#A3A3A3]" />
+              <ChevronDown className="w-3.5 h-3.5 text-[#262626] dark:text-[#D4D4D4]" />
             )}
           </button>
         </div>
@@ -201,7 +201,7 @@ export const SmartSalaryInsights: React.FC<SmartSalaryInsightsProps> = ({ input,
               </div>
               <h4 className="text-xs sm:text-sm font-bold tracking-tight">1. Your Estimated Pay</h4>
             </div>
-            <ul className="space-y-1.5 text-xs text-[#525252] dark:text-[#A3A3A3] leading-relaxed">
+            <ul className="space-y-1.5 text-xs text-[#262626] dark:text-[#D4D4D4] leading-relaxed">
               {insights.estimatedPay.bullets.map((bullet, idx) => (
                 <li key={idx} className="flex items-start gap-2">
                   <span className="w-1.5 h-1.5 rounded-full bg-[#059669] dark:bg-[#10B981] shrink-0 mt-1.5" />
@@ -219,7 +219,7 @@ export const SmartSalaryInsights: React.FC<SmartSalaryInsightsProps> = ({ input,
               </div>
               <h4 className="text-xs sm:text-sm font-bold tracking-tight">2. Your Main Deductions</h4>
             </div>
-            <ul className="space-y-1.5 text-xs text-[#525252] dark:text-[#A3A3A3] leading-relaxed">
+            <ul className="space-y-1.5 text-xs text-[#262626] dark:text-[#D4D4D4] leading-relaxed">
               {insights.mainDeductions.bullets.map((bullet, idx) => (
                 <li key={idx} className="flex items-start gap-2">
                   <span className="w-1.5 h-1.5 rounded-full bg-[#059669] dark:bg-[#10B981] shrink-0 mt-1.5" />
@@ -251,7 +251,7 @@ export const SmartSalaryInsights: React.FC<SmartSalaryInsightsProps> = ({ input,
               </div>
               <h4 className="text-xs sm:text-sm font-bold tracking-tight">3. What Stands Out</h4>
             </div>
-            <ul className="space-y-1.5 text-xs text-[#525252] dark:text-[#A3A3A3] leading-relaxed">
+            <ul className="space-y-1.5 text-xs text-[#262626] dark:text-[#D4D4D4] leading-relaxed">
               {insights.whatStandsOut.bullets.map((bullet, idx) => (
                 <li key={idx} className="flex items-start gap-2">
                   <span className="w-1.5 h-1.5 rounded-full bg-[#059669] dark:bg-[#10B981] shrink-0 mt-1.5" />
@@ -269,7 +269,7 @@ export const SmartSalaryInsights: React.FC<SmartSalaryInsightsProps> = ({ input,
               </div>
               <h4 className="text-xs sm:text-sm font-bold tracking-tight">4. Things to Check</h4>
             </div>
-            <ul className="space-y-1.5 text-xs text-[#525252] dark:text-[#A3A3A3] leading-relaxed">
+            <ul className="space-y-1.5 text-xs text-[#262626] dark:text-[#D4D4D4] leading-relaxed">
               {insights.thingsToCheck.bullets.map((bullet, idx) => (
                 <li key={idx} className="flex items-start gap-2">
                   <span className="w-1.5 h-1.5 rounded-full bg-[#059669] dark:bg-[#10B981] shrink-0 mt-1.5" />
@@ -282,7 +282,7 @@ export const SmartSalaryInsights: React.FC<SmartSalaryInsightsProps> = ({ input,
       )}
 
       {/* Visible Statutory Disclaimer */}
-      <div className="mt-5 p-3 rounded-xl bg-[#F5F5F5] dark:bg-[#111111] border border-[#E5E5E5] dark:border-[#2A2A2A] flex items-start gap-2 text-2xs text-[#525252] dark:text-[#A3A3A3] leading-relaxed">
+      <div className="mt-5 p-3 rounded-xl bg-[#F5F5F5] dark:bg-[#111111] border border-[#E5E5E5] dark:border-[#2A2A2A] flex items-start gap-2 text-2xs text-[#262626] dark:text-[#D4D4D4] leading-relaxed">
         <AlertCircle className="w-3.5 h-3.5 text-[#737373] dark:text-[#888888] shrink-0 mt-0.5" />
         <div>
           <span className="font-bold text-[#111111] dark:text-[#F5F5F5]">Disclaimer: </span>
