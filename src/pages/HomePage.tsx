@@ -341,8 +341,10 @@ export const HomePage: React.FC = () => {
       </section>
 
       {/* 2. H2: Calculate Your UK Take-Home Pay */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="mb-4">
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative overflow-hidden">
+        {/* Watermark: green £ only (no dark square), 7% opacity, centered behind the calculator */}
+        <div aria-hidden="true" className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none select-none text-[#059669] dark:text-[#10B981] opacity-[0.07] text-[280px] sm:text-[420px] leading-none font-black z-0">£</div>
+        <div className="mb-4 relative z-10">
           <h2 className="text-xl sm:text-2xl font-bold text-[#111111] dark:text-[#F5F5F5] tracking-tight">
             Calculate Your UK Take-Home Pay
           </h2>
@@ -350,7 +352,7 @@ export const HomePage: React.FC = () => {
             Enter your gross salary, choose your tax region (England/Wales/NI or Scotland), and customize your pension contribution or student loan plan for an instant payslip calculation.
           </p>
         </div>
-        <TakeHomeCalculator />
+        <div className="relative z-10"><TakeHomeCalculator /></div>
       </section>
 
       {/* 3. H2: How the UK Salary Calculator Works */}
