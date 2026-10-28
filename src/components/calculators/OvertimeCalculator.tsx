@@ -62,7 +62,7 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/overtime-pay-calculator)
           <div className="grid grid-cols-2 gap-3">
             <div>
               <label htmlFor="overtime-hours-num" className="block text-xs font-bold uppercase tracking-wider text-slate-700 dark:text-slate-300 mb-1">
-                Overtime Hours
+                Overtime Hours (total hours entered)
               </label>
               <input
                 type="number"
@@ -146,7 +146,7 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/overtime-pay-calculator)
               <p className="text-xs sm:text-sm font-medium text-[#262626] dark:text-[#D4D4D4] flex items-center gap-1.5">
                 <ArrowUpRight className="w-4 h-4 text-[#059669] dark:text-[#10B981] shrink-0" />
                 <span>
-                  Gross overtime earnings of {formatGBP(result.grossOvertimePay)}
+                  Gross overtime earnings of {formatGBP(result.grossOvertimePay)} for the hours entered
                 </span>
               </p>
             </div>

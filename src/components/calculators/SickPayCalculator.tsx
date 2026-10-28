@@ -94,7 +94,7 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/statutory-sick-pay-calcu
                 </label>
                 <Tooltip
                   title="Average Weekly Earnings"
-                  content="Your average gross weekly pay before tax, usually averaged over the 8 weeks prior to your first day of sickness. Must be at least £129/week (the Lower Earnings Limit for 2026/27) to qualify for SSP."
+                  content={input.taxYear === '2026_27' ? "Your average gross weekly pay before tax, usually averaged over the 8 weeks prior to your first day of sickness. From 6 April 2026 there is no Lower Earnings Limit for SSP." : "Your average gross weekly pay before tax, usually averaged over the 8 weeks prior to your first day of sickness. Must be at least £129/week (the Lower Earnings Limit) to qualify for SSP."}
                 />
               </div>
               <span className={`text-2xs font-bold px-2 py-0.5 rounded-md ${
@@ -102,7 +102,7 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/statutory-sick-pay-calcu
                   ? 'bg-emerald-50 dark:bg-emerald-950/40 text-emerald-700 dark:text-emerald-300'
                   : 'bg-rose-50 dark:bg-rose-950/40 text-rose-700 dark:text-rose-300'
               }`}>
-                {result.isEligible ? 'Above LEL (£129)' : 'Below LEL'}
+                {input.taxYear === '2026_27' ? 'No LEL from Apr 2026' : (result.isEligible ? 'Above LEL (£129)' : 'Below LEL')}
               </span>
             </div>
             <div className="relative">

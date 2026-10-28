@@ -206,7 +206,7 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/hourly-to-salary-calcula
             <div className="bg-white dark:bg-[#111111] p-3 rounded-xl border border-[#E5E5E5] dark:border-[#2A2A2A] shadow-2xs">
               <span className="text-2xs uppercase text-[#262626] dark:text-[#D4D4D4] font-bold block">Weekly Net Pay</span>
               <p className="text-base sm:text-lg font-black text-[#111111] dark:text-[#F5F5F5] mt-0.5 tabular-nums">
-                £{result.netWeekly.toLocaleString('en-GB', { minimumFractionDigits: 0, maximumFractionDigits: 0 })}
+                £{(result.netAnnual / input.weeksPerYear).toLocaleString('en-GB', { minimumFractionDigits: 0, maximumFractionDigits: 0 })}
               </p>
             </div>
 

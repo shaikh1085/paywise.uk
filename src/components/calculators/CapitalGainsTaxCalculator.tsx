@@ -212,14 +212,14 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/capital-gains-tax-calcul
 
           <div className="space-y-3">
             <div className="flex justify-between items-center p-3 rounded-2xl bg-[#FAFAFA] dark:bg-[#202020] border border-[#E5E5E5] dark:border-[#333333]">
-              <span className="text-xs font-semibold text-[#262626] dark:text-[#D4D4D4]">Basic Rate Band ({(result.basicBandRate * 100).toFixed(0)}%)</span>
+              <span className="text-xs font-semibold text-[#262626] dark:text-[#D4D4D4]">Basic Rate Band ({result.basicBandRate.toFixed(0)}%)</span>
               <span className="text-sm font-bold text-[#111111] dark:text-[#F5F5F5]">
                 {formatGBP(result.cgtBasicBand)} (on {formatGBP(result.gainInBasicBand)})
               </span>
             </div>
 
             <div className="flex justify-between items-center p-3 rounded-2xl bg-[#FAFAFA] dark:bg-[#202020] border border-[#E5E5E5] dark:border-[#333333]">
-              <span className="text-xs font-semibold text-[#262626] dark:text-[#D4D4D4]">Higher Rate Band ({(result.higherBandRate * 100).toFixed(0)}%)</span>
+              <span className="text-xs font-semibold text-[#262626] dark:text-[#D4D4D4]">Higher Rate Band ({result.higherBandRate.toFixed(0)}%)</span>
               <span className="text-sm font-bold text-[#111111] dark:text-[#F5F5F5]">
                 {formatGBP(result.cgtHigherBand)} (on {formatGBP(result.gainInHigherBand)})
               </span>

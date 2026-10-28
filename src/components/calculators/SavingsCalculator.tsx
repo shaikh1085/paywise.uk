@@ -171,7 +171,7 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/savings-calculator)`;
               <span className="w-2 h-2 rounded-full bg-[#059669] dark:bg-[#10B981]" />
               Final Projected Balance
             </span>
-            <span className="text-xs text-[#262626] dark:text-[#D4D4D4] font-semibold tabular-nums">{input.periodYears} Years ({result.effectiveApy.toFixed(2)}% APY)</span>
+            <span className="text-xs text-[#262626] dark:text-[#D4D4D4] font-semibold tabular-nums">{input.periodYears} Year{input.periodYears === 1 ? '' : 's'} ({result.effectiveApy.toFixed(2)}% APY)</span>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-12 gap-6 items-center mb-6">

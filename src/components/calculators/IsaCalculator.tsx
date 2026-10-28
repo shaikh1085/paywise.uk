@@ -24,7 +24,7 @@ export const IsaCalculator: React.FC = () => {
 ISA Type: ${input.isaType === 'stocks_and_shares_isa' ? 'Stocks & Shares ISA' : input.isaType === 'cash_isa' ? 'Cash ISA' : input.isaType === 'lifetime_isa' ? 'Lifetime ISA (LISA)' : 'General ISA'}
 Starting Balance: ${formatGBP((input.currentBalance || 0))}
 Monthly Contribution: ${formatGBP((input.monthlyContribution || 0))}/month
-Timeframe: ${input.timePeriodYears} Years at ${input.annualGrowthRate}% p.a.
+Timeframe: ${input.timePeriodYears} Year${input.timePeriodYears === 1 ? '' : 's'} at ${input.annualGrowthRate}% p.a.
 Total Money Invested: ${formatGBP(result.totalContributions)}
 Total Investment Growth: ${formatGBP(result.totalGrowth)}
 Projected Ending Value: ${formatGBP(result.projectedEndingBalance)}
@@ -157,7 +157,7 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/isa-calculator)`;
               <span className="w-2 h-2 rounded-full bg-[#059669] dark:bg-[#10B981]" />
               Projected Tax-Free Balance
             </span>
-            <span className="text-xs text-[#262626] dark:text-[#D4D4D4] font-semibold tabular-nums">{input.timePeriodYears} Years</span>
+            <span className="text-xs text-[#262626] dark:text-[#D4D4D4] font-semibold tabular-nums">{input.timePeriodYears} Year{input.timePeriodYears === 1 ? '' : 's'}</span>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-12 gap-6 items-center mb-6">
