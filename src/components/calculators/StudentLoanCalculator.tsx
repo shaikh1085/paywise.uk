@@ -121,7 +121,7 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/student-loan-repayment-c
                 <strong className="text-[#059669] dark:text-[#10B981] font-bold">
                   {formatGBP(result.totalStudentLoanAnnual)}/year
                 </strong>{' '}
-                (approx. {formatGBP(result.weeklyRepayment)}/week)
+                (approx. {formatGBP(result.totalStudentLoanAnnual / 52)}/week)
               </span>
             </p>
           </div>
@@ -146,7 +146,7 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/student-loan-repayment-c
         {/* Plan Comparison Table */}
         <div className="bg-white dark:bg-[#171717] border border-[#E5E5E5] dark:border-[#2A2A2A] rounded-2xl p-6 sm:p-8 shadow-xs">
           <h3 className="text-base font-bold text-slate-900 dark:text-white mb-4">
-            UK Student Loan Plan Thresholds (2025/2026)
+            UK Student Loan Plan Thresholds (2026/2027)
           </h3>
 
           <div className="overflow-x-auto">

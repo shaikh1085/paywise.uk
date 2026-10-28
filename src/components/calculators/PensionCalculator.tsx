@@ -206,7 +206,7 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/pension-calculator)`;
                 Projected Pot at Age {input.retirementAge}
               </span>
               <span className="text-xs text-[#262626] dark:text-[#D4D4D4] tabular-nums">
-                {result.yearsToRetirement} Years Growth Horizon
+                {result.yearsToRetirement} Year{result.yearsToRetirement === 1 ? '' : 's'} Growth Horizon
               </span>
             </div>
 

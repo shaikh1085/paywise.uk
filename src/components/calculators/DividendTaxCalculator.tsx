@@ -2,6 +2,7 @@ import { formatGBP } from '../../utils/format';
 import React, { useState, useMemo } from 'react';
 import { DividendTaxInput, TaxRegion, TaxYear } from '../../types';
 import { calculateDividendTax } from '../../utils/calculations';
+import { UK_DIVIDEND_TAX_CONFIGS } from '../../config/dividendTaxConfig';
 import { ExportActions } from '../common/ExportActions';
 import { AnimatedNumber } from '../common/AnimatedNumber';
 import { CircularProgressMeter } from '../common/CircularProgressMeter';
@@ -16,6 +17,7 @@ export const DividendTaxCalculator: React.FC = () => {
   });
 
   const result = useMemo(() => calculateDividendTax(input), [input]);
+  const yearRates = UK_DIVIDEND_TAX_CONFIGS[input.taxYear];
 
   const copyText = `PayWise UK Dividend Tax Calculation:
 Tax Year: ${result.taxYearLabel}
@@ -179,21 +181,21 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/dividend-tax-calculator)
 
           <div className="space-y-3">
             <div className="flex justify-between items-center p-3 rounded-2xl bg-[#FAFAFA] dark:bg-[#202020] border border-[#E5E5E5] dark:border-[#333333]">
-              <span className="text-xs font-semibold text-[#262626] dark:text-[#D4D4D4]">Basic Rate (10.75%)</span>
+              <span className="text-xs font-semibold text-[#262626] dark:text-[#D4D4D4]">Basic Rate ({(yearRates.rates.basicRate * 100).toFixed(2)}%)</span>
               <span className="text-sm font-bold text-[#111111] dark:text-[#F5F5F5]">
                 {formatGBP(result.dividendTaxBasic)} (on {formatGBP(result.basicBandDividends)})
               </span>
             </div>
 
             <div className="flex justify-between items-center p-3 rounded-2xl bg-[#FAFAFA] dark:bg-[#202020] border border-[#E5E5E5] dark:border-[#333333]">
-              <span className="text-xs font-semibold text-[#262626] dark:text-[#D4D4D4]">Higher Rate (35.75%)</span>
+              <span className="text-xs font-semibold text-[#262626] dark:text-[#D4D4D4]">Higher Rate ({(yearRates.rates.higherRate * 100).toFixed(2)}%)</span>
               <span className="text-sm font-bold text-[#111111] dark:text-[#F5F5F5]">
                 {formatGBP(result.dividendTaxHigher)} (on {formatGBP(result.higherBandDividends)})
               </span>
             </div>
 
             <div className="flex justify-between items-center p-3 rounded-2xl bg-[#FAFAFA] dark:bg-[#202020] border border-[#E5E5E5] dark:border-[#333333]">
-              <span className="text-xs font-semibold text-[#262626] dark:text-[#D4D4D4]">Additional Rate (39.35%)</span>
+              <span className="text-xs font-semibold text-[#262626] dark:text-[#D4D4D4]">Additional Rate ({(yearRates.rates.additionalRate * 100).toFixed(2)}%)</span>
               <span className="text-sm font-bold text-[#111111] dark:text-[#F5F5F5]">
                 {formatGBP(result.dividendTaxAdditional)} (on {formatGBP(result.additionalBandDividends)})
               </span>

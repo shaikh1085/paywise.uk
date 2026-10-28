@@ -381,7 +381,7 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app)`;
                       <label htmlFor="tax-code-input" className="font-bold text-[#111111] dark:text-[#F5F5F5]">
                         Tax Code
                       </label>
-                      <Tooltip content="Standard 2025/2026 tax code is 1257L (£12,570 allowance). Scottish codes start with 'S', Welsh with 'C'." title="HMRC Tax Code" />
+                      <Tooltip content="Standard 2026/2027 tax code is 1257L (£12,570 allowance). Scottish codes start with 'S', Welsh with 'C'." title="HMRC Tax Code" />
                     </div>
                     <span className="text-2xs text-[#737373] dark:text-[#888888]">Default: 1257L</span>
                   </div>

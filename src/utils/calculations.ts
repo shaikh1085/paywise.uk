@@ -899,6 +899,10 @@ export function calculateStudentLoan(input: StudentLoanInput): StudentLoanResult
   } else if (input.plan.includes('and_postgrad')) {
     planName = 'Undergraduate + Postgraduate Loan';
     repaymentRatePercent = 15;
+    if (input.plan.startsWith('plan1')) threshold = config.studentLoans.plan1.threshold;
+    else if (input.plan.startsWith('plan2')) threshold = config.studentLoans.plan2.threshold;
+    else if (input.plan.startsWith('plan4')) threshold = config.studentLoans.plan4.threshold;
+    else if (input.plan.startsWith('plan5')) threshold = config.studentLoans.plan5.threshold;
     explanation = `Combined undergraduate (9%) and postgraduate (6%) deductions total 15% on income above their respective thresholds.`;
   }
 

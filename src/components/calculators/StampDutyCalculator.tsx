@@ -158,14 +158,14 @@ Calculated via PayWise UK (https://paywiseuk.vercel.app/stamp-duty-calculator) -
           </div>
 
           {/* FTB Max Property Limit Warning */}
-          {input.buyerType === 'first_time_buyer' && input.propertyPrice > 625000 && (
+          {input.buyerType === 'first_time_buyer' && input.propertyPrice > 500000 && (
             <div className="p-3.5 rounded-xl bg-amber-500/10 border border-amber-500/20 text-amber-800 dark:text-amber-300 text-xs space-y-1">
               <div className="flex items-center gap-1.5 font-bold">
                 <ShieldAlert className="w-4 h-4 shrink-0" />
                 <span>First-Time Buyer Relief Limit Exceeded</span>
               </div>
               <p className="text-2xs leading-relaxed">
-                First-time buyer relief is capped at £625,000 (£500,000 standard). For properties above £625,000, standard residential rates apply to the entire amount.
+                First-time buyer relief applies only up to £500,000. For properties above £500,000, standard residential rates apply to the entire amount.
               </p>
             </div>
           )}
