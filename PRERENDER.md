@@ -29,6 +29,15 @@ work there and the fallback is a build-time crawl (see below).
 Snapshots are static: if a page's title, text or calculator changes,
 regenerate them, otherwise crawlers keep seeing the old snapshot.
 
+CRITICAL (learned 2026-10-27, live breakage): snapshots embed the
+hashed asset filenames (assets/index-<hash>.css/.js) from the build
+they were crawled from. ANY later source change that alters the CSS/JS
+hash makes every snapshot's stylesheet and bundle 404, so deep pages
+render completely unstyled with no hydration — even if no page content
+changed (the watermark-only change did exactly this). Rule: regenerate
+snapshots after EVERY source change before any push, and verify all
+snapshot asset refs match the fresh dist build.
+
 ```
 npm run build
 npm run prerender   # needs Playwright + Chromium; see scripts/prerender.mjs
