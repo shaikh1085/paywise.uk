@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { TAX_CONFIG_METADATA } from '../../config/taxConfig';
 import { SITE_CONFIG } from '../../config/siteConfig';
+import { ShareButtons } from '../common/ShareButtons';
 
 export const Footer: React.FC = () => {
   const currentYear = new Date().getFullYear();
@@ -31,6 +32,7 @@ export const Footer: React.FC = () => {
               <span className="w-2 h-2 rounded-full bg-[#059669] dark:bg-[#10B981]" />
               Tax Rates: {TAX_CONFIG_METADATA.currentTaxYearLabel} (Last updated: {SITE_CONFIG.lastUpdated})
             </div>
+            <ShareButtons variant="compact" className="pt-1" />
           </div>
 
           {/* Calculators Column */}

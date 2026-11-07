@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import { SEO } from '../components/seo/SEO';
 import { TakeHomeCalculator } from '../components/calculators/TakeHomeCalculator';
 import { FaqAccordion } from '../components/common/FaqAccordion';
+import { ShareButtons } from '../components/common/ShareButtons';
 import { DisclaimerNotice } from '../components/common/DisclaimerNotice';
 import { GradientBackground } from '../components/common/GradientBackground';
 import { HOME_FAQS } from '../data/faqsData';
@@ -353,6 +354,11 @@ export const HomePage: React.FC = () => {
           </p>
         </div>
         <div className="relative z-10"><TakeHomeCalculator /></div>
+      </section>
+
+      {/* Share: directly under the calculator so it is visible without scrolling to the footer */}
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-4">
+        <ShareButtons />
       </section>
 
       {/* 3. H2: How the UK Salary Calculator Works */}

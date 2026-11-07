@@ -5,6 +5,7 @@ import { Breadcrumbs } from '../components/layout/Breadcrumbs';
 import { TakeHomeCalculator } from '../components/calculators/TakeHomeCalculator';
 import { FaqAccordion } from '../components/common/FaqAccordion';
 import { DisclaimerNotice } from '../components/common/DisclaimerNotice';
+import { ShareButtons } from '../components/common/ShareButtons';
 import { TAKE_HOME_FAQS } from '../data/faqsData';
 import { TAX_CONFIG_METADATA } from '../config/taxConfig';
 import { ArrowRight, CheckCircle2 } from 'lucide-react';
@@ -58,6 +59,7 @@ export const TakeHomePayPage: React.FC = () => {
           Calculate your estimated UK net salary
         </h2>
         <TakeHomeCalculator />
+        <ShareButtons />
       </div>
 
       {/* Comprehensive Editorial & Tax Context */}
