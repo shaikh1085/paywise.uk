@@ -18,7 +18,7 @@ export const GuideIncomeTaxPage: React.FC = () => {
     <article className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-8">
       <SEO
         title="How UK Income Tax Works | Rates, Bands & Personal Allowance"
-        description="A clear guide to UK Income Tax rates, bands, Personal Allowance and Scottish tax rates for the 2026/27 tax year."
+        description="A clear guide to UK Income Tax rates, bands, Personal Allowance and Scottish tax rates for 2026/27, with worked examples."
         keywords={[
           'how UK income tax works',
           'uk income tax bands',

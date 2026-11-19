@@ -18,7 +18,7 @@ export const MaternityPayPage: React.FC = () => {
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-8">
       <SEO
         title="Maternity Pay Calculator UK 2026/27 | SMP, SPP & Shared Parental Pay"
-        description="Calculate your UK Statutory Maternity Pay (SMP), Paternity Pay (SPP), Adoption Pay and Shared Parental Pay for 2026/27. Free calculator with week-by-week breakdown and enhanced pay support."
+        description="Calculate UK Statutory Maternity Pay (SMP), Paternity Pay and Shared Parental Pay for 2026/27, with a week-by-week breakdown."
         keywords={[
           'maternity pay calculator uk',
           'statutory maternity pay calculator 2025',

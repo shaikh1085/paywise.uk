@@ -26,7 +26,7 @@ export const ContactPage: React.FC = () => {
     <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-8">
       <SEO
         title="Contact PayWise UK | Support & Feedback"
-        description="Get in touch with the PayWise UK team for questions, feedback, calculation support or general enquiries."
+        description="Contact the PayWise UK team with questions, feedback or calculation support — we reply to every message about our free UK salary tools."
         keywords={[
           'contact PayWise UK',
           'uk salary calculator support',

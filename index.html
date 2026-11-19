@@ -21,8 +21,9 @@
     <!-- Google Fonts Preconnect and Preload for Inter and JetBrains Mono typography -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@500;600;700&display=swap" />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@500;600;700&display=swap" rel="stylesheet">
+    <!-- Fonts loaded non-blocking (media=print swap) so the font stylesheet does not delay first paint -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@500;600;700&display=swap" media="print" onload="this.media='all'" />
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@500;600;700&display=swap" /></noscript>
 
     <!-- Fetch property patch & Anti-Flash Theme Script -->
     <script>
@@ -73,6 +74,22 @@
         "name": "Paywise UK"
       }
     }
+    </script>
+
+    <!-- Google Analytics (GA4) — loads only when VITE_GA_ID is set at build time; makes no request when unset -->
+    <script>
+      (function () {
+        var gaId = "%VITE_GA_ID%";
+        if (!gaId || gaId.charAt(0) === "%") return;
+        var s = document.createElement("script");
+        s.async = true;
+        s.src = "https://www.googletagmanager.com/gtag/js?id=" + gaId;
+        document.head.appendChild(s);
+        window.dataLayer = window.dataLayer || [];
+        window.gtag = function () { window.dataLayer.push(arguments); };
+        window.gtag("js", new Date());
+        window.gtag("config", gaId);
+      })();
     </script>
   </head>
   <body class="bg-[#FAFAFA] dark:bg-[#080808] text-[#111111] dark:text-[#F5F5F5] min-h-screen antialiased selection:bg-emerald-600 selection:text-white font-sans transition-colors duration-200">

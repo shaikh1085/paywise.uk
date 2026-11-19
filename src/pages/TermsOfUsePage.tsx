@@ -12,7 +12,7 @@ export const TermsOfUsePage: React.FC = () => {
     <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-8">
       <SEO
         title="Terms of Use | PayWise UK"
-        description="Review the terms and conditions for using PayWise UK salary calculators and educational guides."
+        description="Read the terms of use for PayWise UK’s free salary, tax and take-home pay calculators, guides and educational tools — please read before using the site."
         keywords={[
           'PayWise UK terms of use',
           'salary calculator terms',

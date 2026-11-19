@@ -18,7 +18,7 @@ export const VatCalculatorPage: React.FC = () => {
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-8">
       <SEO
         title="VAT Calculator UK | Add or Remove VAT at 20%, 5% or 0%"
-        description="Free UK VAT calculator. Add VAT to a net price or remove VAT from a gross price at the standard 20%, reduced 5%, or zero 0% rate. Instant ex-VAT and inc-VAT results."
+        description="Free UK VAT calculator — add VAT to a net price or remove VAT from a gross price at 20%, 5% or 0%, with instant results."
         keywords={[
           'vat calculator uk',
           'add vat calculator',
