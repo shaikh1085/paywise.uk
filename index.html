@@ -76,23 +76,17 @@
     }
     </script>
 
-    <!-- Google Analytics (GA4) — loads only when VITE_GA_ID is set at build time; makes no request when unset -->
+    <!-- Google Tag Manager (GTM-P3RPKNGH) — loads Google Analytics via the GTM container -->
+    <script async src="https://www.googletagmanager.com/gtm.js?id=GTM-P3RPKNGH"></script>
     <script>
-      (function () {
-        var gaId = "%VITE_GA_ID%";
-        if (!gaId || gaId.charAt(0) === "%") return;
-        var s = document.createElement("script");
-        s.async = true;
-        s.src = "https://www.googletagmanager.com/gtag/js?id=" + gaId;
-        document.head.appendChild(s);
-        window.dataLayer = window.dataLayer || [];
-        window.gtag = function () { window.dataLayer.push(arguments); };
-        window.gtag("js", new Date());
-        window.gtag("config", gaId);
-      })();
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
     </script>
   </head>
   <body class="bg-[#FAFAFA] dark:bg-[#080808] text-[#111111] dark:text-[#F5F5F5] min-h-screen antialiased selection:bg-emerald-600 selection:text-white font-sans transition-colors duration-200">
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-P3RPKNGH" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
   </body>
