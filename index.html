@@ -21,8 +21,9 @@
     <!-- Google Fonts Preconnect and Preload for Inter and JetBrains Mono typography -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@500;600;700&display=swap" />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@500;600;700&display=swap" rel="stylesheet">
+    <!-- Fonts loaded non-blocking (media=print swap) so the font stylesheet does not delay first paint -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@500;600;700&display=swap" media="print" onload="this.media='all'" />
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@500;600;700&display=swap" /></noscript>
 
     <!-- Fetch property patch & Anti-Flash Theme Script -->
     <script>
@@ -74,8 +75,18 @@
       }
     }
     </script>
+
+    <!-- Google Tag Manager (GTM-P3RPKNGH) — loads Google Analytics via the GTM container -->
+    <script async src="https://www.googletagmanager.com/gtm.js?id=GTM-P3RPKNGH"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+    </script>
   </head>
   <body class="bg-[#FAFAFA] dark:bg-[#080808] text-[#111111] dark:text-[#F5F5F5] min-h-screen antialiased selection:bg-emerald-600 selection:text-white font-sans transition-colors duration-200">
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-P3RPKNGH" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
   </body>

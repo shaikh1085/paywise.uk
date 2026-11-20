@@ -19,7 +19,7 @@ export const MarriageAllowanceCalculatorPage: React.FC = () => {
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-8">
       <SEO
         title="Marriage Allowance Calculator UK | See Your Household Tax Saving"
-        description="Find out if you're eligible for UK Marriage Allowance and calculate how much tax your household could save by transferring £1,260 of Personal Allowance to your partner."
+        description="Check UK Marriage Allowance eligibility and calculate your household tax saving by transferring £1,260 of Personal Allowance."
         keywords={[
           'marriage allowance calculator',
           'marriage allowance calculator uk',
@@ -35,7 +35,7 @@ export const MarriageAllowanceCalculatorPage: React.FC = () => {
         canonicalPath="/marriage-allowance-calculator"
         isCalculator={true}
         calculatorName="Marriage Allowance Calculator UK"
-        calculatorDescription="Find out if you're eligible for UK Marriage Allowance and calculate how much tax your household could save by transferring £1,260 of Personal Allowance to your partner."
+        calculatorDescription="Check UK Marriage Allowance eligibility and calculate your household tax saving by transferring £1,260 of Personal Allowance."
         faqs={MARRIAGE_ALLOWANCE_FAQS}
         breadcrumbs={breadcrumbs}
       />

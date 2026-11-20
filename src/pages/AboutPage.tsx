@@ -15,7 +15,7 @@ export const AboutPage: React.FC = () => {
     <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-8">
       <SEO
         title="About PayWise UK | Free UK Salary & Tax Calculators"
-        description="Learn about PayWise UK, our mission to make UK salary and tax calculations transparent, and our methodology."
+        description="Learn about PayWise UK — our mission to make UK salary, tax and take-home pay calculations clear, transparent and free for everyone."
         keywords={[
           'about PayWise UK',
           'uk salary calculator methodology',

@@ -19,7 +19,7 @@ export const PayRiseCalculatorPage: React.FC = () => {
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-8">
       <SEO
         title="Pay Rise Calculator UK | See Your New Take-Home Pay After Tax"
-        description="Find out exactly how much extra take-home pay you'll get after a pay rise or salary increase in the UK, including the impact on your tax band and National Insurance."
+        description="See exactly how much extra take-home pay a UK pay rise gives you, including the effect on your tax band and National Insurance."
         keywords={[
           'pay rise calculator',
           'salary increase calculator uk',
@@ -35,7 +35,7 @@ export const PayRiseCalculatorPage: React.FC = () => {
         canonicalPath="/pay-rise-calculator"
         isCalculator={true}
         calculatorName="Pay Rise Calculator UK"
-        calculatorDescription="Find out exactly how much extra take-home pay you'll get after a pay rise or salary increase in the UK, including the impact on your tax band and National Insurance."
+        calculatorDescription="See exactly how much extra take-home pay a UK pay rise gives you, including the effect on your tax band and National Insurance."
         faqs={PAY_RISE_FAQS}
         breadcrumbs={breadcrumbs}
       />

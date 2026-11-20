@@ -18,7 +18,7 @@ export const ChildBenefitPage: React.FC = () => {
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-8">
       <SEO
         title="Child Benefit Calculator UK 2026/27 | HICBC High Income Charge"
-        description="Calculate your UK Child Benefit and High Income Child Benefit Charge (HICBC) for 2026/27. See exactly how much you keep after the tax charge, and whether to claim or opt out."
+        description="Calculate UK Child Benefit and the High Income Child Benefit Charge (HICBC) for 2026/27 — see what you keep and whether to claim."
         keywords={[
           'child benefit calculator uk',
           'high income child benefit charge calculator',

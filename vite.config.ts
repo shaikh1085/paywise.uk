@@ -42,9 +42,6 @@ export default defineConfig(() => {
               if (id.includes('@google/genai')) {
                 return 'vendor-genai';
               }
-              if (id.includes('motion')) {
-                return 'vendor-motion';
-              }
             }
           },
         },

@@ -18,7 +18,7 @@ export const NetToGrossCalculatorPage: React.FC = () => {
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-8">
       <SEO
         title="Net to Gross Salary Calculator UK | Reverse Take-Home Pay Calculator"
-        description="Calculate the gross salary required to achieve your target net take-home pay. Reverse UK tax calculator accounting for Income Tax, National Insurance, pension, and student loans."
+        description="Work out the gross salary you need for your target take-home pay — reverse UK tax calculator with Income Tax, NI and pension."
         keywords={[
           'net to gross calculator uk',
           'reverse salary calculator uk',

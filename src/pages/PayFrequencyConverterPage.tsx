@@ -19,7 +19,7 @@ export const PayFrequencyConverterPage: React.FC = () => {
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-8">
       <SEO
         title="Pay Frequency Converter UK | Annual to Hourly, Weekly & Monthly"
-        description="Convert salary and wages between Annual, Monthly, 4-Weekly, Fortnightly, Weekly, Daily, and Hourly pay in the UK. View gross rates and estimated net take-home pay."
+        description="Convert UK salary between annual, monthly, weekly, daily and hourly pay — see gross rates and estimated take-home pay instantly."
         keywords={[
           'pay frequency converter uk',
           'salary frequency converter',
@@ -33,7 +33,7 @@ export const PayFrequencyConverterPage: React.FC = () => {
         canonicalPath="/pay-frequency-converter"
         isCalculator={true}
         calculatorName="Pay Frequency Converter UK"
-        calculatorDescription="Convert salary and wages between Annual, Monthly, 4-Weekly, Fortnightly, Weekly, Daily, and Hourly pay in the UK. View gross rates and estimated net take-home pay."
+        calculatorDescription="Convert UK salary between annual, monthly, weekly, daily and hourly pay — see gross rates and estimated take-home pay instantly."
         faqs={PAY_FREQUENCY_FAQS}
         breadcrumbs={breadcrumbs}
       />
